@@ -1,0 +1,107 @@
+\documentclass[a4paper, final, oneside, 2.8headlines]{scrartcl}
+
+\newcommand{\doctitle}{Mesh} % Dokumententitel
+\newcommand{\version}{1.1.1} %Versionsnummer
+
+
+%\usepackage[automark]{scrpage2}  % Kopf-/ Fusszeilen Version 1
+%%erfordert in documentclass noch: headsepline, headinclude!
+%\pagestyle{scrheadings}
+
+\usepackage[automark]{scrpage2} % Kopf-/ Fusszeilen Version 2
+\pagestyle{scrheadings}
+\ohead{\includegraphics[height=1.2cm]{logo}}
+\chead{}
+\ihead{}
+
+\usepackage{typearea} % Berechnung des Seitenspiegels
+\usepackage{listings} % Code-Listings
+\usepackage[pdftex]{graphicx}
+\usepackage[ngerman]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ae,aecompl}
+\usepackage[pdftex,hyperref,dvipsnames]{xcolor}
+\usepackage{microtype} % optischer Randausgleich
+\usepackage{array}
+\usepackage{listings}
+
+% Anfuehrungszeichen
+\usepackage{xspace}
+\newcommand{\enquote}[1]{\glqq #1\grqq \xspace}
+\newcommand{\mc}[3]{\multicolumn{#1}{#2}{#3}}
+
+% Links und PDF-Spezifika
+\pdfcompresslevel=9   % Grafiken komprimieren
+\usepackage{hyperref}
+\definecolor{darkblue}{rgb}{0,0,.5}
+\hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblue, 
+menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
+\hypersetup{pdftitle={\doctitle}}
+\hypersetup{pdfsubject={Fachstudie "mesh"}}
+\hypersetup{pdfauthor={S. Telejnikov, A. Egorenko}}
+
+
+\begin{document}
+
+%---------------------------------------------------------------------&
+% Titelseite
+\begin{titlepage}
+	\begin{center}
+		\vspace*{\fill}{{\sffamily \Huge \doctitle} \\ 
+		\vspace{.5cm} Version \version{} (\today)}
+		
+		\vfill {\includegraphics[width=.8\textwidth]{logo}}
+		
+		\vfill {\Large{\bf Autoren} \vspace{.2cm} \\
+		\begin{minipage}{\textwidth}
+			\center
+			% Autoren
+			Sergey Telejnikov \\ Alex Egorenko
+		\end{minipage}}
+	\end{center}
+\end{titlepage}
+
+%---------------------------------------------------------------------&
+\section*{Versionshistorie}
+\begin{center}
+	\begin{tabular}{c|c|p{10cm}}
+		Version & Datum & Änderungen \\\hline
+		alpha & 06.11.2007 & Inhaltsverzeichnis und Struktur\\
+	\end{tabular}
+\end{center}
+
+%---------------------------------------------------------------------&
+% ABSTRACT
+
+%\newpage
+\begin{abstract}
+
+	\begin{center}
+		Zusammenfassung
+	\end{center}
+
+	In dieser Fachstudie..
+
+\end{abstract}
+
+%---------------------------------------------------------------------&
+\newpage
+\tableofcontents
+
+%---------------------------------------------------------------------&
+%\newpage
+\listoffigures
+
+%---------------------------------------------------------------------&
+\newpage
+\include{Vorwort}
+\include{Mesh-Net}
+\include{Zusammenfassung}
+
+%---------------------------------------------------------------------&
+\appendix
+\include{Lexikon}
+
+%---------------------------------------------------------------------&
+\end{document}
