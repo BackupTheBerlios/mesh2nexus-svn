@@ -1,2 +1,52 @@
-\section{Mesh-Net}
+\section{Hardware-Losungen fur den Aufbau eines Mesh-Netzwerkes}
 
+
+Es gibt verschiedene Moglichkeiten ein Meshnetzwerk aufzubauen. Im Weiteren werden einige davon im Detail beschrieben. 
+
+\subsection{PCs + WLAN-Karten}
+
+Die einfachste Moglichkeit ware die Herkommlich en PCs mit WLAN-Karten zu einem Mesh-Router einzurichten. 
+
+Man nimmt dabei einfach die Wlan-Karten (PCI, Mini-PCI oder PCMCIA)und baut diese in PCs oder in Laptops ein. 
+Generelles Problem: 
+ Ad-Hoc Modus bei Karten im 5Ghz Bereich ist von unausgereift bis nicht vorhanden. 
+
+Hersteller haben gespart an der Entwicklung, da Ad-hoc modus einigerma?en kompliziert ist, und alle meist nur Infrastrukturmodus benutzt haben. Fehler liegen in Firmware von Chipsatz und im Treiber. 
+
+Es gibt einen MadWiFi-Treiber, der fur eine Vielzahl von Chipsatzen entwickelt wurde und mit dem sollte es einigerma?en funktionieren, sobald dieser noch zusatzlich gepacht ist, und Firmware der Karte Ad-hoc zulasst. 
+
+Generell wegen der geringen Verbreitung von 802.11a in Europa, sind nur wenige Karten erhaltlich. z.B konnten Karten mit Atheros Chipsatz, z.B AR5004X, uns weiterhelfen. 
+
+Vorteile: 
+Hardware kann noch nutzlich sein 
+relativ einfache Installation 
+Software Unterstutzung 
+meherer WLAN- und Ethernet Interfaces moglich 
+
+Nachteile: 
+gross 
+nich mobile 
+Stromversorgung 
+schlechte Sende- und Empfangqualitat, da die Antenne im elektromagnetischem Stornebel des PCs befindet 
+
+\subsubsection{Linksys WMP55AG}
+ 
+Chipsatz: 
+ Atheros AR5213A
+IEEE Standards: 
+ 802.11a/b/g
+Betriebsart: 
+ Ad-Hoc-Modus, Infrastruktur-Modus
+Sicherheit: 
+ WPA
+ LEAP
+ WEP (40-, 104-, 128-bit)
+Treiber: 
+ Sehr gute Linux-Unterstutzung, madwifi-Treiber funktioniert
+ mit dieser WLAN PCI-Karte ohne Probleme.
+ Windows-Treiber werden von Linksys bereitgestellt.
+Preis: 
+ ca. 90 Euro
+Installation: 
+ Lasst sich leicht sowohl unter Windows als auch unter Linux (madwifi-Treiber) installieren.
+ http://madwifi.org/wiki/UserDocs/FirstTimeHowTo
