@@ -26,6 +26,7 @@
 \usepackage{microtype} % optischer Randausgleich
 \usepackage{array}
 \usepackage{listings}
+\usepackage{expdlist}
 
 % Anfuehrungszeichen
 \usepackage{xspace}
@@ -42,6 +43,18 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 \hypersetup{pdfsubject={Fachstudie "mesh"}}
 \hypersetup{pdfauthor={S. Telejnikov, A. Egorenkov}}
 
+\newenvironment{wlandevice}[1]
+{\subsubsection{#1} \begin{description}[\breaklabel\setleftmargin{6pt}]}
+{\end{description}}
+
+\newcommand{\chipset}{\item[Chipsatz:]}
+\newcommand{\ieeestandard}{\item[IEEE Standards:]}
+\newcommand{\security}{\item[Sicherheit:]}
+\newcommand{\mode}{\item[Betriebsart:]}
+\newcommand{\driver}{\item[Treiber:]}
+\newcommand{\price}{\item[Preis:]}
+\newcommand{\install}{\item[Installation:]}
+\newcommand{\extrainfo}{\item[Zus"atzliche Informationen:]}
 
 \begin{document}
 
