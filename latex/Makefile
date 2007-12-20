@@ -9,6 +9,7 @@ all: $(TARGET).pdf
 
 $(TARGET).pdf: $(SRCS) $(IMAGES)
 	$(PDFLATEX) $(TARGET).tex
+	$(PDFLATEX) $(TARGET).tex
 
 clean:
 	rm -f *.aux *.out *.toc *.lof *.log $(TARGET).pdf
