@@ -1,6 +1,8 @@
 
 PDFLATEX=pdflatex
-SRCS=mesh.tex Mesh-Net.tex Zusammenfassung.tex
+SRCS=mesh.tex Hardware.tex PCs+WLAN-Karten.tex Zusammenfassung.tex\
+     PCI-WLAN-Karten.tex Mini-PCI_WLAN-Karten.tex PCIMCIA_WLAN-Karten.tex\
+     WLAN-Router.tex PDAs_Handys.tex
 IMAGES_DIR=./images
 IMAGES=$(IMAGES_DIR)/WMN.jpg
 TARGET=mesh

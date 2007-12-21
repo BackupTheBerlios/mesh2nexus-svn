@@ -1,5 +1,8 @@
 \documentclass[a4paper, final, oneside, 2.8headlines]{scrartcl}
 
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{4}
+
 \newcommand{\doctitle}{Mesh} % Dokumententitel
 \newcommand{\version}{1.1.1} %Versionsnummer
 
@@ -45,7 +48,7 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 
 % wlandevice environment
 \newenvironment{wlandevice}[1]
-{\subsubsection{#1} \begin{description}[\breaklabel\setleftmargin{10pt}]}
+{\paragraph{#1} \begin{description}[\breaklabel\setleftmargin{10pt}]}
 {\end{description}}
 
 \newcommand{\wlanchipset}{\item[Chipsatz:]}
@@ -114,7 +117,7 @@ Ein entsprechendes Mesh-Netz ist fur die Forschungszwecke im Informatikbau der U
 \newpage
 \include{Vorwort}
 \include{Aufgabe}
-\include{Mesh-Net}
+\include{Hardware}
 \include{Zusammenfassung}
 
 %---------------------------------------------------------------------&
