@@ -46,11 +46,25 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 \hypersetup{pdfsubject={Fachstudie "mesh"}}
 \hypersetup{pdfauthor={S. Telejnikov, A. Egorenkov}}
 
+\usepackage{float}
+\restylefloat{figure}
+\restylefloat{table}
+
 % wlandevice environment
 \newenvironment{wlandevice}[1]
 {\paragraph{#1} \begin{description}[\breaklabel\setleftmargin{10pt}]}
 {\end{description}}
 
+\newcommand{\wlanimage}[2]
+{
+	\begin{figure}[H]
+		\centering
+		\fbox{
+			\includegraphics[width=.8\textwidth]{#1}
+		}
+		\caption{#2}
+	\end{figure}
+}
 \newcommand{\wlanchipset}{\item[Chipsatz:]}
 \newcommand{\wlanieeestandard}{\item[IEEE Standards:]}
 \newcommand{\wlansecurity}{\item[Sicherheit:]}
