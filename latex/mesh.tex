@@ -59,20 +59,43 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 {
 	\begin{figure}[H]
 		\centering
-		\fbox{
-			\includegraphics{#1}
-		}
+		\includegraphics[width=0.5\textwidth]{#1}
 		\caption{#2}
 	\end{figure}
 }
-\newcommand{\wlanchipset}{\item[Chipsatz:]}
-\newcommand{\wlanieeestandard}{\item[IEEE Standards:]}
-\newcommand{\wlansecurity}{\item[Sicherheit:]}
-\newcommand{\wlanmode}{\item[Betriebsart:]}
-\newcommand{\wlandriver}{\item[Treiber:]}
-\newcommand{\wlanprice}{\item[Preis:]}
-\newcommand{\wlaninstall}{\item[Installation:]}
-\newcommand{\wlanextrainfo}{\item[Zus"atzliche Informationen:]}
+
+\newcommand{\wlanchipset}[1]
+{\item[Chipsatz:] \begin{itemize} \item #1 \end{itemize}}
+\newcommand{\wlanprice}[1]
+{\item[Preis:] \begin{itemize} \item ca. #1 Euro \end{itemize}}
+
+\newenvironment{wlanieeestandard}
+{\item[IEEE Standards:] \begin{itemize}}
+{\end{itemize}}
+
+\newenvironment{wlansecurity}
+{\item[Sicherheit:] \begin{itemize}}
+{\end{itemize}}
+
+\newenvironment{wlanmode}
+{\item[Betriebsart:] \begin{itemize}}
+{\end{itemize}}
+
+\newenvironment{wlandriver}
+{\item[Treiber:] \begin{itemize}}
+{\end{itemize}}
+
+\newenvironment{wlanfirmware}
+{\item[Firmware:] \begin{itemize}}
+{\end{itemize}}
+
+\newenvironment{wlaninstall}
+{\item[Installation:] \begin{itemize}}
+{\end{itemize}}
+
+\newenvironment{wlanextrainfo}
+{\item[Zus"atzliche Informationen:] \begin{itemize}}
+{\end{itemize}}
 
 \begin{document}
 
