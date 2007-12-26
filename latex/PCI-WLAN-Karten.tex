@@ -1,5 +1,29 @@
 \subsubsection{PCI-WLAN-Karten}
 
+PCI-WLAN-Karten werden auf einem freien PCI-Steckplatz des Mainboards
+gesteckt.
+
+Ein Vorteil von PCI-WLAN-Karten ist die bessere Stabilität im
+Betrieb. Weiterhin besitzen die meisten PCI-WLAN-Karten die Möglichkeit
+die mitgelieferte Antenne gegen eine andere zu tauschen. Zu beachten ist,
+dass die Antenne üblicherweise direkt hinten an der Karte angebracht
+ist und somit in unmittelbarer Nähe zum PC-Gehäuse ist. Dies kann
+jedoch negative Auswirkungen auf die Reichweite oder den Datendurchsatz
+haben. Deshalb kann es für einen bessere Verbindung notwendig sein,
+die Antenne mit einem Koaxialkabels vom Rechnergehäuse zu entfernen.
+
+Vorteile:
+\begin{itemize}
+\item meistens abschraubbare Antenne
+\item verschwinden im Gehäuse, Platz wird nicht verschwendet 
+\end{itemize}
+
+Nachteile:
+\begin{itemize}
+\item oft recht schlechte Empfangs/Sendeleistung, weil die kleine Antenne
+ja direkt hinten am Rechner rauskommt (Lösung: zusätzliche Antenne)
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Linksys WMP55AG
@@ -12,12 +36,12 @@
 \wlanchipset{Atheros AR5213A}
 
 \begin{wlanieeestandard}
-\item 802.11abg
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item Ad-Hoc-Modus
-\item Infrastruktur-Modus
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
@@ -38,8 +62,15 @@ Windows-Treiber werden von Linksys bereitgestellt.
 \begin{wlaninstall}
 \item
 Lasst sich leicht sowohl unter Windows als auch unter Linux (madwifi-Treiber) installieren.
-http://madwifi.org/wiki/UserDocs/FirstTimeHowTo
+\url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://madwifi.org/wiki/Compatibility/Linksys}
+\item \url{http://forums.fedoraforum.org/showthread.php?t=91165}
+\item \url{http://www.pcworld.com/product/specs/prtprdid,704176/wireless_ag_54mbps_pci_adptr_80211a80211b80211g_compatible.html}
+\item \url{http://www.linksys.com/servlet/Satellite?c=L_CASupport_C2&childpagename=US\%2FLayout&cid=1169671168007&pagename=Linksys\%2FCommon\%2FVisitorWrapper&lid=6800768007N09}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -52,29 +83,49 @@ http://madwifi.org/wiki/UserDocs/FirstTimeHowTo
 
 \wlanimage{Netgear_WAG311}{Netgear WAG311}
 
-\wlanchipset{}
+\wlanchipset{Atheros AR5212}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-, 128-bit)
+\item WPA, WPA-PSK
+\item PPTP, P2TP, IPSec VPN pass-through
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Sehr gute Linux-Unterstützung, madwifi-Treiber funktioniert
+mit dieser WLAN PCI-Karte ohne Probleme.
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{50-60}
 
 \begin{wlaninstall}
-\item
+\item \url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
+\item \url{http://www.packetpro.com/~peterson/linux-netgear_wg311t_pci.html}
 \end{wlaninstall}
+
+\begin{wlanextrainfo}
+\item
+Externe Antenne, die mit der WLAN-PCI-Karte durch langes Kabel verbunden ist.
+ Das Kabel lässt sich nicht von der PCI-Karte trennen.
+\end{wlanextrainfo}
+
+\begin{wlanlink}
+\item \url{http://www.netgear.com/Products/Adapters/AGDualBandWirelessAdapters/WAG311.aspx}
+\item \url{http://madwifi.org/wiki/Compatibility/Netgear}
+\item \url{http://www.linuxquestions.org/questions/mandriva-30/using-netgear-wag311-via-madwifi-270229/}
+\item \url{http://www.packetpro.com/~peterson/linux-netgear_wg311t_pci.html}
+\item \url{http://www.netgear.com/upload/product/wag311/enus_ds_wag311.pdf}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -87,29 +138,44 @@ http://madwifi.org/wiki/UserDocs/FirstTimeHowTo
 
 \wlanimage{DLink_DWLA520}{D-Link DWL-A520}
 
-\wlanchipset{}
+\wlanchipset{Atheros AR5210}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-, 128-bit)
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Von D-Link werden nur Treiber für Windows bereitgestellt.
+ Sehr gute Linux-Unterstützung, madwifi-Treiber funktioniert
+  mit dieser WLAN PCI-Karte ohne Probleme.
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{70-80}
 
 \begin{wlaninstall}
 \item
+\url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlaninstall}
+
+\begin{wlanextrainfo}
+\item
+Antenne ist nicht abschraubbar.
+\end{wlanextrainfo}
+
+\begin{wlanlink}
+\item \url{http://support.dlink.com/products/print.asp?productid=DWL-A520}
+\item \url{http://madwifi.org/wiki/Compatibility/D-Link}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -122,28 +188,79 @@ http://madwifi.org/wiki/UserDocs/FirstTimeHowTo
 
 \wlanimage{Gigabyte_GNWPEAG}{Gigabyte GN-WPEAG}
 
-\wlanchipset{}
+\wlanchipset{Atheros AR5212}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-, 128-bit)
+\item WPA
+\item WPA2
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Von Gigabyte werden nur Treiber für Windows bereitgestellt.
+\url{http://www.gigabyte.com.tw/Support/Communication/Driver_Model.aspx?ProductID=952}
+Sehr gute Linux-Unterstützung, madwifi-Treiber funktioniert
+mit dieser WLAN PCI-Karte ohne Probleme.
+\url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{70-80}
 
 \begin{wlaninstall}
-\item
+\item \url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlaninstall}
 
+\begin{wlanextrainfo}
+\item
+Abschraubbare Antenne mit reversed SMA.
+ Eigentlich ist das eine Mini-PCI-Karte mit PCI-Adapter.
+\end{wlanextrainfo}
+
+\begin{wlanlink}
+\item \url{http://www.gigabyte.com.tw/Products/Communication/Products_Spec.aspx?ProductID=952}
+\item \url{http://www.gigabyte.com.tw/Support/Communication/Driver_Model.aspx?ProductID=952}
+\item \url{http://madwifi.org/wiki/Compatibility/Gigabyte}
+\end{wlanlink}
+
 \end{wlandevice}
+
+\paragraph{Andere PCI-WLAN-Karten}
+
+\begin{itemize}
+
+\item Intel PRO/Wireless 5000\\
+Chipsatz: Intel\\
+802.11a WLAN PCI-Karte, unterstützt Ad-Hoc- und Infrastruktur-Modus,
+Treiber von Intel nur für Windows vorhanden, für Linux werden keine
+Treiber entwickelt,
+kostet ca. 200 Euro\\
+\url{http://support.intel.com/support/wireless/wlan/pro5000/pciadapter}\\
+\url{ftp://download.intel.com/support/wireless/wlan/pro5000/PRO5000_INFO.pdf}
+
+\item D-Link DWL-AG530\\
+Chipsatz: Atheros AR5212 oder AR5213\\
+802.11a/b/g WLAN-Karte\\
+Madwifi-Treiber Unterstützung\\
+Externe abschraubbare Antenne, kostet ca 80 Euro\\
+\url{http://www.dlink.com/products/?pid=306}\\
+\url{http://madwifi.org/wiki/Compatibility/D-Link}
+
+\item D-Link DWL-G550\\
+Chipsatz: Atheros AR5212\\
+802.11a/b/g WLAN-Karte\\
+Madwifi-Treiber Unterstützung\\
+Externe abschraubbare Antenne, kostet ca 60 Euro\\
+\url{http://www.dlink.com/products/?pid=414}\\
+\url{http://madwifi.org/wiki/Compatibility/D-Link}
+
+\end{itemize}
