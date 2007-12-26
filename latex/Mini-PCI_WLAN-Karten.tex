@@ -1,5 +1,31 @@
 \subsubsection{Mini-PCI WLAN-Karten}
 
+Mini-PCI ist eine vor allem für die Nutzung in Notebooks und Laptops
+miniaturisierte Version des PCI Steckplatzes, wie er in allen Desktop
+PCs vorkommt. PCI steht dabei für Peripheral Component Interconnect. Die
+Abmessungen einer Mini-PCI Card betragen 6,0 x 4,6 x 0,5 cm. Mini-PCI
+Wlan-Karten sind ursprunglich für Laptops gedacht, sind aber mit
+entschprechenden Adaptoren (PCI-zu-MiniPCI) und externen Antennen auch
+im normalen PCs zu verwenden. Als Vorteil ist dabei die Flexibilität zu
+nehnen. Als Nachteil - die Zusätzliche Kosten und Installationen. Meist
+sind Mini-PCI Cards für Wireless LAN bereits vom Hersteller eingebaut. Der
+Vorteil der Ausführung als standardisiertes Modul liegt darin, daß
+eine Mini-PCI Card in aller Regel einfach gegen eine andere Card - auch
+eines anderen Herstellers - ausgetauscht werden kann. Im Falle der WLAN
+Mini-PCI Module kann z.B. problemlos vom langsameren 802.11b Standard
+auf ein schnelleres WLAN Modul nach 802.11g gewechselt werden.
+
+Vorteile:
+\begin{itemize}
+\item kann mit Hilfe eines Adapters zu einer PCI-WLAN-Karte umgebaut werden
+\item können leicht ausgetauscht werden 
+\end{itemize}
+
+Nachteile:
+\begin{itemize}
+\item meistens kostenintensiv 
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Wistron CM9 Atheros AR5213A
@@ -9,29 +35,43 @@
 
 \wlanimage{Wistron_CM9}{Wistron CM9 Atheros AR5213A}
 
-\wlanchipset{}
+\wlanchipset{Atheros AR5213A}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-, 128-bit)
+\item WPA
+\item WPA2
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Herrvorragende Unterstützung von Madwifi-Treiber, auch Ad-Hoc-Modus.
+\url{http://madwifi.org/}
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{40}
 
 \begin{wlaninstall}
 \item
+\url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://www.alix-board.de/produkte/wistroncm9.html}
+\item \url{http://www.pcengines.ch/cm9.htm}
+\item \url{http://forum.openwrt.org/viewtopic.php?pid=10213}
+\item \url{http://madwifi.org/}
+\item \url{http://madwifi.org/ticket/1209}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -44,29 +84,55 @@
 
 \wlanimage{Intel_3945ABG}{Intel PRO/Wireless 3945}
 
-\wlanchipset{}
+\wlanchipset{Intel}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-bit)
+\item WPA
+\item WPA2
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Es werden von Intel Treiber sowohl für Windows als auch für Linux
+bereitgestellt.
+\url{http://downloadcenter.intel.com/Product_Filter.aspx?ProductID=2259}
+Von Intel wurde ein Projket für die Unterstützung von Intel PRO/Wireless
+3945 erstellt.
+\url{http://ipw3945.sourceforge.net}
+Der ipw3945-Treiber funktioniert auch im AD-Hoc-Modus, aber nicht sehr stabil,
+es kommt oft zu Verbindungsabbrüchen.
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{20-30}
 
 \begin{wlaninstall}
 \item
+Im Gegensatz zu den "klassischen" Intel Wireless-Chipsätzen 2100- und
+2200BG-Chipsätzen ist der Treiber für den 3945ABG noch nicht im Kernel
+verfügbar.
+Um auch damit kabellos ins Internet zu gehen, sind ein paar Handgriffe
+notwendig.
+\url{http://ipw3945.sourceforge.net/README.ipw3945}
+\url{http://ipw3945.sourceforge.net/INSTALL}
 \end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://www.intel.com/network/connectivity/products/wireless/prowireless_mobile.htm}
+\item \url{http://downloadcenter.intel.com/Product_Filter.aspx?ProductID=2259}
+\item \url{http://ipw3945.sourceforge.net/}
+\item \url{http://ipw3945.sourceforge.net/README.ipw3945}
+\item \url{http://ipw3945.sourceforge.net/INSTALL}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -79,29 +145,53 @@
 
 \wlanimage{Intel_2915ABG}{Intel PRO/Wireless 2915}
 
-\wlanchipset{}
+\wlanchipset{Intel}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-bit)
+\item WPA
+\item WPA2
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Es werden von Intel Treiber sowohl für Windows als auch für Linux
+bereitgestellt.
+\url{http://downloadcenter.intel.com/Product_Filter.aspx?ProductID=1847}
+Von Intel wurde ein Projket für die Unterstützung von Intel PRO/Wireless
+2915 erstellt.
+\url{http://ipw2200.sourceforge.net}
+Der ipw2200-Treiber funktioniert auch im AD-Hoc-Modus, aber nicht
+sehr stabil, es kommt oft zu verbindungsabbrüchen. Der ipw2200-Treiber
+ist im Kernel 2.6 enthalten, kann aber auch separat als Modul kompiliert
+werden. Der im Kernel enthaltene Treiber unterstützt den Monitor-Modus
+nicht.
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{30}
 
 \begin{wlaninstall}
 \item
+\url{http://ipw2200.sourceforge.net/README.ipw2200}
+\url{http://ipw2200.sourceforge.net/INSTALL}
 \end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://support.intel.com/support/wireless/wlan/pro2915abg}
+\item \url{http://download.intel.com/support/wireless/wlan/pro2915abg/sb/303330002us_channel.pdf}
+\item \url{http://ipw2200.sourceforge.net/}
+\item \url{http://www.intel.com/cd/personal/computing/emea/deu/234998.htm}
+\item \url{http://downloadcenter.intel.com/Product_Filter.aspx?ProductID=1847}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -114,28 +204,40 @@
 
 \wlanimage{Intel_4965AGN}{Intel Wireless WiFi Link 4965AGN}
 
-\wlanchipset{}
+\wlanchipset{Intel}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g/n(draft)
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-bit)
+\item WPA
+\item WPA2
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+\url{http://www.intellinuxwireless.org/}
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{30}
 
 \begin{wlaninstall}
 \item
+\url{http://www.intellinuxwireless.org/}
 \end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://www.intel.com/network/connectivity/products/wireless/wireless_n/overview.htm}
+\item \url{http://www.intellinuxwireless.org/}
+\item \url{http://www.wifi-info.de/intel-kuendigt-11n-chipsatz-fuer-centrino-notebooks-an/01/2007/}
+\item \url{http://downloadcenter.intel.com/filter_results.aspx?strTypes=all&ProductID=2753&OSFullName=Linux*&lang=eng&strOSs=39&submit=Go\%21}
+\end{wlanlink}
 
 \end{wlandevice}
