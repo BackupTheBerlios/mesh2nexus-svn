@@ -29,7 +29,6 @@
 \usepackage{microtype} % optischer Randausgleich
 \usepackage{array}
 \usepackage{listings}
-\usepackage{expdlist}
 
 % Anfuehrungszeichen
 \usepackage{xspace}
@@ -52,7 +51,7 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 
 % wlandevice environment
 \newenvironment{wlandevice}[1]
-{\paragraph{#1} \begin{description}[\breaklabel\setleftmargin{10pt}]}
+{\paragraph{#1} \begin{description}}
 {\end{description}}
 
 \newcommand{\wlanimage}[2]
@@ -65,36 +64,36 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 }
 
 \newcommand{\wlanchipset}[1]
-{\item[Chipsatz:] \begin{itemize} \item #1 \end{itemize}}
+{\item[Chipsatz:] \rule{0mm}{0mm} \begin{itemize} \item #1 \end{itemize}}
 \newcommand{\wlanprice}[1]
-{\item[Preis:] \begin{itemize} \item ca. #1 Euro \end{itemize}}
+{\item[Preis:] \rule{0mm}{0mm} \begin{itemize} \item ca. #1 Euro \end{itemize}}
 
 \newenvironment{wlanieeestandard}
-{\item[IEEE Standards:] \begin{itemize}}
+{\item[IEEE Standards:] \rule{0mm}{0mm} \begin{itemize}}
 {\end{itemize}}
 
 \newenvironment{wlansecurity}
-{\item[Sicherheit:] \begin{itemize}}
+{\item[Sicherheit:] \rule{0mm}{0mm} \begin{itemize}}
 {\end{itemize}}
 
 \newenvironment{wlanmode}
-{\item[Betriebsart:] \begin{itemize}}
+{\item[Betriebsart:] \rule{0mm}{0mm} \begin{itemize}}
 {\end{itemize}}
 
 \newenvironment{wlandriver}
-{\item[Treiber:] \begin{itemize}}
+{\item[Treiber:] \rule{0mm}{0mm} \begin{itemize}}
 {\end{itemize}}
 
 \newenvironment{wlanfirmware}
-{\item[Firmware:] \begin{itemize}}
+{\item[Firmware:] \rule{0mm}{0mm} \begin{itemize}}
 {\end{itemize}}
 
 \newenvironment{wlaninstall}
-{\item[Installation:] \begin{itemize}}
+{\item[Installation:] \rule{0mm}{0mm} \begin{itemize}}
 {\end{itemize}}
 
 \newenvironment{wlanextrainfo}
-{\item[Zus"atzliche Informationen:] \begin{itemize}}
+{\item[Zus"atzliche Informationen:] \rule{0mm}{0mm} \begin{itemize}}
 {\end{itemize}}
 
 \begin{document}
