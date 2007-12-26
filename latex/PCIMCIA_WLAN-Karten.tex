@@ -1,5 +1,11 @@
 \subsubsection{PCMCIA WLAN-Karten}
 
+Diese WLAN-Karten sind für Notebooks gedacht. Heutzutage ist es jedoch
+üblich, dass die Notebooks schon einen integriertes WLAN-Modul (Mini-PCI)
+eingebaut haben. Damit ist die Notwendigkeit dieser Module nur noch für
+Notebooks älteren Generationen notwendig. Die meisten Module haben keinen
+Anschluss für eine externe Antenne.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Netgear WAG311
@@ -9,29 +15,40 @@
 
 \wlanimage{Proxim_Orinoco_Gold_8480WD}{Proxim Orinoco Gold 8480-WD}
 
-\wlanchipset{}
+\wlanchipset{Atheros AR5212}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-bit)
+\item WPA
+\item WPA2
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Unter Linux herrvorragende Unterstützung von Madwifi-Treiber, auch Ad-Hoc-Modus.
+\url{http://madwifi.org/}
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{80}
 
 \begin{wlaninstall}
 \item
+\url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://www.proxim.com/products/wifi/client/abgcard/index.html}
+\item \url{http://madwifi.org/wiki/Compatibility/Proxim}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -44,29 +61,46 @@
 
 \wlanimage{Netgear_WAG511}{Netgear WAG511}
 
-\wlanchipset{}
+\wlanchipset{Atheros AR5001X+}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-, 128-bit)
+\item WPA
+\item WPA2
+\item PTP, P2TP, IPSec, VPN pass-through
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Von Netgear werden nur Windows Treiber angeboten.
+\url{http://www.netgear.de/de/Support/download.html?func=Detail&id=10676}
+Unter Linux herrvorragende Unterstützung von Madwifi-Treiber, auch Ad-Hoc-Modus.
+\url{http://madwifi.org/}
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{50-60}
 
 \begin{wlaninstall}
 \item
+\url{http://www.lrz-muenchen.de/services/netz/mobil/funklan-installation/installation/windowsxp_wg511/flan-instwxp.html}
+\url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://www.netgear.com/Products/Adapters/AGDualBandWirelessAdapters/WAG511.aspx}
+\item \url{http://www.netgear.de/de/Support/download.html?func=Detail&id=10676}
+\item \url{http://www.netgear.de/Produkte/Wireless/DualBand/WAG511/index.html}
+\item \url{http://madwifi.org/wiki/Compatibility/Netgear}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -79,29 +113,44 @@
 
 \wlanimage{SMC_2536WAG}{SMC 2536W-AG}
 
-\wlanchipset{}
+\wlanchipset{Atheros AR5001}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-, 128-bit)
+\item WPA
+\item WPA2
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Von SMC werden nur Treiber für Windows angeboten.
+\url{http://www.smc.com/index.cfm?event=downloads.searchResultsDetail&localeCode=EN_USA&productCategory=9&partNumber=2916&modelNumber=348&knowsPartNumber=false&userPartNumber=&docId=3103}
+Unter Linux herrvorragende Unterstützung von Madwifi-Treiber, auch Ad-Hoc-Modus.
+\url{http://madwifi.org/}
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{80}
 
 \begin{wlaninstall}
 \item
+\url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://www.smc.com/index.cfm?event=viewProduct&cid=9&scid=49&localeCode=EN\%5FUSA&pid=348}
+\item \url{http://www.smc.com/files/AC/2536Wag_Ds_ww.pdf}
+\item \url{http://madwifi.org/wiki/Compatibility/SMC}
+\item \url{http://forums.fedoraforum.org/archive/index.php/t-101517.html}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -114,28 +163,91 @@
 
 \wlanimage{Linksys_WPC55AG}{Linksys WPC55AG}
 
-\wlanchipset{}
+\wlanchipset{Atheros AR5212 oder AR5006X}
 
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
 
 \begin{wlansecurity}
-\item
+\item WEP (40-, 104-, 128-bit)
+\item WPA
+\item WPA2
 \end{wlansecurity}
 
 \begin{wlandriver}
 \item
+Von Linksys werden nur Treiber für Windows bereitgestellt.
+\url{http://www.linksys.com/servlet/Satellite?c=L_Product_C2&childpagename=US\%2FLayout&cid=1115416827328&pagename=Linksys\%2FCommon\%2FVisitorWrapper}
+Auch hier kann man Treiber für Windows finden.
+\url{http://www.phoenixnetworks.net/atheros.php}
+Unter Linux herrvorragende Unterstützung von Madwifi-Treiber, auch Ad-Hoc-Modus.
+\url{http://madwifi.org/}
 \end{wlandriver}
 
-\wlanprice{}
+\wlanprice{50-60}
 
 \begin{wlaninstall}
 \item
+\url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
 \end{wlaninstall}
 
+\begin{wlanlink}
+\item \url{http://www.linksys.com/servlet/Satellite?c=L_Product_C2&childpagename=US\%2FLayout&cid=1115416827328&pagename=Linksys\%2FCommon\%2FVisitorWrapper}
+\item \url{http://www.phoenixnetworks.net/atheros.php}
+\item \url{http://madwifi.org/}
+\item \url{http://madwifi.org/wiki/Compatibility/Linksys}
+\item \url{http://reviews.cnet.com/adapters-nics/linksys-wpc55ag-dual-band/4505-3380_7-21128291.html}
+\item \url{http://www.google.de/search?q=Linksys+WPC55AG}
+\item \url{http://lists.funkfeuer.at/pipermail/discuss/2006-September/001592.html}
+\item \url{http://www.uk-surplus.com/manuals/brochures/linksyswpc55duser.pdf}
+\end{wlanlink}
+
 \end{wlandevice}
+
+\paragraph{Andere PCMCIA-WLAN-Karten}
+
+\begin{itemize}
+
+\item Intel PRO/Wireless 5000\\
+Chipsatz: Intel\\
+802.11a WLAN PCIMCIA-Karte, unterstützt Ad-Hoc- und Infrastruktur-Modus,
+Treiber von Intel nur für Windows vorhanden, für Linux werden keine
+Treiber entwickelt, kostet ca. 150 Euro\\
+\url{http://www.intel.com/support/wireless/wlan/pro5000/lancardbus}
+
+\item Netgear WAB501\\
+Chipsatz: Atheros AR5211\\
+802.11a/b WLAN-Karte\\
+Madwifi-Treiber Unterstützung\\
+\url{http://kbserver.netgear.com/products/WAB501.asp}\\
+\url{http://madwifi.org/wiki/Compatibility/Netgear}
+
+\item Netgear WG511U\\
+Chipsatz: Atheros AR5004X\\
+802.11a/g WLAN-Karte\\
+Madwifi-Treiber Unterstützung\\
+\url{http://www.netgear.com/Products/Adapters/AGDualBandWirelessAdapters/WG511U.aspx}\\
+\url{http://madwifi.org/wiki/Compatibility/Netgear}
+
+\item Proxim Orinoco Silver 8481-WD\\
+Chipsatz: Atheros AR5001X+\\
+802.11a/b/g WLAN-Karte\\
+Madwifi-Treiber Unterstützung\\
+kostet ca 80-90 Euro\\
+\url{http://www.proxim.com/products/wifi/client/abgcard/index.html}\\
+\url{http://madwifi.org/wiki/Compatibility/Proxim}
+
+\item Cisco Aironet CB21AG\\
+Chipsatz: Atheros 5212\\
+802.11a/b/g WLAN-Karte\\
+Madwifi-Treiber Unterstützung\\
+kostet ca 100 Euro\\
+\url{http://madwifi.org/wiki/Compatibility/Cisco}
+
+\end{itemize}
