@@ -1,5 +1,61 @@
 \subsubsection{SoHo-Router}
 
+Man kann herkommliche WLAN-Router fur Heimanwender (SoHO-Router -small
+or home office)zu kaufen, die sich mit alternativer Firmware (spezielle
+Linux software mit OLSR Implementierung) zu einem Mesh-Router umrusten
+lassen. Ein WLAN-Router ist die Kombination von eines normalen Routers
+(Kabelrouter) und mit einem Accesspoint. Es gibt solche mit eingebauten
+Modem und andere mit einem Anschluss (WAN-Port) dafür (für Modems mit
+LAN-Anschluss). Ein Nachteil ist, dass es viele Modelle gibt, die eine
+fix verbaute Antenne haben, die nicht gewechselt werden kann.
+
+Kosten in der Regel etwa 40-80 euro, haben gute Reichweite, sind klein
+und handlich.
+
+Vorteile:
+\begin{itemize}
+\item klein
+\item mobil
+\item günstig
+\item gute Reichweite
+\item wenig Strom 
+\end{itemize}
+
+Nachteile:
+\begin{itemize}
+\item meistens fix verbaute Antenne 
+\end{itemize}
+
+Durch das Öffnen von Geräten und das Einspielen von fremder Firmware
+erlischt die Garantie des Herstellers !!!
+
+\paragraph{OpenWRT}
+
+OpenWRT ist eine GNU/Linux-Distribution für WLAN-Router. Anstatt einer
+statischen Firmware setzt OpenWRT auf ein voll beschreibbares Dateisystem
+sowie einen Paketmanager. OpenWRT läuft unter anderem auf Geräten der
+Firmen Linksys, ALLNET, ASUS, Belkin, Buffalo, Microsoft und Siemens.
+
+Vorteile:
+\begin{itemize}
+\item Flexibilität
+\item Erweiterbarkeit
+\item Individualisierbarkeit
+\item Sicherheit
+\item Gewohnte Linux-Flexibilität und Funktionsumfang!!! 
+\end{itemize}
+
+Nachteile:
+\begin{itemize}
+\item Standardmäßig sind nur die nötigsten Unix-Tools vorhanden 
+\end{itemize}
+
+Links:
+\begin{itemize}
+\item \url{http://openwrt.org/}
+\item \url{http://toh.openwrt.org/}
+\end{itemize}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Linksys WRT54G v1.0
@@ -9,29 +65,45 @@
 
 \wlanimage{Linksys_WRT54G}{Linksys WRT54G v1.0}
 
-\wlanchipset{}
-
 \begin{wlanieeestandard}
-\item
+\item 802.11b/g
+\item 802.11a/b/g (wenn man die mitgelieferte Mini-PCI WLAN-Karte
+durch z.B. Atheros 802.11a/b/g WLAN-Karte austauscht)
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
-
-\begin{wlansecurity}
-\item
-\end{wlansecurity}
 
 \begin{wlanfirmware}
 \item
+Es sind mehrere fremde frei verfügbare Firmware für dieses Gerät.
+Alle unten aufgeführten Firmware sind Open-Source Projekte:
+OpenWRT \url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Linksys/WRT54G}
+DD-WRT \url{http://www.dd-wrt.com/wiki/index.php/Linksys_WRT54G/GL/GS/GX}
 \end{wlanfirmware}
 
-\wlanprice{}
+\wlanprice{40-50}
 
 \begin{wlaninstall}
 \item
+Die mitgelieferte Mini-PCI WLAN-Karte durch z.B. Atheros 802.11a Mini-PCI
+austauschen und oben erwähnte frei verfügbare Firmware installieren
+(siehe oben Firmware).
 \end{wlaninstall}
+
+\begin{wlanextrainfo}
+\item
+Ein Mini-PCI Slot ist für eine WLAN-Karte vorhanden.
+\end{wlanextrainfo}
+
+\begin{wlanlink}
+\item \url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Linksys/WRT54G}
+\item \url{http://www.dd-wrt.com/wiki/index.php/Linksys_WRT54G/GL/GS/GX}
+\item \url{http://forum.opennet-initiative.de/thread.php?threadid=505&sid=56c53647db6353a41e9a3100f00d02c4}
+\item \url{http://www.linksysinfo.org/forums/showthread.php?t=47124}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -44,29 +116,37 @@
 
 \wlanimage{Linksys_WRT55AG}{Linksys WRT55AG}
 
-\wlanchipset{}
-
 \begin{wlanieeestandard}
-\item
+\item 802.11a/b/g
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
-
-\begin{wlansecurity}
-\item
-\end{wlansecurity}
 
 \begin{wlanfirmware}
 \item
+Open-Source Firmware befindet sich noch in Entwicklung.
+Modifizierte Version von OpenWRT Kamikaze
+\url{http://legacy.not404.com/cgi-bin/trac.fcgi/wiki/OpenWRT/Atheros/Linksys/WRT55AGv2#KamikazeKernelonWRT55AGv2}
+OpenWRT
+\url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Linksys/WRT55AG}
 \end{wlanfirmware}
 
-\wlanprice{}
+\wlanprice{70-80}
 
-\begin{wlaninstall}
+\begin{wlanextrainfo}
 \item
-\end{wlaninstall}
+2xMini-PCI Slots sind für WLAN-Karten vorhanden.
+\end{wlanextrainfo}
+
+\begin{wlanlink}
+\item \url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Linksys/WRT55AG}
+\item \url{http://www.tomsnetworking.de/content/tests/j2003a/test_linksys_wrt55ag/index.html}
+\item \url{http://reviews.cnet.com/routers/linksys-wrt55ag-wireless-a/4505-3319_7-21131921.html}
+\item \url{http://legacy.not404.com/cgi-bin/trac.fcgi/wiki/OpenWRT/Atheros/Linksys/WRT55AGv2}
+\end{wlanlink}
 
 \end{wlandevice}
 
@@ -79,28 +159,72 @@
 
 \wlanimage{Asus_WL500G}{Asus WL500G/GP}
 
-\wlanchipset{}
-
 \begin{wlanieeestandard}
-\item
+\item 802.11b/g
+\item 802.11a/b/g (wenn man die mitgelieferte Mini-PCI WLAN-Karte
+durch z.B. Atheros 802.11a/b/g WLAN-Karte austauscht)
 \end{wlanieeestandard}
 
 \begin{wlanmode}
-\item
+\item Ad-Hoc
+\item Infrastruktur
 \end{wlanmode}
-
-\begin{wlansecurity}
-\item
-\end{wlansecurity}
 
 \begin{wlanfirmware}
 \item
+Es sind mehrere fremde frei verfügbare Firmware für dieses Gerät.
+Alle unten aufgeführten Firmware sind Open-Source Projekte:
+OpenWRT
+\url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Asus/WL500G}
+\url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Asus/WL500GP}
+FreeWRT
+\url{http://www.freewrt.org/trac/wiki/Documentation/Hardware/AsusWL500G}
+\url{http://www.freewrt.org/trac/wiki/Documentation/Hardware/AsusWL500GP}
+Olegs custom firmware
+\url{http://oleg.wl500g.info}
 \end{wlanfirmware}
 
-\wlanprice{}
+\wlanprice{70-80}
 
 \begin{wlaninstall}
 \item
+Die mitgelieferte Mini-PCI WLAN-Karte durch z.B. Atheros 802.11a Mini-PCI
+austauschen und oben erwähnte frei verfügbare Firmware installieren
+(siehe oben Firmware).
+\url{http://wiki.opennet-initiative.de/index.php/Mini-PCI_Umbau}
 \end{wlaninstall}
 
+\begin{wlanextrainfo}
+\item
+Ein Mini-PCI Slot ist für eine WLAN-Karte vorhanden.
+\end{wlanextrainfo}
+
+\begin{wlanlink}
+\item \url{http://wiki.opennet-initiative.de/index.php/AP9}
+\item \url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Asus/WL500G}
+\item \url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Asus/WL500GP}
+\item \url{http://www.freewrt.org/trac/wiki/Documentation/Hardware/AsusWL500G}
+\item \url{http://www.freewrt.org/trac/wiki/Documentation/Hardware/AsusWL500GP}
+\item \url{http://wl500g.dyndns.org/}
+\item \url{http://oleg.wl500g.info/}
+\item \url{http://au.asus.com/products.aspx?l1=12&l2=43}
+\item \url{http://www.freifunk-bno.de/component/option,com_smf/Itemid,88/topic,910.msg10357/}
+\item \url{http://www.cyber-wulf.de/a_wl500g.html}
+\item \url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Asus/WL500G}
+\item \url{http://forum.opennet-initiative.de/print.php?threadid=505&page=6&sid=460903353d70c65fad4960105ab76cdd}
+\item \url{http://forum.openwrt.org/viewtopic.php?pid=41756}
+\item \url{http://www.familie-prokop.de/asus-wl500gp/index.html}
+\end{wlanlink}
+
 \end{wlandevice}
+
+\paragraph{Andere WLAN-Router}
+
+\begin{itemize}
+
+\item Netgear HR314\\
+802.11a WLAN-Router, unterstützt Ad-Hoc- und Infrastruktur-Modus,\\
+keine Open-Source Firmware vorhanden, kostet ca. 30 Euro\\
+\url{http://www.wi-fiplanet.com/reviews/article.php/1559091}
+
+\end{itemize}
