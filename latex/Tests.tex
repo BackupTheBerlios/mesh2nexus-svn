@@ -1,0 +1,117 @@
+\section{Tests}
+
+\subsection{Hardware}
+
+\subsection{Software}
+
+\subsubsection{Madwifi}
+
+I. Madwifi (Treiber sind nur fur Fedora 2.6.18 kernel !!!)
+
+1. Treiber installieren
+------------------------
+\begin{verbatim}
+	# svn checkout http://svn.madwifi.org/madwifi/trunk madwifi	
+	# cd madwifi	
+	# make	
+	# make install
+\end{verbatim}
+
+2a. Treiber manuell laden 
+-----------------------
+\begin{verbatim}
+	# modprobe ath_pci
+\end{verbatim}
+
+2b. Treiber automatisch laden
+-----------------------
+\begin{verbatim}
+	# mkdir /etc/modules.autoload.d/
+	# echo ath_pci >> /etc/modules.autoload.d/kernel-2.6
+\end{verbatim}
+
+3a. Network-Config automatisch
+----------------------
+Datei erstellen:
+\begin{verbatim}
+	/etc/sysconfig/network-scripts/ifcfg-ath1
+\end{verbatim}
+
+und editieren..
+
+\begin{verbatim}
+	# Silicon Integrated Systems [SiS] SiS900 PCI Fast Ethernet
+	DEVICE=ath1
+	ONBOOT=yes
+	
+	BOOTPROTO=static
+	IPADDR=192.168.2.1x
+	NETMASK=255.255.255.0
+	
+	ESSID=mesh
+	MODE=ad-hoc
+	CHANNEL=36 # 5.18 GHz
+	KEY=s:0nexus0suxen0
+	# 108-Bit WEP 13 zeichen
+\end{verbatim}
+
+3b. Network-Config manuel
+----------------------
+\begin{verbatim}
+	# iwlist ath1 frequency
+	
+	          Channel 01 : 2.412 GHz
+	          Channel 02 : 2.417 GHz
+	          Channel 03 : 2.422 GHz
+	          Channel 04 : 2.427 GHz
+	          Channel 05 : 2.432 GHz
+	          Channel 06 : 2.437 GHz
+	          Channel 07 : 2.442 GHz
+	          Channel 08 : 2.447 GHz
+	          Channel 09 : 2.452 GHz
+	          Channel 10 : 2.457 GHz
+	          Channel 11 : 2.462 GHz
+	          Channel 36 : 5.18 GHz
+	          Channel 40 : 5.2 GHz
+	          Channel 42 : 5.21 GHz
+	          Channel 44 : 5.22 GHz
+	          Channel 48 : 5.24 GHz
+	          Channel 50 : 5.25 GHz
+	          Channel 52 : 5.26 GHz
+	          Channel 56 : 5.28 GHz
+	          Channel 58 : 5.29 GHz
+	          Channel 60 : 5.3 GHz
+	          Channel 64 : 5.32 GHz
+	          Channel 149 : 5.745 GHz
+	          Channel 152 : 5.76 GHz
+	          Channel 153 : 5.765 GHz
+	          Channel 157 : 5.785 GHz
+	          Channel 160 : 5.8 GHz
+	          Channel 161 : 5.805 GHz
+	          Channel 165 : 5.825 GHz
+	          Current Channel=0
+	
+	# ifconfig ath1 inet 192.168.0.1/24	
+	# iwconfig ath1 essid mesh
+	# iwconfig ath1 mode ad-hoc
+	# iwconfig ath1 channel 36
+	# iwconfig ath1 enc n1e2x3u4s5
+\end{verbatim}
+
+\subsection{Topologie}
+
+Bilder..
+
+
+\subsection{Ergebnisse}
+
+[[Bild:Test.gif]]
+
+[[Bild:Olsr-mesh-route.JPG]]
+
+
+
+
+\begin{verbatim}
+
+\end{verbatim}
