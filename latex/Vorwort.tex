@@ -1,24 +1,18 @@
-\section{Abstract}
-
-
 \section{Einleitung}
 
 In diesem Abschnitt werden einige wichtige Begriffe, die im Laufe des
 Dokument auftauchen werden, kurz erlautert.
 
-\subsection{Nexus}
+\subsection{Grundlagen von Mesh Netzen}
 
-Uni-Stuttgart - NEXUS 
- http://www.nexus.uni-stuttgart.de/
- 
-\subsection{Ad-Hoc}
+Hintergrund:
 
-Ein Ad-hoc-Netz bezeichnet in der Informationstechnologie eine drahtlose
-Netzwerktopologie zwischen zwei oder mehr Endgeraten, die ohne feste
-Infrastruktur auskommt.
+Ein drahtloses vermaschtes Netz (engl. Wireless Mesh Network, WMN) besteht aus einer Menge von Knoten, die ?ber drahtlose Kommunikationstechniken wie beispielsweise IEEE 802.11 Nachrichten austauschen. Die Vemaschung der Knoten erm?glicht dabei nicht nur den Austausch von Nachrichten zwischen unmittelbar benachbarten Knoten, sondern auch die Vermittlung von Nachrichten an entfernte Knoten ?ber mehrere Knoten hinweg. Die Vermittlungsfunktionalit?t wird dabei oft von dedizierten Vermittlungsknoten (engl. Mesh Router) bereitgestellt, die somit eine drahtlose Kommunikationsinfrastruktur f?r die Klienten (engt. Mesh Client) bilden. Durch den Einsatz vergleichsweise kosteng?nstiger Hardwarekomponenten und die Vermaschung der Knoten erm?glichen WMNs die kosteng?nstige Vernetzung auch gr??erer Gebiete. Entsprechende Netze, werden beispielsweise von Community-Projekten wie dein Freifunkprojekt oder Firmen wie Google bereits heute in der Praxis f?r den Aufbau gr??erer Netze eingesetzt, um beispielsweise kosteng?nstige Internetzug?nge f?r Stadtteile oder ganze St?dte zu realisieren.
 
+WMNs sind auch für den Sonderforschungsbereichs (SFB) Nexus an der Universit?t Stuttgart 
+\url{http://www.nexus.uni-stuttgart.de} von gro?em Interesse. Im Zentrum der Forschungen des SFB stehen Umgebungsmodelle f?r mobile kontextbezogene Systeme. Umgebungsmodelle sind digitale Abbilder der physischen Welt, die von kontextbezogenen Systemen genutzt werden, um sich selbst?ndig an die physische Umgebung des Benutzers anzupassen. Ein einfaches Beispiel sind ortsbezogene Anwendungen, die beispielsweise aufgrund der aktuellen geographischen Position eines Ger?ts automatisch Informationen ?ber nahe Restaurants. Sehensw?rdigkeiten, usw. selektieren k?nnen. Zur Kommunikation. insbesondere mit mobilen Ger?ten, werden dabei hybride Systeme betrachtet, in denen sowohl eine infrastrukturbasierte Kommunikation als auch die direkte Ad-hoc-Kommunikation zwischen mobilen Endsystemen m?glich ist. Hierbei spielen WMNs als eine spezielle Auspr?gung eines hybriden Kommunikationssystems eine wesentliche Rolle.
 
-\subsection{Mesh-Netz}
+\subsubsection{Mesh-Netz}
 
 In einem vermaschten Netz (Mesh-Netz) ist jeder Netzwerkknoten mit einem
 oder mehreren anderen verbunden. Die Informationen werden von Knoten
@@ -36,52 +30,59 @@ point of view the goal is to provide the members of the Computer Science
 Department and the students with a simple and comfortable way to get
 high bandwidth network access anywhere in the computer science center.
 
-\subsection{IEEE 802.11a/b/g}
+\subsubsection{Ad-Hoc}
 
-IEEE 802.11 (auch: Wireless LAN, WLAN, WiFi) bezeichnet eine IEEE-Norm
+Ein Ad-hoc-Netz bezeichnet in der Informationstechnologie eine drahtlose
+Netzwerktopologie zwischen zwei oder mehr Endgeraten, die ohne feste
+Infrastruktur auskommt.
+
+\subsubsection{IEEE 802.11a/b/g}
+
+\textbf{IEEE 802.11} (auch: Wireless LAN, WLAN, WiFi) bezeichnet eine IEEE-Norm
 fur drahtlose Netzwerkkommunikation. Herausgeber ist das Institute of
 Electrical and Electronics Engineers (IEEE).
 
-802.11a spezifiziert eine weitere Variante der physikalischen Schicht,
+\textbf{802.11a} spezifiziert eine weitere Variante der physikalischen Schicht,
 die im 5-GHz-Band arbeitet und Ubertragungsraten bis zu 54 MBit/s
 ermoglicht. 
 
-802.11b ist ebenfalls eine alternative Spezifikation der physikalischen
+\textbf{802.11b} ist ebenfalls eine alternative Spezifikation der physikalischen
 Schicht, die mit dem bisher genutzten 2,4-GHz-Band auskommt und
 Ubertragungsraten bis zu 11 MBit/s ermoglicht. 
 
-2,4-GHz-Vorteile 
-gebuhrenfreies freigegebenes ISM-Frequenzband 
-hohe Verbreitung und daher geringe Geratekosten 
+\textbf{2,4-GHz-Vorteile }
+\begin{itemize}	
+	\item gebuhrenfreies freigegebenes ISM-Frequenzband 
+	\item hohe Verbreitung und daher geringe Geratekosten 
+\end{itemize}
 
-2,4-GHz-Nachteile 
-Frequenz muss mit anderen Geraten/Funktechniken geteilt werden (Bluetooth,
+\textbf{2,4-GHz-Nachteile }
+\begin{itemize}	
+	\item Frequenz muss mit anderen Geraten/Funktechniken geteilt werden (Bluetooth,
 Mikrowellenherde, etc.) 
-storungsfreier Betrieb von nur maximal 3 Netzwerken am selben Ort moglich, 
-
+	\item storungsfreier Betrieb von nur maximal 3 Netzwerken am selben Ort moglich, 
 da effektiv nur 3 brauchbare (kaum uberlappende) Kanale zur Verfugung
 stehen (in Deutschland: 1, 7, 13) 
+\end{itemize}
 
-5-GHz-Vorteile 
-weniger genutztes Frequenzband, dadurch haufig storungsfreierer Betrieb
+\textbf{5-GHz-Vorteile }
+\begin{itemize}
+	\item weniger genutztes Frequenzband, dadurch haufig storungsfreierer Betrieb
 moglich 
+	\item in Deutschland 19 (bei BNetzA-Zulassung) nicht uberlappende Kanale 
+	\item hohere Reichweite, da mit 802.11h bis zu 1000 mW Sendeleistung moglich 
+\end{itemize}
 
-in Deutschland 19 (bei BNetzA-Zulassung) nicht uberlappende Kanale 
-hohere Reichweite, da mit 802.11h bis zu 1000 mW Sendeleistung moglich 
-
-5-GHz-Nachteile 
-starkere Regulierungen in Europa: auf den meisten Kanalen DFS notig; 
-auf einigen Kanalen kein Betrieb im Freien erlaubt; falls kein TPC
+\textbf{5-GHz-Nachteile }
+\begin{itemize}
+	\item starkere Regulierungen in Europa: auf den meisten Kanalen DFS notig 
+	\item auf einigen Kanalen kein Betrieb im Freien erlaubt 
+	\item falls kein TPC
 benutzt wird, muss die Sendeleistung reduziert werden 
-Ad-hoc-Modus wird von den meisten Geraten nicht unterstutzt 
-geringere Verbreitung, daher wenig verfugbare Gerate auf dem Markt und
-hohe Kosten 
-
-\section{Grundlagen von Mesh Netzen}
-
-Mesh-Netze sind drahtlose Ad-hoc-Netze bestehend aus stationaren Mesh-Routern, die einen Routing-Backbone bilden, und mobilen oder stationaren Mesh-Clients. Die Mesh-Clients kommunizieren uber den Backbone mit anderen Mesh-Clients oder erlangen uber den Backbone Zugang zum Internet. Mesh-Netz konnen dabei auch gro?ere Bereiche, beispielsweise ganze Stadte, abdecken (entsprechende Stadtnetze werden aktuell z.B. durch Google installiert). 
-
-Ein entsprechendes Mesh-Netz ist fur die Forschungszwecke im Informatikbau der Uni-Stuttgart oder dem Campus fur Nexus einzurichten.
+	\item \textbf{Ad-hoc-Modus wird von den meisten Geraten nicht unterstutzt }
+	\item \textbf{geringere Verbreitung, daher wenig verfugbare Gerate auf dem Markt und
+hohe Kosten }
+\end{itemize}
 
 
 \subsection{Linux MadWiFi-Treiber}
@@ -152,3 +153,9 @@ sondern ermittelt lediglich, uber welchen direkten Nachbarn ein bestimmter
 Netzwerkknoten am besten zu erreichen ist, und tragt diese Information
 proaktiv in die Routingtabelle ein. 
 
+\subsection{Existierende Losungen und Projekte}
+
+FreiFunk http://freifunk.net/wiki/Meshing 
+OpenNet http://wiki.opennet-initiative.de/index.php/Hauptseite 
+http://www-i4.informatik.rwth-aachen.de/mcg/projects/umic-mesh/ 
+http://umic-mesh.net/
