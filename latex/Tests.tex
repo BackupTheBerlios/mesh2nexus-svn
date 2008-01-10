@@ -39,6 +39,7 @@ Treiber sind nur fur Fedora 2.6.18 kernel!!!
 3a. Network-Config automatisch
 
 Datei erstellen:
+
 \begin{verbatim}
 	/etc/sysconfig/network-scripts/ifcfg-ath1
 \end{verbatim}
@@ -95,8 +96,7 @@ und editieren..
 	          Channel 160 : 5.8 GHz
 	          Channel 161 : 5.805 GHz
 	          Channel 165 : 5.825 GHz
-	          Current Channel=0
-	
+	          Current Channel=0	
 	# ifconfig ath1 inet 192.168.0.1/24	
 	# iwconfig ath1 essid mesh
 	# iwconfig ath1 mode ad-hoc
@@ -108,6 +108,7 @@ und editieren..
 \subsubsection{OLSR Daemon}
 
 1. olsrd installieren 
+
 \begin{verbatim}
 	# cvs -d:pserver:anonymous@olsrd.cvs.sourceforge.net:/cvsroot/olsrd login
 	# cvs -z3 -d:pserver:anonymous@olsrd.cvs.sourceforge.net:/cvsroot/olsrd co olsrd-current
@@ -117,6 +118,7 @@ und editieren..
 \end{verbatim}
 
 2. Plug-ins fur olsrd installieren 
+
 \begin{verbatim}
 # cd lib/"plugin-name"
 # make 
@@ -125,11 +127,13 @@ und editieren..
 \end{verbatim}
 
 3. olsrd kofigurieren
+
 \begin{itemize}
 	\item Datei /etc/olsrd.conf erstellen und editieren!!! (sieh file) 
-	\item TCP Port 8080 fur Httpinfo und 8081 fur Dot UDP 698 fur Eingehende Pakete erlauben. 
-Datei /etc/sysconfig/iptables editieren: 
+	\item TCP Port 8080 fur Httpinfo und 8081 fur Dot UDP 698 fur Eingehende 
+				Pakete erlauben. Datei /etc/sysconfig/iptables editieren: 
 \end{itemize}
+
 \begin{verbatim}
 -A RH-Firewall-1-INPUT -p tcp --dport 8080 -m state --state NEW -j ACCEPT
 -A RH-Firewall-1-INPUT -p tcp --dport 8081 -m state --state NEW -j ACCEPT
@@ -138,11 +142,20 @@ Datei /etc/sysconfig/iptables editieren:
 
 4. olsrd starten 
 
-todo
+\begin{verbatim}
+ # olsrd
+\end{verbatim}
 
 
 \subsection{Topologie}
-%\wlanimage{Topologie_Test.gif}{Topologie}
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=1.0\textwidth]{images/Topology.jpg}
+      \caption{Topology}
+      \label{fig:Topology}
+    \end{figure}
+
 
 \subsection{Ergebnisse}
 \wlanimage{Olsr_Route}{Http Info}
