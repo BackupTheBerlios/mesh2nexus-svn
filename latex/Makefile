@@ -1,7 +1,7 @@
 
 PDFLATEX=pdflatex
 SRCS=mesh.tex Hardware.tex PCs+WLAN-Karten.tex Zusammenfassung.tex\
-     PCI-WLAN-Karten.tex Mini-PCI_WLAN-Karten.tex PCIMCIA_WLAN-Karten.tex\
+     PCI-WLAN-Karten.tex Mini-PCI_WLAN-Karten.tex PCMCIA_WLAN-Karten.tex\
      WLAN-Router.tex SoHo-Router.tex Professionelle_Router.tex\
      PDAs_Handys.tex
 IMAGES_DIR=./images
