@@ -1,86 +1,121 @@
 \section{Einleitung}
 
 In diesem Abschnitt werden einige wichtige Begriffe, die im Laufe des
-Dokument auftauchen werden, kurz erlautert.
+Dokuments auftauchen werden, kurz erl"autert.
 
-\subsection{Grundlagen von Mesh Netzen}
+\subsection{Grundlagen von Mesh-Netzen}
 
-Hintergrund:
+\subsubsection{Hintergrund}
 
-Ein drahtloses vermaschtes Netz (engl. Wireless Mesh Network, WMN) besteht aus einer Menge von Knoten, die über drahtlose Kommunikationstechniken wie beispielsweise IEEE 802.11 Nachrichten austauschen. Die Vemaschung der Knoten ermöglicht dabei nicht nur den Austausch von Nachrichten zwischen unmittelbar benachbarten Knoten, sondern auch die Vermittlung von Nachrichten an entfernte Knoten über mehrere Knoten hinweg. Die Vermittlungsfunktionalität wird dabei oft von dedizierten Vermittlungsknoten (engl. Mesh Router) bereitgestellt, die somit eine drahtlose Kommunikationsinfrastruktur für die Klienten (engt. Mesh Client) bilden. Durch den Einsatz vergleichsweise kostengünstiger Hardwarekomponenten und die Vermaschung der Knoten ermöglichen WMNs die kostengünstige Vernetzung auch größerer Gebiete. Entsprechende Netze, werden beispielsweise von Community-Projekten wie dein Freifunkprojekt oder Firmen wie Google bereits heute in der Praxis für den Aufbau größerer Netze eingesetzt, um beispielsweise kostengünstige Internetzugänge für Stadtteile oder ganze Städte zu realisieren.
+Ein drahtloses vermaschtes Netz (engl. Wireless Mesh Network, WMN) besteht
+aus einer Menge von Knoten, die "uber drahtlose Kommunikationstechniken
+wie beispielsweise IEEE 802.11 Nachrichten austauschen. Die
+Vemaschung der Knoten erm"oglicht dabei nicht nur den Austausch von
+Nachrichten zwischen unmittelbar benachbarten Knoten, sondern auch die
+Vermittlung von Nachrichten an entfernte Knoten "uber mehrere Knoten
+hinweg. Die Vermittlungsfunktionalit"at wird dabei oft von dedizierten
+Vermittlungsknoten (engl. Mesh Router) bereitgestellt, die somit eine
+drahtlose Kommunikationsinfrastruktur f"ur die Klienten (engl. Mesh
+Client) bilden. Durch den Einsatz vergleichsweise kosteng"unstiger
+Hardwarekomponenten und die Vermaschung der Knoten erm"oglichen WMNs die
+kosteng"unstige Vernetzung auch gr"o"serer Gebiete. Entsprechende Netze
+werden beispielsweise von Community-Projekten wie das Freifunk-Projekt
+oder Firmen wie Google bereits heute in der Praxis f"ur den Aufbau gr""serer
+Netze eingesetzt, um beispielsweise kosteng"unstige Internetzug"ange f"ur
+Stadtteile oder ganze St"adte zu realisieren.
 
-WMNs sind auch für den Sonderforschungsbereichs (SFB) Nexus an der Universität Stuttgart 
-\url{http://www.nexus.uni-stuttgart.de} von großem Interesse. Im Zentrum der Forschungen des SFB stehen Umgebungsmodelle für mobile kontextbezogene Systeme. Umgebungsmodelle sind digitale Abbilder der physischen Welt, die von kontextbezogenen Systemen genutzt werden, um sich selbständig an die physische Umgebung des Benutzers anzupassen. Ein einfaches Beispiel sind ortsbezogene Anwendungen, die beispielsweise aufgrund der aktuellen geographischen Position eines Geräts automatisch Informationen über nahe Restaurants. Sehenswürdigkeiten, usw. selektieren können. Zur Kommunikation. insbesondere mit mobilen Geräten, werden dabei hybride Systeme betrachtet, in denen sowohl eine infrastrukturbasierte Kommunikation als auch die direkte Ad-hoc-Kommunikation zwischen mobilen Endsystemen möglich ist. Hierbei spielen WMNs als eine spezielle Ausprägung eines hybriden Kommunikationssystems eine wesentliche Rolle.
+WMNs sind auch f"ur den Sonderforschungsbereich (SFB) Nexus an der
+Universit"at Stuttgart
+\url{http://www.nexus.uni-stuttgart.de} von gro"sem Interesse. Im
+Zentrum der Forschungen des SFB stehen Umgebungsmodelle f"ur mobile
+kontextbezogene Systeme. Umgebungsmodelle sind digitale Abbilder der
+physischen Welt, die von kontextbezogenen Systemen genutzt werden, um
+sich selbst"andig an die physische Umgebung des Benutzers anzupassen. Ein
+einfaches Beispiel sind ortsbezogene Anwendungen, die beispielsweise
+aufgrund der aktuellen geographischen Position eines Ger"ats automatisch
+Informationen "uber nahe Restaurants, Sehensw"urdigkeiten, usw. selektieren
+k"onnen. Zur Kommunikation, insbesondere mit mobilen Ger"aten, werden dabei
+hybride Systeme betrachtet, in denen sowohl eine infrastrukturbasierte
+Kommunikation als auch die direkte Ad-hoc-Kommunikation zwischen
+mobilen Endsystemen m"oglich ist. Hierbei spielen WMNs als eine spezielle
+Auspr"agung eines hybriden Kommunikationssystems eine wesentliche Rolle.
 
 \subsubsection{Mesh-Netz}
 
 In einem vermaschten Netz (Mesh-Netz) ist jeder Netzwerkknoten mit einem
 oder mehreren anderen verbunden. Die Informationen werden von Knoten
 zu Knoten weitergereicht, bis sie das Ziel erreichen. Vermaschte
-Netze sind im Regelfall selbstheilend und dadurch sehr zuverlassig:
-Wenn ein Knoten oder eine Verbindung blockiert ist oder ausfallt, kann
+Netze sind im Regelfall selbstheilend und dadurch sehr zuverl"assig:
+Wenn ein Knoten oder eine Verbindung blockiert ist oder ausf"allt, kann
 sich das Netz darum herum neu stricken. Die Daten werden umgeleitet und
-das Netzwerk ist nach wie vor betriebsfahig. 
+das Netzwerk ist nach wie vor betriebsf"ahig. 
 
 \subsubsection{Ad-Hoc}
 
 Ein Ad-hoc-Netz bezeichnet in der Informationstechnologie eine drahtlose
-Netzwerktopologie zwischen zwei oder mehr Endgeraten, die ohne feste
+Netzwerktopologie zwischen zwei oder mehr Endger"aten, die ohne feste
 Infrastruktur auskommt.
 
 \subsubsection{IEEE 802.11a/b/g}
 
 \textbf{IEEE 802.11} (auch: Wireless LAN, WLAN, WiFi) bezeichnet eine IEEE-Norm
-fur drahtlose Netzwerkkommunikation. Herausgeber ist das Institute of
+f"ur drahtlose Netzwerkkommunikation. Herausgeber ist das Institute of
 Electrical and Electronics Engineers (IEEE).
 
 \textbf{802.11a} spezifiziert eine weitere Variante der physikalischen Schicht,
-die im 5-GHz-Band arbeitet und Ubertragungsraten bis zu 54 MBit/s
+die im 5-GHz-Band arbeitet und "Ubertragungsraten bis zu 54 MBit/s
 ermoglicht. 
 
 \textbf{802.11b} ist ebenfalls eine alternative Spezifikation der physikalischen
 Schicht, die mit dem bisher genutzten 2,4-GHz-Band auskommt und
-Ubertragungsraten bis zu 11 MBit/s ermoglicht. 
+"Ubertragungsraten bis zu 11 MBit/s erm"oglicht. 
 
-\textbf{2,4-GHz-Vorteile }
+\textbf{2,4-GHz-Vorteile}
 \begin{itemize}	
 	\item gebuhrenfreies freigegebenes ISM-Frequenzband 
-	\item hohe Verbreitung und daher geringe Geratekosten 
+	\item hohe Verbreitung und daher geringe Ger"atekosten 
 \end{itemize}
 
-\textbf{2,4-GHz-Nachteile }
+\textbf{2,4-GHz-Nachteile}
 \begin{itemize}	
-	\item Frequenz muss mit anderen Geraten/Funktechniken geteilt werden (Bluetooth,
-Mikrowellenherde, etc.) 
-	\item storungsfreier Betrieb von nur maximal 3 Netzwerken am selben Ort moglich, 
-da effektiv nur 3 brauchbare (kaum uberlappende) Kanale zur Verfugung
-stehen (in Deutschland: 1, 7, 13) 
+	\item Frequenz muss mit anderen Ger"aten/Funktechniken geteilt werden
+	(Bluetooth, Mikrowellenherde, etc.) 
+	\item st"orungsfreier Betrieb von nur maximal 3 Netzwerken
+	am selben Ort m"oglich, da effektiv nur 3 brauchbare
+	(kaum "uberlappende) Kan"ale zur Verf"ugung stehen
+	(in Deutschland: 1, 7, 13) 
 \end{itemize}
 
 \textbf{5-GHz-Vorteile }
 \begin{itemize}
-	\item weniger genutztes Frequenzband, dadurch haufig storungsfreierer Betrieb
-moglich 
-	\item in Deutschland 19 (bei BNetzA-Zulassung) nicht uberlappende Kanale 
-	\item hohere Reichweite, da mit 802.11h bis zu 1000 mW Sendeleistung moglich 
+	\item weniger genutztes Frequenzband, dadurch h"aufig
+	st"orungsfreierer Betrieb m"oglich 
+	\item in Deutschland 19 (bei BNetzA-Zulassung) nicht "uberlappende
+	Kan"ale 
+	\item h"ohere Reichweite, da mit 802.11h bis zu 1000 mW Sendeleistung
+	m"oglich 
 \end{itemize}
 
 \textbf{5-GHz-Nachteile }
 \begin{itemize}
-	\item starkere Regulierungen in Europa: auf den meisten Kanalen DFS notig 
-	\item auf einigen Kanalen kein Betrieb im Freien erlaubt 
-	\item falls kein TPC
-benutzt wird, muss die Sendeleistung reduziert werden 
-	\item \textbf{Ad-hoc-Modus wird von den meisten Geraten nicht unterstutzt }
-	\item \textbf{geringere Verbreitung, daher wenig verfugbare Gerate auf dem Markt und
-hohe Kosten }
+	\item st"arkere Regulierungen in Europa: auf den meisten Kan"alen DFS
+	n"otig 
+	\item auf einigen Kan"alen kein Betrieb im Freien erlaubt 
+	\item falls kein TPC benutzt wird, muss die Sendeleistung reduziert
+	werden 
+	\item \textbf{Ad-hoc-Modus wird von den meisten Ger"aten
+		nicht unterst"utzt }
+	\item \textbf{geringere Verbreitung, daher wenig verf"ugbare Ger"ate
+		auf dem Markt und hohe Kosten }
 \end{itemize}
 
 
 
-\subsection{Existierende Losungen und Projekte}
+\subsection{Existierende L"osungen und Projekte}
 
-FreiFunk http://freifunk.net/wiki/Meshing 
-OpenNet http://wiki.opennet-initiative.de/index.php/Hauptseite 
-http://www-i4.informatik.rwth-aachen.de/mcg/projects/umic-mesh/ 
-http://umic-mesh.net/
+\begin{itemize}
+\item FreiFunk \url{http://freifunk.net/wiki/Meshing}
+\item OpenNet \url{http://wiki.opennet-initiative.de/index.php/Hauptseite}
+\item \url{http://www-i4.informatik.rwth-aachen.de/mcg/projects/umic-mesh/} 
+\item \url{http://umic-mesh.net/}
+\end{itemize}
