@@ -4,13 +4,16 @@ Im Kapitel 4 haben wir mehrere Hardware-L"osungen für ein Mesh-Netztwerk
 vorgestellt. F"ur alle im Kapitel 4 vorgestellten PCI-, MiniPCI- und
 PCMCIA-Karten werden vom Hersteller dieser WLAN-Karten Windows-Treiber
 bereitgestellt. Und nur wenige Hersteller (z.B Intel) haben auch Linux-Treiber
-f"ur Ihre Karten implementiert. Gl"ucklicherweise existiert f"ur
+f"ur ihre Karten implementiert. Gl"ucklicherweise existiert f"ur
 WLAN-Karten mit Atheros-Chipsatz der Open-Source Linux-Treiber MadWifi,
-der alle im Kapitel 4 aufgelisteten WLAn-Karten mit Atheros-Chipsatz
-unterst"utzt. Be Soho-Routern sieht das Ganze etwas anders aus. Hier gibt
+der alle im Kapitel 4 aufgelisteten WLAN-Karten mit Atheros-Chipsatz
+unterst"utzt. Bei Soho-Routern sieht das Ganze etwas anders aus. Hier gibt
 es nicht so viele M"oglichkeiten bei der Wahl nach einer Software.
 Die meisten Hersteller von SoHo-Routern stellen den Source-Code des
-Betriebssystems f"ur SoHo-Router nicht zur Verf"ugung.
+Betriebssystems f"ur SoHo-Router nicht bereit. Deswegen m"ussen wir nach
+Open-Source Firmware greifen, wenn wir SoHo-Router im Ad-Hoc Modus
+betreiben wollen, denn die meisten SoHo-Router nur im Infrastruktur Modus
+arbeiten und Ad-Hoc Modus nicht realisieren.
 
 In diesem Kapitel wird verschiedene Treiber- und Routing-Software
 vorgestellt, die zusammen mit der Hardware aus Kapitel 4 die Realieserung
@@ -98,7 +101,9 @@ In diesem Abschnitt werden Routing-Deamonen vorgestellt, die ein bestimmtes
 Routing-Protokoll implementieren und auf jedem Knoten in einem
 Mesh-Netzwerk ausgef"uhrt werden. Diese Daemonen tauschen Roting-Informationen
 aus und machen es m"oglch, Nachrichten von einem Knoten zu einem anderen
-Knoten im Mesh-Netzwerk zu transportieren.
+Knoten im Mesh-Netzwerk zu transportieren. Routing-Daemonen erm"oglichen
+die Kommunikation zwischen 2 Knoten in einem Ad-Hoc Mesh-Netzwerk,
+zwischen denen mehr als 1 Hop liegt.
 
 \subsubsection{olsr.org OLSR daemon}
 
