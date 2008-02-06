@@ -117,12 +117,98 @@ Schicht, die mit dem bisher genutzten 2,4-GHz-Band auskommt und
 \end{itemize}
 
 \subsubsection{Ad-Hoc Routing-Protokolle}
-(TODO) Text .. was ist was.. 
-Weiter werden OLSR ung .. vorgestellt..
+
+Ein Ad-hoc Netzwerk beispielsweise ein Sensornetzwerk besteht aus einer
+gro"ser Anzahl von Knoten, die sich typischerweise spontan vernetzen
+m"ussen. "Uber Funk k"onnen diese Knoten miteinander kommunizieren. Aber
+Knoten kann wegen der Leistungsf"ahigkeit, des Energieverbrauches
+und auch der Mobilit"at nicht mit allen anderen Knoten direkt Daten
+"ubertragen. Routing Methoden bieten die M"oglichkeit, Kommunikation
+zwischen zwei Knoten mit Hilfe der anderen Knoten auszuf"uhren, wenn die
+zwei Knoten miteinander nicht direkt kommunizieren k"onnen.
+
+Es gibt mehr als 70 konkurrierende Entw"urfe für das Routing der Pakete
+durch ein Mobiles Ad-Hoc/Maschennetzwerk. Eine Klassifikation der
+Routingprotokolle kann durch Anzahl der Empf"anger getroffen werden:
+\begin{itemize}
+\item unicast Routing - Ziel der Daten"ubertragung ist ein einzelner Knoten
+\item multicast Routing - Ziel sind mehrere Knoten
+\item geocast Routing - Ziel sind alle Knoten in einem bestimmten
+geografischen Bereich
+\item broadcast Forwarding - Ziel sind alle Knoten in der Reichweite
+des Senders
+\end{itemize}
+
+Eine andere M"oglichkeit der Klassifikation besteht in der Einteilung
+der Protokolle hinsichtlich des grunds"atzlichen Ansatzes. Diese Ans"atze
+werden im Folgenden vorgestellt.
+
+\textbf{Positionsbasierte Routingverfahren}
+
+Positionsbasierte Routingverfahren nutzen geod"atische Informationen "uber
+die genauen Positionen der Knoten. Diese Informationen werden z. B. "uber
+GPS-Empf"anger gewonnen. Anhand dieser Ortsinformationen l"asst sich der
+k"urzeste oder der beste Pfad zwischen Quell- und Zielknoten bestimmen. Ein
+Beispiel f"ur ein positionsbasiertes Routingprotokoll ist LAR.
+
+\textbf{Topologiebasierte Routingverfahren}
+
+Die topologiebasierten Routingverfahren kommen ohne geod"atische
+Informationen "uber die Positionen der Knoten des mobilen
+Ad-hoc-Netzes aus. Ihnen gen"ugen logische Informationen "uber die
+Nachbarschaftsbeziehungen der Knoten, also welche Knoten eine direkte
+Verbindung haben oder "uber einen oder mehrere Zwischenknoten (hop)
+in Verbindung treten k"onnen. Diese Nachbarknoten k"onnen miteinander
+kommunizieren. Die topologischen Informationen werden meistens durch
+den Versand so genannter HELLO-Pakete gewonnen. Je nach Zeitpunkt des
+Aufbaus der Topologiedatenbasis handelt es sich um proaktives oder
+reaktives Routing. Ein Beispiel f"ur ein Protokoll aus dieser Klasse ist
+das Neighbourhood Discovery Protocol (NHDP), das Elemente des Optimized
+Link State Routing Protocol (OLSR) verwendet.
+
+\textbf{Proaktive Verfahren}
+
+Proaktive Routingverfahren bestimmen die zu verwendenden Pfade zwischen
+zwei Knoten bereits, bevor diese f"ur die "Ubertragung von Nutzdaten
+ben"otigt werden. Sollen dann Nutzdaten verschickt werden, so muss nicht
+auf die Bestimmung des Pfads zum Zielknoten gewartet werden. Nachteilig
+ist daf"ur jedoch, dass diese Verfahren auch ohne Verkehr von Nutzdaten
+viele Kontrollpakete verschicken, um Pfade zu bestimmen, die wom"oglich
+sp"ater nicht ben"otigt werden. Ein Beispiel f"ur ein Protokoll aus dieser
+Klasse ist das Optimized Link State Routing Protocol (OLSR).
+
+\textbf{Reaktive Verfahren}
+
+Im Gegensatz zu den proaktiven Verfahren bestimmen reaktive
+Routingverfahren f"ur mobile Ad-hoc-Netze die ben"otigten Pfade zwischen
+zwei Knoten erst, wenn Nutzdaten "ubertragen werden sollen. Daraus ergibt
+sich, dass das erste Datenpaket einer Verbindung erst mit Verz"ogerung
+versendet werden kann, da zun"achst auf den Abschluss der Routenbestimmung
+gewartet werden muss. Daf"ur werden allerdings auch nur Kontrollpakete
+versendet, wenn Nutzdaten verschickt werden und dies zur Routenbestimmung
+notwendig ist. Dies schl"agt sich positiv im Energieverbrauch der Knoten
+nieder. Das Protokoll Ad hoc On-Demand Distance Vector (AODV) ist ein
+Beispiel f"ur ein Protokoll dieser Kategorie.
+
+\textbf{Hybride Verfahren}
+
+Hybride Verfahren kombinieren proaktive und reaktive
+Routingverfahren. Dabei soll das Ziel erreicht werden, die
+Vorteile der beiden Ans"atze in einem neuen Routingprotokoll
+zusammenzufassen. Beispielsweise kann in einem lokal beschr"ankten Bereich
+ein proaktives Verfahren eingesetzt werden, w"ahrend f"ur weiter entfernte
+Ziele ein reaktives Verfahren eingesetzt wird. Dies vermindert die
+Belastung des Netzes durch Kontrollpakete, die bei einem rein proaktiven
+Verfahren "uber das gesamte Netz versendet w"urden. Trotzdem stehen f"ur
+lokale Ziele sofort Pfade zur Verf"ugung, ohne dass auf deren Bestimmung
+wie bei einem rein reaktiven Verfahren gewartet werden m"usste. ZRP ist
+ein Routingprotokoll, das diesen Ansatz umsetzt.
 
 \paragraph{OLSR}
-
+\mbox{}
+\begin{figure}[H]
 \includegraphics{Olsrd_logo.png}
+\end{figure}
 
 Optimized Link State Routing, kurz OLSR, ist ein Routingprotokoll
 f"ur mobile Ad-hoc-Netze, das eine an die Anforderungen eines mobilen
@@ -142,8 +228,10 @@ Fisheye-Algorithmus noch recht hohe Rechenaufwand von OLSRD, sobald
 die Anzahl an Knoten ein gewisses Ma"s ubersteigt.
 
 \paragraph{B.A.T.M.A.N.}
-
+\mbox{}
+\begin{figure}[H]
 \includegraphics{Batman_logo.png}
+\end{figure}
 
 Ausgehend von den Erfahrungen mit Freifunk-OLSR begannen die Entwickler
 aus der Freifunk-Community im M"arz 2006 in Berlin damit, ein neues
