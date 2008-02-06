@@ -3,7 +3,7 @@ PDFLATEX=pdflatex
 SRCS=mesh.tex Hardware.tex PCs+WLAN-Karten.tex Zusammenfassung.tex\
      PCI-WLAN-Karten.tex Mini-PCI_WLAN-Karten.tex PCMCIA_WLAN-Karten.tex\
      WLAN-Router.tex SoHo-Router.tex Professionelle_Router.tex\
-     PDAs_Handys.tex
+     PDAs_Handys.tex Software.tex
 IMAGES_DIR=./images
 IMAGES=$(IMAGES_DIR)/WMN.jpg $(IMAGES_DIR)/Linksys_WMP55AG.jpg\
        $(IMAGES_DIR)/Asus_WL500G.jpg $(IMAGES_DIR)/DLink_DWLA520.jpg\

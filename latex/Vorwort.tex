@@ -116,37 +116,6 @@ Schicht, die mit dem bisher genutzten 2,4-GHz-Band auskommt und
 	(in Deutschland: 1, 7, 13) 
 \end{itemize}
 
-
-\subsubsection{Linux MadWiFi-Treiber}
-
-Linux MadWifi-Treiber ist Linux Kernel Treiber f"ur WLAN-Karten mit
-Atheros-Chipsatz. Linux MadWifi-Treiber ist heutzutage einer der
-fortgeschrittensten Linux Treiber f"ur WLAN-Karten. Der Treiber ist
-stabil und hat eine gro"se Benutzergemeinschaft. Der MadWifi-Treiber
-selbst ist Open-Source, verwendet aber eine proprit"are Softwareschicht
-Hardware Abstraction Layer (HAL), die nur in bin"arer Form vorhanden
-ist. Das Hardware Abstraction Layer (HAL) wird vom MadWifi-Treiber
-gebraucht, um die Atheros-Chips ansprechen zu k"onnen. Daf"ur wurde bisher
-ein Closed-Source-Modul verwendet. Dies hat unter anderem damit zu tun,
-dass die Atheros-Chips"atze prinzipiell auf Frequenzen funken k"onnten,
-f"ur die sie nicht zugelassen sind - beispielsweise weil diese vom
-Milit"ar zur Kommunikation verwendet werden. Durch das proprit"are
-Modul war der MadWifi-Treiber bisher jedoch von einer Aufnahme in den
-Linux-Kernel ausgeschlossen. Die Entwickler hatten au"serdem das Problem,
-dass sie Fehler unter Umst"anden nicht beheben konnten, da sie nicht
-nachvollziehen konnten, wie der HAL-Baustein arbeitet. MadWifi
-selbst wird daher ab sofort nicht weiterentwickelt. Stattdessen
-setzen die Programmierer auf OpenHAL, eine Linux-Portierung des
-HAL-Modules des in OpenBSD verf"ugbaren freien Atheros-Treibers. In der
-Vergangenheit wurde vom Software Freedom Law Center (SFLC) best"atigt,
-dass die durch Reverse Engineering entstandene Software keine Copyrights
-verletzt. Solche Behauptungen hatten die Entwicklung lange ausgebremst. 
-Der neue Treiber "`Ath5k"' wird MadWifi nun ersetzen und soll nicht
-nur die freie Komponente OpenHAL einsetzen, sondern auch mit dem neuen
-Linux-WLAN-System Mac80211 zusammenarbeiten, so dass der Treiber in den
-offiziellen Linux-Kernel gelangen kann. MadWifi soll jedoch weiter mit
-Fehlerkorrekturen und HAL-Updates versorgt werden. 
-
 \subsubsection{Ad-Hoc Routing-Protokolle}
 (TODO) Text .. was ist was.. 
 Weiter werden OLSR ung .. vorgestellt..
@@ -186,39 +155,6 @@ sondern ermittelt lediglich, "uber welchen direkten Nachbarn ein bestimmter
 Netzwerkknoten am besten zu erreichen ist, und tr"agt diese Information
 proaktiv in die Routingtabelle ein. 
 
-\subsubsection{Firmware f"ur WLAN-Router}
-
-(TODO) Text .. was ist was..
-
-\paragraph{OpenWRT}
-
-OpenWRT ist eine GNU/Linux-Distribution f"ur WLAN-Router. Anstatt einer
-statischen Firmware setzt OpenWRT auf ein voll beschreibbares Dateisystem
-sowie einen Paketmanager. OpenWRT l"auft unter anderem auf Ger"aten der
-Firmen Linksys, ALLNET, ASUS, Belkin, Buffalo, Microsoft und Siemens.
-
-\textbf{Vorteile:}
-
-\begin{itemize}
-	\item Flexibilit"at
-	\item Erweiterbarkeit
-	\item Individualisierbarkeit
-	\item Sicherheit
-	\item Gewohnte Linux-Flexibilit"at und Funktionsumfang! 
-\end{itemize}
-
-\textbf{Nachteile:}
-
-\begin{itemize}
-	\item Standardm"a"sig sind nur die n"otigsten Unix-Tools vorhanden 
-\end{itemize}
-
-\textbf{Links:}
-
-\begin{itemize}
-	\item \url{http://openwrt.org/}
-	\item \url{http://toh.openwrt.org/}
-\end{itemize}
 
 \subsection{Existierende L"osungen und Projekte}
 
