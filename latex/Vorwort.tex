@@ -9,7 +9,7 @@ Dokuments auftauchen werden, kurz erl"autert.
 
 Ein drahtloses vermaschtes Netz (engl. Wireless Mesh Network, WMN) besteht
 aus einer Menge von Knoten, die "uber drahtlose Kommunikationstechniken
-wie beispielsweise IEEE 802.11 Nachrichten austauschen. Die
+wie beispielsweise IEEE 802.11 (LINK) Nachrichten austauschen. Die
 Vemaschung der Knoten erm"oglicht dabei nicht nur den Austausch von
 Nachrichten zwischen unmittelbar benachbarten Knoten, sondern auch die
 Vermittlung von Nachrichten an entfernte Knoten "uber mehrere Knoten
@@ -19,8 +19,8 @@ drahtlose Kommunikationsinfrastruktur f"ur die Klienten (engl. Mesh
 Client) bilden. Durch den Einsatz vergleichsweise kosteng"unstiger
 Hardwarekomponenten und die Vermaschung der Knoten erm"oglichen WMNs die
 kosteng"unstige Vernetzung auch gr"o"serer Gebiete. Entsprechende Netze
-werden beispielsweise von Community-Projekten wie das Freifunk-Projekt
-oder Firmen wie Google bereits heute in der Praxis f"ur den Aufbau gr""serer
+werden beispielsweise von Community-Projekten wie das Freifunk-Projekt (LINK)
+oder Firmen wie Google (LINK) bereits heute in der Praxis f"ur den Aufbau gr""serer
 Netze eingesetzt, um beispielsweise kosteng"unstige Internetzug"ange f"ur
 Stadtteile oder ganze St"adte zu realisieren.
 
@@ -40,7 +40,17 @@ Kommunikation als auch die direkte Ad-hoc-Kommunikation zwischen
 mobilen Endsystemen m"oglich ist. Hierbei spielen WMNs als eine spezielle
 Auspr"agung eines hybriden Kommunikationssystems eine wesentliche Rolle.
 
+
+\subsubsection{Ad-Hoc}
+
+Ein Ad-hoc-Netz bezeichnet in der Informationstechnologie eine drahtlose
+Netzwerktopologie zwischen zwei oder mehr Endger"aten, die ohne feste
+Infrastruktur auskommt.
+(TODO) Mehr Tesxt.. Bilder: Adhoc, Infrastruktur!
+
+
 \subsubsection{Mesh-Netz}
+(TODO) Mesh-Netze sind Ad-hoc Netze
 
 In einem vermaschten Netz (Mesh-Netz) ist jeder Netzwerkknoten mit einem
 oder mehreren anderen verbunden. Die Informationen werden von Knoten
@@ -50,11 +60,8 @@ Wenn ein Knoten oder eine Verbindung blockiert ist oder ausf"allt, kann
 sich das Netz darum herum neu stricken. Die Daten werden umgeleitet und
 das Netzwerk ist nach wie vor betriebsf"ahig. 
 
-\subsubsection{Ad-Hoc}
+(TODO) Einarbeitung in grundlegende WMN-Technologien???
 
-Ein Ad-hoc-Netz bezeichnet in der Informationstechnologie eine drahtlose
-Netzwerktopologie zwischen zwei oder mehr Endger"aten, die ohne feste
-Infrastruktur auskommt.
 
 \subsubsection{IEEE 802.11a/b/g}
 
@@ -66,27 +73,7 @@ Electrical and Electronics Engineers (IEEE).
 die im 5-GHz-Band arbeitet und "Ubertragungsraten bis zu 54 MBit/s
 ermoglicht. 
 
-\textbf{802.11b} ist ebenfalls eine alternative Spezifikation der physikalischen
-Schicht, die mit dem bisher genutzten 2,4-GHz-Band auskommt und
-"Ubertragungsraten bis zu 11 MBit/s erm"oglicht. 
-
-\textbf{2,4-GHz-Vorteile}
-\begin{itemize}	
-	\item gebuhrenfreies freigegebenes ISM-Frequenzband 
-	\item hohe Verbreitung und daher geringe Ger"atekosten 
-\end{itemize}
-
-\textbf{2,4-GHz-Nachteile}
-\begin{itemize}	
-	\item Frequenz muss mit anderen Ger"aten/Funktechniken geteilt werden
-	(Bluetooth, Mikrowellenherde, etc.) 
-	\item st"orungsfreier Betrieb von nur maximal 3 Netzwerken
-	am selben Ort m"oglich, da effektiv nur 3 brauchbare
-	(kaum "uberlappende) Kan"ale zur Verf"ugung stehen
-	(in Deutschland: 1, 7, 13) 
-\end{itemize}
-
-\textbf{5-GHz-Vorteile }
+\textbf{Vorteile }
 \begin{itemize}
 	\item weniger genutztes Frequenzband, dadurch h"aufig
 	st"orungsfreierer Betrieb m"oglich 
@@ -96,26 +83,152 @@ Schicht, die mit dem bisher genutzten 2,4-GHz-Band auskommt und
 	m"oglich 
 \end{itemize}
 
-\textbf{5-GHz-Nachteile }
+\textbf{Nachteile }
 \begin{itemize}
 	\item st"arkere Regulierungen in Europa: auf den meisten Kan"alen DFS
 	n"otig 
 	\item auf einigen Kan"alen kein Betrieb im Freien erlaubt 
 	\item falls kein TPC benutzt wird, muss die Sendeleistung reduziert
 	werden 
-	\item \textbf{Ad-hoc-Modus wird von den meisten Ger"aten
-		nicht unterst"utzt }
-	\item \textbf{geringere Verbreitung, daher wenig verf"ugbare Ger"ate
-		auf dem Markt und hohe Kosten }
+	\item Ad-hoc-Modus wird von den meisten Ger"aten
+		nicht unterst"utzt
+	\item geringere Verbreitung, daher wenig verf"ugbare Ger"ate
+		auf dem Markt und hohe Kosten
+\end{itemize}
+
+\textbf{802.11b} ist ebenfalls eine alternative Spezifikation der physikalischen
+Schicht, die mit dem bisher genutzten 2,4-GHz-Band auskommt und
+"Ubertragungsraten bis zu 11 MBit/s erm"oglicht. 
+
+\textbf{Vorteile}
+\begin{itemize}	
+	\item gebuhrenfreies freigegebenes ISM-Frequenzband 
+	\item hohe Verbreitung und daher geringe Ger"atekosten 
+\end{itemize}
+
+\textbf{Nachteile}
+\begin{itemize}	
+	\item Frequenz muss mit anderen Ger"aten/Funktechniken geteilt werden
+	(Bluetooth, Mikrowellenherde, etc.) 
+	\item st"orungsfreier Betrieb von nur maximal 3 Netzwerken
+	am selben Ort m"oglich, da effektiv nur 3 brauchbare
+	(kaum "uberlappende) Kan"ale zur Verf"ugung stehen
+	(in Deutschland: 1, 7, 13) 
 \end{itemize}
 
 
+\subsubsection{Linux MadWiFi-Treiber}
+
+Linux MadWifi-Treiber ist Linux Kernel Treiber f"ur WLAN-Karten mit
+Atheros-Chipsatz. Linux MadWifi-Treiber ist heutzutage einer der
+fortgeschrittensten Linux Treiber f"ur WLAN-Karten. Der Treiber ist
+stabil und hat eine gro"se Benutzergemeinschaft. Der MadWifi-Treiber
+selbst ist Open-Source, verwendet aber eine proprit"are Softwareschicht
+Hardware Abstraction Layer (HAL), die nur in bin"arer Form vorhanden
+ist. Das Hardware Abstraction Layer (HAL) wird vom MadWifi-Treiber
+gebraucht, um die Atheros-Chips ansprechen zu k"onnen. Daf"ur wurde bisher
+ein Closed-Source-Modul verwendet. Dies hat unter anderem damit zu tun,
+dass die Atheros-Chips"atze prinzipiell auf Frequenzen funken k"onnten,
+f"ur die sie nicht zugelassen sind - beispielsweise weil diese vom
+Milit"ar zur Kommunikation verwendet werden. Durch das proprit"are
+Modul war der MadWifi-Treiber bisher jedoch von einer Aufnahme in den
+Linux-Kernel ausgeschlossen. Die Entwickler hatten au"serdem das Problem,
+dass sie Fehler unter Umst"anden nicht beheben konnten, da sie nicht
+nachvollziehen konnten, wie der HAL-Baustein arbeitet. MadWifi
+selbst wird daher ab sofort nicht weiterentwickelt. Stattdessen
+setzen die Programmierer auf OpenHAL, eine Linux-Portierung des
+HAL-Modules des in OpenBSD verf"ugbaren freien Atheros-Treibers. In der
+Vergangenheit wurde vom Software Freedom Law Center (SFLC) best"atigt,
+dass die durch Reverse Engineering entstandene Software keine Copyrights
+verletzt. Solche Behauptungen hatten die Entwicklung lange ausgebremst. 
+Der neue Treiber "`Ath5k"' wird MadWifi nun ersetzen und soll nicht
+nur die freie Komponente OpenHAL einsetzen, sondern auch mit dem neuen
+Linux-WLAN-System Mac80211 zusammenarbeiten, so dass der Treiber in den
+offiziellen Linux-Kernel gelangen kann. MadWifi soll jedoch weiter mit
+Fehlerkorrekturen und HAL-Updates versorgt werden. 
+
+\subsubsection{Ad-Hoc Routing-Protokolle}
+(TODO) Text .. was ist was.. 
+Weiter werden OLSR ung .. vorgestellt..
+
+\paragraph{OLSR}
+
+Optimized Link State Routing, kurz OLSR, ist ein Routingprotokoll
+f"ur mobile Ad-hoc-Netze, das eine an die Anforderungen eines mobilen
+drahtlosen LANs angepasste Version des Link State Routing darstellt. Es
+wurde von der IETF mit dem RFC 3626 standardisiert. Bei diesem
+verteilten flexiblen Routingverfahren ist allen Routern die vollst"andige
+Netztopologie bekannt, sodass sie von Fall zu Fall den k"urzesten Weg zum
+Ziel festlegen k"onnen. Als proaktives Routingprotokoll h"alt es die daf"ur
+ben"otigten Informationen jederzeit bereit. Ein in Mesh-Netzwerken
+bekannter Vertreter von LSR ist OLSR von olsr.org. Inzwischen existieren
+f"ur OLSR spezielle Erweiterungen. Mit der ETX-Erweiterung wird dem
+Umstand Rechnung getragen, dass Links asymmetrisch sein k"onnen. Mit
+dem Fisheye-Algorithmus ist OLSR auch fur gro"sere Netzwerke brauchbar
+geworden, da Routen zu weiter entfernten Knoten weniger h"aufig neu
+berechnet werden. Der entscheidende Nachteil ist aber der trotz
+Fisheye-Algorithmus noch recht hohe Rechenaufwand von OLSRD, sobald
+die Anzahl an Knoten ein gewisses Ma"s ubersteigt.
+
+\paragraph{B.A.T.M.A.N.}
+
+Ausgehend von den Erfahrungen mit Freifunk-OLSR begannen die Entwickler
+aus der Freifunk-Community im M"arz 2006 in Berlin damit, ein neues
+Routingprotokoll f"ur drahtlose Meshnetzwerke zu entwickeln. Alle bisher
+bekannten Routingalgorithmen versuchen Routen entweder zu berechnen
+(proaktive Verfahren) oder sie dann zu suchen, wenn sie gebraucht werden
+(reaktive Verfahren). Das neue Protokoll B.A.T.M.A.N. 
+(BETTER APPROACH TO MOBILE ADHOC NETWORKING) berechnet oder
+sucht im Gegensatz zu diesen Protokollen keine Routen, es erfasst
+lediglich, ob Routen zu anderen Knoten existieren und "uberwacht ihre
+Qualit"at. Dabei interessiert es sich nicht daf"ur, wie eine Route verl"auft,
+sondern ermittelt lediglich, "uber welchen direkten Nachbarn ein bestimmter
+Netzwerkknoten am besten zu erreichen ist, und tr"agt diese Information
+proaktiv in die Routingtabelle ein. 
+
+\subsubsection{Firmware f"ur WLAN-Router}
+
+(TODO) Text .. was ist was..
+
+\paragraph{OpenWRT}
+
+OpenWRT ist eine GNU/Linux-Distribution f"ur WLAN-Router. Anstatt einer
+statischen Firmware setzt OpenWRT auf ein voll beschreibbares Dateisystem
+sowie einen Paketmanager. OpenWRT l"auft unter anderem auf Ger"aten der
+Firmen Linksys, ALLNET, ASUS, Belkin, Buffalo, Microsoft und Siemens.
+
+\textbf{Vorteile:}
+
+\begin{itemize}
+	\item Flexibilit"at
+	\item Erweiterbarkeit
+	\item Individualisierbarkeit
+	\item Sicherheit
+	\item Gewohnte Linux-Flexibilit"at und Funktionsumfang! 
+\end{itemize}
+
+\textbf{Nachteile:}
+
+\begin{itemize}
+	\item Standardm"a"sig sind nur die n"otigsten Unix-Tools vorhanden 
+\end{itemize}
+
+\textbf{Links:}
+
+\begin{itemize}
+	\item \url{http://openwrt.org/}
+	\item \url{http://toh.openwrt.org/}
+\end{itemize}
 
 \subsection{Existierende L"osungen und Projekte}
+
+(TODO) Einbisschen Text zu jedem Projekt (googeln)
 
 \begin{itemize}
 \item FreiFunk \url{http://freifunk.net/wiki/Meshing}
 \item OpenNet \url{http://wiki.opennet-initiative.de/index.php/Hauptseite}
 \item \url{http://www-i4.informatik.rwth-aachen.de/mcg/projects/umic-mesh/} 
 \item \url{http://umic-mesh.net/}
+\item (TODO) Google..
+
 \end{itemize}

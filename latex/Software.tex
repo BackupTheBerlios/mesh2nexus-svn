@@ -1,8 +1,25 @@
 \section{Systemsoftware f"ur Mesh-Netzwerk}
 
-Betriebsystem: Windows/Linux - gleichwertig!!!\\
+(TODO) !!! Textuell Beschreiben, korrigieren..
+
+Um eine Mesh-Netz zum Laufen zu kriegen, braucht man 
+nat"urlich neben Hardware auch eine Softwaresystem einzurichten..
+
+Im Kapitel HW.. wurden im Prinzip zwei verschiedene M"oglichkeiten
+vorgestellt, n"amlich PC+WLAN-Karten und \emph{stand-alone} Mesh-Router.
+Basierend aud diese klassifizierung, unterscheidet man auch die SW..
+
+\paragraph{PC+WLAN-Karten}
+
+\begin{enumerate}
+	\item Betriebsystem
+	\item Routingsprotokolle
+\end{enumerate}
+
+Betriebsystem: Windows/Linux - gleichwertig!!!
 
 \textbf{Windows:} 
+
 \begin{itemize}	
 	\item Treiber meistens vorhanden (eventuell update notwendig)
 	Intel, Atheros - getestet
@@ -11,100 +28,15 @@ Betriebsystem: Windows/Linux - gleichwertig!!!\\
 \end{itemize}
 
 \textbf{Linux: }
+
 \begin{itemize}	
 	\item MadWifi-Treiber installieren 
 	\item OLSR-daemon installieren und konfigurieren
 \end{itemize}
 
-\subsection{Linux MadWiFi-Treiber}
+\paragraph{WLAN-Router}
 
-Linux MadWifi-Treiber ist Linux Kernel Treiber f"ur WLAN-Karten mit
-Atheros-Chipsatz. Linux MadWifi-Treiber ist heutzutage einer der
-fortgeschrittensten Linux Treiber f"ur WLAN-Karten. Der Treiber ist
-stabil und hat eine gro"se Benutzergemeinschaft. Der MadWifi-Treiber
-selbst ist Open-Source, verwendet aber eine proprit"are Softwareschicht
-Hardware Abstraction Layer (HAL), die nur in bin"arer Form vorhanden
-ist.   Das Hardware Abstraction Layer (HAL) wird vom MadWifi-Treiber
-gebraucht, um die Atheros-Chips ansprechen zu k"onnen. Daf"ur wurde bisher
-ein Closed-Source-Modul verwendet. Dies hat unter anderem damit zu tun,
-dass die Atheros-Chips"atze prinzipiell auf Frequenzen funken k"onnten,
-f"ur die sie nicht zugelassen sind - beispielsweise weil diese vom
-Milit"ar zur Kommunikation verwendet werden.   Durch das proprit"are
-Modul war der MadWifi-Treiber bisher jedoch von einer Aufnahme in den
-Linux-Kernel ausgeschlossen. Die Entwickler hatten au"serdem das Problem,
-dass sie Fehler unter Umst"anden nicht beheben konnten, da sie nicht
-nachvollziehen konnten, wie der HAL-Baustein arbeitet.   MadWifi
-selbst wird daher ab sofort nicht weiterentwickelt. Stattdessen
-setzen die Programmierer auf OpenHAL, eine Linux-Portierung des
-HAL-Modules des in OpenBSD verf"ugbaren freien Atheros-Treibers. In der
-Vergangenheit wurde vom Software Freedom Law Center (SFLC) best"atigt,
-dass die durch Reverse Engineering entstandene Software keine Copyrights
-verletzt. Solche Behauptungen hatten die Entwicklung lange ausgebremst. 
-Der neue Treiber "`Ath5k"' wird MadWifi nun ersetzen und soll nicht
-nur die freie Komponente OpenHAL einsetzen, sondern auch mit dem neuen
-Linux-WLAN-System Mac80211 zusammenarbeiten, so dass der Treiber in den
-offiziellen Linux-Kernel gelangen kann. MadWifi soll jedoch weiter mit
-Fehlerkorrekturen und HAL-Updates versorgt werden. 
+\begin{enumerate}
+	\item Firmaware inkl. Routingsprotokolle
+\end{enumerate}
 
-\subsection{Ad-Hoc Routing-Protokolle}
-
-\subsubsection{OLSR (Optimized Link State Routing)}
-
-Optimized Link State Routing, kurz OLSR, ist ein Routingprotokoll
-f"ur mobile Ad-hoc-Netze, das eine an die Anforderungen eines mobilen
-drahtlosen LANs angepasste Version des Link State Routing darstellt. Es
-wurde von der IETF mit dem RFC 3626 standardisiert. Bei diesem
-verteilten flexiblen Routingverfahren ist allen Routern die vollst"andige
-Netztopologie bekannt, sodass sie von Fall zu Fall den k"urzesten Weg zum
-Ziel festlegen k"onnen. Als proaktives Routingprotokoll h"alt es die daf"ur
-ben"otigten Informationen jederzeit bereit.   Ein in Mesh-Netzwerken
-bekannter Vertreter von LSR ist OLSR von olsr.org. Inzwischen existieren
-f"ur OLSR spezielle Erweiterungen. Mit der ETX-Erweiterung wird dem
-Umstand Rechnung getragen, dass Links asymmetrisch sein k"onnen. Mit
-dem Fisheye-Algorithmus ist OLSR auch fur gro"sere Netzwerke brauchbar
-geworden, da Routen zu weiter entfernten Knoten weniger h"aufig neu
-berechnet werden. Der entscheidende Nachteil ist aber der trotz
-Fisheye-Algorithmus noch recht hohe Rechenaufwand von OLSRD, sobald
-die Anzahl an Knoten ein gewisses Ma"s ubersteigt.
-
-\subsubsection{B.A.T.M.A.N. (BETTER APPROACH TO MOBILE ADHOC NETWORKING)}
-
-Ausgehend von den Erfahrungen mit Freifunk-OLSR begannen die Entwickler
-aus der Freifunk-Community im M"arz 2006 in Berlin damit, ein neues
-Routingprotokoll f"ur drahtlose Meshnetzwerke zu entwickeln. Alle bisher
-bekannten Routingalgorithmen versuchen Routen entweder zu berechnen
-(proaktive Verfahren) oder sie dann zu suchen, wenn sie gebraucht werden
-(reaktive Verfahren). Das neue Protokoll B.A.T.M.A.N. berechnet oder
-sucht im Gegensatz zu diesen Protokollen keine Routen, es erfasst
-lediglich, ob Routen zu anderen Knoten existieren und "uberwacht ihre
-Qualit"at. Dabei interessiert es sich nicht daf"ur, wie eine Route verl"auft,
-sondern ermittelt lediglich, "uber welchen direkten Nachbarn ein bestimmter
-Netzwerkknoten am besten zu erreichen ist, und tr"agt diese Information
-proaktiv in die Routingtabelle ein. 
-
-\subsection{OpenWRT}
-
-OpenWRT ist eine GNU/Linux-Distribution f"ur WLAN-Router. Anstatt einer
-statischen Firmware setzt OpenWRT auf ein voll beschreibbares Dateisystem
-sowie einen Paketmanager. OpenWRT l"auft unter anderem auf Ger"aten der
-Firmen Linksys, ALLNET, ASUS, Belkin, Buffalo, Microsoft und Siemens.
-
-Vorteile:
-\begin{itemize}
-\item Flexibilit"at
-\item Erweiterbarkeit
-\item Individualisierbarkeit
-\item Sicherheit
-\item Gewohnte Linux-Flexibilit"at und Funktionsumfang!!! 
-\end{itemize}
-
-Nachteile:
-\begin{itemize}
-\item Standardm"a"sig sind nur die n"otigsten Unix-Tools vorhanden 
-\end{itemize}
-
-Links:
-\begin{itemize}
-\item \url{http://openwrt.org/}
-\item \url{http://toh.openwrt.org/}
-\end{itemize}

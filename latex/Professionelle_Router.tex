@@ -1,6 +1,6 @@
 \subsubsection{Professionelle Router}
 
-In diesem Abschnitt werden so genannte Stand-alone Mesh-Router betrachtet. 
+In diesem Abschnitt werden so Professionelle Mesh-Router betrachtet. 
 Die Begriffe, die daf"ur oft als Synonyme verwendet werden, sind dabei: 
 
 \begin{itemize}	
@@ -8,9 +8,8 @@ Die Begriffe, die daf"ur oft als Synonyme verwendet werden, sind dabei:
 	\item Stand-alone Mesh-Router 
 	\item Minicomputers 
 	\item Single-Board-Computers (SBC) 
-	\item Access Points 	
+	\item Access Points (AP)	
 \end{itemize}
- 
 
 Im Projekt (\url{http://umic-mesh.net}) wurden professionelle Router
 eingesetzt, das sind spezielle Router-Boards mit Steckpl"atzen f"ur
@@ -21,21 +20,22 @@ also keine billige L"osung.
 Man k"onnte aber nur diese Karten kaufen + Adapter PCI-MiniPCI und in Rechner
 einbauen (Das w"are dann die platzsparende Version von \emph{PCs + WLAN-Karte}).
 WLAN-Karten z.B Wistron Neweb CM9 Atheros 802.11a/b/g Mini-PCI, hier 
-\url{http://www.pcengines.ch/cm9.htm}.
-
-Boards sind hier
-\url{http://www.pcengines.ch/wrap.htm, http://www.pcengines.ch/alix.htm}
+(\url{http://www.pcengines.ch/cm9.htm}), und Boards sind hier 
+(\url{http://www.pcengines.ch/wrap.htm, http://www.pcengines.ch/alix.htm}).
 
 Es gibt noch diese kleine Mesh-Router, wie von Meraki. Die haben wohl
 ihre eigene Firmware drin und eigene Routingprotokolle oder eigene
 Implementierungen davon besser gesagt. Hier ein Paar, die 802.11a
 unterst"utzen, sind aber outdoor, haben also gro"se Reichweiten.
 Ob es sinnvoll ist, sie im Gebaude einzusetzen:
-Aphelion 3300AG Outdoor Wireless Access Point - 802.11a/b/g,
-Aphelion 600AG/605AG Intelligenter sequentieller Wireless Access Point f"ur
-den Au"senbereich mit den Standards 802.11a/b/g 
-\url{http://www.abcdata.de/abcdataneu/WLAN_MESH_Aphelion.php}
-oder PLANET MAP-2100 indoor sind aber zum Teil sehr teuer (1200 Euro !!!). 
+
+\begin{itemize}
+	\item Aphelion 3300AG Outdoor Wireless Access Point - 802.11a/b/g
+	\item Aphelion 600AG/605AG Intelligenter sequentieller Wireless Access Point f"ur
+				den Au"senbereich mit den Standards 802.11a/b/g 
+				(\url{http://www.abcdata.de/abcdataneu/WLAN_MESH_Aphelion.php})
+	\item PLANET MAP-2100 - indoor - sind aber zum Teil sehr teuer (1200 Euro)
+\end{itemize}
 
 \textbf{Vorteile:}
 
@@ -43,14 +43,13 @@ oder PLANET MAP-2100 indoor sind aber zum Teil sehr teuer (1200 Euro !!!).
 	\item Outdoor (in unserem Fall unrelevant) 
 	\item Groﬂe Reichweiten
 \end{itemize}
- 
 
 \textbf{Nachteile:} 
 
 \begin{itemize}	
-	\item Zum Teil sehr teuer (1200 Euro !!!)
+	\item Sehr teuer
+	\item Close source
 \end{itemize}
- 
 
 \textbf{Links:}
 
@@ -61,7 +60,7 @@ oder PLANET MAP-2100 indoor sind aber zum Teil sehr teuer (1200 Euro !!!).
 	\item \url{http://forum.openwrt.org/viewtopic.php?id=9655}
 \end{itemize}
 
-\subsection{Access Points}
+\subsubsection{Access Points}
 
 Ein WLAN-Accesspoint ist der Verbindungspunkt eines kabelbasierten
 Netzwerkes zu einem WLAN. Der Accesspoint ist Basisstation f"ur alle
@@ -77,21 +76,14 @@ Dieser hat (je nach Austattung) einige der folgenden Optionen:
 	\item Ein oder mehrer integrierte WLAN-Module
 	\item Einen integrierten DHCP-Server 
 	\item Umfangreiche Sicherheits- und Verschl"usselungsmoglichkeiten 
-	
-
-		\item WEP, WPA und WPA2 dienen der Verschl"usselung der zu ubetragenden Daten 
-		\item MAC-Filter und SSID Optionen 
-		\item Einstellungen bez"uglich dem Remotezugriff 
-
-	
-	\item Verschiedene Arbeitsmodi 
-
-		\item Accesspoint (AP) 
-		\item Bridge (Point-to-Point oder Point-to-Multipoint) 
-		\item Repeater
-		\item MESSID 
-
+	(WEP, WPA und WPA2 dienen der Verschl"usselung der zu ubetragenden Daten ;
+   MAC-Filter und SSID Optionen ;
+   Einstellungen bez"uglich dem Remotezugriff)	
+	\item Verschiedene Arbeitsmodi (Accesspoint (AP), 
+				Bridge (Point-to-Point oder Point-to-Multipoint), Repeater, MESSID) 
 \end{itemize}
+
+(TODO) Hier sind ein paar kandidaten: ..
  
 Intel PRO/Wireless 5000 
 
