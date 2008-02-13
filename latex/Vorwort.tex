@@ -43,14 +43,24 @@ Auspr"agung eines hybriden Kommunikationssystems eine wesentliche Rolle.
 
 \subsubsection{Ad-Hoc}
 
-Ein Ad-hoc-Netz bezeichnet in der Informationstechnologie eine drahtlose
-Netzwerktopologie zwischen zwei oder mehr Endger"aten, die ohne feste
-Infrastruktur auskommt.
-(TODO) Mehr Tesxt.. Bilder: Adhoc, Infrastruktur!
+Ein Ad-hoc-Netz (lat. ad hoc, sinngem"a"s f"ur diesen Augenblick gemacht)
+ist ein drahtloses Rechnernetz, das zwei oder mehr Endger"ate zu einem
+vermaschten Netz verbindet. Netze, die sich selbst"andig aufbauen und
+konfigurieren, nennt man auch mobile Ad-hoc-Netze (engl. mobile ad hoc
+network, MANet) oder Mesh-Netze (engl. mesh, Masche, Netz).
 
+Ad-hoc-Netze verbinden mobile Ger"ate (Netzknoten) wie
+Mobiltelefone, Personal Digital Assistants und Notebooks ohne
+feste Infrastruktur wie Wireless Access Points. Daten werden von
+Netzknoten zu Netzknoten weitergereicht, bis sie ihren Empf"anger
+erreicht haben, wodurch sich die Datenlast vorteilhafter verteilt
+als in Netzen mit zentraler Anlaufstelle. Knappe Ressourcen
+wie Rechenzeit, Energie und Bandbreite fordern eine effektive
+Zusammenarbeit der Netzknoten. Spezielle Routingverfahren sorgen
+daf"ur, dass sich das Netz best"andig anpasst, wenn sich Knoten
+bewegen, hinzukommen oder ausfallen.
 
 \subsubsection{Mesh-Netz}
-(TODO) Mesh-Netze sind Ad-hoc Netze
 
 In einem vermaschten Netz (Mesh-Netz) ist jeder Netzwerkknoten mit einem
 oder mehreren anderen verbunden. Die Informationen werden von Knoten
@@ -60,8 +70,25 @@ Wenn ein Knoten oder eine Verbindung blockiert ist oder ausf"allt, kann
 sich das Netz darum herum neu stricken. Die Daten werden umgeleitet und
 das Netzwerk ist nach wie vor betriebsf"ahig. 
 
-(TODO) Einarbeitung in grundlegende WMN-Technologien???
+Vorteile eines vermaschten Funknetzes:
+\begin{itemize}
+\item Sicherste Variante eines Netzwerkes
+\item Bei Ausfall eines Endger"ates ist durch Umleitung die
+Datenkommunikation weiterhin m"oglich
+\item Sehr leistungsf"ahig
+\item Gute Lastverteilung
+\item Niedrige Netzwerkkosten
+\item Keine zentrale Verwaltung
+\end{itemize}
 
+Nachteile eines vermaschten Funknetzes:
+\begin{itemize}
+\item Vergleichsweise komplexes Routing n"otig
+\item Speichern von Routing-Tabellen in jedem Endger"at
+\item Jedes Endger"at arbeitet als Router und ist demnach oft aktiv
+\item Die Endger"ate sollten m"oglichst eingeschaltet bleiben
+\item H"oherer Stromverbrauch im Endger"at
+\end{itemize} 
 
 \subsubsection{IEEE 802.11a/b/g}
 \label{ieee80211abg}
@@ -251,13 +278,38 @@ proaktiv in die Routingtabelle ein.
 
 \subsection{Existierende L"osungen und Projekte}
 
-(TODO) Einbisschen Text zu jedem Projekt (googeln)
+\begin{description}
 
-\begin{itemize}
-\item FreiFunk \url{http://freifunk.net/wiki/Meshing}
-\item OpenNet \url{http://wiki.opennet-initiative.de/index.php/Hauptseite}
-\item \url{http://www-i4.informatik.rwth-aachen.de/mcg/projects/umic-mesh/} 
-\item \url{http://umic-mesh.net/}
-\item (TODO) Google..
+\item[FreiFunk]
+hat zum Ziel, freie, unabh"angige und nichtkommerzielle Computer-Funknetze
+zu etablieren.  Es bildet eine Plattform f"ur Menschen, die an einer
+offenen Netzwerk-Infrastruktur interessiert sind.
 
-\end{itemize}
+\url{http://wiki.freifunk.net/Hauptseite}
+
+\item[OpenNet]
+hat sich zur Aufgabe gemacht, freie und offene
+Kommunikationsinfrastrukturen zu f"ordern. Dabei setzen die
+Vereinsmitglieder auf WLAN-Technik und die Vernetzung von Dach zu Dach
+und Haus zu Haus.
+
+\url{http://wiki.opennet-initiative.de/index.php/Hauptseite}
+
+\item[UMIC-Mesh]
+
+ist ein hybrides Testbed f"ur WMNs.
+Das Projekt verfolgt 2 Ziele, einerseits ein gro"ses und sklalierbares
+Ad-Hoc Mesh-Netzwerk f"ur Forschung bereitzustellen und andererseits
+allen Studenten und Mitarbeiter der Computer Science Abteilung
+einen breitbandigen Zugang zum Netzwerk der Abteilung zur Verf"ugung zu stellen.
+
+\url{http://umic-mesh.net/}
+
+\item[Google WiFi]
+
+ist ein freies WMN, das von Google finanziert wird und zur Zeit in
+Mountain View in Kalifornien eingesetzt wird.
+
+\url{http://wifi.google.com/}
+
+\end{description}
