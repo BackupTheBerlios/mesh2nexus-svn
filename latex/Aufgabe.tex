@@ -41,7 +41,6 @@ Das Vorgehen umfasst im einzelnen:
 
 
 \section{Anforderungen}
-(TODO) korrigieren, vielleicht ganze S"atze machen!
 
 Nach der Einarbeitung in WMN-Technologien und 
 Analyse der Anforderungen des Nexus-Projektes
@@ -51,37 +50,39 @@ wurde folgendes festgehalten:
 \begin{itemize}
 	\item IEEE 802.11a kompatibel (5Ghz Frequenzen) 
 	\item Ad-hoc Modus (auch bei 5Ghz Frequenzen) 
-	\item Treiber fur Linux (und Windows) 
-	\item Open-Source Firmware (nur f"ur Router) 
-	\item Zusatzlich zu Wireless Mesh Network auch weitere (Netzwerk-)Schnittstelle zur Verwaltung vorsehen 
-	\item Nach Moglichkeit keine selber gebastelten Losungen 
-	\item Sch"on ware, die angestrebte Standardisierung von Mesh-Netzen zu unterstutzen 
-				(MESH STANDART 11n Draft als Vorteil)
-	\item 2 Mini PCI-Slots (nur f"ur Router) - 
-				Funk auf verschiedenen Frequenzbandern (Performanceverbesserung) 
+	\item Treiber f"ur Linux und Windows
+	\item Open-Source Firmware f"ur Router
+	\item Zus"atzlich zu Wireless Mesh Network auch weitere
+	(Netzwerk-)Schnittstellen zur Verwaltung vorsehen (LAN)
+	\item Nach M"oglichkeit keine selber gebastelten L"osungen 
+	\item Unterst"utzung von IEE 802.11n w"are vorteilhaft
+	\item 2 Mini PCI-Slots bei Routern, damit auf verschiedenen
+	Frequenzb"andern gesendet und empfangen werden kann
+	(Performanceverbesserung) 
 \end{itemize}
 
 \subsection{Anforderungen an Software}
 \begin{itemize}
-	\item Betriebsystem ist nicht festgelegt, soll Ergebnis der Fachstudie sein
+	\item Betriebsystem ist nicht festgelegt,
+	soll Ergebnis der Fachstudie sein
 	\item Freiheit bei Routingprotokollen (Austauschbarkeit)
-	\item Software soll Konfigurierung und Instrumentierung von WMN erm"oglichen
-	\item Topologie verandern bzw. erfassen 
+	\item Software soll Konfigurierung und Instrumentierung von WMN
+	erm"oglichen
+	\item Topologie ver"andern bzw. erfassen soll m"oglich sein
 	\item Visualisierung von Anfragen und Topologie 
 \end{itemize}
 
-\subsection{Zusatzliche Anforderungen}
+\subsection{Zus"atzliche Anforderungen}
 \begin{itemize}
-	\item Abdeckung des Gebaudes Universitatsstra?e 38
-	\item Verbindung mit Informatik-Netz nur "uber Gateway mit strikter Filterung
-	      (nur eine Richtung (UNI->Mesh) f"ur die Verwaltung)
-	\item Separates Gateway notwendig? Vermutlich sinnvoll. 
-	\item AUFWANDSCHATZUNG (wie viele Knoten usw. )
+	\item Abdeckung des Geb"audes Universit"atsstra"se 38
+	\item Verbindung mit Informatik-Netz nur "uber Gateway
+	mit strikter Filterung (nur eine Richtung (UNI->Mesh)
+	f"ur die Verwaltung)
+	\item Aufwandsch"atzung (wie viele Knoten usw.)
 	\item Budget max. 25.000 Euro (evtl. mehr in Zukunft)
 	\item 4-5 Mesh-Knoten pro Quadrat 
-	\item Speicherkapazitat wichtig (nur bei Router)
-	\item FOCUS: PC + Wlan-Karten, da mehr Flexibilit"at
-	\item PC + 2 Wlan-Karten vorteilhaft
+	\item Speicherkapazit"at wichtig bei Routern
+	\item PC + WLAN-Karten sind wegen Flexibilit"at vorzuziehen
 	\item PDAs (bzw. andere kleine Clients) mit 802.11a
 \end{itemize}
 
