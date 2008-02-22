@@ -1,30 +1,18 @@
-\section{Tests}
+\section{Test}
 
-(TODO) Vervollst"andigen
+Der Test, der hier detailliert beschrieben wird, wurde w"ahrend der Fachstudie
+im Nexus-Labor mit der Test-Hardware durchgef"uhrt.
 
-Die Tests, die während der Fachstudie in Nexus-Labor mit der Test-Hardware 
-durchgeführt wurden, sind in diesen Abschnitt detalliert beschrieben.
+\subsection{Hardware}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Erster Test
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Erster Test}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Hardware
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Hardware}
-
-Zuerst wurde folgende Hardware f"ur den Tests im Nexus-Labor eingerichtet:
-
+Zuerst wurde folgende Hardware f"ur den Test im Nexus-Labor eingerichtet:
 \begin{itemize}
-	\item Zwei PCs mit \emph{Wistron CM9 Atheros AR5213A} Wlan Karten
-  \item Ein Laptop mit Intel mini-PCI Wlan Karte
+\item Zwei Rechner (x86) mit jeweils einer \textbf{Wistron CM9 Atheros AR5213A}
+(siehe \ref{Wistron CM9 Atheros AR5213A}) WLAN-Karte
+\item Ein Laptop (x86) mit einer \textbf{Intel Wireless WiFi Link 4965AGN}
+(siehe \ref{Intel Wireless WiFi Link 4965AGN}) WLAN-Karte
 \end{itemize}
 
-%\wlanimage{Labor}{Topologie}
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.8\textwidth]{images/Labor.jpg}
@@ -32,168 +20,249 @@ Zuerst wurde folgende Hardware f"ur den Tests im Nexus-Labor eingerichtet:
   \label{fig:Topologie}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Software
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Software}
+\subsection{Software}
 
-Dann wurde Betriebsystem Linux (Fedora 2.6.18) auf den Rechnern installiert.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Madwifi
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{Madwifi}
+\subsubsection{Betriebssystem}
 
-Danach wurden die Linux-Treiber Madwifi installiert: 
-(\emph{Treiber sind nur f"ur Fedora 2.6.18 kernel!})
+Auf den Rechnern mit der Wistron CM9 Atheros AR5213A WLAN-Karte wurde
+als Betriebssystem Fedora 6 mit Linux Kernel 2.6.18
+und auf dem Laptop Windows XP verwendet.
 
-Die einzelnen Schritte dabei waren:
+\subsubsection{Treiber f"ur WLAN-Karten}
 
-\textbf{1. Treiber installieren}
-\begin{verbatim}
-			# svn checkout http://svn.madwifi.org/madwifi/trunk madwifi	
-			# cd madwifi	
-			# make	
-			# make install
-\end{verbatim}
+In diesem Abschnitt wird beschrieben, wie man Treiber f"ur WLAN-Karten
+auf den beiden Rechnern und Laptop installiert und die WLAN-Karten
+konfiguriert werden k"onnen.
 
-\textbf{2a. Treiber laden manuell}
-\begin{verbatim}
-			# modprobe ath_pci
-\end{verbatim}
+Auf den Rechnern mit der Wistron CM9 Atheros AR5213A WLAN-Karte
+wurde die letzte Version des MadWifi-Treibers zuerst kompiliert und dann
+installiert.
 
-\textbf{2b. Treiber laden automatisch}
-\begin{verbatim}
-			# mkdir /etc/modules.autoload.d/
-			# echo ath_pci >> /etc/modules.autoload.d/kernel-2.6
-\end{verbatim}
+Kompilieren des MadWifi-Treibers:
+\begin{shelllst}
+svn checkout http://svn.madwifi.org/madwifi/trunk madwifi
+cd madwifi
+make
+\end{shelllst}
 
-\textbf{3a. Network-Config manuel}
-\begin{verbatim}
-			# iwlist ath1 frequency	
-			          Channel 01 : 2.412 GHz
-			          Channel 02 : 2.417 GHz
-			          Channel 03 : 2.422 GHz
-			          Channel 04 : 2.427 GHz
-			          Channel 05 : 2.432 GHz
-			          Channel 06 : 2.437 GHz
-			          Channel 07 : 2.442 GHz
-			          Channel 08 : 2.447 GHz
-			          Channel 09 : 2.452 GHz
-			          Channel 10 : 2.457 GHz
-			          Channel 11 : 2.462 GHz
-			          Channel 36 : 5.18 GHz
-			          Channel 40 : 5.2 GHz
-			          Channel 42 : 5.21 GHz
-			          Channel 44 : 5.22 GHz
-			          Channel 48 : 5.24 GHz
-			          Channel 50 : 5.25 GHz
-			          Channel 52 : 5.26 GHz
-			          Channel 56 : 5.28 GHz
-			          Channel 58 : 5.29 GHz
-			          Channel 60 : 5.3 GHz
-			          Channel 64 : 5.32 GHz
-			          Channel 149 : 5.745 GHz
-			          Channel 152 : 5.76 GHz
-			          Channel 153 : 5.765 GHz
-			          Channel 157 : 5.785 GHz
-			          Channel 160 : 5.8 GHz
-			          Channel 161 : 5.805 GHz
-			          Channel 165 : 5.825 GHz
-			          Current Channel=0	
-			          
-			# ifconfig ath1 inet 192.168.0.1/24	
-			# iwconfig ath1 essid mesh
-			# iwconfig ath1 mode ad-hoc
-			# iwconfig ath1 channel 36
-			# iwconfig ath1 enc n1e2x3u4s5
-\end{verbatim}
+Installieren des kompilierten MadWifi-Treibers (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+make install
+\end{shelllst}
 
-\textbf{3b. Network-Config automatisch}
-Datei erstellen:
+Manuelles Laden des MadWifi-Treibers (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+modprobe ath_pci
+\end{shelllst}
 
-\begin{verbatim}
-			# mkdir /etc/sysconfig/network-scripts/ifcfg-ath1
-\end{verbatim}
+Automastische Laden des MadWifi-Treibers beim Booten
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+mkdir /etc/modules.autoload.d/
+echo ath_pci >> /etc/modules.autoload.d/kernel-2.6
+\end{shelllst}
 
-und editieren..
+Nachdem der MadWifi-Treiber geladen wurde (manuell oder automatisch),
+kann die WLAN-Karte konfiguriert werden. Die WLAN-Karte kann entweder
+manuell oder automatisch beim Booten konfiguriert werden.
 
-\begin{verbatim}
-			# Silicon Integrated Systems [SiS] SiS900 PCI Fast Ethernet
-			DEVICE=ath1
-			ONBOOT=yes
+Manuelles Konfigurieren der WLAN-Karte (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+ifconfig ath1 inet 192.168.2.1/24 # IP-Adresse
+iwconfig ath1 essid mesh          # SSID="mesh"
+iwconfig ath1 mode ad-hoc         # Ad-Hoc Modus einschalten
+iwconfig ath1 channel 36          # 802.11a Kanal 36
+iwconfig ath1 enc s:1234567890abc # 108 bit WEP-Passwort
+                                  # (13 Zeichen)
+\end{shelllst}
+
+Damit die WLAN-Karte beim Booten von Fedora 6
+automatisch konfiguriert werden kann, muss eine Konfigurationsdatei
+mit dem Namen \textbf{ifcfg-ath1} im Verzeichnis
+\textbf{/etc/sysconfig/network-scripts} angelegt werden.
+
+Listing der Datei \textbf{/etc/sysconfig/network-scripts/ifcfg-ath1}:
+\begin{shelllst}
+cat /etc/sysconfig/network-scripts/ifcfg-ath1
+DEVICE=ath1
+ONBOOT=yes
 			
-			BOOTPROTO=static
-			IPADDR=192.168.2.1x
-			NETMASK=255.255.255.0
+BOOTPROTO=static
+IPADDR=192.168.2.1
+NETMASK=255.255.255.0
 			
-			ESSID=mesh
-			MODE=ad-hoc
-			CHANNEL=36 # 5.18 GHz
-			KEY=s:0nexus0suxen0
-			# 108-Bit WEP 13 zeichen
-\end{verbatim}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% OLSR Daemon
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\paragraph{OLSR Daemon}
+ESSID=mesh
+MODE=ad-hoc
+CHANNEL=36
+KEY=s:1234567890abc
+\end{shelllst}
 
-Nach der Installation von Madwifi wurde olsrd Daemon 
-installiert und konfiguriert:
+Nachdem die Datei \textbf{/etc/sysconfig/network-scripts/ifcfg-ath1}
+erstellt wurde, muss Init-Skripot f"ur Netzwerk-Dienste neugestartet
+werden (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+/etc/init.d/network restart
+\end{shelllst}
 
-\textbf{1. olsrd installieren}
-\begin{verbatim}
-			# cvs -d:pserver:anonymous@olsrd.cvs.sourceforge.net:/cvsroot/olsrd login
-			# cvs -z3 -d:pserver:anonymous@olsrd.cvs.sourceforge.net:/cvsroot/olsrd co olsrd-current
-			# cd olsrd-current
-			# make
-			# make install
-\end{verbatim}
+Den offiziellen Windows-Treiber f"ur die Intel Wireless WiFi Link 4965AGN
+WLAN-Karte kann auf der Intel-Webpage heruntergeladen werden. Die Anleitung
+zur Installation und Konfiguration diesr WLAN-Karte findet man auch
+auf der selben Webpage (siehe \ref{Intel Wireless WiFi Link 4965AGN}) und
+wird hier nicht weiter beschrieben.
 
-\textbf{2. Plug-ins f"ur olsrd installieren }
-\begin{verbatim}
-			# cd lib/"plugin-name"
-			# make 
-			# make install 
-			# chcon -t textrel_shlib_t /usr/lib/olsrd_httpinfo.so.0.1 (!)
-\end{verbatim}
+\subsubsection{olsrd}
 
-\textbf{3. olsrd kofigurieren}
+In diesem Abschnitt wird erkl"art, wie man den olsr.org OLSR daemon kompiliert,
+installiert und konfiguriert. Au"serdem wird hier auch gezeigt, wie man
+Plugins f"ur den olsr.org OLSR daemon kompiliert uns installiert.
 
-\begin{itemize}
-	\item Datei /etc/olsrd.conf erstellen und editieren!!! (TODO) (LINK) Anhang (sieh file) 
-	\item TCP Port 8080 f"ur Httpinfo und 8081 f"ur Dot UDP 698 f"ur Eingehende 
-				Pakete erlauben. 
-	\item Datei /etc/sysconfig/iptables editieren: 
-\end{itemize}
+Kompilieren des OLSR daemons:
+\begin{shelllst}
+cvs -d:pserver:anonymous@olsrd.cvs.sourceforge.net:\
+	/cvsroot/olsrd login
+cvs -z3 -d:pserver:anonymous@olsrd.cvs.sourceforge.net:\
+	/cvsroot/olsrd co olsrd-current
+cd olsrd-current
+make
+\end{shelllst}
 
-\begin{verbatim}
-			-A RH-Firewall-1-INPUT -p tcp --dport 8080 -m state --state NEW -j ACCEPT
-			-A RH-Firewall-1-INPUT -p tcp --dport 8081 -m state --state NEW -j ACCEPT
-			-A RH-Firewall-1-INPUT -i ath1 -p udp --sport 698 -j ACCEPT
-\end{verbatim}
+Installieren des OLSR daemons (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+make install
+\end{shelllst}
 
-\textbf{4. olsrd starten }
-\begin{verbatim}
- 			# olsrd
-\end{verbatim}
+Im Folgenden wird demonstriert, wie man
+das HTTP Mini-Server Plugin \textbf{httpinfo} kompiliert und installiert.
+Das Plugin \textbf{httpinfo} ist ein kleiner und einfacjer HTTP-Server und
+erlaubt es, z.B. die Routing-Tabelle eines Knotens in einem Mesh-Netzwerk
+zu erfassen.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Ergebnisse
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Ergebnisse}
+Damit die Topology eines Mesh-Netzwerkes visualisiert werden kann,
+muss noch das Dot Data Generation Plugin \textbf{dot\_draw}
+kompiliert und installiert werden. Das Plugin \textbf{dot\_draw}
+ist auch ein kleiner Server. Wenn man eine TCP-Verbindung zu diesem Server
+aufbaut (z.B mit \textbf{netcat} oder \textbf{telnet}),
+dann bekommt man die aktuelle Topology des Mesh-Netzwerkes in
+Form eines Dot-Graphes
+(siehe GrpahViz \url{http://www.graphviz.org} und
+ \url{de.wikipedia.org/wiki/DOT\_(GraphViz)}).
+Dieser Dot-Graph ist eine einfache Textdatei und kann mit Hilfe des
+Programms \textbf{dot} zu einem Bild konvertiert werden.
+
+Es gibt noch andere zahlreiche Plugins f"ur
+den olsr.org OLSR daemon. Sie alle k"onnen auf dieselbe Weise kompiliert
+und installiert werden.
+
+Kompilieren des HTTP Mini-Server Plugins \textbf{httpinfo}:
+\begin{shelllst}
+cd lib/httpinfo
+make
+\end{shelllst}
+
+Installieren des HTTP Mini-Server Plugins \textbf{httpinfo}
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+make install 
+chcon -t textrel_shlib_t /usr/lib/olsrd_httpinfo.so.0.1
+\end{shelllst}
+
+Der olsr.org OLSR daemon wird "uber die Datei \textbf{/etc/olsrd.conf}
+konfiguriert.  Das vollst"andige Listing der Datei \textbf{/etc/olsrd.conf} ist
+im Anhang angegeben (siehe \ref{olsrd.conf}).
+Es muss vor allem das Netzwerk-Interface und Plugins konfiguriert werden.
+
+Starten des olsr.org OLSR daemons
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+olsrd
+\end{shelllst}
+
+Der olsr.org OLSR daemon kann auch automatisch beim Starten
+des Betriebssystems gestartet werden. Daf"ur muss ein Startup-Skript
+\textbf{/etc/init.d/olsrd} erzeugt werden. Das Listing der Datei
+\textbf{/etc/init.d/olsrd} kann man hier betrachten \ref{olsrd_startup}.
+
+Nachdem die Date erzeugt wurde, muss noch das System so konfiguriert
+werden, das das Startup-Skript \textbf{/etc/init.d/olsrd} beim Booten
+ausgef"uhrt werden kann (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+chmod 755 /etc/init.d/olsrd
+chkconfig --add olsrd
+\end{shelllst}
+
+Das Kompilieren und Konfigurieren des olsr.org OLSR daemons f"ur Windows XP
+wird hier nicht erkl"art, weil es ziehmlich kompliziert ist. Wir haben
+den olsr.org OLSR daemon und die GUI zu ihm f"ur Windows XP selbst kompiliert
+und konfiguriert. Um den olsr.org OLSR daemon zu kompilieren wird cygwin
+mit gcc ben"otigt. Um die GUI f"ur den olsr.org OLSR daemon zu kompilieren,
+wird Microsoft Visual C++ 2005 ben"otigt.
+
+\subsubsection{Firewall}
+
+Damit der olsr.org OLSR daemon "uberhaupt korrekt funktionieren kann,
+m"ussen mehrere Ports in der Firewall von beiden Rechnern ge"offnet werden.
+
+Damit der OLSR-Protokoll funktionieren kann, muss der UDP-Port 698
+f"ur eingehende Pakete ge"offnet werden (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+iptables -A RH-Firewall-1-INPUT -i ath1 -p udp\
+	--sport 698 -j ACCEPT
+\end{shelllst}
+
+Damit man auf den HTTP Mini-Server \textbf{httpinfo} eines Knotens zugreifen
+kann, muss der TCP-Port
+(hier 8080, kann in der \textbf{/etc/olsrd.conf} konfiguriert werden)
+des Servers f"ur eingehende Pakete ge"offnet werden
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+iptables -A RH-Firewall-1-INPUT -p tcp --dport 8080\
+	-m state --state NEW -j ACCEPT
+\end{shelllst}
+
+Damit man auf den Dot Data Generation Server \textbf{dot\_draw}
+eines Knotens zugreifen kann, muss der TCP-Port
+(hier 8081, kann in der \textbf{/etc/olsrd.conf} konfiguriert werden)
+des Servers f"ur eingehende Pakete ge"offnet werden
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+iptables -A RH-Firewall-1-INPUT -p tcp --dport 8081\
+	-m state --state NEW -j ACCEPT
+\end{shelllst}
+
+Damit alle diese Ports automatisch beim Starten des Betriebssystems
+ge"offnet werden k"onnen, muss in Fedora 6
+die Datei \textbf{/etc/sysconfig/iptables} erweitert werden
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+cat >> /etc/sysconfig/iptables << EOF
+-A RH-Firewall-1-INPUT -i ath1 -p udp\
+	--sport 698 -j ACCEPT
+-A RH-Firewall-1-INPUT -p tcp --dport 8080\
+	-m state --state NEW -j ACCEPT
+-A RH-Firewall-1-INPUT -p tcp --dport 8081\
+	-m state --state NEW -j ACCEPT
+EOF
+
+/etc/init.d/iptables restart
+\end{shelllst}
+
+Die Konfiguration der Windows-Firewall auf dem Laptop wird hier nicht erkl"art,
+siehe entsprechende Literatur und Artikel im Internet.
+
+\subsection{Inbetriebnahme}
+
+Nachdem alle Treiber, der OLSR daemon und Plagins kompiliert und installiert
+wurden und entsprechende Ports in Firewall ge"offnet wurden,
+kann auf jedem Knoten der OLSR daemon gestartet werden.
+
+\subsection{Ergebnisse}
 (TODO) korrigieren
-\paragraph{Topologie}
+\subsubsection{Topologie}
 Mittels \emph{olsrd-Plugin dot}, wurde folgende Topologie-Abbildung erstellt.
 (TODO) Beschreiben..
 \wlanimage{Topology}{Topologie Graph}
 
-\paragraph{Http Info}
+\subsubsection{Http Info}
 Mittels \emph{olsrd-Plugin Http Info}, wurde folgende Routing-"Ubersicht-Abbildung erstellt.
 (TODO) Beschreiben..
 
@@ -203,12 +272,3 @@ Mittels \emph{olsrd-Plugin Http Info}, wurde folgende Routing-"Ubersicht-Abbildu
   \caption{Http Info}
   \label{fig:Olsr_Route}
 \end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%
-% Zweiter Test
-%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Zweiter Test}
-
-(TODO) .. 2 laptops, windows, ..
