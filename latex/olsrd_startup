@@ -75,7 +75,8 @@ case "$1" in
         status olsrd
         ;;
   *)
-        echo $"Usage $0 {start|stop|restart|reload|condrestart|status}"
+        echo $"Usage $0 {start|stop|restart|reload|\
+		condrestart|status}"
         RETVAL=1
 esac
 

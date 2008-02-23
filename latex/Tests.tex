@@ -193,9 +193,72 @@ chkconfig --add olsrd
 Das Kompilieren und Konfigurieren des olsr.org OLSR daemons f"ur Windows XP
 wird hier nicht erkl"art, weil es ziehmlich kompliziert ist. Wir haben
 den olsr.org OLSR daemon und die GUI zu ihm f"ur Windows XP selbst kompiliert
-und konfiguriert. Um den olsr.org OLSR daemon zu kompilieren wird cygwin
+und konfiguriert. Um den olsr.org OLSR daemon zu kompilieren, wird cygwin
 mit gcc ben"otigt. Um die GUI f"ur den olsr.org OLSR daemon zu kompilieren,
 wird Microsoft Visual C++ 2005 ben"otigt.
+
+\subsubsection{Visualisierung}
+
+Das Dot Data Generation Plugin \textbf{dot\_draw} f"ur den olsr.org OLSR
+daemon stellt die Topology eines Mesh-Netzwerkes in Form eines Dot-Graphes dar.
+Der Dot-Graph ist eine Textdatei und man kann aus dieser Datei die Topology
+nicht sofort sehen.
+
+Um die aktuelle Topology mit einem Webbrowser online betrachten zu k"onnen,
+haben wir auf einem Linux-Rechner in unserem Mesh-Netzwerk einen Apache
+HTTP-Server installiert und ein CGI-Skript (Perl-Skript) entwickelt,
+das die aktuelle Topology des Mesh-Netzwerkes grafisch darstellt.
+
+Installieren des Pache HTTP-Servers in Fedora 6
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+yup install httpd
+\end{shelllst}
+
+Das CGI-Skript, das die aktuelle Topology des Mesh-Netzwerkes vom
+Dot Data Generation Plugin \textbf{dot\_draw} ausliest, ins Bild konvertiert
+und in eine Webseite integriert, finden Sie hier \ref{topology.pl}.
+Das CGI-Skript muss im Verzeichnis \textbf{/var/httpd/cgi-bin/} abgelegt
+und ausf"uhrbar gemacht werden.
+
+Das CGI-Skript \textbf{topology.pl} ben"otigt noch das Paket GraphViz,
+konkret wird das Programm \textbf{dot} aus diesem Paket ben"otigt,
+um Dot-Graphen zu Bildren konvertieren zu k"onnen.
+
+Installieren des GraphViz-Pakets (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+yup install graphviz
+\end{shelllst}
+
+\subsubsection{dhcpd}
+
+In unserem Test haben wir jedem Knoten in unsrem kleinen Mesh-Netzwerk
+IP-Adressen statisch vergeben. Mit 3 Knoten im Netzwerk ist der Aufwand daf"ur
+sehr gering. Wenn sich aber Knoten zum Mesh-Netzwerk dynamisch verbinden
+und verschwinden k"onnen oder wenn die Anzahl der Knoten im Mesh-Netzwerk
+sehr gro"s wird, dann kann man auf einem der Linux-Rechnern in unserem
+Mesh-Netzwerk einen DHCP-Server installieren. Dieser Knoten
+mit DHCP-Server muss nat"urlich st"andig im Mesh-Netzwerk vorhanden sein.
+
+Installieren des DHCP-Servers in Fedora 6 (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+yup install dhcp
+\end{shelllst}
+
+Der DHCP-Server kann "uber die Datei \textbf{/etc/dhcpd.conf} konfiguriert
+werden.
+
+Damit der DHCP-Server automatisch beim Booten gestartet werden kann,
+muss man folgendes Kommando ausf"uhren (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+chkconfig dhcpd on
+\end{shelllst}
+
+Manuelles Beziehen einer IP-Adresse vom DHCP-Server
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+dhclient ath1
+\end{shelllst}
 
 \subsubsection{Firewall}
 
@@ -229,6 +292,22 @@ iptables -A RH-Firewall-1-INPUT -p tcp --dport 8081\
 	-m state --state NEW -j ACCEPT
 \end{shelllst}
 
+Um die aktuelle Topology unseres Mesh-Netzwerkes betrachten zu k"onnen,
+muss man den TCP-Port 80 f"ur eingehende Verbindungen "offnen
+(\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+iptables -A RH-Firewall-1-INPUT -p tcp --dport http\
+	-m state --state NEW -j ACCEPT
+\end{shelllst}
+
+Wenn im Mesh-Netzwerk ein DHCP-Server verwendet werden soll, dann
+m"ussen auf jedem Knoten im Mesh-Netzwerk die UDP-Ports 67 und 68
+ge"offnet werden (\textbf{root}-Rechte ben"otigt):
+\begin{shelllst}
+-A RH-Firewall-1-INPUT -i ath1 -p udp\
+	--sport 67:68 --dport 67:68 -j ACCEPT
+\end{shelllst}
+
 Damit alle diese Ports automatisch beim Starten des Betriebssystems
 ge"offnet werden k"onnen, muss in Fedora 6
 die Datei \textbf{/etc/sysconfig/iptables} erweitert werden
@@ -240,6 +319,8 @@ cat >> /etc/sysconfig/iptables << EOF
 -A RH-Firewall-1-INPUT -p tcp --dport 8080\
 	-m state --state NEW -j ACCEPT
 -A RH-Firewall-1-INPUT -p tcp --dport 8081\
+	-m state --state NEW -j ACCEPT
+-A RH-Firewall-1-INPUT -p tcp --dport http\
 	-m state --state NEW -j ACCEPT
 EOF
 
@@ -256,19 +337,32 @@ wurden und entsprechende Ports in Firewall ge"offnet wurden,
 kann auf jedem Knoten der OLSR daemon gestartet werden.
 
 \subsection{Ergebnisse}
-(TODO) korrigieren
-\subsubsection{Topologie}
-Mittels \emph{olsrd-Plugin dot}, wurde folgende Topologie-Abbildung erstellt.
-(TODO) Beschreiben..
-\wlanimage{Topology}{Topologie Graph}
 
-\subsubsection{Http Info}
-Mittels \emph{olsrd-Plugin Http Info}, wurde folgende Routing-"Ubersicht-Abbildung erstellt.
-(TODO) Beschreiben..
+In diesem Abschnitt werden wir die Ergebnisse von unserem Test pr"asentieren.
+
+\subsubsection{Topologie}
+
+Auf dem Bild \ref{fig:Topology} kann man die Topologie unseres Mesh-Metzwerkes
+betrachten. Der Knoten mit der IP-Adresse 192.168.2.15 ist der Laptop und
+die anderen beiden sind Linux-Rechner. Der rechteckige Knonten auf dem Bild, ist
+der Knoten, der diese Topologie erzeugt hat.
 
 \begin{figure}[H]
-  \centering
-  \includegraphics[width=1.0\textwidth]{images/Olsr_Route.jpg}
-  \caption{Http Info}
-  \label{fig:Olsr_Route}
+\centering
+\includegraphics[width=0.5\textwidth]{images/Topology.jpg}
+\caption{Topologie dargestellt mit dem olsr.org Plugin \textbf{dot\_draw}}
+\label{fig:Topology}
+\end{figure}
+
+\subsubsection{Routing-Tabelle}
+
+Auf dem Bild \ref{fig:httpinfo} kann man die Routing-Tabelle
+eines Linux-Rechners betrachten
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{images/Olsr_Route.jpg}
+\caption{Routing-Tabelle eines Knotens dargestellt
+	mit dem olsr.org Plugin \textbf{httpinfo}}
+\label{fig:httpinfo}
 \end{figure}
