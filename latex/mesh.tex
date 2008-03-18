@@ -40,7 +40,7 @@ für drahtlose vermaschte Kommunikationsnetze} % Dokumententitel
 
 % Links und PDF-Spezifika
 \pdfcompresslevel=9   % Grafiken komprimieren
-\usepackage{hyperref}
+\usepackage[pdftex]{hyperref}
 \definecolor{darkblue}{rgb}{0,0,.5}
 \hypersetup{colorlinks=true, breaklinks=true, linkcolor=darkblue, 
 menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
@@ -51,6 +51,9 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 \usepackage{float}
 \restylefloat{figure}
 \restylefloat{table}
+
+\usepackage{hypcap}
+\usepackage{thumbpdf}
 
 % Farben:
 \definecolor{todoDescription}{rgb}{0.5, 0.0, 0.75} 
@@ -72,6 +75,7 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 {
 	\begin{figure}[H]
 		\centering
+		\capstart
 		\includegraphics[width=0.5\textwidth]{#1}
 		\caption{#2}
 	\end{figure}
