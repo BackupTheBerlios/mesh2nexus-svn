@@ -3,7 +3,8 @@
 # Startup script for the OLSR Daemon
 #
 # chkconfig: 235 16 84
-# description: This script starts OLSRD (Ad Hoc routing protocol)
+# description: This script starts OLSRD
+#              (Ad Hoc routing protocol)
 #
 # processname: olsrd
 # config: %{_sysconfdir}/olsrd.conf
