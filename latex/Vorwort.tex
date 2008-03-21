@@ -19,8 +19,8 @@ drahtlose Kommunikationsinfrastruktur f"ur die Klienten (engl. Mesh
 Client) bilden. Durch den Einsatz vergleichsweise kosteng"unstiger
 Hardwarekomponenten und die Vermaschung der Knoten erm"oglichen WMNs die
 kosteng"unstige Vernetzung auch gr"o"serer Gebiete. Entsprechende Netze
-werden beispielsweise von Community-Projekten wie das Freifunk-Projekt (\ref{other_mesh_projects})
-oder Firmen wie Google ((\ref{other_mesh_projects}) bereits heute in der Praxis f"ur den Aufbau gr"o"serer
+werden beispielsweise von Community-Projekten wie dem Freifunk-Projekt (\ref{other_mesh_projects})
+oder Firmen wie Google (\ref{other_mesh_projects}) bereits heute in der Praxis f"ur den Aufbau gr"o"serer
 Netze eingesetzt, um beispielsweise kosteng"unstige Internetzug"ange f"ur
 Stadtteile oder ganze St"adte zu realisieren.
 
@@ -42,12 +42,15 @@ Auspr"agung eines hybriden Kommunikationssystems eine wesentliche Rolle.
 
 \subsubsection{Ad-Hoc}
 
-Ein Ad-hoc-Netz (lat. ad hoc, sinngem"a"s f"ur diesen Augenblick gemacht)
+TODO:  \todo{plagiat -> Zusammenfassung in eigenen Worte und Referenz..
+Mobilitaet ist das Kennzeichen eines MANET! Besser: MANNET und Mesh-Netze sind
+Auspraegungen von Ad-hoc Netzen!}
+
+\emph{Ein Ad-hoc-Netz (lat. ad hoc, sinngem"a"s f"ur diesen Augenblick gemacht)
 ist ein drahtloses Rechnernetz, das zwei oder mehr Endger"ate zu einem
 vermaschten Netz verbindet. Netze, die sich selbst"andig aufbauen und
 konfigurieren, nennt man auch mobile Ad-hoc-Netze (engl. mobile ad hoc
 network, MANet) oder Mesh-Netze (engl. mesh, Masche, Netz).
-
 Ad-hoc-Netze verbinden mobile Ger"ate (Netzknoten) wie
 Mobiltelefone, Personal Digital Assistants und Notebooks ohne
 feste Infrastruktur wie Wireless Access Points. Daten werden von
@@ -57,17 +60,22 @@ als in Netzen mit zentraler Anlaufstelle. Knappe Ressourcen
 wie Rechenzeit, Energie und Bandbreite fordern eine effektive
 Zusammenarbeit der Netzknoten. Spezielle Routingverfahren sorgen
 daf"ur, dass sich das Netz best"andig anpasst, wenn sich Knoten
-bewegen, hinzukommen oder ausfallen.
+bewegen, hinzukommen oder ausfallen.}
 
 \subsubsection{Mesh-Netz}
+
+TODO: \todo{Abbildung hinzufuegen: Mesh Node, Mesh clients, Mesh Router.. oder allgemein..}
 
 In einem vermaschten Netz (Mesh-Netz) ist jeder Netzwerkknoten mit einem
 oder mehreren anderen verbunden. Die Informationen werden von Knoten
 zu Knoten weitergereicht, bis sie das Ziel erreichen. Vermaschte
 Netze sind im Regelfall selbstheilend und dadurch sehr zuverl"assig:
 Wenn ein Knoten oder eine Verbindung blockiert ist oder ausf"allt, kann
-sich das Netz darum herum neu stricken. Die Daten werden umgeleitet und
+sich das Netz neu rekonfigurieren. Die Daten werden umgeleitet und
 das Netzwerk ist nach wie vor betriebsf"ahig. 
+
+TODO: \todo{Sicherste Variante eines Netzwerkes - Warum? -> Begruendung!
+Alle vorteile und Nachteile ausschreiben!}
 
 Vorteile eines vermaschten Funknetzes:
 \begin{itemize}
@@ -84,13 +92,15 @@ Nachteile eines vermaschten Funknetzes:
 \begin{itemize}
 \item Vergleichsweise komplexes Routing n"otig
 \item Speichern von Routing-Tabellen in jedem Endger"at
-\item Jedes Endger"at arbeitet als Router und ist demnach oft aktiv
 \item Die Endger"ate sollten m"oglichst eingeschaltet bleiben
 \item H"oherer Stromverbrauch im Endger"at
 \end{itemize} 
 
-\subsubsection{IEEE 802.11a/b/g}
+\subsubsection{Kommunikationstechnologien: IEEE 802.11a/b/g..}
 \label{ieee80211abg}
+
+TODO: \todo{Vorteile, Nachteile gegenueber was? -> 2.4 vs. 5!
+n/g/s - beschreibung hinzufuegen}	
 
 \textbf{IEEE 802.11} (auch: Wireless LAN, WLAN, WiFi) bezeichnet eine IEEE-Norm
 f"ur drahtlose Netzwerkkommunikation. Herausgeber ist das Institute of
@@ -147,16 +157,18 @@ Schicht, die mit dem bisher genutzten 2,4-GHz-Band auskommt und
 
 Ein Ad-hoc Netzwerk beispielsweise ein Sensornetzwerk besteht aus einer
 gro"ser Anzahl von Knoten, die sich typischerweise spontan vernetzen
-m"ussen. "Uber Funk k"onnen diese Knoten miteinander kommunizieren. Aber
+m"ussen. "Uber Funk k"onnen diese Knoten miteinander kommunizieren. 
+TODO: \todo{Grammatik!}	
+\emph{Aber
 Knoten kann wegen der Leistungsf"ahigkeit, des Energieverbrauches
 und auch der Mobilit"at nicht mit allen anderen Knoten direkt Daten
 "ubertragen. Routing Methoden bieten die M"oglichkeit, Kommunikation
 zwischen zwei Knoten mit Hilfe der anderen Knoten auszuf"uhren, wenn die
-zwei Knoten miteinander nicht direkt kommunizieren k"onnen.
+zwei Knoten miteinander nicht direkt kommunizieren k"onnen.}
 
 Es gibt mehr als 70 konkurrierende Entw"urfe für das Routing der Pakete
 durch ein Mobiles Ad-Hoc/Maschennetzwerk. Eine Klassifikation der
-Routingprotokolle kann durch Anzahl der Empf"anger getroffen werden:
+Routingprotokolle kann durch die Anzahl der Empf"anger getroffen werden:
 \begin{itemize}
 \item unicast Routing - Ziel der Daten"ubertragung ist ein einzelner Knoten
 \item multicast Routing - Ziel sind mehrere Knoten
@@ -177,6 +189,7 @@ die genauen Positionen der Knoten. Diese Informationen werden z. B. "uber
 GPS-Empf"anger gewonnen. Anhand dieser Ortsinformationen l"asst sich der
 k"urzeste oder der beste Pfad zwischen Quell- und Zielknoten bestimmen. Ein
 Beispiel f"ur ein positionsbasiertes Routingprotokoll ist LAR.
+TODO: \todo{Referenz}	
 
 \textbf{Topologiebasierte Routingverfahren}
 
@@ -192,6 +205,7 @@ Aufbaus der Topologiedatenbasis handelt es sich um proaktives oder
 reaktives Routing. Ein Beispiel f"ur ein Protokoll aus dieser Klasse ist
 das Neighbourhood Discovery Protocol (NHDP), das Elemente des Optimized
 Link State Routing Protocol (OLSR) verwendet.
+TODO: \todo{Referenz}	
 
 \textbf{Proaktive Verfahren}
 
@@ -203,6 +217,7 @@ ist daf"ur jedoch, dass diese Verfahren auch ohne Verkehr von Nutzdaten
 viele Kontrollpakete verschicken, um Pfade zu bestimmen, die wom"oglich
 sp"ater nicht ben"otigt werden. Ein Beispiel f"ur ein Protokoll aus dieser
 Klasse ist das Optimized Link State Routing Protocol (OLSR).
+TODO: \todo{Referenz}	
 
 \textbf{Reaktive Verfahren}
 
@@ -216,6 +231,7 @@ versendet, wenn Nutzdaten verschickt werden und dies zur Routenbestimmung
 notwendig ist. Dies schl"agt sich positiv im Energieverbrauch der Knoten
 nieder. Das Protokoll Ad hoc On-Demand Distance Vector (AODV) ist ein
 Beispiel f"ur ein Protokoll dieser Kategorie.
+TODO: \todo{Referenz}	
 
 \textbf{Hybride Verfahren}
 
@@ -251,7 +267,8 @@ Umstand Rechnung getragen, dass Links asymmetrisch sein k"onnen. Mit
 dem Fisheye-Algorithmus ist OLSR auch fur gro"sere Netzwerke brauchbar
 geworden, da Routen zu weiter entfernten Knoten weniger h"aufig neu
 berechnet werden. Der entscheidende Nachteil ist aber der trotz
-Fisheye-Algorithmus noch recht hohe Rechenaufwand von OLSRD, sobald
+Fisheye-Algorithmus noch recht hohe Rechenaufwand von 
+TODO: \todo{OLSRD?}	\emph{OLSRD}, sobald
 die Anzahl an Knoten ein gewisses Ma"s ubersteigt.
 
 \paragraph{B.A.T.M.A.N.}
@@ -260,7 +277,9 @@ die Anzahl an Knoten ein gewisses Ma"s ubersteigt.
 \includegraphics{Batman_logo.png}
 \end{figure}
 
-Ausgehend von den Erfahrungen mit Freifunk-OLSR \cite{elektra2007}
+TODO: \todo{plagiat-> ueberarbeiten und referenz}
+
+\emph{Ausgehend von den Erfahrungen mit Freifunk-OLSR \cite{elektra2007}
 begannen die Entwickler
 aus der Freifunk-Community im M"arz 2006 in Berlin damit, ein neues
 Routingprotokoll f"ur drahtlose Meshnetzwerke zu entwickeln. Alle bisher
@@ -273,8 +292,9 @@ lediglich, ob Routen zu anderen Knoten existieren und "uberwacht ihre
 Qualit"at. Dabei interessiert es sich nicht daf"ur, wie eine Route verl"auft,
 sondern ermittelt lediglich, "uber welchen direkten Nachbarn ein bestimmter
 Netzwerkknoten am besten zu erreichen ist, und tr"agt diese Information
-proaktiv in die Routingtabelle ein. 
+proaktiv in die Routingtabelle ein. }
 
+TODO: \todo{abschnitt fuer 802.11s als Mesh-Standart!}
 
 \subsection{Existierende L"osungen und Projekte}
 \label{other_mesh_projects}
