@@ -1,6 +1,6 @@
 \section{Systemsoftware f"ur Mesh-Netzwerk}
 
-Im Kapitel 4 haben wir mehrere Hardware-L"osungen für ein Mesh-Netztwerk
+In Kapitel 4 haben wir mehrere Hardware-L"osungen für ein Mesh-Netztwerk
 vorgestellt. F"ur alle im Kapitel 4 vorgestellten PCI-, MiniPCI- und
 PCMCIA-Karten werden vom Hersteller dieser WLAN-Karten Windows-Treiber
 bereitgestellt. Und nur wenige Hersteller (z.B Intel) haben auch Linux-Treiber
@@ -10,10 +10,10 @@ der alle im Kapitel 4 aufgelisteten WLAN-Karten mit Atheros-Chipsatz
 unterst"utzt. Bei Soho-Routern sieht das Ganze etwas anders aus. Hier gibt
 es nicht so viele M"oglichkeiten bei der Wahl nach einer Software.
 Die meisten Hersteller von SoHo-Routern stellen den Source-Code des
-Betriebssystems f"ur SoHo-Router nicht bereit. Deswegen m"ussen wir nach
-Open-Source Firmware greifen, wenn wir SoHo-Router im Ad-Hoc Modus
-betreiben wollen, denn die meisten SoHo-Router nur im Infrastruktur Modus
-arbeiten und Ad-Hoc Modus nicht realisieren.
+Betriebssystems f"ur SoHo-Router nicht bereit. \todo{rechtschreibung pruefen..} Deswegen m"uss nach
+Open-Source Firmware suchen werden, wenn SoHo-Router im Ad-Hoc Modus
+betrieben werden sollen, denn die meisten SoHo-Router arbeiten nur im Infrastruktur Modus
+und Ad-Hoc Modus nicht realisieren.
 
 In diesem Kapitel wird verschiedene Treiber- und Routing-Software
 vorgestellt, die zusammen mit der Hardware aus Kapitel 4 die Realieserung
@@ -101,7 +101,7 @@ Firmen Linksys, ALLNET, ASUS, Belkin, Buffalo, Microsoft und Siemens.
 
 In diesem Abschnitt werden Routing-Deamonen vorgestellt, die ein bestimmtes
 Routing-Protokoll implementieren und auf jedem Knoten in einem
-Mesh-Netzwerk ausgef"uhrt werden. Diese Daemonen tauschen Roting-Informationen
+Mesh-Netzwerk ausgef"uhrt werden. Diese Daemonen tauschen Routing-Informationen
 aus und machen es m"oglch, Nachrichten von einem Knoten zu einem anderen
 Knoten im Mesh-Netzwerk zu transportieren. Routing-Daemonen erm"oglichen
 die Kommunikation zwischen 2 Knoten in einem Ad-Hoc Mesh-Netzwerk,
@@ -119,7 +119,7 @@ implementiert ausserdem auch eine popul"are Erweiterung Link Quality
 Extension. Zur Zeit ist die Implementierung von olsrd verf"ugbar für
 GNU/Linux, Windows, OS X, FreeBSD, OpenBSD and NetBSD. olsrd ist eine
 gut strukturierte und kodierte Implementierung, die leicht zu warten,
-zu erweitern und auf andere Platforme zu portieren sein soll. Die
+zu erweitern und auf andere Plattforme zu portieren sein soll. Die
 Implementierung ist konform zu RFC3626 in Bezug auf die Kernfunktionalit"at
 und die zus"atzlichen Funktionen. olsrd unterst"utz das Konzept von ladbaren
 Plug-Ins. Mit diesen Plug-Ins kann man benutzerdefinierte Pakete mit
@@ -169,7 +169,7 @@ Links:
 
 \includegraphics{meshcomlogo.png}
 
-Der MeshDriver klemmt sich zwischen den WLAN-Treiber und den TCP/IP-Stack. Anders als 802.11s funkt er im Ad-hoc-Modus von 802.11 und bezieht eine Ethernet-Schnittstelle automatisch in das vermaschte Netz ein, etwa fur den Internet-Zugang. Meshcom stellt eine Beta-Version fur privaten Einsatz und Forschungszwecke kostenlos zur Verfugung, die unter Windows XP oder Linux mit Kernel 2.6 lauft. Sie beherrscht allerdings einige wesentliche Features noch nicht, beispielsweise Authentifizierung und Verschlusselung. Auch reaktives Routing fehlt noch, also das fallweise Bestimmen der Route an Stelle von vorab festgelegten Routing-Tabellen.
+Der MeshDriver klemmt sich zwischen den WLAN-Treiber und den TCP/IP-Stack. Anders als 802.11s funkt er im Ad-hoc-Modus von 802.11 und bezieht eine Ethernet-Schnittstelle automatisch in das vermaschte Netz ein, etwa f"ur den Internet-Zugang. Meshcom stellt eine Beta-Version fur privaten Einsatz und Forschungszwecke kostenlos zur Verfugung, die unter Windows XP oder Linux mit Kernel 2.6 lauft. Sie beherrscht allerdings einige wesentliche Features noch nicht, beispielsweise Authentifizierung und Verschlusselung. Auch reaktives Routing fehlt noch, also das fallweise Bestimmen der Route an Stelle von vorab festgelegten Routing-Tabellen.
 
 Links:
 \begin{itemize}
