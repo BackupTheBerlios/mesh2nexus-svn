@@ -3,11 +3,11 @@
 In Kapitel 4 haben wir mehrere Hardware-L"osungen für ein Mesh-Netztwerk
 vorgestellt. F"ur alle im Kapitel 4 vorgestellten PCI-, MiniPCI- und
 PCMCIA-Karten werden vom Hersteller dieser WLAN-Karten Windows-Treiber
-bereitgestellt. Und nur wenige Hersteller (z.B Intel) haben auch Linux-Treiber
+bereitgestellt. Und nur wenige Hersteller (z.B. Intel) haben auch Linux-Treiber
 f"ur ihre Karten implementiert. Gl"ucklicherweise existiert f"ur
 WLAN-Karten mit Atheros-Chipsatz der Open-Source Linux-Treiber MadWifi,
 der alle im Kapitel 4 aufgelisteten WLAN-Karten mit Atheros-Chipsatz
-unterst"utzt. Bei Soho-Routern sieht das Ganze etwas anders aus. Hier gibt
+unterst"utzt. Bei Soho-Routern sieht die Situation etwas anders aus. Hier gibt
 es nicht so viele M"oglichkeiten bei der Wahl nach einer Software.
 Die meisten Hersteller von SoHo-Routern stellen den Source-Code des
 Betriebssystems f"ur SoHo-Router nicht bereit. \todo{rechtschreibung pruefen..} Deswegen m"uss nach
@@ -152,7 +152,7 @@ Linux-System, "ublicherweise bereits installiert sein sollte.
 
 Um "uber ein B.A.T.M.A.N.-Mesh ins Internet gehen zu k"onnen, muss
 au"serdem unter Linux das Kernelmodul tun installiert sein. Es ist
-im Standardkernel der Linuxdistributionen enthalten und wird beim
+im Standardkernel der meisten Linuxdistributionen enthalten und wird beim
 ersten Start des B.A.T.M.A.N.-Daemons automatisch geladen. Wer einen
 selbstkompilierten Kernel einsetzt, findet es zum Beispiel in xconfig
 in der Abteilung Network Device Support unter der Bezeichnung Universal
@@ -169,7 +169,7 @@ Links:
 
 \includegraphics{meshcomlogo.png}
 
-Der MeshDriver klemmt sich zwischen den WLAN-Treiber und den TCP/IP-Stack. Anders als 802.11s funkt er im Ad-hoc-Modus von 802.11 und bezieht eine Ethernet-Schnittstelle automatisch in das vermaschte Netz ein, etwa f"ur den Internet-Zugang. Meshcom stellt eine Beta-Version fur privaten Einsatz und Forschungszwecke kostenlos zur Verfugung, die unter Windows XP oder Linux mit Kernel 2.6 lauft. Sie beherrscht allerdings einige wesentliche Features noch nicht, beispielsweise Authentifizierung und Verschlusselung. Auch reaktives Routing fehlt noch, also das fallweise Bestimmen der Route an Stelle von vorab festgelegten Routing-Tabellen.
+Der MeshDriver klemmt sich zwischen den WLAN-Treiber und den TCP/IP-Stack. Anders als 802.11s funkt er im Ad-hoc-Modus von 802.11 und bezieht eine Ethernet-Schnittstelle automatisch in das vermaschte Netz ein, etwa f"ur den Internet-Zugang. Meshcom stellt eine Beta-Version f"ur privaten Einsatz und Forschungszwecke kostenlos zur Verfugung, die unter Windows XP oder Linux mit Kernel 2.6 lauft. Sie beherrscht allerdings einige wesentliche Features noch nicht, beispielsweise Authentifizierung und Verschl"usselung. Auch reaktives Routing fehlt noch, also das fallweise Bestimmen der Route an Stelle von vorab festgelegten Routing-Tabellen.
 
 Links:
 \begin{itemize}
