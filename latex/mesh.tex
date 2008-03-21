@@ -191,7 +191,18 @@ TODO: \todo{Abkuerzungsverzeichniss}
 \include{Zusammenfassung}
 
 %---------------------------------------------------------------------&
+
 \include{Anhang}
+
+\renewcommand{\refname}{Literaturverzeichnis}
+\clearpage
+\pdfbookmark[1]{Literaturverzeichnis}{Literaturverzeichnis}
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+
+\clearpage
+\input{statement}
 
 %---------------------------------------------------------------------&
 \end{document}
