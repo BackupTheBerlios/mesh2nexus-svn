@@ -345,12 +345,10 @@ Das schnelle Wachstum der Netzwerke vom FreiFunk-Projekt f"uhrte schnell zu
 Skalierbarkeitspproblemen wegen der Schw"achen im Design des OLSR Routing-
 Protokolls. Im Gegensatz zu OLSR Routing-Protokoll versucht B.A.T.M.A.N.
 nicht, alle Routen voraus zu berechnen. Jeder Knoten kennt nur seine direkte
-Nachbarn und berechnet keine kompletten Routen f"ur ein zu sendendes oder
-weiterzuleitendes Packet. Es werden keine Routing-Informationen im Netzwerk
-geflutet wie bei OLSR. Knoten merken sich nur die Richtung, aus welcher
-sie von anderen Knoten Daten erhalten haben und schicken ihre Daten
-entsprechend zur"uck. Die Daten werden auf dem Pfad zum Ziel von Knoten
-zu Knoten weitergereicht \cite{elektra2007,batman}.
+Nachbarn und berechnet keine kompletten Routen. Es werden keine
+Routing-Informationen im Netzwerk geflutet wie bei OLSR.
+B.A.T.M.A.N. soll das Skalierbarkeitsproblem von OLSR l"osen.
+\cite{elektra2007,batman}.
 
 \subsection{Existierende L"osungen und Projekte}
 \label{other_mesh_projects}
