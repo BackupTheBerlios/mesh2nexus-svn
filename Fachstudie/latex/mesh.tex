@@ -55,6 +55,18 @@ menucolor=darkblue, pagecolor=darkblue, urlcolor=darkblue}
 \usepackage{hypcap}
 \usepackage{thumbpdf}
 
+\usepackage{nomencl}
+\let\abbrev\nomenclature
+\renewcommand{\nomname}{Abk\"urzungsverzeichnis}
+\setlength{\nomlabelwidth}{.25\hsize}
+\renewcommand{\nomlabel}[1]{#1 \dotfill}
+\setlength{\nomitemsep}{-\parsep}
+\makeglossary
+
+\usepackage[normalem]{ulem}
+\newcommand{\markup}[1]{\uline{#1}}
+%\newcommand{\markup}[1]{\textbf{#1}}
+
 % Farben:
 \definecolor{todoDescription}{rgb}{0.5, 0.0, 0.75} 
 
@@ -178,7 +190,9 @@ TODO: \todo{LAYOUT}
 \pdfbookmark[1]{Abbildungsverzeichnis}{Abbildungsverzeichnis}
 \listoffigures
 
-TODO: \todo{Abkuerzungsverzeichniss}	
+\clearpage
+\pdfbookmark[1]{Abk\"urzungsverzeichnis}{Abk\"urzungsverzeichnis}
+\input{abbreviations}
 
 %---------------------------------------------------------------------&
 \clearpage
@@ -200,9 +214,9 @@ TODO: \todo{Abkuerzungsverzeichniss}
 \bibliographystyle{unsrt}
 \bibliography{references}
 
-
 \clearpage
 \input{statement}
+
 
 %---------------------------------------------------------------------&
 \end{document}
