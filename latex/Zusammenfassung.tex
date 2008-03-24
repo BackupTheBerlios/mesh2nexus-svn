@@ -1,16 +1,49 @@
 \section{Fazit}
 
-TODO: \todo{Abschnitte 7.1 7.2 - detailierte Beschreibung - Was sind die Gruende, warum genau diese Konfiguration ausgewaelt wurde!!! Was sind bei den Anderen Alternativen schlecht?}	
+In diesem Kapitel wird die von uns analysierte Hardware und Software noch
+mal zusammengefasst, mit einander vergliechen und bewertet. Basierend
+auf diesen Ergebnissen wird jeweils eine Empfehlung f"ur Hardware und
+Software gegeben. Auf Basis dieser Empfehlungen soll es m"oglich sein,
+ein WMN aufzubauen, das alle wichtigsten Anforderungen aus Kapitel
+\ref{sec:Aufgabenstellung} erf"ullt.
 
-\subsection{Übersicht}
+\subsection{"Ubersicht und Bewertung analysierter Hardware}
 
-Dieser Abschnitt stellt ein "Ubersicht "uber aktuelle verf"ugbare 
-Hardwareplattformen und Systemsoftware f"ur WMN dar. Auf Abbildung
-\ref{fig:"Ubersicht und Bewertung von Hardware}
-wird die "Ubersicht und unsere Bewertung der Hardware und auf
-Abbildung \ref{fig:"Ubersicht und Bewertung von Software} wird
-die "Ubersicht und unsere Bewertung der Software dargestellt.
-	
+Auf Abbildung \ref{fig:"Ubersicht und Bewertung analysierter Hardware}
+kann man von uns analysierte Hardware in tabellarischer Form noch mal
+betrachten. Alle bei der Analyse wichtige Eigenschaften der Hardware
+werden in der Tabelle zusammengefasst und bewertet.
+
+Folgende Eigenschaften analysierter Hardware spielten bei der Bewertung
+eine wichtige Rolle:
+
+\begin{itemize}
+\item Unterst"utzung f"ur IEEE 802.11a Standard
+\item Unterst"utzung f"ur Ad-Hoc Modus im 5 GHz Frequenzbereich
+\item Vorhandensein von Treibern sowohl f"ur Linux als auch Windows
+\item Vorhandensein von Open-Source Firmware f"ur SoHo-Router
+\item Vorhandensein der LAN-Schnittstelle
+\item Unterst"utzung f"ur Verschl"usselung
+\item Schwierigkeitsgrad der Installation
+\item Schwierigkeitsgrad der Konfiguration
+\item Vorhandensein von MiniPCI-Slots bei SoHo-Routern
+\end{itemize}
+
+Die analysierte Hardware wurde in 2 Kategorien aufgeteilt. Die Hardware
+aus der ersten Kategorie kann in PCs eingesetzt werden, ohne PCs ist diese
+Hardware als Mesh-Router nicht verwendbar. Die Hardware aus der zweiten
+Kategorie sind WLAN SoHo-Router, diese Hardware muss auch angepasst werden,
+denn die meisten SoHo-Router den Standard IEEE 802.11a und Ad-Hoc Modus
+im 5 GHz Frequenzband nicht unterst"utzen. In Tabelle
+\ref{fig:"Ubersicht und Bewertung analysierter Hardware} wurde die analysierte
+Hardware aber in 3 Gruppen aufgeteilt: PCI WLAN-Karten, MiniPCI(e) WLAN-Karten
+und SoHo WLAN-Router. Die MiniPCI WLAN-Karten k"onnen in Mesh-Routern auf
+PC-Basis eingesetzt werden, m"ussen aber nicht. Manche SoHo WLAN-Router
+brauchen aber mindestens eine MiniPCI WLAN-Karte, die Ad-Hoc Modus
+im 5 GHz Frequenzband unterst"utzt, denn sie k"onnen nur im 2.4 GHz
+Frequenzband funktionieren. Deswegen muss ihre alte WLAN-Karte gegen eine
+ersetzt werden, die auch im 5 GHz Frequenzband funktionieren kann.
+
 \begin{figure}[h]
 \begin{center}
 \setlength{\extrarowheight}{4pt}
@@ -60,9 +93,27 @@ Netgear HR314                    & +   & - & -  & -   & +  & +   & -  & + & - \\
 \hline
 \end{tabular}
 \end{center}
-\caption{"Ubersicht und Bewertung von Hardware}
-\label{fig:"Ubersicht und Bewertung von Hardware}
+\caption{"Ubersicht und Bewertung analysierter Hardware}
+\label{fig:"Ubersicht und Bewertung analysierter Hardware}
 \end{figure}
+
+\subsection{"Ubersicht und Bewertung analysierter Routing-Software}
+
+Auf Abbildung \ref{fig:"Ubersicht und Bewertung analysierter Routing-Software}
+kann man von uns analysierte Routing-Software in tabellarischer Form noch mal
+betrachten. Alle bei der Analyse wichtige Eigenschaften der Routing-Software
+werden in der Tabelle zusammengefasst und bewertet.
+
+Folgende Eigenschaften analysierter Routing-Software spielten bei der Bewertung
+eine wichtige Rolle:
+
+\begin{itemize}
+\item Unterst"utzung f"ur sowohl Linux als auch Windows
+\item Schwierigkeitsgrad der Installation
+\item Schwierigkeitsgrad der Konfiguration
+\item Unterst"utzung f"ur Visualisierung von Topologie
+\item Frei verf"ugbarer Quellcode
+\end{itemize}
 
 \begin{figure}[h]
 \begin{center}
@@ -85,32 +136,72 @@ Meshcom      & +   & + & - & +  & -\\
 \hline
 \end{tabular}
 \end{center}
-\caption{"Ubersicht und Bewertung von Software}
-\label{fig:"Ubersicht und Bewertung von Software}
+\caption{"Ubersicht und Bewertung analysierter Routing-Software}
+\label{fig:"Ubersicht und Bewertung analysierter Routing-Software}
 \end{figure}
 
-TODO: \todo{Textuelle zusammenfassung der Tabelle!}	
+\subsection{Empfehlung f"ur Hardware und Software}
 
-\subsection{Empfehlung f"ur ein geeignetes WMN}
+In diesem Abschnitt wird eine Empfehlung sowohl f"ur Hardware als auch
+f"ur Routing-Software gegeben. Diese Empfehlungen basieren auf unserer
+Analyse und Bewertung im vorherigen Abschnitt. Ausserdem werden genaue Gr"unde
+f"ur unsere Empfehlungen genannt.
 
-Um eines stabiles, f"ur die Forschung geeignets Mesh-Netzwerk aufzubauen, 
-sind vor allem folgende Hardware zu empfehlen: 
+\subsubsection{Empfehlung f"ur Hardware f"ur Mesh-Router}
+
+In diesem Abschnitt geben wir unsere Empfehlung f"ur Hardware zum Einsatz in
+Mesh-Routern eines WMNs.
+
+Als Hardwareplattform f"ur Mesh-Router empfehlen wir den Einsatz von PCs mit
+mehreren PCI bzw. MiniPCI WLAN-Karten mit Atheros Chipsatz und einer
+LAN-Schnittstelle. Und als Betriebssystem empfehlen wir den Einsatz von Linux.
+Welche PCI oder MiniPCI WLAN-Karten dabei eingesetzt werden sollen, haben wir
+nicht entschieden, denn sie haben alle fast "ahnliche Eigenschaften
+und alle analysierte WLAN-Karten mit Atheros Chipsatz werden herrvorragend
+von MadWifi-Treiber unterst"utzt.
+
+Aus folgenden Gr"unden haben wir uns f"ur den Einsatz von PCs mit
+WLAN-Karten und nicht f"ur den Einsatz von SoHo-Routern entschieden:
 
 \begin{itemize}
-\item PCs + WLAN Karten mit Atheros Chipsatz und externen Antennen
-(z.b \emph{Wistron CM9 Atheros AR5213A})
+\item PCs sind nicht sehr teuer, daf"ur aber sehr flexibel.
+\item PCs sind sehr flexibel, sie haben viel mehr Speicher als SoHo-Router
+und leicht erweiterbar. Man kann theoretisch unbegrenzt viele Software-Tools
+zur Verwaltung und zur Evaluierung von WMNs installieren.
+\item SoHo-Router m"ussen erstmal umgebaut werden, denn keiner von uns
+analysierten SoHo-Routern unterst"utzt Ad-Hoc Modus im 5 GHz Frequenzband.
+\item Auf SoHo-Routern muss eine Open-Source Firmware installiert werden.
+\item SoHo-Router haben sehr wenig Speicher zur Verf"ugung und machen
+den Einsatz mancher Software-Tools unm"oglich.
+\item PCs sind nicht nur als Mesh-Router einsetzbar.
 \end{itemize}
 
-Weiterhin kann das Mesh-Netzwerk zu einem heterogenen WMN erweitert werden, 
-indem folgende WLAN-Router eingesetzt werden:
+\subsubsection{Empfehlung f"ur Routing-Software}
 
-\begin{itemize}
-	\item Linksys WRT54G v1.0  
-\end{itemize}
+In diesem Abschnitt geben wir unsere Empfehlung f"ur Routing-Software
+zum Einsatz in Mesh-Routern eines WMNs.
 
-Als Software-System f"ur das aufzubauende WMN hat sich Linux als Betriebsystem 
-und \textbf{olsrd} als Routing Software als besonders geeignet erwiesen. 
-TODO: \todo{Warum}
+Als Routing-Software, die in den mesh-Routern eines WMNs zum Einsatz kommt,
+empfehlen wir den Einsatz von Routing-Daemon von olsr.org. Beim OLSR
+Routing-Daemon von olsr.org sollten keine Skalierbarkeitsprobleme auftreten,
+da abgesch"atzte Anzahl von Mesh-Routern im WMN niedrig ist. Ausserdem
+unterst"utzt der Routing-Daemon von olsr.org Visualisierung von Topologie.
+Er unterst"utzt sowohl Linux als auch Windows und ist in beiden
+Betriebssystemen sehr leicht zu installieren und zu konfigurieren.
+
+Vom Einsatz von B.A.T.M.A.N. raten wir ab, der Routing-Daemon von
+B.A.T.M.A.N. unterst"utzt noch keine Visualisierung von Topologie
+und das Routing-Protokoll B.A.T.M.A.N.  befindet sich zur Zeit immer
+noch in Entwicklung.  Ausserdem unterst"utzt der Routing-Daemon von
+B.A.T.M.A.N. das Betriebssystem Windows nicht.
+
+Den Einsatz von Meshcom empfehlen wir auch nicht, denn sowohl das
+Protokoll als auch der Routing-Daemon sind nicht frei verf"ugbar.
+Der Routing-Daemon von Meshcom ist nicht kostenlos. Wir haben nur mit
+einem Demo-Programm getestet.
+
+\subsubsection{Aufwandsch"atzung}
+\label{sec:Aufwandsch"atzung}
 	
 Um das ganze Informatikgeb"aude abzudecken, w"urden ca. 30-45 PCs reichen.
 Das heisst ca. 10-15 PCs pro Stock. Kosten f"ur die notwendige Hardware
