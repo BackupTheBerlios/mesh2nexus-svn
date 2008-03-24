@@ -1,10 +1,10 @@
 \section{Fazit}
 
 In diesem Kapitel wird die von uns analysierte Hardware und Software noch
-mal zusammengefasst, mit einander vergliechen und bewertet. Basierend
+mal zusammengefasst, miteinander vergliechen und bewertet. Basierend
 auf diesen Ergebnissen wird jeweils eine Empfehlung f"ur Hardware und
 Software gegeben. Auf Basis dieser Empfehlungen soll es m"oglich sein,
-ein WMN aufzubauen, das alle wichtigsten Anforderungen aus Kapitel
+ein WMN aufzubauen, das alle wichtigen Anforderungen aus Kapitel
 \ref{sec:Aufgabenstellung} erf"ullt.
 
 \subsection{"Ubersicht und Bewertung analysierter Hardware}
@@ -41,8 +41,8 @@ und SoHo WLAN-Router. Die MiniPCI WLAN-Karten k"onnen in Mesh-Routern auf
 PC-Basis eingesetzt werden, m"ussen aber nicht. Manche SoHo WLAN-Router
 brauchen aber mindestens eine MiniPCI WLAN-Karte, die Ad-Hoc Modus
 im 5 GHz Frequenzband unterst"utzt, denn sie k"onnen nur im 2.4 GHz
-Frequenzband funktionieren. Deswegen muss ihre alte WLAN-Karte gegen eine
-ersetzt werden, die auch im 5 GHz Frequenzband funktionieren kann.
+Frequenzband funktionieren. Deswegen muss ihre alte MiniPCI WLAN-Karte gegen
+eine ersetzt werden, die auch im 5 GHz Frequenzband funktionieren kann.
 
 \begin{figure}[h]
 \begin{center}
@@ -154,11 +154,22 @@ Mesh-Routern eines WMNs.
 
 Als Hardwareplattform f"ur Mesh-Router empfehlen wir den Einsatz von PCs mit
 mehreren PCI bzw. MiniPCI WLAN-Karten mit Atheros Chipsatz und einer
-LAN-Schnittstelle. Und als Betriebssystem empfehlen wir den Einsatz von Linux.
-Welche PCI oder MiniPCI WLAN-Karten dabei eingesetzt werden sollen, haben wir
-nicht entschieden, denn sie haben alle fast "ahnliche Eigenschaften
-und alle analysierte WLAN-Karten mit Atheros Chipsatz werden herrvorragend
-von MadWifi-Treiber unterst"utzt.
+LAN-Schnittstelle. Welche PCI oder MiniPCI WLAN-Karten dabei eingesetzt
+werden sollen, haben wir nicht entschieden, denn sie haben alle fast
+"ahnliche Eigenschaften und alle analysierte WLAN-Karten mit Atheros
+Chipsatz werden herrvorragend von MadWifi-Treiber unterst"utzt.
+
+Als Betriebsystem f"ur Mesh-Router empfehlen wir nat"urlich Linux.
+F"ur Linux existieren sehr viele Programme zur Analyse und Evaluierung
+von drahtlosen Netzwerken. Ausserdem bietet Linux einen sehr m"achtigen
+Packet Filter iptables. Zus"atzlich existieren daf"ur sehr viele Open-Source
+Programme wie HTTP-, SSH- und DHCP-Server, die man beim Aufbau eines WMN sehr
+gut gebrauchen kann, was wir auch bei unseren Tests gemacht haben.
+Wir haben z.B. Apache HTTP-Server f"ur die Visualisierung der Topologie
+unseres kleinen WMN verwendet. F"ur Linux existiert eine Menge von
+Skript-Sprachen wie z.B. Perl, Python, die viele Verwaltungsaufgaben
+in einem WMN erleichtern k"onnen. Und schliesslich existiert f"ur Linux
+sehr gute Dokumentation im Internet.
 
 Aus folgenden Gr"unden haben wir uns f"ur den Einsatz von PCs mit
 WLAN-Karten und nicht f"ur den Einsatz von SoHo-Routern entschieden:
@@ -174,6 +185,7 @@ analysierten SoHo-Routern unterst"utzt Ad-Hoc Modus im 5 GHz Frequenzband.
 \item SoHo-Router haben sehr wenig Speicher zur Verf"ugung und machen
 den Einsatz mancher Software-Tools unm"oglich.
 \item PCs sind nicht nur als Mesh-Router einsetzbar.
+\item Beliebige Linux-Distributionen k"onnen installiert werden.
 \end{itemize}
 
 \subsubsection{Empfehlung f"ur Routing-Software}

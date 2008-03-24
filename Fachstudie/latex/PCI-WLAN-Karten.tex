@@ -264,40 +264,148 @@ Eigentlich ist das eine Mini-PCI-Karte mit PCI-Adapter.
 
 \end{wlandevice}
 
-\paragraph{Andere PCI-WLAN-Karten}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% D-Link DWL-G550
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{wlandevice}{D-Link DWL-G550}
 
-\begin{itemize}
+\wlanimage{DLink_DWLG550.jpg}{D-Link DWL-G550}
 
-\item Intel PRO/Wireless 5000
+\wlanchipset{Atheros AR5212}
 
-Chipsatz Intel,
-802.11a WLAN PCI-Karte, unterst"utzt Ad-Hoc- und Infrastruktur-Modus,
-Treiber von Intel nur f"ur Windows vorhanden, f"ur Linux werden keine
-Treiber entwickelt, kostet ca. 200 Euro
+\begin{wlanieeestandard}
+\item 802.11a/b/g
+\end{wlanieeestandard}
 
-\url{http://support.intel.com/support/wireless/wlan/pro5000/pciadapter}\\
-\url{ftp://download.intel.com/support/wireless/wlan/pro5000/PRO5000_INFO.pdf}
+\begin{wlanmode}
+\item Ad-Hoc
+\item Infrastruktur
+\end{wlanmode}
 
-\item D-Link DWL-AG530
+\begin{wlansecurity}
+\item WEP (40- and 104-bit)
+\item WPA
+\item WPA2
+\end{wlansecurity}
 
-Chipsatz Atheros AR5212 oder AR5213,
-802.11a/b/g WLAN-Karte,
-MadWifi-Treiber Unterst"utzung,
-Externe abschraubbare Antenne, kostet ca 80 Euro
+\begin{wlandriver}
+\item
+Von D-Link werden nur Treiber f"ur Windows bereitgestellt. Sehr gute Linux-
+Unterst"utzung, MadWifi-Treiber funktioniert mit dieser WLAN PCI-Karte
+ohne Probleme.
+\end{wlandriver}
 
-\url{http://www.dlink.com/products/?pid=306}\\
-\url{http://madwifi.org/wiki/Compatibility/D-Link}
+\wlanprice{60}
 
-\item D-Link DWL-G550
+\begin{wlaninstall}
+\item \url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
+\end{wlaninstall}
 
-Chipsatz Atheros AR5212,
-802.11a/b/g WLAN-Karte,
-MadWifi-Treiber Unterst"utzung,
-Externe abschraubbare Antenne, kostet ca 60 Euro
+\begin{wlanextrainfo}
+\item
+Die Karte hat eine externe abschraubbare Antenne.
+\end{wlanextrainfo}
 
-\url{http://www.dlink.com/products/?pid=414}\\
-\url{http://madwifi.org/wiki/Compatibility/D-Link}
+\begin{wlanlink}
+\item \url{http://www.dlink.com/products/?pid=414}
+\item \url{http://madwifi.org/wiki/Compatibility/D-Link}
+\end{wlanlink}
 
-TODO: \todo{Allgemein: Tabellenubersicht + Freitext, Andere PCI-WLAN-Karten eincheitlich (ausfuerlich?) beschreiben oder erklaeren warum werden sie nur kurz erwaent und anderen ausfuerlich beschrieben..}
+\end{wlandevice}
 
-\end{itemize}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% D-Link DWL-AG530
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{wlandevice}{D-Link DWL-AG530}
+
+\wlanimage{DLink_DWLAG530.jpg}{D-Link DWL-AG530}
+
+\wlanchipset{Atheros AR5212 oder AR5213}
+
+\begin{wlanieeestandard}
+\item 802.11a/b/g
+\end{wlanieeestandard}
+
+\begin{wlanmode}
+\item Ad-Hoc
+\item Infrastruktur
+\end{wlanmode}
+
+\begin{wlansecurity}
+\item WEP (40-, 104 and 128-bit)
+\item WPA
+\item WPA2
+\end{wlansecurity}
+
+\begin{wlandriver}
+\item
+Von D-Link werden nur Treiber f"ur Windows bereitgestellt. Sehr gute Linux-
+Unterst"utzung, MadWifi-Treiber funktioniert mit dieser WLAN PCI-Karte
+ohne Probleme.
+\end{wlandriver}
+
+\wlanprice{80}
+
+\begin{wlaninstall}
+\item \url{http://madwifi.org/wiki/UserDocs/FirstTimeHowTo}
+\end{wlaninstall}
+
+\begin{wlanextrainfo}
+\item
+Die Karte hat eine externe abschraubbare Antenne.
+\end{wlanextrainfo}
+
+\begin{wlanlink}
+\item \url{http://www.dlink.com/products/?pid=306}
+\item \url{http://madwifi.org/wiki/Compatibility/D-Link}
+\end{wlanlink}
+
+\end{wlandevice}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Intel PRO/Wireless 5000
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{wlandevice}{Intel PRO/Wireless 5000}
+
+\wlanimage{Intel_5000.jpg}{Intel PRO/Wireless 5000}
+
+\wlanchipset{Intel}
+
+\begin{wlanieeestandard}
+\item 802.11a
+\end{wlanieeestandard}
+
+\begin{wlanmode}
+\item Ad-Hoc
+\item Infrastruktur
+\end{wlanmode}
+
+\begin{wlansecurity}
+\item WEP (40- and 104-bit)
+\end{wlansecurity}
+
+\begin{wlandriver}
+\item
+Von Intel werden nur Treiber f"ur Windows bereitgestellt. Zur Zeit existiert
+kein Linux-Treiber f"ur diese Karte.
+\end{wlandriver}
+
+\wlanprice{200}
+
+\begin{wlaninstall}
+\item \url{http://support.intel.com/support/wireless/wlan/pro5000/pciadapter/}
+\end{wlaninstall}
+
+\begin{wlanlink}
+\item \url{http://support.intel.com/support/wireless/wlan/pro5000/pciadapter}
+\item \url{ftp://download.intel.com/support/wireless/wlan/pro5000/PRO5000_INFO.pdf}
+\end{wlanlink}
+
+\end{wlandevice}
