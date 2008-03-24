@@ -42,51 +42,50 @@ Das Vorgehen umfasst im einzelnen:
 
 \section{Anforderungen}
 
-Nach der Einarbeitung in WMN-Technologien und 
-Analyse der Anforderungen des Nexus-Projektes
-wurde folgendes festgehalten:
+Nach der Einarbeitung in WMN-Technologien und Analyse der Anforderungen
+des Nexus-Projektes an ein WMN wurde folgendes festgehalten:
 
-TODO: \todo{anforderungen ausformulieren, begruendung, erklaerung, usw..}
-TODO: \todo{ warum 5GHz - da 2,4 belegt..}
-\subsection{Anforderungen an Hardware}
+Anforderungen an Hardware (Mesh-Router):
+
 \begin{itemize}
-	\item IEEE 802.11a kompatibel (5GHz Frequenzen) 
-	\item Ad-hoc Modus (auch bei 5GHz Frequenzen) 
-	\item Treiber f"ur Linux und Windows
-	\item Open-Source Firmware f"ur Router
-	\item Zus"atzlich zu Wireless Mesh Network auch weitere
-	(Netzwerk-)Schnittstellen zur Verwaltung vorsehen (LAN)
-	\item Nach M"oglichkeit keine selber gebastelten L"osungen 
-	\item Unterst"utzung von IEE 802.11n w"are vorteilhaft
-	\item 2 Mini PCI-Slots bei Routern, damit auf verschiedenen
-	Frequenzb"andern gesendet und empfangen werden kann
-	(Performanceverbesserung) 
+\item Mesh-Router m"ussen den Standard IEEE 802.11a unterst"utzen, denn
+im 2.4 GHz Frequenzband gibt es keine freie Kan"ale mehr, der 2.4 GHz
+Frequenzbereich ist "ubers"attigt und die Folge davon sind hohe
+Signalst"orungen.
+\item Mesh-Router m"ussen im Ad-Hoc Modus im 5 GHz Frequenzband arbeiten
+k"onnen.
+\item Mesh-Router m"ussen mindestens eine LAN-Schnittstelle haben, damit man
+sie nicht nur "uber WLAN erreichen kann. Die LAN-Schnittstelle soll
+haupts"achlich zur Konfiguration und zur Verwaltung von Mesh-Routern dienen.
+\item Mesh-Router m"ussen mindestens 2 WLAN-Schnittstellen haben, damit sie
+auf verschiedenen Kan"alen gleichzeitig arbeiten k"onnen, um den Durchsatz
+zu erh"ohen.
+\item Es w"are vorteilhaft, wenn Mesh-Router auch den Standard IEEE 802.11n
+unterst"utzen.
 \end{itemize}
 
-\subsection{Anforderungen an Software}
+Anforderungen an Software (Betriebssystem, Treiber, Routing-Software und
+		Firmware):
+
 \begin{itemize}
-	\item Betriebsystem ist nicht festgelegt,
-	soll Ergebnis der Fachstudie sein
-	\item Freiheit bei Routingprotokollen (Austauschbarkeit)
-	\item Software soll Konfigurierung und Instrumentierung von WMN
-	erm"oglichen
-	\item Topologie ver"andern bzw. erfassen soll m"oglich sein
-	\item Visualisierung von Anfragen und Topologie 
+\item Betriesbsystem f"ur Mesh-Router ist nicht vorgeschrieben (Linux, UNIX oder
+Windows). Betriesbsystem ist ein Ergebnis der Fachstudie.
+\item Routing-Protokoll, der im WMN verwendet wird, ist auch nicht
+vorgeschrieben und ist ein Ergebnis der Fachstudie. Routing-Protokoll muss
+aber sp"ater austauschbar sein. Routing-Protokoll soll flexibel und
+konfigurierbar sein.
+\item Routing-Protokoll muss die Erfassung von Topologie unterst"utzen.
 \end{itemize}
 
-\subsection{Zus"atzliche Anforderungen}
-TODO: \todo{ Aufwandsch"atzung in aufgaben!}
-\begin{itemize}
-	\item Abdeckung des Geb"audes Universit"atsstra"se 38
-	\item Verbindung mit Informatik-Netz nur "uber Gateway
-	mit strikter Filterung (nur eine Richtung (UNI->Mesh)
-	f"ur die Verwaltung)
-	\item Aufwandsch"atzung (wie viele Knoten usw.)
-	\item Budget max. 25.000 Euro (evtl. mehr in Zukunft)
-	\item 4-5 Mesh-Knoten pro Quadrat 
-	\item Speicherkapazit"at wichtig bei Routern
-	\item PC + WLAN-Karten sind wegen Flexibilit"at vorzuziehen
-	\item PDAs (bzw. andere kleine Clients) mit 802.11a
-\end{itemize}
+Zus"atzliche Anforderungen:
 
+\begin{itemize}
+\item WMN soll das ganze Geb"aude auf Universit"atsstra"se 38 abdecken.
+\item Der Aufwand f"ur den Aufbau des WMN soll nicht 25.000 Euro "uberschreiten.
+\item Fachstudie soll eine Aufwandsch"atzung liefern (Anzahl von Mesh-Routern).
+\item WMN soll mit dem Uni-Netzwerk "uber ein Gateway verbunden werden und
+Kommunikation aus dem WMN nach aussen soll nur "uber dieses Gateway
+stattfinden.
+\item Maximal sind 4-5 Mesh-Router pro Quadratmeter zu plazieren.
+\end{itemize}
 
