@@ -2,20 +2,27 @@
 
 \subsection{WLAN-Router}
 
-TODO: \todo{nicht nur WLAN und WAN -> auch zwieschen switch und Wlan(WRT54 mit DD-WRT)}
-
 Die Kombination aus Access Point und Router wird h"aufig als WLAN-Router
 bezeichnet. Das ist solange korrekt, soweit es einen WAN-Port gibt. Das
-Routing findet dann zwischen WLAN und WAN (und falls vorhanden auch
-zwischen LAN und WAN) statt. Fehlt dieser WAN-Port, handelt es sich hier
-lediglich um Marketing-Begriffe, da reine Access Points auf OSI-Ebene 2
-arbeiten und somit Bridges und keine Router sind. Oft sind das
-aber keine vollst"andigen Router, da diese Ger"ate ausschlie"slich als
-Internetzugangs-Systeme dienen und nur mit aktiviertem PPPoE (oder PPPoA)
-sowie NAT-Routing (oder IP-Masquerading) eingesetzt werden k"onnen.
+Routing findet dann zwischen WLAN, LAN und WAN statt. Fehlt dieser
+WAN-Port, handelt es sich hier lediglich um Marketing-Begriffe, da reine
+Access Points auf OSI-Ebene 2 arbeiten und somit Bridges und keine
+Router sind. Oft sind das aber keine vollst"andigen Router, da diese
+Ger"ate ausschlie"slich als Internetzugangs-Systeme dienen und nur mit
+aktiviertem PPPoE (oder PPPoA) sowie NAT-Routing (oder IP-Masquerading)
+eingesetzt werden k"onnen.
 
-In diesem Abschnitt werden so genannte \emph{stand-alone} L"osunden f"ur
-eine WMN vorgestellt.
+In diesem Abschnitt werden wir so genannte stand-alone Router
+betrachten, die als mesh-Router in einem WMN in Frage kommen.
+Alle solche WLAN-Router haben wir in 2 Gruppen unterteilt:
+
+\begin{itemize}
+\item SoHO-Router
+\item Professionelle Router
+\end{itemize}
+
+In folgenden Abschnitten werde wir beide Gruppen von WLAN-Routern genauer
+betrachten.
 
 \input{SoHo-Router}
 \input{Professionelle_Router}

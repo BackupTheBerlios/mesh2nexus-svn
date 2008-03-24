@@ -1,51 +1,40 @@
-\subsubsection{PCI-WLAN-Karten}
+\subsubsection{PCI WLAN-Karten}
 
-TODO: \todo{Ziel des Abschnittes! Anfang ist schlecht..}
-
-Peripheral Component Interconnect, meist PCI abgek"urzt, ist ein
-Bus-Standard zur Verbindung von Peripherieger"aten mit dem Chipsatz
-eines Prozessors. Da der PCI-Bus vom Prozessor relativ unabh"angig ist,
-wird er nicht nur im PC benutzt, sondern z.B. auch im Alpha-PC oder
-im Macintosh. "Uber den PCI-Bus kann der Prozessor die wichtigsten Ein-
-und Ausgabekomponenten (z.B. Controller, Grafikkarte) "`lokal"' und damit
-schneller ansprechen. Urspr"unglich sollte der PCI-Bus die Anforderungen in
-PCs f"ur Grafik-, Netzwerk- und andere Schnittstellenkarten "uber l"angere
-Zeit erf"ullen. Allerdings wurde er schon nach kurzer Zeit zu langsam f"ur
-schnelle Grafikkarten, so dass f"ur diese 1997 ein zus"atzlicher Steckplatz,
-der Accelerated Graphics Port (AGP), eingef"uhrt wurde. F"ur so gut wie
-alle anderen Steckkarten-Typen blieb PCI dagegen bis heute Standard, soll
-aber ab \textbf{2005} schrittweise von PCI-Express ersetzt werden.
-TODO: \todo{heute ist 2005)) }
-
-PCI-WLAN-Karten werden in einen freien PCI-Steckplatz des Mainboards
-gesteckt.
-Ein Vorteil von PCI-WLAN-Karten ist die bessere Stabilit"at 
-TODO: \todo{gegenuber was..}im
-Betrieb. Weiterhin besitzen die meisten PCI-WLAN-Karten die M"oglichkeit
-die mitgelieferte Antenne gegen eine andere zu tauschen. Zu beachten ist,
-dass die Antenne "ublicherweise direkt hinten an der Karte angebracht
+Der PCI-Bus ist heutzutage immer noch der am meisten verbreitete Bus
+f"ur Peripherieger"ate, auch f"ur WLAN-Karten. PCI WLAN-Karten werden in
+einen freien PCI-Steckplatz des Mainboards gesteckt. Die meisten
+PCI WLAN-Karten besitzen eine abschraubbare Antenne, die gegen eine
+externe Antenne ersetzt werden kann. Zu beachten ist, dass die
+mitgelieferte Antenne "ublicherweise direkt hinten an der Karte angebracht
 ist und somit in unmittelbarer N"ahe zum PC-Geh"ause ist. Dies kann
 jedoch negative Auswirkungen auf die Reichweite oder den Datendurchsatz
 haben. Deshalb kann es f"ur einen bessere Verbindung notwendig sein,
 die Antenne mit einem Koaxialkabels vom Rechnergeh"ause zu entfernen.
 
+Im folgenden sind Vorteile und Nachteile von PCI WLAN-Karten erl"autert.
+
 \textbf{Vorteile:}
 
 \begin{itemize}
-	\item Bessere Stabilit"at im Betrieb
-	\item Meistens abschraubbare Antenne
-	\item Verschwinden im Geh"ause, Platz wird nicht verschwendet 
+\item Meistens eine abschraubbare Antenne, die gegen eine externe Antenne
+erstezt werden kann
+\item Verschwinden im Geh"ause, Platz wird nicht verschwendet 
+\item Sehr gute Treiber-Unterst"utzung unter Linux und Windows
+\item Leicht austauschbar
 \end{itemize}
 
 \textbf{Nachteile:}
 
 \begin{itemize}
-	\item Oft recht schlechte Empfangs/Sendeleistung, weil die kleine Antenne
-				direkt hinten am Rechner sitzt (L"osung: zus"atzliche Antenne)
+\item Oft recht schlechte Empfangs/Sendeleistung, weil die kleine Antenne
+direkt hinten am Rechner sitzt (L"osung: zus"atzliche Antenne)
 \end{itemize}
 
-TODO: \todo{Allgemein: Welche chipsatze in Frage kommen (atheros, intel..), Diskussion der Karten..}
-TODO: \todo{Sicherheit - erlaeterung!}
+In diesem Abschnitt werden PCI WLAN-Karten beschrieben, die den Ad-Hoc
+Modus im 5 GHz Frequenzband unterst"utzen und die f"ur den Einsatz in
+Mesh-Routern in Frage kommen k"onnten. Diese WLAN-Karten sind entweder
+Intel WLAN-Karten oder WLAN-Karten, die auf Atheros Chips"atzen basieren.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Linksys WMP55AG
@@ -69,7 +58,6 @@ TODO: \todo{Sicherheit - erlaeterung!}
 \begin{wlansecurity}
 \item WEP (40-, 104-, 128-bit)
 \item WPA
-\item LEAP
 \end{wlansecurity}
 
 \begin{wlandriver}
@@ -94,7 +82,6 @@ installieren.
 \item \url{http://forums.fedoraforum.org/showthread.php?t=91165}
 \item \url{http://www.pcworld.com/product/specs/prtprdid,704176/%
 	wireless_ag_54mbps_pci_adptr_80211a80211b80211g_compatible.html}
-\item \url{http://www.linksys.com/servlet/Satellite?c=L_CASupport_C2&childpagename=US\%2FLayout&cid=1169671168007&pagename=Linksys\%2FCommon\%2FVisitorWrapper&lid=6800768007N09}
 \end{wlanlink}
 
 \end{wlandevice}
@@ -121,8 +108,7 @@ installieren.
 
 \begin{wlansecurity}
 \item WEP (40-, 104-, 128-bit)
-\item WPA, WPA-PSK
-\item PPTP, P2TP, IPSec VPN pass-through
+\item WPA
 \end{wlansecurity}
 
 \begin{wlandriver}
@@ -149,7 +135,6 @@ Das Kabel l"asst sich nicht von der PCI-Karte trennen.
 \begin{wlanlink}
 \item \url{http://www.netgear.com/Products/Adapters/AGDualBandWirelessAdapters/WAG311.aspx}
 \item \url{http://madwifi.org/wiki/Compatibility/Netgear}
-\item \url{http://www.linuxquestions.org/questions/mandriva-30/using-netgear-wag311-via-madwifi-270229/}
 \item \url{http://www.packetpro.com/~peterson/linux-netgear_wg311t_pci.html}
 \item \url{http://www.netgear.com/upload/product/wag311/enus_ds_wag311.pdf}
 \end{wlanlink}
@@ -253,7 +238,7 @@ mit dieser WLAN PCI-Karte ohne Probleme.
 \begin{wlanextrainfo}
 \item
 Abschraubbare Antenne mit reversed SMA.
-Eigentlich ist das eine Mini-PCI-Karte mit PCI-Adapter.
+Eigentlich ist das eine MiniPCI WLAN-Karte mit PCI-Adapter.
 \end{wlanextrainfo}
 
 \begin{wlanlink}

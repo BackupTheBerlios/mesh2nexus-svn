@@ -1,13 +1,28 @@
-\subsubsection{SoHo-Router}
+\subsubsection{SoHO-Router}
 
-Man kann herk"ommliche WLAN-Router f"ur Heimanwender (SoHO-Router - small
-or home office) kaufen, die sich mit alternativer Firmware (spezielle
-Linux-Software mit OLSR-daemon) zu einem Mesh-Router umr"usten
-lassen. Ein WLAN-Router ist die Kombination eines normalen Router
-(Kabelrouter) mit einem Accesspoint. Es gibt solche mit eingebauten
-Modem und andere mit einem Anschluss (WAN-Port) daf"ur (f"ur Modems mit
-LAN-Anschluss). Ein Nachteil ist, dass es viele Modelle gibt, die eine
-fix verbaute Antenne haben, die nicht gewechselt werden kann.
+Man kann herk"ommliche WLAN-Router f"ur Heimanwender (SoHO-Router - Small
+or Home Office) kaufen, die sich mit alternativer Firmware (spezielle
+Linux-Software) zu einem Mesh-Router umr"usten lassen. Ein WLAN-Router
+ist die Kombination eines normalen Router (Kabelrouter) mit einem
+Accesspoint. Es gibt solche mit eingebautem Modem und andere mit einem
+Anschluss (WAN-Port) daf"ur (f"ur Modems mit LAN-Anschluss).
+Die meisten SoHO WLAN-Router unterst"utzen den Ad-Hoc Modus im 5 GHz
+Frequenzband gar nicht, sie arbeiten nur im Inrastruktur Modus. Deswegen
+muss bei diesen Routern zuerst eine neue WLAN-karte eingebaut werden,
+den Ad-Hoc Modus im 5 GHz Frequenzband unterst"utzt, und dann muss noch
+alternative Firmware auf Routern installiert werden, die diese Router
+im Ad-Hoc Modus betreiben kann.
+
+Die hier betrachteten SoHO WLAN-Router haben deswegen mindestens einen
+MiniPCI-Slot vorhanden. In diesen Slot kann z.B. eine Atheros MiniPCI
+WLAN-Karte eingebaut werden.
+
+Die meisten Hersteller legen den Quellcode des Betriebssystems, das in
+ihren SoHO WLAN-Routern eingesetzt wird, nicht frei. Aber es gibt
+mehrere freie Firmwares f"ur SoHO WLAN-Router, siehe
+\ref{sec:Open-Source Firmware f"ur SoHO WLAN-Router}.
+
+Im folgenden sind Vorteile und Nachteile von SoHO WLAN-Routern erl"autert.
 
 \textbf{Vorteile:}
 
@@ -41,7 +56,7 @@ fix verbaute Antenne haben, die nicht gewechselt werden kann.
 
 \begin{wlanieeestandard}
 \item 802.11b/g
-\item 802.11a/b/g (wenn man die mitgelieferte Mini-PCI WLAN-Karte
+\item 802.11a/b/g (wenn man die mitgelieferte MiniPCI WLAN-Karte
 durch z.B. Atheros 802.11a/b/g WLAN-Karte austauscht)
 \end{wlanieeestandard}
 
@@ -49,8 +64,6 @@ durch z.B. Atheros 802.11a/b/g WLAN-Karte austauscht)
 \item Ad-Hoc
 \item Infrastruktur
 \end{wlanmode}
-
-TODO: \todo{Erlaeterung warum diese benoetigt wird, was ist damit moeglich usw. Beschreibung oder/und Verweis auf OpenWRT abschnitt..}
 
 \begin{wlanfirmware}
 \item
@@ -70,20 +83,19 @@ DD-WRT
 
 \begin{wlaninstall}
 \item
-Die mitgelieferte Mini-PCI WLAN-Karte durch z.B. Atheros 802.11a Mini-PCI
+Die mitgelieferte MiniPCI WLAN-Karte durch z.B. Atheros 802.11a MiniPCI
 austauschen und oben erw"ahnte frei verf"ugbare Firmware installieren
 (siehe oben Firmware).
 \end{wlaninstall}
 
 \begin{wlanextrainfo}
 \item
-Ein Mini-PCI Slot ist f"ur eine WLAN-Karte vorhanden.
+Ein MiniPCI Slot ist f"ur eine WLAN-Karte vorhanden.
 \end{wlanextrainfo}
 
 \begin{wlanlink}
 \item \url{http://wiki.openwrt.org/OpenWrtDocs/Hardware/Linksys/WRT54G}
 \item \url{http://www.dd-wrt.com/wiki/index.php/Linksys_WRT54G/GL/GS/GX}
-\item \url{http://forum.opennet-initiative.de/thread.php?threadid=505&sid=56c53647db6353a41e9a3100f00d02c4}
 \item \url{http://www.linksysinfo.org/forums/showthread.php?t=47124}
 \end{wlanlink}
 
@@ -124,7 +136,7 @@ OpenWRT
 
 \begin{wlanextrainfo}
 \item
-2 Slots sind f"ur Mini-PCI WLAN-Karten vorhanden.
+2 Slots sind f"ur MiniPCI WLAN-Karten vorhanden.
 \end{wlanextrainfo}
 
 \begin{wlanlink}
@@ -147,7 +159,7 @@ OpenWRT
 
 \begin{wlanieeestandard}
 \item 802.11b/g
-\item 802.11a/b/g (wenn man die mitgelieferte Mini-PCI WLAN-Karte
+\item 802.11a/b/g (wenn man die mitgelieferte MiniPCI WLAN-Karte
 durch z.B. Atheros 802.11a/b/g WLAN-Karte austauscht)
 \end{wlanieeestandard}
 
@@ -182,7 +194,7 @@ Olegs custom firmware
 
 \begin{wlaninstall}
 \item
-Die mitgelieferte Mini-PCI WLAN-Karte durch z.B. Atheros 802.11a Mini-PCI
+Die mitgelieferte MiniPCI WLAN-Karte durch z.B. Atheros 802.11a MiniPCI
 austauschen und oben erw"ahnte frei verf"ugbare Firmware installieren
 (siehe oben Firmware).
 
@@ -191,7 +203,7 @@ austauschen und oben erw"ahnte frei verf"ugbare Firmware installieren
 
 \begin{wlanextrainfo}
 \item
-Ein Mini-PCI Slot ist f"ur eine WLAN-Karte vorhanden.
+Ein MiniPCI Slot ist f"ur eine WLAN-Karte vorhanden.
 \end{wlanextrainfo}
 
 \begin{wlanlink}

@@ -66,46 +66,46 @@ Fehlerkorrekturen und HAL-Updates versorgt werden.
 \item \url{http://www.intellinuxwireless.org/?p=mac80211}
 \end{itemize}
 
-\subsection{OpenWRT}
+\subsection{Open-Source Firmware f"ur SoHO WLAN-Router}
+\label{sec:Open-Source Firmware f"ur SoHO WLAN-Router}
 
-OpenWRT \cite{openwrt} ist eine GNU/Linux-Distribution f"ur WLAN-Router.
-Anstatt einer
-statischen Firmware setzt OpenWRT auf ein voll beschreibbares Dateisystem
-sowie einen Paketmanager. OpenWRT l"auft unter anderem auf Ger"aten der
-Firmen Linksys, ALLNET, ASUS, Belkin, Buffalo, Microsoft und Siemens.
+In diesem Abschnitt werden mehrere Open-Source Firmwares f"ur SoHO WLAN-Router
+vorgestellt. Diese Firmwares werden gebraucht, damit man SoHO WLAN-Router
+im Ad-Hoc Modus betreiben kann, denn die meisten SoHO WLAN-Router unterst"utzen
+nur WLAN Infrastruktur Modus. Alle unten erw"ahnten Firmwares basieren
+auf dem Quellcode des Betriebssystems des Linksys WRT54G SoHO WLAN-Router.
 
-\textbf{Vorteile:}
+\subsubsection{OpenWRT}
 
-\begin{itemize}
-	\item Flexibilit"at
-	\item Erweiterbarkeit
-	\item Individualisierbarkeit
-	\item Sicherheit
-	\item Gewohnte Linux-Flexibilit"at und Funktionsumfang! 
-\end{itemize}
+OpenWRT ist eine GNU/Linux-Distribution f"ur WLAN-Router.
+OpenWRT l"auft unter anderem auf Ger"aten der Firmen Linksys, ALLNET,
+ASUS, Belkin, Buffalo, Microsoft und Siemens \cite{openwrt}.
 
-\textbf{Nachteile:}
+\subsubsection{DD-WRT}
 
-\begin{itemize}
-	\item Standardm"a"sig sind nur die n"otigsten Unix-Tools vorhanden 
-\end{itemize}
+DD-WRT ist eine GNU/Linux-Distribution f"ur WLAN-Router.
+DD-WRT untest"utzt Ger"ate Firma Linksys, z.B. WRT54G und
+WRT54GS bis Version 4.x. Es werden aber inzwischen auch Ger"ate anderer
+Hersteller unterstützt (z. B. Buffalo, Siemens, Asus, Belkin)
+\cite{dd-wrt}.
 
-\textbf{Links:}
+\subsubsection{FreeWRT}
 
-\begin{itemize}
-	\item \url{http://openwrt.org/}
-	\item \url{http://toh.openwrt.org/}
-\end{itemize}
+FreeWRT ist eine GNU/Linux-Distribution f"ur WLAN-Router.
+FreeWRT unterst"utzt nur Systeme mit Broadcom Ger"aten, z.B.
+Linksys WRT54GL, Asus WL500g Premium und Netgear WGT634u
+\cite{freewrt}.
 
 \subsection{Mesh-Routing Software}
 
-In diesem Abschnitt werden Routing-Deamonen vorgestellt, die ein bestimmtes
-Routing-Protokoll implementieren und auf jedem Knoten in einem
-Mesh-Netzwerk ausgef"uhrt werden. Diese Daemonen tauschen Routing-Informationen
-aus und machen es m"oglch, Nachrichten von einem Knoten zu einem anderen
-Knoten im Mesh-Netzwerk zu transportieren. Routing-Daemonen erm"oglichen
-die Kommunikation zwischen 2 Knoten in einem Ad-Hoc Mesh-Netzwerk,
-zwischen denen mehr als 1 Hop liegt.
+In diesem Abschnitt werden Routing-Deamonen vorgestellt, die ein
+bestimmtes Routing-Protokoll implementieren und auf jedem Knoten in
+einem Mesh-Netzwerk ausgef"uhrt werden. Diese Daemonen tauschen
+Routing-Informationen aus und machen es m"oglch, Nachrichten
+von einem Knoten zu einem anderen Knoten im Mesh-Netzwerk zu
+transportieren. Routing-Daemonen erm"oglichen die Kommunikation zwischen
+2 Knoten in einem Ad-Hoc Mesh-Netzwerk, zwischen denen mehr als 1 Hop
+liegt.
 
 \subsubsection{olsr.org OLSR daemon}
 
@@ -169,7 +169,16 @@ Links:
 
 \includegraphics{meshcomlogo.png}
 
-Der MeshDriver klemmt sich zwischen den WLAN-Treiber und den TCP/IP-Stack. Anders als 802.11s funkt er im Ad-hoc-Modus von 802.11 und bezieht eine Ethernet-Schnittstelle automatisch in das vermaschte Netz ein, etwa f"ur den Internet-Zugang. Meshcom stellt eine Beta-Version f"ur privaten Einsatz und Forschungszwecke kostenlos zur Verfugung, die unter Windows XP oder Linux mit Kernel 2.6 lauft. Sie beherrscht allerdings einige wesentliche Features noch nicht, beispielsweise Authentifizierung und Verschl"usselung. Auch reaktives Routing fehlt noch, also das fallweise Bestimmen der Route an Stelle von vorab festgelegten Routing-Tabellen.
+Der MeshDriver klemmt sich zwischen den WLAN-Treiber und den
+TCP/IP-Stack. Anders als 802.11s funkt er im Ad-hoc-Modus von 802.11 und
+bezieht eine Ethernet-Schnittstelle automatisch in das vermaschte Netz
+ein, etwa f"ur den Internet-Zugang. Meshcom stellt eine Beta-Version
+f"ur privaten Einsatz und Forschungszwecke kostenlos zur Verfugung,
+die unter Windows XP oder Linux mit Kernel 2.6 lauft. Sie beherrscht
+allerdings einige wesentliche Features noch nicht, beispielsweise
+Authentifizierung und Verschl"usselung. Auch reaktives Routing fehlt noch,
+also das fallweise Bestimmen der Route an Stelle von vorab festgelegten
+Routing-Tabellen.
 
 Links:
 \begin{itemize}

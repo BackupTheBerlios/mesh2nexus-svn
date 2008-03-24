@@ -1,44 +1,56 @@
 \subsection{PCs + WLAN-Karten}
 
-Die einfachste M"oglichkeit w"are die herk"ommlichen PCs mit WLAN-Karten
-zu einem Mesh-Router einzurichten.
-Man nimmt dabei einfach die WLAN-Karten (PCI, Mini-PCI oder PCMCIA) und
-baut diese in PCs oder in Laptops ein. Man installiert dann auf diesen
-Rechnern entsprechende Treiber, die WLAN-Karten im Ad-Hoc Modus betreiben
-k"onnen und Routing-Software, z.B. OLSR-Daemon.
-TODO: \todo{ueberarbeiten..}	
-\emph{Generelles Problem dabei ist, dass Ad-Hoc Modus bei Karten im 5Ghz 
-Bereich von unausgereift bis nicht vorhanden ist (siehe \ref{ieee80211abg}).}
+Die einfachste M"oglichkeit w"are die herk"ommlichen PCs mit
+WLAN-Karten zu einem Mesh-Router einzurichten.  Man nimmt dabei
+einfach die WLAN-Karten (PCI, MiniPCI(e) oder PCMCIA) und baut diese
+in PCs oder in Laptops ein. Man installiert dann auf diesen Rechnern
+entsprechende Treiber, die WLAN-Karten im Ad-Hoc Modus betreiben k"onnen
+und Routing-Software, z.B. OLSR-Protokoll.
 
-Hersteller haben gespart an der Entwicklung, da Ad-Hoc Modus
-einigerma"sen kompliziert ist, und alle meist nur Infrastrukturmodus
-benutzt haben. Fehler liegen in Firmware von Chipsatz und im Treiber.
+Es besteht aber das Problem, dass heutige WLAN-Karten den Ad-Hoc Modus im 5 GHz
+Frequenzband gar nicht oder sehr schlecht unterst"utzen. Das liegt daran,
+dass der Ad-Hoc Modus viel komplizierter als Infrastruktur Modus ist und
+in den meisten F"allen werden WLAN-Karten sowieso nur im Infrastruktur Modus
+eingesetzt.
 
-TODO: \todo{ueberarbeiten..}	
-Es gibt einen MadWiFi-Treiber, der f"ur eine Vielzahl von Chips"atzen
-entwickelt wurde und \emph{mit dem sollte es einigerma"sen} funktionieren, sobald
-dieser noch zus"atzlich gepacht ist, und Firmware der Karte Ad-Hoc zul"asst.
-Generell wegen der geringen Verbreitung von 802.11a in Europa, sind
-nur wenige Karten erh"altlich. Z.B konnten Karten mit Atheros Chipsatz,
-z.B AR5004X, \emph{uns} weiterhelfen.
+Es gibt aber WLAN-Karten, bei denen der Ad-Hoc Modus im 5 GHz Frequenzband
+sehr gut unterst"utzt wird. Das sind WLAN-Karten von Intel und WLAN-Karten,
+die auf Atheros Chips"atzen basieren. Diese WLAN-Karten werden wir
+in folgenden Abschnitten detaillierter beschreiben und analysieren.
 
-TODO: \todo{Installation ist relativ einfach - Hardware oder Software..
-Stromversorgung brauchen alle)) Stromnebel..?}	
+Die Hardware f"ur Mesh-Router auf PC-Basis haben wir in 3 Gruppen unterteilt:
+
+\begin{itemize}
+\item PCI WLAN-Karten
+\item MiniPCI(e) WLAN-Karten
+\item PCMCIA WLAN-Karten
+\end{itemize}
+
+F"ur den Einsatz in Mesh-Routern kommen eigentlich nur PCI und MiniPCI(e)
+WLAN-Karten in Frage. PCMCIA WLAN-Karten sind eher f"ur Mesh-Clients geeignet,
+obwohl sie auch in Mesh-Routern ohne Probleme eingesetzt werden k"onnen.
+Die meisten PCs haben n"ahmlich keinen PCMCIA Bus.
+
+Im folgenden werden Vorteile und Nachteile von Mesh-Routern auf PC-Basis
+erw"ahnt.
+
 \textbf{Vorteile:}
 
 \begin{itemize} 
-\item Sehr Flexibel (Hardware kann noch n"utzlich sein)
-\item Installation ist relativ einfach
-\item Software Unterst"utzung ist vorhanden
-\item Mehrere WLAN und Ethernet Interfaces m"oglich 
+\item PCs sind nicht teuer, flexibel und leicht erweiterbar
+\item Hardware kann sp"ater f"ur andere Zwecke eingesetzt werden
+\item Installation und Konfiguration ist einfacher im Vergleich zu SoHo-Routern
+\item Sehr gro"se Menge an verschiedener Software vorhanden
+\item Mehrere WLAN- und Ethernet-Schnittstellen m"oglich 
 \end{itemize}
 
 \textbf{Nachteile: }
+
 \begin{itemize}
 \item Gro"s und station"ar
-\item Stromversorgung 
-\item Schlechte Sende- und Empfangqualit"at, da sich die Antenne im
-elektromagnetischen Stromnebel des PCs befindet
+\item Brauchen mehr Strom im Vergleich zu SoHo-Routern
+\item Ohne externe Antennen schlechte Sende- und Empfangqualit"at,
+da sich die Antennen im elektromagnetischen Stromnebel des PCs befindet
 \end{itemize}
 
 \input{PCI-WLAN-Karten}
