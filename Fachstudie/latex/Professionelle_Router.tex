@@ -4,89 +4,49 @@ In diesem Abschnitt werden sogenannte professionelle Mesh-Router betrachtet.
 Die Begriffe, die daf"ur oft als Synonyme verwendet werden, sind dabei: 
 
 \begin{itemize}	
-	\item Routerboards
-	\item Stand-alone Mesh-Router 
-	\item Minicomputers 
-	\item Single-Board-Computers (SBC) 
-	\item Access Points (AP)	
+\item Routerboards
+\item Stand-alone Mesh-Router 
+\item Minicomputers 
+\item Single-Board-Computers (SBC) 
+\item Access Points
 \end{itemize}
 
-TODO: \todo{ueberarbeiten und SEPARATE diskussion in eigenem Abschnitt}
+Die meisten professionellen WLAN-Router sind sehr teuer und kommen deswegen
+nicht in Frage f"ur unsere Zwecke. Viele dieser Router verwenden auch
+proprit"are Routing-Protokolle und sind deswegen f"ur Forschungszwecke
+ungeeignet. Zus"atzlich, diese professionellen WLAN-Router sind sehr
+leistungsstark und werden deswegen eher im Aussenbereich verwendet und
+sind f"ur ein Geb"aude deswegen ungeeignet.
 
-\textbf{Im Projekt (\url{http://umic-mesh.net}) wurden professionelle Router
-eingesetzt, das sind spezielle Router-Boards mit Steckpl"atzen f"ur
-MiniPCI WLAN-karten. Boards kosten etwa 100-200 Euro, dazu muss man allerdings
-noch passende WLAN-Karten kaufen + Antennen + Kabel + Netzteil + Geh"ause,
-also keine billige L"osung. }
-
-TODO: \todo{identisch zur bereits diskutierten PC-Loesung?}
-\emph{Man k"onnte aber nur diese Karten kaufen + Adapter PCI-MiniPCI und in Rechner
-einbauen (Das w"are dann die platzsparende Version von \emph{PCs + WLAN-Karte}).
-WLAN-Karten z.B Wistron Neweb CM9 Atheros 802.11a/b/g Mini-PCI, hier 
-(\url{http://www.pcengines.ch/cm9.htm}), und Boards sind hier 
-(\url{http://www.pcengines.ch/wrap.htm, http://www.pcengines.ch/alix.htm}).}
-
-\textbf{Es gibt noch diese kleine Mesh-Router, wie von Meraki. Die haben wohl
-ihre eigene Firmware drin und eigene Routingprotokolle oder eigene
-Implementierungen davon besser gesagt. Hier ein Paar, die 802.11a
-unterst"utzen, sind aber outdoor, haben also gro"se Reichweiten.
-Ob es sinnvoll ist, sie im Gebaude einzusetzen:}
-
-\begin{itemize}
-	\item Aphelion 3300AG Outdoor Wireless Access Point - 802.11a/b/g
-	\item Aphelion 600AG/605AG Intelligenter sequentieller Wireless Access Point f"ur
-				den Au"senbereich mit den Standards 802.11a/b/g 
-				(\url{http://www.abcdata.de/abcdataneu/WLAN_MESH_Aphelion.php})
-	\item PLANET MAP-2100 - indoor - sind aber zum Teil sehr teuer (1200 Euro)
-\end{itemize}
-
-\textbf{Vorteile:}
-
-\begin{itemize}	
-	\item Outdoor (in unserem Fall unrelevant) 
-	\item Groﬂe Reichweiten
-\end{itemize}
-
-\textbf{Nachteile:} 
-
-\begin{itemize}	
-	\item Sehr teuer
-	\item Closed source
-\end{itemize}
-
-\textbf{Links:}
-
-\begin{itemize}	
-	\item \url{http://wiki.opennet-initiative.de/index.php/WRAP}
-	\item \url{http://www.abcdata.de/abcdataneu/WLAN_MESH_Aphelion.php}
-	\item \url{http://www.aerial.net/shop/product_info.php?cPath=33&products_id=351}
-	\item \url{http://forum.openwrt.org/viewtopic.php?id=9655}
-\end{itemize}
+Es gibt allerdings auch SBCs, die sehr wohl als Mesh-Router in einem WMN
+eingesetzt werden k"onnen. Das Projekt UMIC-Mesh (\url{http://umic-mesh.net})
+verwendet solche SBCs f"ur WMNs. Die vom Projekt eingesetzten SBCs
+haben 2 MiniPCI Slots, 128 MB Speicher, 233 MHz AMD Geode SC1100 CPU,
+100 MB/s LAN-Schnittstelle und einen seriellen Port. Diese SBCs k"onnten
+als alternative f"ur Mesh-Router auf PC-Basis eingesetzt werden, allerdings
+sind sie nicht so flexibel und erweiterbar wie PCs.
 
 \subsubsection{Access Points}
 
-Ein WLAN-Accesspoint ist der Verbindungspunkt eines kabelbasierten
-Netzwerkes zu einem WLAN. Der Accesspoint ist Basisstation f"ur alle
+Ein Access Point ist der Verbindungspunkt eines kabelbasierten
+Netzwerkes zu einem WLAN. Der Access Point ist eine Basisstation f"ur alle
 WLAN-Clients, zu der sie eine drahtlose Verbindung aufbauen.
 Sendet ein WLAN-Client Daten, die f"ur einen Empf"anger im kabelbasierten
-Netzwerkteil bestimmt sind, so \emph{reicht} der Accesspoint diese Daten "uber
-das Kabelnetz an den Empf"anger weiter. Weiterhin kann ein Accesspoint
-auch mehrere WLAN-Clienten untereinander verbinden. Somit ist der Accesspoint
-quasi ein kabelloser Switch. 
+Netzwerkteil bestimmt sind, so reicht der Accesspoint diese Daten "uber
+das Kabelnetz an den Empf"anger weiter. Weiterhin kann ein Access Point
+auch mehrere WLAN-Clienten untereinander verbinden. Somit ist der Access Point
+quasi ein kabelloser Switch.
 
-Dieser hat (je nach Austattung) einige der folgenden Optionen: 
-\begin{itemize}
-	\item Ein oder mehrere integrierte WLAN-Module
-	\item Einen integrierten DHCP-Server 
-	\item Umfangreiche Sicherheits- und Verschl"usselungsmoglichkeiten 
-	(WEP, WPA und WPA2 dienen der Verschl"usselung der zu ubetragenden Daten ;
-   MAC-Filter und SSID Optionen ;
-   Einstellungen bez"uglich des Remotezugriffs)	
-	\item Verschiedene Arbeitsmodi (Accesspoint (AP), 
-				Bridge (Point-to-Point oder Point-to-Multipoint), Repeater, MESSID) 
-\end{itemize}
+Access Points kommen als Mesh-Router nicht in Frage, denn Access Points
+werden in der Regel nur im Infrastruktur Modus eingesetzt. Um ein Access
+Point auch im Ad-Hoc Modus zu betreiben, wird eine alternative Firmware
+gebraucht, die den Access Point im Ad-Hoc Modus betreiben kann. Wir
+haben allerdings keine Access Points gefunden, f"ur die es alternative
+Firmware mit Ad-Hoc Modus Unterst"utzung gibt.
 
-Einige Access Points:
+Hier sind einige Access Points aufgelistet, die den Standard IEEE 802.11a
+unterst"utzen:
+
 \begin{itemize}
 \item Intel PRO/Wireless 5000 
 
