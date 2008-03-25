@@ -134,15 +134,15 @@ make install
 Im Folgenden wird demonstriert, wie man
 das HTTP Mini-Server Plugin \textbf{httpinfo} kompiliert und installiert.
 Das Plugin \textbf{httpinfo} ist ein kleiner und einfacher HTTP-Server und
-erlaubt es, z.B. die Routing-Tabelle eines Knotens in einem Mesh-Netzwerk
+erlaubt es, z.B. die Routing-Tabelle eines Knotens in einem Mesh-Netz
 zu erfassen.
 
-Damit die Topology eines Mesh-Netzwerkes visualisiert werden kann,
+Damit die Topology eines Mesh-Netzes visualisiert werden kann,
 muss noch das Dot Data Generation Plugin \textbf{dot\_draw}
 kompiliert und installiert werden. Das Plugin \textbf{dot\_draw}
 ist auch ein kleiner Server. Wenn man eine TCP-Verbindung zu diesem Server
 aufbaut (z.B mit \textbf{netcat} oder \textbf{telnet}),
-dann bekommt man die aktuelle Topology des Mesh-Netzwerkes in
+dann bekommt man die aktuelle Topology des Mesh-Netzes in
 Form eines Dot-Graphes
 (siehe GrpahViz \url{http://www.graphviz.org} und
  \url{de.wikipedia.org/wiki/DOT\_(GraphViz)}).
@@ -200,14 +200,14 @@ wird Microsoft Visual C++ 2005 ben"otigt.
 \subsubsection{Visualisierung}
 
 Das Dot Data Generation Plugin \textbf{dot\_draw} f"ur den olsr.org OLSR
-daemon stellt die Topology eines Mesh-Netzwerkes in Form eines Dot-Graphes dar.
+daemon stellt die Topology eines Mesh-Netzes in Form eines Dot-Graphes dar.
 Der Dot-Graph ist eine Textdatei und man kann aus dieser Datei die Topology
 nicht sofort sehen.
 
 Um die aktuelle Topology mit einem Webbrowser online betrachten zu k"onnen,
-haben wir auf einem Linux-Rechner in unserem Mesh-Netzwerk einen Apache
+haben wir auf einem Linux-Rechner in unserem Mesh-Netz einen Apache
 HTTP-Server installiert und ein CGI-Skript (Perl-Skript) entwickelt,
-das die aktuelle Topology des Mesh-Netzwerkes grafisch darstellt.
+das die aktuelle Topology des Mesh-Netzes grafisch darstellt.
 
 Installieren des Pache HTTP-Servers in Fedora 6
 (\textbf{root}-Rechte ben"otigt):
@@ -215,7 +215,7 @@ Installieren des Pache HTTP-Servers in Fedora 6
 yup install httpd
 \end{shelllst}
 
-Das CGI-Skript, das die aktuelle Topology des Mesh-Netzwerkes vom
+Das CGI-Skript, das die aktuelle Topology des Mesh-Netzes vom
 Dot Data Generation Plugin \textbf{dot\_draw} ausliest, ins Bild konvertiert
 und in eine Webseite integriert, finden Sie hier \ref{topology.pl}.
 Das CGI-Skript muss im Verzeichnis \textbf{/var/httpd/cgi-bin/} abgelegt
@@ -232,13 +232,13 @@ yup install graphviz
 
 \subsubsection{dhcpd}
 
-In unserem Test haben wir jedem Knoten in unsrem kleinen Mesh-Netzwerk
+In unserem Test haben wir jedem Knoten in unsrem kleinen Mesh-Netz
 IP-Adressen statisch vergeben. Mit 3 Knoten im Netzwerk ist der Aufwand daf"ur
-sehr gering. Wenn sich aber Knoten zum Mesh-Netzwerk dynamisch verbinden
-und verschwinden k"onnen oder wenn die Anzahl der Knoten im Mesh-Netzwerk
+sehr gering. Wenn sich aber Knoten zum Mesh-Netz dynamisch verbinden
+und verschwinden k"onnen oder wenn die Anzahl der Knoten im Mesh-Netz
 sehr gro"s wird, dann kann man auf einem der Linux-Rechnern in unserem
-Mesh-Netzwerk einen DHCP-Server installieren. Dieser Knoten
-mit DHCP-Server muss nat"urlich st"andig im Mesh-Netzwerk vorhanden sein.
+Mesh-Netz einen DHCP-Server installieren. Dieser Knoten
+mit DHCP-Server muss nat"urlich st"andig im Mesh-Netz vorhanden sein.
 
 Installieren des DHCP-Servers in Fedora 6 (\textbf{root}-Rechte ben"otigt):
 \begin{shelllst}
@@ -292,7 +292,7 @@ iptables -A RH-Firewall-1-INPUT -p tcp --dport 8081\
 	-m state --state NEW -j ACCEPT
 \end{shelllst}
 
-Um die aktuelle Topology unseres Mesh-Netzwerkes betrachten zu k"onnen,
+Um die aktuelle Topology unseres Mesh-Netzes betrachten zu k"onnen,
 muss man den TCP-Port 80 f"ur eingehende Verbindungen "offnen
 (\textbf{root}-Rechte ben"otigt):
 \begin{shelllst}
@@ -300,8 +300,8 @@ iptables -A RH-Firewall-1-INPUT -p tcp --dport http\
 	-m state --state NEW -j ACCEPT
 \end{shelllst}
 
-Wenn im Mesh-Netzwerk ein DHCP-Server verwendet werden soll, dann
-m"ussen auf jedem Knoten im Mesh-Netzwerk die UDP-Ports 67 und 68
+Wenn im Mesh-Netz ein DHCP-Server verwendet werden soll, dann
+m"ussen auf jedem Knoten im Mesh-Netz die UDP-Ports 67 und 68
 ge"offnet werden (\textbf{root}-Rechte ben"otigt):
 \begin{shelllst}
 -A RH-Firewall-1-INPUT -i ath1 -p udp\
@@ -342,7 +342,7 @@ In diesem Abschnitt werden wir die Ergebnisse von unserem Test pr"asentieren.
 
 \subsubsection{Topologie}
 
-Auf dem Bild \ref{fig:Topology} kann man die Topologie des Mesh-Metzwerkes
+Auf dem Bild \ref{fig:Topology} kann man die Topologie des Mesh-Netzwerkes
 betrachten. Der Knoten mit der IP-Adresse 192.168.2.15 ist der Laptop und
 die anderen beiden sind Linux-Rechner. Der rechteckige Knonten auf dem Bild, ist
 der Knoten, der diese Topologie erzeugt hat. Die Zahlen neben den Kanten
@@ -355,6 +355,7 @@ signalisieren die Qualit"at einer drahtlosen Verbindung.
 \label{fig:Topology}
 \end{figure}
 
+\clearpage
 \subsubsection{Routing-Tabelle}
 
 Auf dem Bild \ref{fig:httpinfo} kann man die Routing-Tabelle

@@ -14,9 +14,9 @@ austauschen. Die Vemaschung der Knoten erm"oglicht dabei nicht nur den
 Austausch von Nachrichten zwischen unmittelbar benachbarten Knoten,
 sondern auch die Vermittlung von Nachrichten an entfernte Knoten "uber
 mehrere Knoten hinweg. Die Vermittlungsfunktionalit"at wird dabei oft
-von dedizierten Vermittlungsknoten (engl. Mesh Router) bereitgestellt,
+von dedizierten Vermittlungsknoten (engl. Mesh-Router) bereitgestellt,
 die somit eine drahtlose Kommunikationsinfrastruktur f"ur die Klienten
-(engl. Mesh Client) bilden. Durch den Einsatz vergleichsweise
+(engl. Mesh-Client) bilden. Durch den Einsatz vergleichsweise
 kosteng"unstiger Hardwarekomponenten und die Vermaschung der Knoten
 erm"oglichen WMNs die kosteng"unstige Vernetzung auch gr"o"serer
 Gebiete. Entsprechende Netze werden beispielsweise von Community-Projekten
@@ -57,7 +57,7 @@ drahtlosen Netzwerken drahtlose Knoten direkt nicht kommunizieren
 \cite{toh2001}.
 
 Der dezentralisierte Charakter der drahtlosen Ad-Hoc Netwerken macht sie
-geeignet f"ur verschiedene Anwendungen, wo man sich auf zentralisierte Knoten
+f"ur verschiedene Anwendungen geeignet, wo man sich auf zentralisierte Knoten
 nicht verlassen kann. Ausserdem verbessert diese Eigenschaft
 die Skalierbarkeit der drahtlosen Ad-Hoc Netzen im Vergleich zu
 drahtlosen Netzwerken mit Infrastruktur \cite{toh2001}.
@@ -65,7 +65,7 @@ drahtlosen Netzwerken mit Infrastruktur \cite{toh2001}.
 Minimale Konfiguration und schnelle Verteilung machen drahtlose Ad-Hoc
 Netzwerke geeignet f"ur Notsituationen, wie z.B. Naturkatastrophen oder
 milit"arische Konflikte. Der Einsatz eines dynamischen und adaptiven
-Routing-Protokols macht es m"oglich, diese Art von Netzwerken schnell
+Routing-Protokolls macht es m"oglich, diese Art von Netzwerken schnell
 zu installieren \cite{toh2001}.
 
 Drahtlose Ad-Hoc Netzwerke k"onnen in 3 Gruppen unterteilt werden:
@@ -77,7 +77,7 @@ Drahtlose Ad-Hoc Netzwerke k"onnen in 3 Gruppen unterteilt werden:
 \end{itemize}
 
 Unsere Fachstudie konzentriert sich nur auf WMNs. Deswegen werden diese
-Netzwerke im folgenden detailierter erl"autert.
+Netzwerke im folgenden detaillierter erl"autert.
 
 \subsubsection{WMN}
 \label{sec:WMN}
@@ -87,14 +87,22 @@ in dem zumindest zwei unterschiedliche Kommunikationspfade zu jedem
 Knoten in diesem Netzwerk existieren. Dieser Typ von drahtlosen Ad-Hoc
 Netzwerken is sehr zuverl"assig und hat einen sehr hohen Grad an Redundanz.
 
-WMNs bestehen aus Mesh-Routern und Mesh-Clients. Mesh-Router haben zus"atzliche
-Routing-Funktionalit"at, um das Mesh-Netzwerk zu realisieren.
+WMNs bestehen aus Mesh-Routern und Mesh-Clients (Abb. \ref{fig:WMN1}). 
+Mesh-Router haben zus"atzliche
+Routing-Funktionalit"at, um das Mesh-Netz zu realisieren.
 Um die Flexibilit"at des WMNs zu erh"ohen, werden Mesh-Router meistens
 mit mehreren drahtlosen Kommunikationsger"aten ausgestattet. Man unterscheidet
 zwei Arten von Mesh-Clients: Typ 1 und Typ 2. Mesh-Clients von Typ 1
 sind mit einer "aquivalenten Funktionalit"at ausgeschtattet wie auch
 Mesh-Router. Mesh-Clients von Typ 2 sind Knoten mit einer einfacheren
 Funktionalit"at als Mesh-Router ausgeschtattet \cite{toh2001}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{images/mesh-netz.jpg}
+\caption{Mesh-Routern und Mesh-Clients in einem WMN}
+\label{fig:WMN1}
+\end{figure}
 
 Abh"angig von unterschiedlicher Funktionalit"at von Mesh-Routern und
 Mesh-Clients, kann man folgende Architekturen von WMNs unterscheiden
@@ -111,7 +119,7 @@ des WMN wie Routing-, Verwaltung- und Sicherheit-Protokolle f"ur beide
 Mesh-Router und Mesh-Clients gleich sind.
 
 Hierarchische WMNs unterst"utzen nur Mesh-Clients von Typ 2. Deswegen sind
-die Funktionen von Mesh-Routern und Mehs-Clients sehr unterschiedlich.
+die Funktionen von Mesh-Routern und Mesh-Clients sehr unterschiedlich.
 Da Mesh-Clients von Typ 2 einige notwendige Funktionen von Mesh-Routern
 fehlen, m"ussen Mesh-Router um bestimmte Funktionalit"at erweitert werden,
 damit Mesh-Router die Mesh-Clients von Typ 2 unterst"utzen k"onnen.
@@ -122,19 +130,18 @@ Funktionen erweitert werden, damit sie die Mesh-Clients von Typ 2
 unterst"utzen k"onnen und ihnen einen Zugriffsmechanismus auf das WMN
 zur Verf"ugung stellen k"onnen.
 
-Die wichtigsten Eigenschaften von WMNs \cite{toh2001}:
+Die wichtigsten Eigenschaften von WMNs sind \cite{toh2001}:
 
 \begin{itemize}
 \item Multi-Hop drahtloses Netzwerk
-\item Sehr zuverl"assig
-\item Sie haben einen hohen Grad an Redundanz
-\item Sie sind f"ahig, sich selbst aufzubauen, zu reparieren und zu
+\item Hohe Zuverl"assigkeit
+\item Hoher Grad an Redundanz
+\item F"ahigkeit, sich selbst aufzubauen, zu reparieren und zu
 verwalten
-\item kompatibel zu anderen drahtlosen Netzwerken und k"onnen mit ihnen
-interagieren
+\item Kompatibelit"at zu anderen drahtlosen Netzwerken und Integrierbarkeit mit ihnen
 \end{itemize}
 
-\subsubsection{IEEE 802.11}
+\subsubsection{IEEE 802.11 Standards}
 \label{ieee80211abg}
 
 IEEE 802.11 ist eine Familie von Standards f"ur drahtlose Netzwerke.
@@ -154,8 +161,8 @@ GHz Ferquenzbereich in Europa st"arker als der 2.4 GHz Ferquenzbereich
 reguliert.
 
 Es werden 8 nicht "uberlappende Kan"ale im 5 GHz Ferquenzbereich zur
-Verf"ugung gestellt. Nicht "uberlappenden Funkkan"alen in einem 802.11a WLAN
-lassen ca. 3 mal so viele Access-Points auf engen Raum zu wie der 802.11b
+Verf"ugung gestellt. Nicht "uberlappende Funkkan"ale in einem 802.11a WLAN
+lassen ca. 3 mal so viele Access Points auf engen Raum zu wie der 802.11b
 Standard.
 
 Die zugelassen Sendeleistung durch die ETSI f"ur den 802.11a Standard in
@@ -170,17 +177,17 @@ IEEE 802.11b ist ebenfalls eine alternative Spezifikation der physikalischen
 Schicht, die mit dem bisher genutzten 2.4 GHz Frequenzband auskommt und
 "Ubertragungsraten bis zu 11 MBit/s erm"oglicht. 
 
-Eine Kompatibilit"at zwischen dem 802.11a und 802.11b besteht aus dem
-unterschiedlichen "Ubertragungsfrequenzen nicht.
+Eine Kompatibilit"at zwischen dem 802.11a und 802.11b besteht wegen
+unterschiedlicher "Ubertragungsfrequenzen nicht.
 
 Es werden nur 3 nicht "uberlagernde Kan"ale zur Verf"ugung gestellt,
 wodurch es bei einer gr"o"seren Fl"achendeckeung mit 802.11b
-Access-Points zu Interferenzen mit auf den selben Kan"alen senden
-Access-Points aus der Nachbarschaft kommt.
+Access Points zu Interferenzen mit anderen Access Points, die auf den selben Kan"alen
+senden.
 
-Das 2.4 GHz Frequenzband teilen sich unter anderem z. B.
-Mikrowellenherde und Bluetooth-Ger"ate welches ebenfalls eventuelle
-St"orungen hervorrufen k"onnte. Ger"ate mit dieser Norm d"urfen in Deutschland
+Das 2.4 GHz Frequenzband teilen sich unter anderem z.B.
+Mikrowellenherde und Bluetooth-Ger"ate, welchee ebenfalls eventuelle
+St"orungen hervorrufen k"onnten. Ger"ate mit dieser Norm d"urfen in Deutschland
 f"ur den Indoor- sowie Outdoorbereich genutzt werden. 
 
 \paragraph{IEEE 802.11g}\mbox{}
@@ -190,8 +197,7 @@ die im 2.4 GHz Frequenzband arbeitet und "Ubertragungsraten bis zu 54 MBit/s
 erm"oglicht.
 
 Zwischen dem 802.11b und 802.11g Standard besteht v"ollige
-Abw"artskompatibilit"at durch Verwendung der CCK-Modulation (Complementary
-Code Keying).
+Abw"artskompatibilit"at durch Verwendung der CCK-Modulation.
 
 Die Nutzung von Ger"aten mit dieser Norm ist f"ur den Indoor- und
 Outdoorbereich von der Regtp genehmigt worden.
@@ -199,9 +205,8 @@ Outdoorbereich von der Regtp genehmigt worden.
 \paragraph{IEEE 802.11n}\mbox{}
 
 IEEE 802.11g spezifiziert eine Variante der physikalischen Schicht,
-die vorzugsweise im 5 GHz Frequenzband arbeitet, MIMO
-(Multiple Input Multiple Output) einsetzt und "Ubertragungsraten
-bis zu 500 MBit/s erm"oglicht.
+die vorzugsweise im 5 GHz Frequenzband arbeitet, MIMO-Technologie einsetzt
+und "Ubertragungsraten bis zu 500 MBit/s erm"oglicht.
 
 MIMO sendet mit mehreren Antennen in verschiedene Richtungen und Wege.
 Der MIMO Empf"anger besitzt ebenfalls mehrere Antennen, um die Signale
@@ -216,8 +221,8 @@ IEEE 802.11n befindet sich noch in Entwicklung.
 IEEE 802.11s ist ein Standard f"ur drahtlose vermaschte Netzwerke.
 Der Standard spezifiziert WMNs auf der Sicherungsschicht (Layer 2).
 
-IEEE 802.11s Standard basiert auf IEEE 802.11a/b/g Standards und kompatibel mit
-diesen Standards.
+IEEE 802.11s Standard basiert auf IEEE 802.11a/b/g Standards und ist 
+kompatibel mit diesen Standards.
 
 \subsubsection{Ad-Hoc Routing-Protokolle}
 
@@ -254,7 +259,8 @@ Positionsbasierte Routingverfahren nutzen geod"atische Informationen "uber
 die genauen Positionen der Knoten. Diese Informationen werden z. B. "uber
 GPS-Empf"anger gewonnen. Anhand dieser Ortsinformationen l"asst sich der
 k"urzeste oder der beste Pfad zwischen Quell- und Zielknoten bestimmen. Ein
-Beispiel f"ur ein positionsbasiertes Routingprotokoll ist LAR \cite{toh2001}.
+Beispiel f"ur ein positionsbasiertes Routingprotokoll ist Location Aide Routing
+(LAR) \cite{toh2001}.
 
 \paragraph{Topologiebasierte Routingverfahren}\mbox{}
 
@@ -280,7 +286,7 @@ auf die Bestimmung des Pfads zum Zielknoten gewartet werden. Nachteilig
 ist daf"ur jedoch, dass diese Verfahren auch ohne Verkehr von Nutzdaten
 viele Kontrollpakete verschicken, um Pfade zu bestimmen, die wom"oglich
 sp"ater nicht ben"otigt werden. Ein Beispiel f"ur ein Protokoll aus dieser
-Klasse ist das Optimized Link State Routing Protocol (OLSR) \cite{toh2001}.
+Klasse ist OLSR \cite{toh2001}.
 
 \paragraph{Reaktive Verfahren}\mbox{}
 
@@ -306,8 +312,9 @@ Ziele ein reaktives Verfahren eingesetzt wird. Dies vermindert die
 Belastung des Netzes durch Kontrollpakete, die bei einem rein proaktiven
 Verfahren "uber das gesamte Netz versendet w"urden. Trotzdem stehen f"ur
 lokale Ziele sofort Pfade zur Verf"ugung, ohne dass auf deren Bestimmung
-wie bei einem rein reaktiven Verfahren gewartet werden m"usste. ZRP ist
-ein Routingprotokoll, das diesen Ansatz umsetzt \cite{toh2001}.
+wie bei einem rein reaktiven Verfahren gewartet werden m"usste.
+Zone Routing Protocol (ZRP) ist ein Routingprotokoll,
+das diesen Ansatz umsetzt \cite{toh2001}.
 
 \paragraph{OLSR}\mbox{}
 
@@ -322,7 +329,7 @@ wurde von der IETF mit dem RFC 3626 standardisiert. Bei diesem
 verteilten flexiblen Routingverfahren ist allen Routern die vollst"andige
 Netztopologie bekannt, sodass sie von Fall zu Fall den k"urzesten Weg zum
 Ziel festlegen k"onnen. Als proaktives Routingprotokoll h"alt es die daf"ur
-ben"otigten Informationen jederzeit bereit. Ein in Mesh-Netzwerken
+ben"otigten Informationen jederzeit bereit. Ein in Mesh-Netzen
 bekannter Vertreter von LSR ist OLSR von olsr.org. Inzwischen existieren
 f"ur OLSR spezielle Erweiterungen. Mit der ETX-Erweiterung wird dem
 Umstand Rechnung getragen, dass Links asymmetrisch sein k"onnen. Mit
@@ -339,16 +346,17 @@ sobald die Anzahl an Knoten ein gewisses Ma"s ubersteigt.
 \end{figure}
 
 B.A.T.M.A.N., Better Approach To Mobile Adhoc Networking, ist
-ein Routing-Protokoll f"ur mobile Ad-Hoc Netzwerke. Dieses Protokoll
-wurde erfunden und wird entwickelt vom FreiFunk-Projekt. B.A.T.M.A.N.
-soll das vom FreiFunk-Projekt verwendete OLSR Routing-Protokoll abl"osen.
-Das schnelle Wachstum der Netzwerke vom FreiFunk-Projekt f"uhrte schnell zu
-Skalierbarkeitspproblemen wegen der Schw"achen im Design des OLSR Routing-
-Protokolls. Im Gegensatz zu OLSR Routing-Protokoll versucht B.A.T.M.A.N.
-nicht, alle Routen voraus zu berechnen. Jeder Knoten kennt nur seine direkte
-Nachbarn und berechnet keine kompletten Routen. Es werden keine
-Routing-Informationen im Netzwerk geflutet wie bei OLSR.
-B.A.T.M.A.N. soll das Skalierbarkeitsproblem von OLSR l"osen.
+ein Routing-Protokoll f"ur mobile Ad-Hoc Netzwerke. B.A.T.M.A.N.
+wird von der Gemeinde des FreiFunk-Projektes entwickelt. Dieses
+neue Routing-Protokoll soll das OLSR-Protokoll abl"osen, das zur Zeit
+im FreiFunk-Netzwerk verwendet wird. Das FreiFunk-Netzwerk ist
+inzwischen so gr"oss geworden, dass das FreiFunk-Projekt
+auf Skalierbarkeitsprobleme wegen der Schw"achen von OLSR-Protokoll
+gestossen worden ist. B.A.T.M.A.N. berechnet im Gegensatz zu OLSR
+Routing-Protokoll keine Routen im voraus und es werden keine Routing-Information
+wie bei OLSR im ganzen Netzwerk geflutet. Jeder Knoten im Netzwerk
+kennt nur seine dierekten Nachbar. B.A.T.M.A.N. soll das Skalierbarkeitsproblem
+von OLSR l"osen und OLSR-Protokoll im FreiFunk-Netzwerk abl"osen
 \cite{elektra2007,batman}.
 
 \subsection{Existierende L"osungen und Projekte}
@@ -375,7 +383,7 @@ und Haus zu Haus.
 
 ist ein hybrides Testbed f"ur WMNs.
 Das Projekt verfolgt 2 Ziele, einerseits ein gro"ses und sklalierbares
-Ad-Hoc Mesh-Netzwerk f"ur Forschung bereitzustellen und andererseits
+Ad-Hoc Mesh-Netz f"ur Forschung bereitzustellen und andererseits
 allen Studenten und Mitarbeiter der Computer Science Abteilung
 einen breitbandigen Zugang zum Netzwerk der Abteilung zur Verf"ugung zu stellen.
 

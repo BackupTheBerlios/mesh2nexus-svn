@@ -1,6 +1,6 @@
-\section{Systemsoftware f"ur Mesh-Netzwerk}
+\section{Systemsoftware f"ur Mesh-Netz}
 
-In Kapitel 4 haben wir mehrere Hardware-L"osungen für ein Mesh-Netztwerk
+In Kapitel 4 haben wir mehrere Hardware-L"osungen für ein Mesh-Netz
 vorgestellt. F"ur alle im Kapitel 4 vorgestellten PCI-, MiniPCI- und
 PCMCIA-Karten werden vom Hersteller dieser WLAN-Karten Windows-Treiber
 bereitgestellt. Und nur wenige Hersteller (z.B. Intel) haben auch Linux-Treiber
@@ -17,7 +17,7 @@ im Infrastruktur Modus und den Ad-Hoc Modus nicht realisieren.
 
 In diesem Kapitel wird verschiedene Treiber- und Routing-Software
 vorgestellt, die zusammen mit der Hardware aus Kapitel 4 die Realiesierung
-von Ad-Hoc Mesh-Netzwerken erm"oglicht.
+von Ad-Hoc Mesh-Netzen erm"oglicht.
 
 \subsection{Linux MadWiFi-Treiber}
 
@@ -73,7 +73,7 @@ In diesem Abschnitt werden mehrere Open-Source Firmwares f"ur SoHO WLAN-Router
 vorgestellt. Diese Firmwares werden gebraucht, damit man SoHO WLAN-Router
 im Ad-Hoc Modus betreiben kann, denn die meisten SoHO WLAN-Router unterst"utzen
 nur WLAN Infrastruktur Modus. Alle unten erw"ahnten Firmwares basieren
-auf dem Quellcode des Betriebssystems des Linksys WRT54G SoHO WLAN-Router.
+auf dem Quellcode des Betriebssystems des Linksys WRT54G SoHO WLAN-Routers.
 
 \subsubsection{OpenWRT}
 
@@ -100,11 +100,11 @@ Linksys WRT54GL, Asus WL500g Premium und Netgear WGT634u
 
 In diesem Abschnitt werden Routing-Deamonen vorgestellt, die ein
 bestimmtes Routing-Protokoll implementieren und auf jedem Knoten in
-einem Mesh-Netzwerk ausgef"uhrt werden. Diese Daemonen tauschen
+einem Mesh-Netz ausgef"uhrt werden. Diese Daemonen tauschen
 Routing-Informationen aus und machen es m"oglch, Nachrichten
-von einem Knoten zu einem anderen Knoten im Mesh-Netzwerk zu
+von einem Knoten zu einem anderen Knoten im Mesh-Netz zu
 transportieren. Routing-Daemonen erm"oglichen die Kommunikation zwischen
-2 Knoten in einem Ad-Hoc Mesh-Netzwerk, zwischen denen mehr als 1 Hop
+2 Knoten in einem Ad-Hoc Mesh-Netz, zwischen denen mehr als 1 Hop
 liegt.
 
 \subsubsection{olsr.org OLSR daemon}
@@ -169,7 +169,7 @@ Links:
 
 \includegraphics{meshcomlogo.png}
 
-Der MeshDriver klemmt sich zwischen den WLAN-Treiber und den
+Der Meshcom Driver klemmt sich zwischen den WLAN-Treiber und den
 TCP/IP-Stack. Anders als 802.11s funkt er im Ad-hoc-Modus von 802.11 und
 bezieht eine Ethernet-Schnittstelle automatisch in das vermaschte Netz
 ein, etwa f"ur den Internet-Zugang. Meshcom stellt eine Beta-Version
@@ -178,7 +178,9 @@ die unter Windows XP oder Linux mit Kernel 2.6 lauft. Sie beherrscht
 allerdings einige wesentliche Features noch nicht, beispielsweise
 Authentifizierung und Verschl"usselung. Auch reaktives Routing fehlt noch,
 also das fallweise Bestimmen der Route an Stelle von vorab festgelegten
-Routing-Tabellen.
+Routing-Tabellen. Ausserdem verwendet der Meshcom Driver einen proprit"aren
+Routing-Protokoll. Aus diesen Gr"unden kommt diese Routing-Software
+f"ur den Einsatz in einem Mesh-Router nicht in Frage.
 
 Links:
 \begin{itemize}

@@ -5,7 +5,7 @@ Version=4
 [ProjectInfo]
 MainFile=mesh.tex
 UseBibTeX=1
-UseMakeIndex=0
+UseMakeIndex=1
 ActiveProfile=LaTeX => PDF
 ProjectLanguage=de
 ProjectDialect=DE

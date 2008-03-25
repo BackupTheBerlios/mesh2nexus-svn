@@ -7,20 +7,20 @@ ist die Kombination eines normalen Router (Kabelrouter) mit einem
 Accesspoint. Es gibt solche mit eingebautem Modem und andere mit einem
 Anschluss (WAN-Port) daf"ur (f"ur Modems mit LAN-Anschluss).
 Die meisten SoHO WLAN-Router unterst"utzen den Ad-Hoc Modus im 5 GHz
-Frequenzband gar nicht, sie arbeiten nur im Inrastruktur Modus. Deswegen
-muss bei diesen Routern zuerst eine neue WLAN-karte eingebaut werden,
-den Ad-Hoc Modus im 5 GHz Frequenzband unterst"utzt, und dann muss noch
+Frequenzband gar nicht, sie arbeiten nur im Infrastruktur Modus. Deswegen
+muss bei diesen WLAN-Routern zuerst eine neue WLAN-Karte eingebaut werden,
+die den Ad-Hoc Modus im 5 GHz Frequenzband unterst"utzt, und dann muss noch
 alternative Firmware auf Routern installiert werden, die diese Router
 im Ad-Hoc Modus betreiben kann.
 
 Die hier betrachteten SoHO WLAN-Router haben deswegen mindestens einen
 MiniPCI-Slot vorhanden. In diesen Slot kann z.B. eine Atheros MiniPCI
-WLAN-Karte eingebaut werden.
+WLAN-Karte (siehe \ref{Wistron CM9 Atheros AR5213A}) eingebaut werden.
 
 Die meisten Hersteller legen den Quellcode des Betriebssystems, das in
 ihren SoHO WLAN-Routern eingesetzt wird, nicht frei. Aber es gibt
-mehrere freie Firmwares f"ur SoHO WLAN-Router, siehe
-\ref{sec:Open-Source Firmware f"ur SoHO WLAN-Router}.
+mehrere freie Firmwares f"ur SoHO WLAN-Router (siehe
+\ref{sec:Open-Source Firmware f"ur SoHO WLAN-Router}).
 
 Im folgenden sind Vorteile und Nachteile von SoHO WLAN-Routern erl"autert.
 
@@ -31,8 +31,7 @@ Im folgenden sind Vorteile und Nachteile von SoHO WLAN-Routern erl"autert.
 	\item Mobil und flexibel
 	\item Sehr g"unstig
 	\item Gute Reichweite
-	\item Wenig Stromverbrauch
-	\item Leichte Konfiguration und Installation
+	\item Wenig Stromverbrauch im Verleich zu PCs
 \end{itemize}
 
 \textbf{Nachteile:}
@@ -43,6 +42,7 @@ Im folgenden sind Vorteile und Nachteile von SoHO WLAN-Routern erl"autert.
 	\item Durch das "Offnen von Ger"aten und das Einspielen von
 	fremder Firmware erlischt die Garantie des Herstellers
 	\item Eingeschr"ankter Funktionsumfang
+	\item Schwierige Konfiguration und Installation
 \end{itemize}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -224,16 +224,3 @@ Ein MiniPCI Slot ist f"ur eine WLAN-Karte vorhanden.
 \end{wlanlink}
 
 \end{wlandevice}
-
-\paragraph{Andere WLAN-Router}
-
-\begin{itemize}
-
-\item Netgear HR314
-
-802.11a WLAN-Router, unterst"utzt Ad-Hoc- und Infrastruktur-Modus,
-keine Open-Source Firmware vorhanden, kostet ca. 30 Euro
-
-\url{http://www.wi-fiplanet.com/reviews/article.php/1559091}
-
-\end{itemize}
