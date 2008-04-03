@@ -14,7 +14,7 @@ austauschen. Die Vemaschung der Knoten erm"oglicht dabei nicht nur den
 Austausch von Nachrichten zwischen unmittelbar benachbarten Knoten,
 sondern auch die Vermittlung von Nachrichten an entfernte Knoten "uber
 mehrere Knoten hinweg. Die Vermittlungsfunktionalit"at wird dabei oft
-von dedizierten Vermittlungsknoten (engl. Mesh-Router) bereitgestellt,
+von dedizierten Vermittlungsknoten (engl. Mesh-Routern) bereitgestellt,
 die somit eine drahtlose Kommunikationsinfrastruktur f"ur die Klienten
 (engl. Mesh-Client) bilden. Durch den Einsatz vergleichsweise
 kosteng"unstiger Hardwarekomponenten und die Vermaschung der Knoten
@@ -42,18 +42,18 @@ Auspr"agung eines hybriden Kommunikationssystems eine wesentliche Rolle.
 
 \subsubsection{Drahtloses Ad-Hoc Netzwerk}
 
-Ein drahtloses Ad-Hoc Netzwerk is ein dezentralisiertes drahtloses Netzwerk.
-Das Netzwerk heisst Ad-Hoc, weil jeder Knoten im Netzwerk Daten
+Ein drahtloses Ad-Hoc Netzwerk ist ein dezentralisiertes drahtloses Netzwerk.
+Das Netzwerk hei"st Ad-Hoc, weil jeder Knoten im Netzwerk Daten
 von anderen Knoten im Netzwerk weiterleiten kann, und so wird die Entscheidung,
 welcher Knoten die Weiterleitung von Daten eines Knotens "ubernimmt,
 dynamisch auf der Grundlage der Netzwerkkonnektivit"at getroffen.
-Das Weiterleiten von Paketen in einem Netzwerk nennt man Routing.
-Und im Genegsatz zu Ad-Hoc Netzwerken "ubernehmen diese Aufgabe in einem
-verdrahteten Netzwerk, wie z.B. das Internet, nur spezielle Knoten,
-so genannte Router. Auch in drahtlosen Netzwerken mit Infrastruktur
-"ubernehmen diese Aufgabe spezielle Knoten, so genannte Access Points,
-die die Kommunikation zwischen drahtlosen Knoten verwalten, da in solchen
-drahtlosen Netzwerken drahtlose Knoten direkt nicht kommunizieren
+Das Weiterleiten von Paketen in einem Netzwerk "uber mehrere Knoten
+nennt man Routing. Und im Gegensatz zu Ad-Hoc Netzwerken "ubernehmen
+diese Aufgabe in einem verdrahteten Netzwerk, wie z.B. dem Internet, nur
+spezielle Knoten, so genannte Router. Auch in drahtlosen Netzwerken mit
+Infrastruktur "ubernehmen diese Aufgabe spezielle Knoten, so genannte
+Access Points, die die Kommunikation zwischen drahtlosen Knoten verwalten,
+da in solchen drahtlosen Netzwerken Knoten nicht direkt kommunizieren
 \cite{toh2001}.
 
 Der dezentralisierte Charakter der drahtlosen Ad-Hoc Netwerken macht sie
@@ -63,7 +63,7 @@ die Skalierbarkeit der drahtlosen Ad-Hoc Netzen im Vergleich zu
 drahtlosen Netzwerken mit Infrastruktur \cite{toh2001}.
 
 Minimale Konfiguration und schnelle Verteilung machen drahtlose Ad-Hoc
-Netzwerke geeignet f"ur Notsituationen, wie z.B. Naturkatastrophen oder
+Netzwerke geeignet f"ur Notfallsituationen, wie z.B. Naturkatastrophen oder
 milit"arische Konflikte. Der Einsatz eines dynamischen und adaptiven
 Routing-Protokolls macht es m"oglich, diese Art von Netzwerken schnell
 zu installieren \cite{toh2001}.
@@ -93,9 +93,9 @@ Routing-Funktionalit"at, um das Mesh-Netz zu realisieren.
 Um die Flexibilit"at des WMNs zu erh"ohen, werden Mesh-Router meistens
 mit mehreren drahtlosen Kommunikationsger"aten ausgestattet. Man unterscheidet
 zwei Arten von Mesh-Clients: Typ 1 und Typ 2. Mesh-Clients von Typ 1
-sind mit einer "aquivalenten Funktionalit"at ausgeschtattet wie auch
+sind mit einer "aquivalenten Funktionalit"at ausgestattet wie auch
 Mesh-Router. Mesh-Clients von Typ 2 sind Knoten mit einer einfacheren
-Funktionalit"at als Mesh-Router ausgeschtattet \cite{toh2001}.
+Funktionalit"at als Mesh-Router \cite{toh2001}.
 
 \begin{figure}[H]
 \centering
@@ -125,7 +125,7 @@ fehlen, m"ussen Mesh-Router um bestimmte Funktionalit"at erweitert werden,
 damit Mesh-Router die Mesh-Clients von Typ 2 unterst"utzen k"onnen.
 
 Hybride WMNs sind verallgemeinerte WMNs und unterst"utzen Mesh-Clients sowohl
-von Typ 1 als auch von Typ 2. Und wieder m"ussen Mesh-Router um bestimmte
+von Typ 1 als auch von Typ 2. Auch hier m"ussen Mesh-Router um bestimmte
 Funktionen erweitert werden, damit sie die Mesh-Clients von Typ 2
 unterst"utzen k"onnen und ihnen einen Zugriffsmechanismus auf das WMN
 zur Verf"ugung stellen k"onnen.
@@ -138,7 +138,7 @@ Die wichtigsten Eigenschaften von WMNs sind \cite{toh2001}:
 \item Hoher Grad an Redundanz
 \item F"ahigkeit, sich selbst aufzubauen, zu reparieren und zu
 verwalten
-\item Kompatibelit"at zu anderen drahtlosen Netzwerken und Integrierbarkeit mit ihnen
+\item Kompatibilit"at zu anderen drahtlosen Netzwerken und Integrierbarkeit mit ihnen
 \end{itemize}
 
 \subsubsection{IEEE 802.11 Standards}
@@ -167,8 +167,8 @@ Standard.
 
 Die zugelassen Sendeleistung durch die ETSI f"ur den 802.11a Standard in
 Europa beträgt 30mW. Dieser Frequenzbereich ist von der RegTP f"ur Lokale
-Funknetze am 13. November 2002 geb"uhrenfrei freigegeben worden. Die
-in Deutschland ist die Nutzung dieser Norm nur auf den Einsatz im
+Funknetze am 13. November 2002 geb"uhrenfrei freigegeben worden.
+In Deutschland ist die Nutzung dieser Norm nur auf den Einsatz im
 Indoorbereich beschr"ankt.
 
 \paragraph{IEEE 802.11b}\mbox{}
@@ -180,10 +180,10 @@ Schicht, die mit dem bisher genutzten 2.4 GHz Frequenzband auskommt und
 Eine Kompatibilit"at zwischen dem 802.11a und 802.11b besteht wegen
 unterschiedlicher "Ubertragungsfrequenzen nicht.
 
-Es werden nur 3 nicht "uberlagernde Kan"ale zur Verf"ugung gestellt,
-wodurch es bei einer gr"o"seren Fl"achendeckeung mit 802.11b
+Es werden nur 3 nicht "uberlappende Kan"ale zur Verf"ugung gestellt,
+wodurch es bei einer gr"o"seren Fl"achendeckung mit 802.11b
 Access Points zu Interferenzen mit anderen Access Points, die auf den selben Kan"alen
-senden.
+senden, kommt.
 
 Das 2.4 GHz Frequenzband teilen sich unter anderem z.B.
 Mikrowellenherde und Bluetooth-Ger"ate, welchee ebenfalls eventuelle
@@ -230,11 +230,11 @@ Ein Ad-Hoc Netzwerk, beispielsweise ein Sensornetzwerk, besteht aus einer
 gro"sen Anzahl von Knoten, die sich typischerweise spontan vernetzen
 m"ussen. "Uber Funk k"onnen diese Knoten miteinander kommunizieren. 
 Knoten k"onnen aber wegen der Leistungsf"ahigkeit, des Energieverbrauches
-und auch der Mobilit"at nicht mit allen anderen Knoten kommunizieren.
+und auch der Mobilit"at nicht mit allen anderen Knoten direkt kommunizieren.
 Routing-Verfahren bieten die M"oglichkeit, Kommunikation
 zwischen zwei Knoten mit Hilfe der anderen Knoten auszuf"uhren, wenn
 beide Knoten miteinander nicht direkt kommunizieren k"onnen.
-Mit anderen Worten, erlaubt Routing indirekte Kommunikation zwischen
+Mit anderen Worten erlaubt Routing indirekte Kommunikation zwischen
 Knoten in einem Netzwerk \cite{toh2001}.
 
 Es gibt mehr als 70 konkurrierende Entw"urfe für das Routing der Pakete
@@ -256,7 +256,7 @@ werden im Folgenden vorgestellt.
 \paragraph{Positionsbasierte Routingverfahren}\mbox{}
 
 Positionsbasierte Routingverfahren nutzen geod"atische Informationen "uber
-die genauen Positionen der Knoten. Diese Informationen werden z. B. "uber
+die genauen Positionen der Knoten. Diese Informationen werden z.B. "uber
 GPS-Empf"anger gewonnen. Anhand dieser Ortsinformationen l"asst sich der
 k"urzeste oder der beste Pfad zwischen Quell- und Zielknoten bestimmen. Ein
 Beispiel f"ur ein positionsbasiertes Routingprotokoll ist Location Aide Routing
@@ -268,7 +268,7 @@ Die topologiebasierten Routingverfahren kommen ohne geod"atische
 Informationen "uber die Positionen der Knoten des mobilen
 Ad-hoc-Netzes aus. Ihnen gen"ugen logische Informationen "uber die
 Nachbarschaftsbeziehungen der Knoten, also welche Knoten eine direkte
-Verbindung haben oder "uber einen oder mehrere Zwischenknoten (hop)
+Verbindung haben oder "uber einen oder mehrere Zwischenknoten (hops)
 in Verbindung treten k"onnen. Diese Nachbarknoten k"onnen miteinander
 kommunizieren. Die topologischen Informationen werden meistens durch
 den Versand so genannter HELLO-Pakete gewonnen. Je nach Zeitpunkt des
@@ -333,10 +333,10 @@ ben"otigten Informationen jederzeit bereit. Ein in Mesh-Netzen
 bekannter Vertreter von LSR ist OLSR von olsr.org. Inzwischen existieren
 f"ur OLSR spezielle Erweiterungen. Mit der ETX-Erweiterung wird dem
 Umstand Rechnung getragen, dass Links asymmetrisch sein k"onnen. Mit
-dem Fisheye-Algorithmus ist OLSR auch fur gro"sere Netzwerke brauchbar
+dem Fisheye-Algorithmus ist OLSR auch f"ur gr"o"sere Netzwerke brauchbar
 geworden, da Routen zu weiter entfernten Knoten weniger h"aufig neu
 berechnet werden. Der entscheidende Nachteil ist aber der trotz
-Fisheye-Algorithmus noch recht hohe Rechenaufwand von OLSR Routing-Daemon,
+Fisheye-Algorithmus noch recht hohe Rechenaufwand des OLSR Routing-Daemon,
 sobald die Anzahl an Knoten ein gewisses Ma"s ubersteigt.
 
 \paragraph{B.A.T.M.A.N.}\mbox{}
@@ -350,12 +350,12 @@ ein Routing-Protokoll f"ur mobile Ad-Hoc Netzwerke. B.A.T.M.A.N.
 wird von der Gemeinde des FreiFunk-Projektes entwickelt. Dieses
 neue Routing-Protokoll soll das OLSR-Protokoll abl"osen, das zur Zeit
 im FreiFunk-Netzwerk verwendet wird. Das FreiFunk-Netzwerk ist
-inzwischen so gr"oss geworden, dass das FreiFunk-Projekt
+inzwischen so gro"s geworden, dass das FreiFunk-Projekt
 auf Skalierbarkeitsprobleme wegen der Schw"achen von OLSR-Protokoll
-gestossen worden ist. B.A.T.M.A.N. berechnet im Gegensatz zu OLSR
+gestossen ist. B.A.T.M.A.N. berechnet im Gegensatz zu OLSR
 Routing-Protokoll keine Routen im voraus und es werden keine Routing-Information
 wie bei OLSR im ganzen Netzwerk geflutet. Jeder Knoten im Netzwerk
-kennt nur seine dierekten Nachbar. B.A.T.M.A.N. soll das Skalierbarkeitsproblem
+kennt nur seine direkten Nachbar. B.A.T.M.A.N. soll das Skalierbarkeitsproblem
 von OLSR l"osen und OLSR-Protokoll im FreiFunk-Netzwerk abl"osen
 \cite{elektra2007,batman}.
 
@@ -385,7 +385,8 @@ ist ein hybrides Testbed f"ur WMNs.
 Das Projekt verfolgt 2 Ziele, einerseits ein gro"ses und sklalierbares
 Ad-Hoc Mesh-Netz f"ur Forschung bereitzustellen und andererseits
 allen Studenten und Mitarbeiter der Computer Science Abteilung
-einen breitbandigen Zugang zum Netzwerk der Abteilung zur Verf"ugung zu stellen.
+an der RWTH Aachen Universit"at einen breitbandigen Zugang zum Netzwerk
+der Abteilung zur Verf"ugung zu stellen.
 
 \url{http://umic-mesh.net/}
 
