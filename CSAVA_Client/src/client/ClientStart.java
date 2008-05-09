@@ -5,12 +5,17 @@ import java.rmi.*;
 
 import communication.ServerInterface;
 
+/**
+ * 
+ */
 public class ClientStart {
 	
 	public static String ServerURL;
 	public static ServerInterface server;
 	
-	
+	/**
+	 * 
+	 */
 	public static void main(String[] args){
 		
 		
@@ -20,7 +25,7 @@ public class ClientStart {
 		// Start Haupt-Gui
 		
 		
-		ServerURL =  "92.227.33.232:21";
+		ServerURL =  "localhost:21";
 		
 		try {
 			server = (ServerInterface) Naming.lookup("rmi://"+ ServerURL +"/ServerFunctions");
