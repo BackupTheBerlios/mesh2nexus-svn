@@ -11,25 +11,28 @@ import java.util.Properties;
 public class SAPConnector {
 
 	
-  IRepository repository;
+  private static IRepository repository;
   
   // SAP Verbindungsdaten
-  static String PoolName;
-  static String MaxConnections;
-  static String SAPClient;
-  static String UserId;
-  static String Pass;
-  static String Language;
-  static String HostName;
-  static String SystemNumber;
+  private static String PoolName;
+  private static String MaxConnections;
+  private static String SAPClient;
+  private static String UserId;
+  private static String Pass;
+  private static String Language;
+  private static String HostName;
+  private static String SystemNumber;
   
 
   /**
-   * Konstruktor. Erzeugt einen Connection-Pool
-   *
+   * Konstruktor. 
    */
-  public SAPConnector()
-  {
+  public SAPConnector(){}
+  
+  /**
+   * Legt einen ConnectionPool an
+   */
+  public static void StartConnectionPool(){
 	  try {
       
 		  // Ein neuer Connection-Pool wird erzeugt. Muss am beim Anhalten
@@ -58,133 +61,86 @@ public class SAPConnector {
 	  }
   }
 
-  // Retrieves and prints information about the remote system
-  public void systemInfo()
-  {
-    try {
+  
+  /**
+   * Lädt SalesOrderList von SAP und gibt die Ergebnistabelle zurück
+   */
+  @SuppressWarnings("finally")
+public static JCO.Table getSalesOrders(
+		  	String CustNumber,
+			String SalesOrg,
+			String DocDate,
+			String DocDateTo,
+			String TAGroup){
+	
+	  JCO.Client client = null;
+	  JCO.Table result = null;
 
-      // Get a function template from the repository
-      IFunctionTemplate ftemplate = repository.getFunctionTemplate("RFC_SYSTEM_INFO");
+	  try {
+		  // Funktionstemplate vom Repository anlegen
+		  IFunctionTemplate ftemplate = repository.getFunctionTemplate("BAPI_SALESORDER_GETLIST");
 
-      // if the function definition was found in backend system
-      if(ftemplate != null) {
+		  // falls Funktionsdefinition vorhanden
+		  if(ftemplate != null) {
 
-        // Create a function from the template
-        JCO.Function function = ftemplate.getFunction();
+			  // Erstelle eine neue Funktion vom Template
+			  JCO.Function function = ftemplate.getFunction();
 
-        // Get a client from the pool
-        JCO.Client client = JCO.getClient(PoolName);
+			  // Fordere eine Verbindung vom Pool an
+			  client = JCO.getClient(PoolName);
 
-        // We can call 'RFC_SYSTEM_INFO' directly since it does not need any input parameters
-        client.execute(function);
+			  // Eingabeparameter
+			  JCO.ParameterList input = function.getImportParameterList();
 
-        // The export parameter 'RFCSI_EXPORT' contains a structure of type 'RFCSI'
-        JCO.Structure s = function.getExportParameterList().getStructure("RFCSI_EXPORT");
+			  // Funktionsparameter setzen
+			  if (CustNumber != ""){
+				  input.setValue(CustNumber, "CUSTOMER_NUMBER");
+			  }
+			  if (SalesOrg != ""){
+				  input.setValue(SalesOrg, "SALES_ORGANIZATION");
+			  }
+			  if (DocDate != ""){
+				  input.setValue(DocDate, "DOCUMENT_DATE");
+			  }
+			  if (DocDateTo != ""){
+				  input.setValue(DocDateTo, "DOCUMENT_DATE_TO");
+			  }
+			  if (TAGroup != ""){
+				  input.setValue(TAGroup, "TRANSACTION_GROUP" );
+			  }
 
-        // Use enumeration to loop over all fields of the structure
-        System.out.println("System info for " + PoolName + ":\n" +
-        				   "--------------------");
+			  // Führe die entfernte Funktion aus
+			  System.out.println("> Führe BAPI_SALES_ORDER_GETLIST aus.");
+			  client.execute(function);
 
-        for (JCO.FieldIterator e = s.fields(); e.hasMoreElements(); ) {
-          JCO.Field field = e.nextField();
-          System.out.println(field.getName() + ":\t" + field.getString());
-        }//for
+			  // Print return message
+			  JCO.Structure ret = function.getExportParameterList().getStructure("RETURN");
+			  System.out.println(">>RETURN MESSAGE: " + ret.getString("MESSAGE"));
 
-        System.out.println("\n\n");
+			  // Get table containing the orders
+			  result = function.getTableParameterList().getTable("SALES_ORDERS");
 
-        // Release the client into the pool
-        JCO.releaseClient(client);
-      }
-      else {
-	    System.out.println("Function RFC_SYSTEM_INFO not found in backend system.");
+		  }
+		  else {
+			  System.err.println("Funktion BAPI_SALESORDER_GETLIST wurde nicht gefunden");
+		  }
 	  }
-    }
-	catch (Exception ex) {
-	  System.out.println("Caught an exception: \n" + ex);
-	}
-
-  }
-
-  // Retrieves and displays a sales order list
-  public void salesOrders()
-  {
-	JCO.Client client = null;
-
-    try {
-      // Get a function template from the repository
-      IFunctionTemplate ftemplate = repository.getFunctionTemplate("BAPI_SALESORDER_GETLIST");
-
-      // if the function definition was found in backend system
-      if(ftemplate != null) {
-
-		// Create a function from the template
-		JCO.Function function = ftemplate.getFunction();
-
-		// Get a client from the pool
-		client = JCO.getClient(PoolName);
-
-		// Fill in input parameters
-		JCO.ParameterList input = function.getImportParameterList();
-
-//		input.setValue("0000100001", "CUSTOMER_NUMBER"   );
-		input.setValue(      "WING", "SALES_ORGANIZATION");
-		input.setValue(         "0", "TRANSACTION_GROUP" );
-		input.setValue(         "2005-05-28", "DOCUMENT_DATE" );
-//		input.setValue(         "2005-05-28", "DOCUMENT_DATE_TO" );
-		
-		
-		
-
-		// Call the remote system
-		client.execute(function);
-
-		// Print return message
-		JCO.Structure ret = function.getExportParameterList().getStructure("RETURN");
-		System.out.println("BAPI_SALES_ORDER_GETLIST RETURN: " + ret.getString("MESSAGE"));
-
-		// Get table containing the orders
-		JCO.Table sales_orders = function.getTableParameterList().getTable("SALES_ORDERS");
-
-		// Print results
-		if (sales_orders.getNumRows() > 0) {
-
-		  // Loop over all rows
-		  do {
-
-		    System.out.println("-----------------------------------------");
-
-		    // Loop over all columns in the current row
-		    for (JCO.FieldIterator e = sales_orders.fields(); e.hasMoreElements(); ) {
-			  JCO.Field field = e.nextField();
-			  
-			  System.out.println(field.getName() + ":\t" + field.getString());
-			  
-			  
-		    }//for
-		  } while(sales_orders.nextRow());
-
-		}
-		else {
-		  System.out.println("No results found");
-		}//if
-      }
-      else {
-	    System.out.println("Function BAPI_SALESORDER_GETLIST not found in backend system.");
-	  }//if
-    }
-    catch (Exception ex) {
-      System.out.println("Caught an exception: \n" + ex);
-    }
-    finally {
-	  // Release the client to the pool
-      JCO.releaseClient(client);
-	}
+	  catch (Exception ex) {
+		  System.err.println("Problem beim Ausführen von BAPI_SALESORDER_GETLIST \n" + ex);
+	  }
+    
+	  finally {
+		  // Verbindung wieder freigeben
+		  JCO.releaseClient(client);
+		  
+		  return result;
+	  }
   }
 
   /**
    * Pool muss explizit geloescht werden
    */
-  public void cleanUp() {
+  public static void cleanUp() {
     JCO.removeClientPool(PoolName);
   }
   
