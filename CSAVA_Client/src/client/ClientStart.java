@@ -17,7 +17,10 @@ public class ClientStart {
 		
 		// Serverdaten auslesen			//ServerURL =  "localhost:21";	
 		// Verbindung zum Server aufbauen		
+		
 		// Start Haupt-Gui
+		if (Controller.connect)
+			Controller.StartMainGui();	
 		
 	}	
 

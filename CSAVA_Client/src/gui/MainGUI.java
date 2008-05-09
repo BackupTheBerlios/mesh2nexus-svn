@@ -11,12 +11,10 @@ package gui;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
 
-public class GUIStart {
+public class MainGUI {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+
+	public MainGUI() {
 		
 		Display display = new Display();
 		Shell shell = new Shell(display);

@@ -10,6 +10,7 @@ import java.rmi.RemoteException;
 import communication.ServerInterface;
 import gui.ErrorDialog;
 import gui.LogonGUI;
+import gui.MainGUI;
 
 /**
  * @author 
@@ -21,7 +22,10 @@ public class Controller {
 	public static ServerInterface server;
 	
 	public static LogonGUI logonGui;
+	public static MainGUI mainGui;
+	
 	public static ErrorDialog errDialog;
+	public static boolean connect = false;
 
 	/**
 	 * @param 
@@ -58,6 +62,7 @@ public class Controller {
 			// Get response
 			response = server.getString();
 			System.out.println(response);
+			connect = true;
 			return response;
 			
 		} catch (MalformedURLException e) {
@@ -74,6 +79,11 @@ public class Controller {
 		
 		return response ;
 		
+		
+	}
+
+	public static void StartMainGui() {
+		mainGui = new MainGUI();	
 		
 	}
 	
