@@ -12,12 +12,14 @@ import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.*;
 
-public class LogonGUI {
+import control.Controller;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+public class LogonGUI {
+	
+	// Server URL
+	public Text text;	
+
+	public LogonGUI() {
 				
 		Display display = new Display();
 		Shell shell = new Shell(display);
@@ -29,11 +31,11 @@ public class LogonGUI {
 		label.setLocation(90, 5);	
 		
 		// Server URL
-		Text text1 = new Text(shell, SWT.BORDER);
-		text1.setText("Server URL");
-		text1.setBounds(10,10,200,20);
-		text1.setTextLimit(30);
-		text1.setLocation(50, 50);		
+		text = new Text(shell, SWT.BORDER);
+		text.setText("localhost:21");
+		text.setBounds(10,10,200,20);
+		text.setTextLimit(30);
+		text.setLocation(50, 50);		
 		
 		// Password
 		Text text2 = new Text(shell, SWT.NONE);
@@ -59,8 +61,15 @@ public class LogonGUI {
 		// By Click
 		button1.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent e) {
-				System.out.println("Verbinden..");				
-
+				
+				System.out.println("Verbinden..");	
+				// // Serverdaten auslesen	
+				//Controller.setServerURL(text1.getText());
+				// Verbindung zum Server aufbauen
+				String response = Controller.connectToServer(text.getText());
+				text.setText(response);
+				
+				
 			}
 		});
 		
@@ -72,8 +81,10 @@ public class LogonGUI {
 		while (!shell.isDisposed())
 			if (!display.readAndDispatch())
 				display.sleep();
+		
 		display.dispose();
 		label.dispose();
+		//text.dispose(); // ???
 		
 
 	}

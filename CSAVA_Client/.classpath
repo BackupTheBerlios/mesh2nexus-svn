@@ -3,5 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/swt.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/CSAVA_Server"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
