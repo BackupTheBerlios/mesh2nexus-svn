@@ -9,6 +9,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import com.sap.mw.jco.JCO;
+
 
 /**
  * 
@@ -68,8 +70,11 @@ public class Server {
 			System.err.println("RMI Registry konnte nicht gestartet werden \n" + e);
 		}
 		
-		// Pool anlegen, Verbindung zu Sap testen
+		// Pool anlegen
 		SAPConnector.StartConnectionPool();
+		
+		// Verbindung zu SAP testen
+		SAPConnector.TestConnection();
 	
 		
 		System.out.println("> Server gestartet");

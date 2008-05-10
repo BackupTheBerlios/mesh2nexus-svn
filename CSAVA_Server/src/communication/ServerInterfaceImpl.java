@@ -39,7 +39,7 @@ public class ServerInterfaceImpl extends UnicastRemoteObject implements ServerIn
 		
 		JCO.Table tmp = SAPConnector.getSalesOrders(CustNumber, SalesOrg, DocDate, DocDateTo, TAGroup);
 		// TODO problem mit cleanUp lösen
-		SAPConnector.cleanUp();
+//		SAPConnector.cleanUp();
 		return tmp;
 		
 	}

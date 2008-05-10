@@ -55,12 +55,29 @@ public class SAPConnector {
 	      repository = JCO.createRepository("MYRepository", PoolName);
 	      
 	      System.out.println("> JCO Repository erstellt");
+	      
 	  }
 	  catch (JCO.Exception ex) {
-		  System.err.println("Es konnte keine Verbindung zu SAP aufgebaut werden \n " + ex);
+		  System.err.println("Fehler in 'SAPConnector.StartConnectionPool()': \n " + ex);
 	  }
   }
 
+  /**
+   * Testet Verbindung zu SAP
+   */
+  public static void TestConnection(){
+	  
+	  try{
+		  System.out.println("> Teste Verbindung zu SAP...");
+		  JCO.getClient(PoolName);
+		  System.out.println("> Verbindung steht");
+		  
+	  }
+	  catch(Exception e){
+		  System.err.println("Es konnte keine Verbindung zu SAP aufgebaut werden \n" + e);
+	  }
+      
+  }
   
   /**
    * Lädt SalesOrderList von SAP und gibt die Ergebnistabelle zurück
@@ -115,7 +132,7 @@ public static JCO.Table getSalesOrders(
 
 			  // Print return message
 			  JCO.Structure ret = function.getExportParameterList().getStructure("RETURN");
-			  System.out.println(">>RETURN MESSAGE: " + ret.getString("MESSAGE"));
+			  System.out.println("\t RETURN MESSAGE: " + ret.getString("MESSAGE"));
 
 			  // Get table containing the orders
 			  result = function.getTableParameterList().getTable("SALES_ORDERS");
