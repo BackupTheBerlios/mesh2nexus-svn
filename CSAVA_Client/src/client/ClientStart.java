@@ -12,16 +12,8 @@ public class ClientStart {
 	 */
 	public static void main(String[] args){
 				
-		// Start Verbindungsdialog
+		// Starte Verbindungsdialog
 		Controller.StartLogonGui();	
 		
-		// Serverdaten auslesen			//ServerURL =  "localhost:21";	
-		// Verbindung zum Server aufbauen		
-		
-		// Start Haupt-Gui
-		if (Controller.connect)
-			Controller.StartMainGui();	
-		
 	}	
-
 }

@@ -19,25 +19,22 @@ public class ErrorDialog {
 	 * 
 	 */
 	public ErrorDialog() {
-		Display display = new Display();
-		Shell shell = new Shell(display);
-		shell.setSize(320, 240);
+		
+		Shell errShell = new Shell(LogonGUI.display);
+
+		errShell.setSize(200, 100);
 		
 		// ERROR to CSAVA!!!
-		Label label = new Label(shell, SWT.NONE);
+		Label label = new Label(errShell, SWT.NONE);
 		label.setText("ERROR!!!");
-		label.setLocation(90, 5);	
+		label.setLocation(70, 30);	
 			
 		
 		//shell.pack();
 		label.pack();
-		shell.open();
+		errShell.open();
 		
-		while (!shell.isDisposed())
-			if (!display.readAndDispatch())
-				display.sleep();
-		display.dispose();
-		label.dispose();
+
 		
 
 	}

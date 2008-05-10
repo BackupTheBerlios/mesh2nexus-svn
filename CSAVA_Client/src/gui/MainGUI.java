@@ -11,63 +11,75 @@ package gui;
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
 
+import control.Controller;
+import gui.LogonGUI;
+
 public class MainGUI {
-
-
+	
+	// static Table
+	public static Table table;
+	
 	public MainGUI() {
 		
-		Display display = new Display();
-		Shell shell = new Shell(display);
-		shell.setSize(800, 600);
+		//Display display = new Display();
+		Shell mainShell = new Shell(LogonGUI.display);
+		mainShell.setSize(800, 600);
 		
 		// Wellcome to CSAVA!!!
-		Label label = new Label(shell, SWT.NONE);
-		label.setText("Wellcome to CSAVA!!!");
-		label.setLocation(350, 5);
+//		Label label = new Label(mainShell, SWT.NONE);
+//		label.setText("Wellcome to CSAVA!!!");
+//		label.setLocation(350, 5);
 		
 		// Menu
-		Menu menu = new Menu(shell, SWT.BAR);
-		shell.setMenuBar(menu);
+		Menu menu = new Menu(mainShell, SWT.BAR);
+		mainShell.setMenuBar(menu);
 		MenuItem file = new MenuItem(menu, SWT.CASCADE);
-		file.setText("File");
-		Menu filemenu = new Menu(shell, SWT.DROP_DOWN);
+		file.setText("SAP");
+		Menu filemenu = new Menu(mainShell, SWT.DROP_DOWN);
 		file.setMenu(filemenu);
 		MenuItem actionItem = new MenuItem(filemenu, SWT.PUSH);
-		actionItem.setText("Action");
+		actionItem.setText("Anfrage");
+		
 		// By Click
 		actionItem.addListener(SWT.Selection, new Listener() {
-			public void handleEvent(Event e) {
-				System.out.println("Action performed!");
+			public void handleEvent(Event e) {				
+				System.out.println("Anfragen..");
+				
+				Controller.StartQueryGui();
+				// TODO: MainGui Disable
+				
+				
 			}
 		});
 		
 		// Tabelle 
-		Table table1 = new Table(shell, SWT.BORDER);
-		table1.setLinesVisible(true);
-		table1.setHeaderVisible(true);
+		table = new Table(mainShell, SWT.BORDER);
+		table.setLinesVisible(true);
+		table.setHeaderVisible(true);
 		
-		// Tabelle erzeugen
-		TableColumn id = new TableColumn(table1,SWT.LEFT);
+/*		// Tabelle erzeugen
+		TableColumn id = new TableColumn(table,SWT.LEFT);
 		id.setText("id");
 		id.setWidth(50);		
-		TableColumn text = new TableColumn(table1,SWT.LEFT);
+		TableColumn text = new TableColumn(table,SWT.LEFT);
 		text.setText("Beschreibung");
 		text.setWidth(50);
 		
 		// Tabelle fuellen
-		TableItem item1 = new TableItem(table1,SWT.NONE);
-		item1.setText(new String[] {"1","bla"});
+		TableItem item1 = new TableItem(table,SWT.NONE);
+		item1.setText(new String[] {"1","bla"});*/
 		
 		//shell.pack();
-		label.pack();
-		shell.open();
-		table1.pack();
+		//label.pack();
+		mainShell.open();
+		//table.pack();
+		table.redraw();
 		
-		while (!shell.isDisposed())
-			if (!display.readAndDispatch())
-				display.sleep();
-		display.dispose();
-		label.dispose();
+//		while (!mainShell.isDisposed())
+//			if (!display.readAndDispatch())
+//				display.sleep();
+//		display.dispose();
+//		label.dispose();
 		
 		
 	}
