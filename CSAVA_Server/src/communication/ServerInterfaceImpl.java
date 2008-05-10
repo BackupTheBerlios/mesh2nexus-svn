@@ -22,7 +22,7 @@ public class ServerInterfaceImpl extends UnicastRemoteObject implements ServerIn
 	 */
 	public String getString () throws RemoteException {
 		
-		return "Eto servernyj string))";
+		return "OK";
 	}
 	
 	/**
