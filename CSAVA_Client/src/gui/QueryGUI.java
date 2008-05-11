@@ -31,6 +31,8 @@ public class QueryGUI {
 		Shell qShell = new Shell(LogonGUI.display);
 
 		qShell.setSize(320, 240);
+		qShell.setText("CSAVA V0.1");
+		qShell.setLocation(400, 300);
 		
 		// Wellcome to CSAVA!!!
 		Label label = new Label(qShell, SWT.NONE);
@@ -64,14 +66,14 @@ public class QueryGUI {
 			public void widgetSelected(SelectionEvent e) {
 				
 				System.out.println("Anfrage wird verschickt..");
-
+				Controller.CloseQueryGui();
 				// Get JCO.Table and redraw
 				JCO.Table result = Controller.CreateTable("ura");
 				
 				// Test..
-				String html = "html";
-				result.writeHTML(html);
-				System.out.println(html);			
+				//String html = "html";
+				//result.writeHTML(html);
+				//System.out.println(html);			
 			}
 		});
 				

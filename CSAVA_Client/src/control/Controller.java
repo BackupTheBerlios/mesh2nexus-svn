@@ -9,6 +9,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.MessageBox;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
@@ -50,6 +51,8 @@ public class Controller {
 
 	public static void ShowErrorDialog() {		
 		errDialog = new ErrorDialog();		
+		
+
 	}
 
 //	public static void setServerURL(String text) {
@@ -119,33 +122,65 @@ public class Controller {
 			// 
 			e.printStackTrace();
 		}
+		// Valeri4 eto 4ish dage ne smotri)))))))))))))))))
 		
 		// Spalten
-		while(sales_orders.nextRow()) {	        
-			TableColumn id = new TableColumn(MainGUI.table,SWT.LEFT);
-			id.setText(sales_orders.getName());
-			id.setWidth(50);
-		}
 		
-		// Zeilen
+	           for (JCO.FieldIterator e = sales_orders.fields(); e.hasMoreElements(); ) {
+	        	   JCO.Field field = e.nextField();
+	               // Output
+	               //System.out.println(field.getName() + ":\t" + field.getString());
+	      		
+	               TableColumn id = new TableColumn(MainGUI.table,SWT.LEFT);				
+	               id.setText(field.getName());				
+	               id.setWidth(150);
+	      		   
+	            }//for
+
 
 		
+		// Zeilen
+	           String[] items = new String[1000];
+	           int i = 0;
 		do {
            System.out.println("-----------------------------------------");
+           //
+           //TableItem item1 = new TableItem(MainGUI.table,SWT.NONE);
            // Loop over all columns in the current row
            for (JCO.FieldIterator e = sales_orders.fields(); e.hasMoreElements(); ) {
         	   JCO.Field field = e.nextField();
                // Output
                System.out.println(field.getName() + ":\t" + field.getString());
+      		items[i] = field.getString();  
+      		i++;
       		
-      		   TableItem item1 = new TableItem(MainGUI.table,SWT.NONE);
-      		   item1.setText(new String[] {field.getString()});
+      		
+      		TableItem item1 = new TableItem(MainGUI.table,SWT.NONE);
+            item1.setText(field.getString() + i);
       		   
             }//for
+           //item1.setText(items);
+           
         } while(sales_orders.nextRow());
-	
+
+		
 		return sales_orders;
 	}
+
+	public static void CloseLogonGui() {
+		//LogonGUI.display.getActiveShell().dispose();
+		//LogonGUI.display.getActiveShell().close();
+		
+		
+	}
+
+	public static void CloseQueryGui() {
+		
+		LogonGUI.display.getActiveShell().close();
+		
+	}
+
+
 
 
 }

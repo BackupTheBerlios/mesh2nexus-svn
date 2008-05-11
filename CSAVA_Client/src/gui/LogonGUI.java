@@ -30,7 +30,7 @@ public class LogonGUI {
 		Shell shell = new Shell(display);
 		shell.setSize(320, 240);		
 		shell.setText("CSAVA V0.1");
-		
+		shell.setLocation(400, 300);
 		// Wellcome to CSAVA!!!
 		Label label = new Label(shell, SWT.NONE);
 		label.setText("Hier Server URL eingeben:");
@@ -98,12 +98,23 @@ public class LogonGUI {
 				
 				// if ok - mainGUI, else ErrorDialog
 				if (response.equals("OK")) {
+					
+					Controller.CloseLogonGui();
 					// Starte MainGUI
 					Controller.StartMainGui();
+					
 				}					
 				else {
-					Controller.ShowErrorDialog();
+					//Controller.ShowErrorDialog();
 					//Controller.StartMainGui();
+					MessageBox messageBox = 
+						  new MessageBox(display.getActiveShell(), 
+								    SWT.OK|
+								    SWT.ICON_ERROR);
+					
+					messageBox.setText("Error");
+							 messageBox.setMessage("Es ist ein Fehler aufgetreten");
+							 messageBox.open();
 				}
 					
 			}
