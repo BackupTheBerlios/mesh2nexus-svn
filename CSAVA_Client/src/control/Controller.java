@@ -140,7 +140,7 @@ public class Controller {
 
 		
 		// Zeilen
-	           String[] items = new String[1000];
+	           String[] items = new String[MainGUI.table.getColumnCount()];
 	           int i = 0;
 		do {
            System.out.println("-----------------------------------------");
@@ -163,7 +163,7 @@ public class Controller {
            
         } while(sales_orders.nextRow());
 
-		
+		//sales_orders.writeXML(arg0);
 		return sales_orders;
 	}
 
