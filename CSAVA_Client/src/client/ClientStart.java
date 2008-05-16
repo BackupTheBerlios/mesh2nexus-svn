@@ -11,9 +11,8 @@ public class ClientStart {
 	 *  main
 	 */
 	public static void main(String[] args){
-				
-		// Starte Verbindungsdialog
-		Controller.StartLogonGui();	
+		// Start client GUI
+		Controller.Start();	
 		
 	}	
 }

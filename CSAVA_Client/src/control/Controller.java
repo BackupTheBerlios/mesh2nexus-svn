@@ -8,18 +8,15 @@ import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import org.eclipse.swt.SWT;
-import org.eclipse.swt.widgets.MessageBox;
-import org.eclipse.swt.widgets.TableColumn;
-import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Shell;
 
 import com.sap.mw.jco.JCO;
 
 import communication.ServerInterface;
-import gui.ErrorDialog;
-import gui.LogonGUI;
-import gui.MainGUI;
-import gui.QueryGUI;
+import gui.ConnectWindow;
+import gui.MainWindow;
+import gui.QueryWindow;
+
 
 /**
  * @author
@@ -27,86 +24,66 @@ import gui.QueryGUI;
  */
 public class Controller {
 
-	public static String ServerURL;
+	// Public static String ServerURL;
 	public static ServerInterface server;
 
-	public static LogonGUI logonGui;
-	public static MainGUI mainGui;
-	public static QueryGUI queryGui;
-	public static ErrorDialog errDialog;
-	public static boolean connect = false;
 
-	/**
-	 * @param
-	 */
-	// public static String getServerURL() {
-	//		
-	// return logonGui.text.getText();
-	// //return "ura";
-	// }
-	public static void StartLogonGui() {
-		logonGui = new LogonGUI();
+	// Start MainWindow
+	public static void Start() {		
+		gui.MainWindow.run();		
 	}
+	
 
-	public static void ShowErrorDialog() {
-		errDialog = new ErrorDialog();
-
+	// Show ConnectWindow
+	public static void showConnectWindow(MainWindow mainWindow) {
+		new ConnectWindow(mainWindow);
 	}
+	
+	
+	// Show QueryWindow
+	public static void showQueryWindow(MainWindow mainWindow) {		
+		new QueryWindow(mainWindow);
+	}	
+	
+	
+	public static boolean ConnectToServer(String ServerURL) {
 
-	// public static void setServerURL(String text) {
-	// ClientStart.ServerURL = text;
-	//		
-	// }
-
-	public static String ConnectToServer(String text) {
-
-		String response = "Es ist ein Fehler aufgetreten";
-		// Serverdaten auslesen
-		ServerURL = text;
-
-		// Verbindung zum Server aufbauen
+		// Connect to Server
 		try {
 			server = (ServerInterface) Naming.lookup("rmi://" + ServerURL
 					+ "/ServerFunctions");
-			// Get response
-			response = server.getString();
-			System.out.println(response);
-			connect = true;
-			return response;
+			
+			String response = server.getString();
+			System.out.println(response);	
+
+			return true;
 
 		} catch (MalformedURLException e) {
-			//  
 			e.printStackTrace();
 		} catch (RemoteException e) {
-			// TODO: Parameter fuer Dialog uebergeben!
-			// ShowErrorDialog();
 			e.printStackTrace();
 		} catch (NotBoundException e) {
-			//  
 			e.printStackTrace();
 		}
 
-		return response;
-
-	}
-
-	public static void StartMainGui() {
-		mainGui = new MainGUI();
-
-	}
-
-	public static void StartQueryGui() {
-		queryGui = new QueryGUI();
-
-	}
-
-	public static JCO.Table CreateTable(String ura) {
+		return false;
+	}	
+	
+	
+	public static JCO.Table getSapTable(String CustNumber,
+			String SalesOrg,
+			String DocDate,
+			String DocDateTo,
+			String TAGroup) {
 
 		JCO.Table sales_orders = null;
 		try {
 			// RPC!
-			sales_orders = server.getSalesOrderList("0000100001", "WING",
-					"2005-05-28", "2005-05-30", "0");
+			sales_orders = server.getSalesOrderList(CustNumber,
+					SalesOrg,
+					DocDate,
+					DocDateTo,
+					TAGroup);
 
 			if (sales_orders == null) {
 				System.err
@@ -121,54 +98,7 @@ public class Controller {
 			e.printStackTrace();
 		}
 
-		// Spalten
-
-		for (JCO.FieldIterator e = sales_orders.fields(); e.hasMoreElements();) {
-			JCO.Field field = e.nextField();
-			// Create Column
-			TableColumn id = new TableColumn(MainGUI.table, SWT.LEFT);
-			id.setText(field.getName());
-			id.setWidth(100);
-		}
-
-		//
-		System.out.println("Anzahl von Spalten" + ":\t"
-				+ MainGUI.table.getColumnCount());
-
-		// Zeilen
-		int i;
-		do {
-			System.out.println("-----------------------------------------");
-			//
-			i = 0;
-			TableItem item1 = new TableItem(MainGUI.table, SWT.NONE);
-			// Loop over all columns in the current row
-			for (JCO.FieldIterator e = sales_orders.fields(); e
-					.hasMoreElements();) {
-				JCO.Field field = e.nextField();
-
-				// Output
-				System.out.println(field.getName() + ":\t" + field.getString());
-
-				item1.setText(i, field.getString());
-				i++;
-
-			}
-		} while (sales_orders.nextRow());
-
 		return sales_orders;
-	}
-
-	public static void CloseLogonGui() {
-		// LogonGUI.display.getActiveShell().dispose();
-		// LogonGUI.display.getActiveShell().close();
-
-	}
-
-	public static void CloseQueryGui() {
-
-		LogonGUI.display.getActiveShell().close();
-
 	}
 
 }

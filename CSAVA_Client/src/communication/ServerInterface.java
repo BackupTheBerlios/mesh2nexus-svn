@@ -18,7 +18,7 @@ public interface ServerInterface extends Remote{
 	/**
 	 * Liefert Verkaufsbelege von SAP-Datenbank
 	 */
-	public JCO.Table getSalesOrderList (	String CustNumber,
+	public JCO.Table getSalesOrderList (String CustNumber,
 										String SalesOrg,
 										String DocDate,
 										String DocDateTo,
