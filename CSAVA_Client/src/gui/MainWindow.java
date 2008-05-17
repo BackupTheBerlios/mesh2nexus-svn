@@ -400,8 +400,8 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 	}
 
 	protected void showEvalWindow(SelectionEvent evt) {
-		// TODO Auto-generated method stub
-		
+		// TODO 
+		Controller.showEvalWindow(this);
 	}
 
 	protected void showQueryWindow(SelectionEvent evt) {

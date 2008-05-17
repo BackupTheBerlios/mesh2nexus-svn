@@ -14,6 +14,7 @@ import com.sap.mw.jco.JCO;
 
 import communication.ServerInterface;
 import gui.ConnectWindow;
+import gui.EvalWindow;
 import gui.MainWindow;
 import gui.QueryWindow;
 
@@ -44,6 +45,12 @@ public class Controller {
 	public static void showQueryWindow(MainWindow mainWindow) {		
 		new QueryWindow(mainWindow);
 	}	
+	
+	// Show EvalWindow
+	public static void showEvalWindow(MainWindow mainWindow) {
+		new EvalWindow(mainWindow);
+		
+	}
 	
 	
 	public static boolean ConnectToServer(String ServerURL) {
