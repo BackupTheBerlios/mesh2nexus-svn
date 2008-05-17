@@ -51,7 +51,7 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 	private MenuItem conSapMenuItem;
 	private Table table;
 	
-	private JCO.Table sales_orders;
+	public JCO.Table sales_orders;
 
 	{
 		// Register as a resource user - SWTResourceManager will handle the
@@ -188,8 +188,8 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 							| SWT.MULTI | SWT.SCROLL_LINE);
 					table.setLinesVisible(true);
 					table.setHeaderVisible(true);
-					
 					table.setSize(795, 400);
+
 				}
 			}
 			{
@@ -519,6 +519,6 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 
 			}
 		} while (sales_orders.nextRow());
-		
+		//table.redraw();
 	}
 }

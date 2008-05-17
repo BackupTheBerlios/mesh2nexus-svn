@@ -34,9 +34,9 @@ public class QueryWindow {
 	private Label DocDateToLabel;
 	private Label TAGroupLabel;
 	
-	private Button query;
-	
+	private Button query;	
 	private MainWindow parent;
+	private Shell self;
 	
 	/**
 	 * 
@@ -45,20 +45,13 @@ public class QueryWindow {
 		
 		parent = mainWindow;
 		Shell shell = new Shell(parent.getShell(), SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM);
-
+		// for close..
+		this.self = shell;
 		// 
 		initGUI(shell);
 		//
 		setPreferences(shell);
 
-		// TODO
-		shell.setSize(320, 240);
-		shell.setLocation(400, 300);
-		shell.setLayout(new FillLayout(SWT.VERTICAL));
-		shell.setImage(SWTResourceManager.getImage("images/16x16.png"));
-		shell.setText("Query");
-		shell.setBackgroundImage(SWTResourceManager
-				.getImage("images/ToolbarBackground.gif"));
 		shell.layout();
 		shell.open();
 		
@@ -66,13 +59,20 @@ public class QueryWindow {
 			if (!mainWindow.getDisplay().readAndDispatch())
 				mainWindow.getDisplay().sleep();
 		}
-		//s.getDisplay().dispose();
 
 	}		
 
 	private void setPreferences(Shell shell) {
-		// TODO set location and size
-
+		
+		shell.setSize(320, 240);
+		shell.setLocation(400, 300);
+		
+		shell.setLayout(new FillLayout(SWT.VERTICAL));
+		
+		shell.setImage(SWTResourceManager.getImage("images/16x16.png"));
+		shell.setText("Query");
+		shell.setBackgroundImage(SWTResourceManager
+				.getImage("images/ToolbarBackground.gif"));
 	}
 
 	private void initGUI(Shell shell) {
@@ -100,8 +100,7 @@ public class QueryWindow {
 		TAGroupLabel = new Label(shell, SWT.NONE);
 		TAGroupLabel.setText("TAGroup:");		
 		TAGroup = new Text(shell, SWT.BORDER);
-		TAGroup.setText("0");	
-		
+		TAGroup.setText("0");			
 		
 		query = new Button(shell, SWT.PUSH);
 		query.setText("Query");
@@ -127,6 +126,8 @@ public class QueryWindow {
 				DocDateTo.getText(),
 				TAGroup.getText());
 		
+		// TODO:
+		this.self.dispose();
 		// FillTable
 		this.parent.fillTable(result);
 		
