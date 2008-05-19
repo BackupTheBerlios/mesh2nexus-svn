@@ -6,7 +6,11 @@ package gui;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.graphics.Point;
+import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
@@ -36,101 +40,128 @@ public class QueryWindow {
 	private Label TAGroupLabel;
 	
 	private Button query;	
-	private MainWindow parent;
-	private Shell self;
+	private MainWindow parent;	
+	private Shell shell;
 	
 	/**
 	 * 
 	 */
-	public QueryWindow(MainWindow mainWindow) {		
+	public QueryWindow(MainWindow par) {		
 		
-		parent = mainWindow;
-		Shell shell = new Shell(parent.getShell(), SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM);
-		// for close..
-		this.self = shell;
-		// 
-		initGUI(shell);
-		//
-		setPreferences(shell);
+		parent = par;
+		
+		shell = new Shell(parent.shell, SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM);
+
+		// Initialisierung von Anfragefenster
+		init(shell);
 
 		shell.layout();
 		shell.open();
 		
 		while (!shell.isDisposed()) {
-			if (!mainWindow.getDisplay().readAndDispatch())
-				mainWindow.getDisplay().sleep();
+			if (!parent.shell.getDisplay().readAndDispatch())
+				parent.shell.getDisplay().sleep();
 		}
 
-	}		
+	}	
 
-	private void setPreferences(Shell shell) {
+	/*
+	 * 
+	 */
+	private void init(Shell shell) {
 		
-		shell.setSize(320, 240);
-		shell.setLocation(400, 300);
+		shell.setSize(220, 185);
 		
-		shell.setLayout(new FillLayout(SWT.VERTICAL));
-		
+		// Position von ConnectWindow an Position von MainWindow gebunden (Mitte)
+		// Ermittlung und Setzen der Position
+        Rectangle shellBounds = parent.shell.getBounds();
+        Point dialogSize = shell.getSize();
+
+        shell.setLocation(
+          shellBounds.x + (shellBounds.width / 2) - (dialogSize.x / 2),
+          shellBounds.y + (shellBounds.height / 2) - (dialogSize.y / 2));
+        
+		// GridLayout setzen
+		GridLayout thisLayout = new GridLayout();
+	    thisLayout.numColumns = 2;
+		shell.setLayout(thisLayout);
 	
-		shell.setText("Query");
+		shell.setText("Anfrage");
 		
-	}
-
-	private void initGUI(Shell shell) {
-
 		CustNumberLabel = new Label(shell, SWT.NONE);
-		CustNumberLabel.setText("CustNumber:");		
+		CustNumberLabel.setText("Kundennummer:");	
+		CustNumberLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		
 		CustNumber = new Text(shell, SWT.BORDER);
-		CustNumber.setText("0000100001");	
+		CustNumber.setText("0000100001");
+		CustNumber.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 	
 		SalesOrgLabel = new Label(shell, SWT.NONE);
-		SalesOrgLabel.setText("SalesOrg:");		
+		SalesOrgLabel.setText("Verkaufsorganisation:");
+		SalesOrgLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		
 		SalesOrg = new Text(shell, SWT.BORDER);
-		SalesOrg.setText("WING");	
+		SalesOrg.setText("WING");
+		SalesOrg.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
 		DocDateLabel = new Label(shell, SWT.NONE);
-		DocDateLabel.setText("DocDate:");		
+		DocDateLabel.setText("Datum:");
+		DocDateLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		
 		DocDate = new Text(shell, SWT.BORDER);
-		DocDate.setText("2005-05-28");	
+		DocDate.setText("2005-05-28");
+		DocDate.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		
 		
 		DocDateToLabel = new Label(shell, SWT.NONE);
-		DocDateToLabel.setText("DocDateTo:");		
+		DocDateToLabel.setText("Datum bis:");
+		DocDateToLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		
 		DocDateTo = new Text(shell, SWT.BORDER);
-		DocDateTo.setText("2005-05-30");	
+		DocDateTo.setText("2005-05-30");
+		DocDateTo.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
 		TAGroupLabel = new Label(shell, SWT.NONE);
-		TAGroupLabel.setText("TAGroup:");		
+		TAGroupLabel.setText("Transaktion (0-7):");
+		TAGroupLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		
 		TAGroup = new Text(shell, SWT.BORDER);
-		TAGroup.setText("0");			
+		TAGroup.setText("0");	
+		TAGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		
+		Label empty = new Label(shell, SWT.NONE);
 		
 		query = new Button(shell, SWT.PUSH);
-		query.setText("Query");
+		query.setText("Anfragen");
+		query.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
 		
 		query.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
-				System.out.println("Query..");
-				// TODO:
 				loadTable(evt);
 			}
-		});
-		
+		});		
 	}
 
 	protected void loadTable(SelectionEvent evt) {
-		System.out.println("Anfrage wird verschickt..");
 
 		// Get JCO.Table and redraw
-		JCO.Table result = Client.getSapTable(CustNumber.getText(),
+		String message = Client.getSapTable(CustNumber.getText(),
 				SalesOrg.getText(),
 				DocDate.getText(),
 				DocDateTo.getText(),
 				TAGroup.getText());
-		
-		// TODO:
-		this.self.dispose();
-		// FillTable
-		this.parent.fillTable(result);
-		
+		if (message.equals("OK")) {
+
+			// FillTable
+			parent.fillTable();
+			parent.evalSapMenuItem.setEnabled(true);
+			parent.save.setEnabled(true);
+		}
+		else {
+			ErrorDialog.show(shell, "Error", message) ;			
+		}
+		shell.dispose();	
 	}		
 	
 }

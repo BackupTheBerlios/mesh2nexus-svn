@@ -22,16 +22,17 @@ public class ConnectWindow {
 	private Text port;
 	private Button connect;	
 	private MainWindow parent;	
-	private Shell self;
+	private Shell shell;
+	
 	
 	/*
 	 * Konstruktor für ConnectWindow
 	 */
-	public ConnectWindow(MainWindow mainWindow) {	
+	public ConnectWindow(MainWindow par) {	
 		
-		parent = mainWindow;
-		Shell shell = new Shell(parent.getShell(), SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM );
-		this.self = shell;
+		parent = par;
+		
+		shell = new Shell(parent.shell, SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM );
 		
 		// ConnectWindow Initialisierung
 		init(shell);
@@ -40,8 +41,8 @@ public class ConnectWindow {
 		shell.open();
 		
 		while (!shell.isDisposed()) {
-			if (!mainWindow.getDisplay().readAndDispatch())
-				mainWindow.getDisplay().sleep();
+			if (!parent.shell.getDisplay().readAndDispatch())
+				parent.shell.getDisplay().sleep();
 		}
 
 	}
@@ -50,11 +51,11 @@ public class ConnectWindow {
 	private void init(Shell shell) {
 		
 		// Größe setzen 
-		shell.setSize(180, 170);		
+		shell.setSize(180, 115);		
 		
         // Position von ConnectWindow an Position von MainWindow gebunden (Mitte)
 		// Ermittlung und Setzen der Position
-        Rectangle shellBounds = parent.getParent().getBounds();
+        Rectangle shellBounds = parent.shell.getBounds();
         Point dialogSize = shell.getSize();
 
         shell.setLocation(
@@ -63,17 +64,16 @@ public class ConnectWindow {
 
         // GridLayout setzen
 		GridLayout thisLayout = new GridLayout();
-	    thisLayout.numColumns = 1;
+	    thisLayout.numColumns = 2;
 		shell.setLayout(thisLayout);
 
 		shell.setText("Serververbindung");
 		
 
-		// ConnectWindow-Elemente initialisieren
-		
+		// ConnectWindow-Elemente initialisieren		
 		ipLabel = new Label(shell, SWT.NONE);
 		ipLabel.setText("Server IP:");
-		ipLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_CENTER));
+		ipLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
 		
 		ip = new Text(shell, SWT.BORDER);
 		ip.setText("localhost");
@@ -81,26 +81,24 @@ public class ConnectWindow {
 		
 		portLabel = new Label(shell, SWT.NONE);
 		portLabel.setText("Server Port:");
-		portLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_CENTER));
+		portLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
 	
 		port = new Text(shell, SWT.BORDER);
 		port.setText("4711");
 		port.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 	
+		Label empty = new Label(shell, SWT.NONE);
+
 		connect = new Button(shell, SWT.PUSH);
 		connect.setText("Verbinden");
-		connect.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_CENTER));
+		connect.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
 		
 		// Aktion beim Klicken auf connect-Button
 		connect.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
-
-				System.out.println("Connecting..");
 				// TODO:
 				// Connect to server
 				ConnectToServer(evt);
-				
-
 			}
 		});
 
@@ -108,38 +106,26 @@ public class ConnectWindow {
 
 	protected void ConnectToServer(SelectionEvent evt) {
 
-		// read server data
+		// Server Daten auslesen
 		String data = ip.getText() + ":" + port.getText();
-		
-		// TODO: String uberprufen.. WarningsDialog..
 		
 		// Connect to server
 		boolean connected = Client.ConnectToServer(data);
 
 		if (connected) {
-			System.out.println("Verbindung hergestellt!");
+			// TODO
+			// SetStatus
+			parent.setStatus("Verbunden mit SAP-Server");
 			
-			this.parent.setStatus("Connected to Server and SAP");
-			//this.self.close();
-			this.self.dispose();
+			parent.conSapMenuItem.setEnabled(false);
+			parent.querySapMenuItem.setEnabled(true);
+			
+			// Close ConnectWindow
+			shell.dispose();
 			
 		} else {
-			System.out.println("ERROR!");
-			
-			ShowErrorDialog();
-
+			ErrorDialog.show(shell, "Error", "SAP-Server ist nicht verfügbar") ;
 		}
-	}
-
-	private void ShowErrorDialog() {
-
-		MessageBox messageBox = new MessageBox(this.parent.getShell(),
-				SWT.OK | SWT.ICON_ERROR);
-
-		messageBox.setText("Error");
-		messageBox.setMessage("Es ist ein Fehler aufgetreten");
-		messageBox.open();
-
 	}
 
 }

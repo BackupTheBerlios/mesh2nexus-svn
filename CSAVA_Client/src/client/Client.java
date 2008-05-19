@@ -3,20 +3,10 @@
  */
 package client;
 
-import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
-
 import server.ServerInterface;
-
 import com.sap.mw.jco.JCO;
-
-import gui.ConnectWindow;
-import gui.EvalWindow;
-import gui.MainWindow;
-import gui.QueryWindow;
-
 
 /**
  * @author
@@ -25,64 +15,47 @@ import gui.QueryWindow;
 public class Client {
 
 	// Public static String ServerURL;
-	public static ServerInterface server;
-
-
-	// Start MainWindow
+	public static ServerInterface server;	
+	// Public static JCO.Table
+	public static JCO.Table sales_orders;
+	
+	/*
+	 *  Start MainWindow
+	 */
 	public static void main(String[] args){		
-		gui.MainWindow.run();		
+		new gui.MainWindow();		
 	}
 	
-
-	// Show ConnectWindow
-	public static void showConnectWindow(MainWindow mainWindow) {
-		new ConnectWindow(mainWindow);
-	}
-	
-	
-	// Show QueryWindow
-	public static void showQueryWindow(MainWindow mainWindow) {		
-		new QueryWindow(mainWindow);
-	}	
-	
-	// Show EvalWindow
-	public static void showEvalWindow(MainWindow mainWindow) {
-		new EvalWindow(mainWindow);
-		
-	}
-	
-	
+	/*
+	 * 
+	 */
 	public static boolean ConnectToServer(String ServerURL) {
 
 		// Connect to Server
 		try {
 			server = (ServerInterface) Naming.lookup("rmi://" + ServerURL
-					+ "/ServerFunctions");
-			
-			String response = server.getString();
-			System.out.println(response);	
+					+ "/ServerFunctions");			
 
 			return true;
 
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		} catch (NotBoundException e) {
-			e.printStackTrace();
-		}
-
-		return false;
+		} catch (Exception e) {
+			
+			return false;
+		}		
 	}	
 	
-	
-	public static JCO.Table getSapTable(String CustNumber,
+	/*
+	 * 
+	 */
+	public static String getSapTable(String CustNumber,
 			String SalesOrg,
 			String DocDate,
 			String DocDateTo,
 			String TAGroup) {
-
-		JCO.Table sales_orders = null;
+		
+		// JCO.Table
+		sales_orders = null;
+		
 		try {
 			// RPC!
 			sales_orders = server.getSalesOrderList(CustNumber,
@@ -91,20 +64,22 @@ public class Client {
 					DocDateTo,
 					TAGroup);
 
-			if (sales_orders == null) {
-				System.err
-						.println("Funktion konnte nicht ausgeführt werden, siehe Server Log");
-			} else {
-				System.out.println(sales_orders.getNumRows());
-				// return sales_orders;
+			if (sales_orders == null){ 
+				return "SAP-Server ist nicht mit SAP-Datenbank verbunden";
+
 			}
-
+			else{
+				
+				if (sales_orders.getNumRows() == 0){
+					return "Keine Ergebnisse zu dieser Anfrage";
+				}
+				
+			}
 		} catch (RemoteException e) {
-			// 
-			e.printStackTrace();
+			return "SAP-Server ist nicht verfügbar";
 		}
-
-		return sales_orders;
+		
+		return "OK";
 	}
 
 }
