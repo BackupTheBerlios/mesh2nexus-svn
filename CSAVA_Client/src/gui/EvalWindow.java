@@ -57,10 +57,8 @@ public class EvalWindow {
 		shell.setSize(320, 240);
 		shell.setLocation(400, 300);
 		shell.setLayout(new FillLayout(SWT.VERTICAL));
-		shell.setImage(SWTResourceManager.getImage("images/16x16.png"));
 		shell.setText("Evaliate");
-		shell.setBackgroundImage(SWTResourceManager
-				.getImage("images/ToolbarBackground.gif"));
+		
 
 	}
 
