@@ -1,18 +1,17 @@
 /**
  * 
  */
-package control;
+package client;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 
-import org.eclipse.swt.widgets.Shell;
+import server.ServerInterface;
 
 import com.sap.mw.jco.JCO;
 
-import communication.ServerInterface;
 import gui.ConnectWindow;
 import gui.EvalWindow;
 import gui.MainWindow;
@@ -23,14 +22,14 @@ import gui.QueryWindow;
  * @author
  * 
  */
-public class Controller {
+public class Client {
 
 	// Public static String ServerURL;
 	public static ServerInterface server;
 
 
 	// Start MainWindow
-	public static void Start() {		
+	public static void main(String[] args){		
 		gui.MainWindow.run();		
 	}
 	

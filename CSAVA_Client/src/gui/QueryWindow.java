@@ -12,9 +12,10 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
+import client.Client;
+
 import com.sap.mw.jco.JCO;
 
-import control.Controller;
 
 /**
  * @author 
@@ -119,7 +120,7 @@ public class QueryWindow {
 		System.out.println("Anfrage wird verschickt..");
 
 		// Get JCO.Table and redraw
-		JCO.Table result = Controller.getSapTable(CustNumber.getText(),
+		JCO.Table result = Client.getSapTable(CustNumber.getText(),
 				SalesOrg.getText(),
 				DocDate.getText(),
 				DocDateTo.getText(),

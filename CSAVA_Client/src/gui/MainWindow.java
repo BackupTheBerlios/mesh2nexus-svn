@@ -7,8 +7,10 @@ import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
+
+import client.Client;
+
 import com.sap.mw.jco.JCO;
-import control.Controller;
 
 /*
  * Hauptfenster des Programms
@@ -319,12 +321,12 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 
 	protected void showEvalWindow(SelectionEvent evt) {
 		// TODO 
-		Controller.showEvalWindow(this);
+		Client.showEvalWindow(this);
 	}
 
 	protected void showQueryWindow(SelectionEvent evt) {
 		// TODO 
-		Controller.showQueryWindow(this);
+		Client.showQueryWindow(this);
 		
 	}
 
@@ -332,7 +334,7 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 		// TODO 
 		setStatus("Connecting to Server and SAP");	
 
-		Controller.showConnectWindow(this);	
+		Client.showConnectWindow(this);	
 		
 		//setStatus("Connected to Server and SAP");	
 

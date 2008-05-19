@@ -8,7 +8,8 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
-import control.Controller;
+import client.Client;
+
 
 /*
  * Fenster für Aufbau einer Verbindung zum Server
@@ -113,7 +114,7 @@ public class ConnectWindow {
 		// TODO: String uberprufen.. WarningsDialog..
 		
 		// Connect to server
-		boolean connected = Controller.ConnectToServer(data);
+		boolean connected = Client.ConnectToServer(data);
 
 		if (connected) {
 			System.out.println("Verbindung hergestellt!");
