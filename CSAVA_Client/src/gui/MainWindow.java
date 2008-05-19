@@ -2,17 +2,17 @@ package gui;
 
 import java.io.*;
 import java.util.*;
-
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
-
 import com.sap.mw.jco.JCO;
-
 import control.Controller;
 
+/*
+ * Hauptfenster des Programms
+ */
 public class MainWindow extends org.eclipse.swt.widgets.Composite {
 
 	Properties appSettings = new Properties();
@@ -20,56 +20,36 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 							// setCursor(defaultCursor);
 	Cursor waitCursor; // To change the cursor to an hourglass, use
 						// setCursor(waitCursor);
+	
 	private Menu menu1;
-	private MenuItem aboutMenuItem;
-	private Menu helpMenu;
-	private MenuItem helpMenuItem;
 	private MenuItem exitMenuItem;
-	private MenuItem closeFileMenuItem;
 	private MenuItem saveFileMenuItem;
-	// private MenuItem newFileMenuItem;
 	private MenuItem openFileMenuItem;
-	// private ToolItem newToolItem;
-	private ToolItem saveToolItem;
-	private ToolItem openToolItem;
-	private ToolBar toolBar;
-	@SuppressWarnings("unused")
-	private MenuItem fileMenuSep2;
-	@SuppressWarnings("unused")
-	private MenuItem fileMenuSep1;
 	private Composite clientArea;
 	private Label txtStatus;
 	private Composite statusArea;
 	private Menu fileMenu;
 	private MenuItem fileMenuItem;
-	//
 	private MenuItem sapMenuItem;
 	private MenuItem querySapMenuItem;
 	private Menu sapMenu;
 	private MenuItem evalSapMenuItem;
-	private MenuItem manMenuItem;
 	private MenuItem conSapMenuItem;
-	private Table table;
 	
+	private Table table;
 	public JCO.Table sales_orders;
+	public String tmp = "<?xml version=1.0 encoding=UTF-8?><rfc:BAPIORDERS xmlns:rfc=\"urn:sap-com:document:sap:rfc:functions\"><item><SD_DOC>0000000019</SD_DOC><ITM_NUMBER>000010</ITM_NUMBER><MATERIAL>000000000000000026</MATERIAL><SHORT_TEXT>Lottozahlengenerator</SHORT_TEXT><DOC_TYPE>BV</DOC_TYPE><DOC_DATE>2005-05-30</DOC_DATE><REQ_QTY>1.000</REQ_QTY><REQ_DATE>2005-05-30</REQ_DATE><PURCH_NO>2005lz050005</PURCH_NO><BATCH></BATCH><VALID_FROM>0000-00-00</VALID_FROM><VALID_TO>9999-12-31</VALID_TO><BILL_BLOCK></BILL_BLOCK><DLV_BLOCK></DLV_BLOCK><SOLD_TO>0000100001</SOLD_TO><NAME>7</NAME><EXCHG_RATE>1.00000</EXCHG_RATE><DLV_QTY>1.000</DLV_QTY><BASE_UOM>ST</BASE_UOM><NET_PRICE>4.31</NET_PRICE><COND_P_UNT>1</COND_P_UNT><COND_UNIT>ST</COND_UNIT><NET_VAL_HD>4.31</NET_VAL_HD><NET_VALUE>4.31</NET_VALUE><DIVISION>01</DIVISION><DOC_STATUS>erledigt</DOC_STATUS><SALES_GRP>001</SALES_GRP><SALES_OFF>WING</SALES_OFF><SALES_ORG>WING</SALES_ORG><SALES_UNIT>ST</SALES_UNIT><SHIP_POINT>WING</SHIP_POINT><DISTR_CHAN>03</DISTR_CHAN><GI_DATE>2005-05-30</GI_DATE><CURRENCY>EUR</CURRENCY><PLANT>GP1</PLANT><STORE_LOC></STORE_LOC><ORD_REASON></ORD_REASON><REASON_REJ></REASON_REJ><B_UOM_ISO>C62</B_UOM_ISO><CD_UNT_ISO>C62</CD_UNT_ISO><S_UNIT_ISO>C62</S_UNIT_ISO><CURR_ISO>EUR</CURR_ISO><PURCH_NO_C>2005lz050005</PURCH_NO_C><EXCHG_RATE_V>0</EXCHG_RATE_V><MAT_EXT></MAT_EXT><MAT_GUID></MAT_GUID><MAT_VERS></MAT_VERS><CREATION_DATE>2005-05-30</CREATION_DATE><CREATION_TIME>13:18:12</CREATION_TIME></item><item><SD_DOC>0000000004</SD_DOC><ITM_NUMBER>000010</ITM_NUMBER><MATERIAL>000000000000000026</MATERIAL><SHORT_TEXT>Lottozahlengenerator</SHORT_TEXT><DOC_TYPE>SO</DOC_TYPE><DOC_DATE>2005-05-28</DOC_DATE><REQ_QTY>1.000</REQ_QTY><REQ_DATE>2005-05-28</REQ_DATE><PURCH_NO>4</PURCH_NO><BATCH></BATCH><VALID_FROM>0000-00-00</VALID_FROM><VALID_TO>9999-12-31</VALID_TO><BILL_BLOCK></BILL_BLOCK><DLV_BLOCK></DLV_BLOCK><SOLD_TO>0000100001</SOLD_TO><NAME>3</NAME><EXCHG_RATE>1.00000</EXCHG_RATE><DLV_QTY>1.000</DLV_QTY><BASE_UOM>ST</BASE_UOM><NET_PRICE>4.31</NET_PRICE><COND_P_UNT>1</COND_P_UNT><COND_UNIT>ST</COND_UNIT><NET_VAL_HD>4.31</NET_VAL_HD><NET_VALUE>4.31</NET_VALUE><DIVISION>01</DIVISION><DOC_STATUS>erledigt</DOC_STATUS><SALES_GRP>001</SALES_GRP><SALES_OFF>WING</SALES_OFF><SALES_ORG>WING</SALES_ORG><SALES_UNIT>ST</SALES_UNIT><SHIP_POINT>WING</SHIP_POINT><DISTR_CHAN>03</DISTR_CHAN><GI_DATE>2005-05-28</GI_DATE><CURRENCY>EUR</CURRENCY><PLANT>GP1</PLANT><STORE_LOC></STORE_LOC><ORD_REASON></ORD_REASON><REASON_REJ></REASON_REJ><B_UOM_ISO>C62</B_UOM_ISO><CD_UNT_ISO>C62</CD_UNT_ISO><S_UNIT_ISO>C62</S_UNIT_ISO><CURR_ISO>EUR</CURR_ISO><PURCH_NO_C>4</PURCH_NO_C><EXCHG_RATE_V>0</EXCHG_RATE_V><MAT_EXT></MAT_EXT><MAT_GUID></MAT_GUID><MAT_VERS></MAT_VERS><CREATION_DATE>2005-05-28</CREATION_DATE><CREATION_TIME>14:48:30</CREATION_TIME></item><item><SD_DOC>0000000003</SD_DOC><ITM_NUMBER>000010</ITM_NUMBER><MATERIAL>000000000000000026</MATERIAL><SHORT_TEXT>Lottozahlengenerator</SHORT_TEXT><DOC_TYPE>SO</DOC_TYPE><DOC_DATE>2005-05-28</DOC_DATE><REQ_QTY>1.000</REQ_QTY><REQ_DATE>2005-05-28</REQ_DATE><PURCH_NO>3</PURCH_NO><BATCH></BATCH><VALID_FROM>0000-00-00</VALID_FROM><VALID_TO>9999-12-31</VALID_TO><BILL_BLOCK></BILL_BLOCK><DLV_BLOCK></DLV_BLOCK><SOLD_TO>0000100001</SOLD_TO><NAME>3</NAME><EXCHG_RATE>1.00000</EXCHG_RATE><DLV_QTY>0</DLV_QTY><BASE_UOM>ST</BASE_UOM><NET_PRICE>4.31</NET_PRICE><COND_P_UNT>1</COND_P_UNT><COND_UNIT>ST</COND_UNIT><NET_VAL_HD>4.31</NET_VAL_HD><NET_VALUE>4.31</NET_VALUE><DIVISION>01</DIVISION><DOC_STATUS>nicht beliefert</DOC_STATUS><SALES_GRP>001</SALES_GRP><SALES_OFF>WING</SALES_OFF><SALES_ORG>WING</SALES_ORG><SALES_UNIT>ST</SALES_UNIT><SHIP_POINT>WING</SHIP_POINT><DISTR_CHAN>03</DISTR_CHAN><GI_DATE>2005-05-28</GI_DATE><CURRENCY>EUR</CURRENCY><PLANT>GP1</PLANT><STORE_LOC></STORE_LOC><ORD_REASON></ORD_REASON><REASON_REJ></REASON_REJ><B_UOM_ISO>C62</B_UOM_ISO><CD_UNT_ISO>C62</CD_UNT_ISO><S_UNIT_ISO>C62</S_UNIT_ISO><CURR_ISO>EUR</CURR_ISO><PURCH_NO_C>3</PURCH_NO_C><EXCHG_RATE_V>0</EXCHG_RATE_V><MAT_EXT></MAT_EXT><MAT_GUID></MAT_GUID><MAT_VERS></MAT_VERS><CREATION_DATE>2005-05-28</CREATION_DATE><CREATION_TIME>14:43:47</CREATION_TIME></item><item><SD_DOC>0000000002</SD_DOC><ITM_NUMBER>000010</ITM_NUMBER><MATERIAL>000000000000000026</MATERIAL><SHORT_TEXT>Lottozahlengenerator</SHORT_TEXT><DOC_TYPE>BV</DOC_TYPE><DOC_DATE>2005-05-28</DOC_DATE><REQ_QTY>1.000</REQ_QTY><REQ_DATE>2005-05-28</REQ_DATE><PURCH_NO>0002</PURCH_NO><BATCH></BATCH><VALID_FROM>0000-00-00</VALID_FROM><VALID_TO>9999-12-31</VALID_TO><BILL_BLOCK></BILL_BLOCK><DLV_BLOCK></DLV_BLOCK><SOLD_TO>0000100001</SOLD_TO><NAME>2</NAME><EXCHG_RATE>1.00000</EXCHG_RATE><DLV_QTY>1.000</DLV_QTY><BASE_UOM>ST</BASE_UOM><NET_PRICE>4.31</NET_PRICE><COND_P_UNT>1</COND_P_UNT><COND_UNIT>ST</COND_UNIT><NET_VAL_HD>4.31</NET_VAL_HD><NET_VALUE>4.31</NET_VALUE><DIVISION>01</DIVISION><DOC_STATUS>erledigt</DOC_STATUS><SALES_GRP>001</SALES_GRP><SALES_OFF>WING</SALES_OFF><SALES_ORG>WING</SALES_ORG><SALES_UNIT>ST</SALES_UNIT><SHIP_POINT>WING</SHIP_POINT><DISTR_CHAN>03</DISTR_CHAN><GI_DATE>2005-05-28</GI_DATE><CURRENCY>EUR</CURRENCY><PLANT>GP1</PLANT><STORE_LOC></STORE_LOC><ORD_REASON></ORD_REASON><REASON_REJ></REASON_REJ><B_UOM_ISO>C62</B_UOM_ISO><CD_UNT_ISO>C62</CD_UNT_ISO><S_UNIT_ISO>C62</S_UNIT_ISO><CURR_ISO>EUR</CURR_ISO><PURCH_NO_C>0002</PURCH_NO_C><EXCHG_RATE_V>0</EXCHG_RATE_V><MAT_EXT></MAT_EXT><MAT_GUID></MAT_GUID><MAT_VERS></MAT_VERS><CREATION_DATE>2005-05-28</CREATION_DATE><CREATION_TIME>12:49:18</CREATION_TIME></item><item><SD_DOC>0000000001</SD_DOC><ITM_NUMBER>000010</ITM_NUMBER><MATERIAL>000000000000000026</MATERIAL><SHORT_TEXT>Lottozahlengenerator</SHORT_TEXT><DOC_TYPE>BV</DOC_TYPE><DOC_DATE>2005-05-28</DOC_DATE><REQ_QTY>1.000</REQ_QTY><REQ_DATE>2005-05-28</REQ_DATE><PURCH_NO>0001</PURCH_NO><BATCH></BATCH><VALID_FROM>0000-00-00</VALID_FROM><VALID_TO>9999-12-31</VALID_TO><BILL_BLOCK></BILL_BLOCK><DLV_BLOCK></DLV_BLOCK><SOLD_TO>0000100001</SOLD_TO><NAME>1</NAME><EXCHG_RATE>1.00000</EXCHG_RATE><DLV_QTY>1.000</DLV_QTY><BASE_UOM>ST</BASE_UOM><NET_PRICE>4.31</NET_PRICE><COND_P_UNT>1</COND_P_UNT><COND_UNIT>ST</COND_UNIT><NET_VAL_HD>4.31</NET_VAL_HD><NET_VALUE>4.31</NET_VALUE><DIVISION>01</DIVISION><DOC_STATUS>erledigt</DOC_STATUS><SALES_GRP>001</SALES_GRP><SALES_OFF>WING</SALES_OFF><SALES_ORG>WING</SALES_ORG><SALES_UNIT>ST</SALES_UNIT><SHIP_POINT>WING</SHIP_POINT><DISTR_CHAN>03</DISTR_CHAN><GI_DATE>2005-05-28</GI_DATE><CURRENCY>EUR</CURRENCY><PLANT>GP1</PLANT><STORE_LOC></STORE_LOC><ORD_REASON></ORD_REASON><REASON_REJ></REASON_REJ><B_UOM_ISO>C62</B_UOM_ISO><CD_UNT_ISO>C62</CD_UNT_ISO><S_UNIT_ISO>C62</S_UNIT_ISO><CURR_ISO>EUR</CURR_ISO><PURCH_NO_C>0001</PURCH_NO_C><EXCHG_RATE_V>0</EXCHG_RATE_V><MAT_EXT></MAT_EXT><MAT_GUID></MAT_GUID><MAT_VERS></MAT_VERS><CREATION_DATE>2005-05-28</CREATION_DATE><CREATION_TIME>12:46:33</CREATION_TIME></item></rfc:BAPIORDERS>";
 
-	{
-		// Register as a resource user - SWTResourceManager will handle the
-		// obtaining and disposing of resources
-		SWTResourceManager.registerResourceUser(this);
-	}
-
-	//public static void main(String[] args) {
-		public static void run() {
+	
+	public static void run() {
 		Display display = Display.getDefault();
 		Shell shell = new Shell(display);
 		@SuppressWarnings("unused")
 		MainWindow inst = new MainWindow(shell, SWT.NULL);
 		shell.setLayout(new FillLayout());
-		shell.setImage(SWTResourceManager.getImage("images/16x16.png"));
+
 		shell.setText("CSAVA V1.1");
-		shell.setBackgroundImage(SWTResourceManager
-				.getImage("images/ToolbarBackground.gif"));
+
 		shell.layout();
 		shell.open();
 		while (!shell.isDisposed()) {
@@ -136,43 +116,8 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 
 			GridLayout thisLayout = new GridLayout();
 			this.setLayout(thisLayout);
-			{
-				GridData toolBarLData = new GridData();
-				toolBarLData.grabExcessHorizontalSpace = true;
-				toolBarLData.horizontalAlignment = GridData.FILL;
-				toolBar = new ToolBar(this, SWT.FLAT);
-				toolBar.setLayoutData(toolBarLData);
-				toolBar.setBackgroundImage(SWTResourceManager
-						.getImage("images/ToolbarBackground.gif"));
-				/*
-				 * { newToolItem = new ToolItem(toolBar, SWT.NONE);
-				 * newToolItem.setImage(SWTResourceManager.getImage("images/new.gif"));
-				 * newToolItem.setToolTipText("New"); }
-				 */
-				{
-					openToolItem = new ToolItem(toolBar, SWT.NONE);
-					openToolItem.setToolTipText("Open");
-					openToolItem.setImage(SWTResourceManager
-							.getImage("images/open.gif"));
-					openToolItem.addSelectionListener(new SelectionAdapter() {
-						public void widgetSelected(SelectionEvent evt) {
-							openToolItemWidgetSelected(evt);
-						}
-					});
-				}
-				{
-					saveToolItem = new ToolItem(toolBar, SWT.NONE);
-					saveToolItem.setToolTipText("Save");
-					saveToolItem.setImage(SWTResourceManager
-							.getImage("images/save.gif"));
-					saveToolItem.addSelectionListener(new SelectionAdapter() {
-						public void widgetSelected(SelectionEvent evt) {
-							// TODO: SAVE
-							saveToolItemWidgetSelected(evt);
-						}
-					});	
-				}
-			}
+			
+			
 			{
 				clientArea = new Composite(this, SWT.NONE);
 				GridData clientAreaLData = new GridData();
@@ -181,14 +126,15 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 				clientAreaLData.horizontalAlignment = GridData.FILL;
 				clientAreaLData.verticalAlignment = GridData.FILL;
 				clientArea.setLayoutData(clientAreaLData);
-				clientArea.setLayout(null);
+				clientArea.setLayout(new GridLayout());
 				{
-					// TODO: Tabelle 
+					
 					table = new Table(clientArea, SWT.BORDER 
 							| SWT.MULTI | SWT.SCROLL_LINE);
 					table.setLinesVisible(true);
 					table.setHeaderVisible(true);
-					table.setSize(795, 400);
+					
+					table.setLayoutData(new GridData(GridData.FILL_BOTH));
 
 				}
 			}
@@ -205,8 +151,8 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 				statusAreaLData.horizontalAlignment = GridData.FILL;
 				statusAreaLData.grabExcessHorizontalSpace = true;
 				statusArea.setLayoutData(statusAreaLData);
-				statusArea.setBackground(SWTResourceManager.getColor(239, 237,
-						224));
+//				statusArea.setBackground(SWTResourceManager.getColor(239, 237,
+//						224));
 				{
 					txtStatus = new Label(statusArea, SWT.BORDER);
 					txtStatus.setText("No Connection to Server and SAP");
@@ -231,37 +177,46 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 					fileMenuItem.setText("&File");
 					{
 						fileMenu = new Menu(fileMenuItem);
-						/*
-						 * { newFileMenuItem = new MenuItem(fileMenu, SWT.PUSH);
-						 * newFileMenuItem.setText("&New");
-						 * newFileMenuItem.setImage(SWTResourceManager.getImage("images/new.gif")); }
-						 */
+						
 						{
 							openFileMenuItem = new MenuItem(fileMenu, SWT.PUSH);
 							openFileMenuItem.setText("&Open");
-							openFileMenuItem.setImage(SWTResourceManager
-									.getImage("images/open.gif"));
+							
 							openFileMenuItem
 									.addSelectionListener(new SelectionAdapter() {
 										public void widgetSelected(
 												SelectionEvent evt) {
-											openFileMenuItemWidgetSelected(evt);
+											
+											FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
+											String filename = dialog.open();
+											if (filename != null) {
+												try {
+													JCO.Table sales = new JCO.Table("BAPIORDERS");
+													sales.appendRow();
+													sales.readXML(filename);
+													sales.writeXML("test.xml");
+													fillTable(sales);
+//													(new InputStreamReader
+//															(new FileInputStream(filename), "UTF-8"));
+												
+												} catch (Exception e) {
+													// TODO Auto-generated catch block
+													e.printStackTrace();
+												}
+												
+												getShell().setText(filename);
+											}
+//											openFileMenuItemWidgetSelected(evt);
 										}
 									});
 						}
-						{
-							closeFileMenuItem = new MenuItem(fileMenu,
-									SWT.CASCADE);
-							closeFileMenuItem.setText("Close");
-						}
-						{
-							fileMenuSep1 = new MenuItem(fileMenu, SWT.SEPARATOR);
-						}
+						
+						
 						{
 							saveFileMenuItem = new MenuItem(fileMenu, SWT.PUSH);
 							saveFileMenuItem.setText("&Save");
-							saveFileMenuItem.setImage(SWTResourceManager
-									.getImage("images/save.gif"));
+//							saveFileMenuItem.setEnabled(false);
+						
 							saveFileMenuItem.addSelectionListener(new SelectionAdapter() {
 								public void widgetSelected(SelectionEvent evt) {
 									// TODO: SAVE
@@ -269,12 +224,10 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 								}
 							});	
 						}
-						{
-							fileMenuSep2 = new MenuItem(fileMenu, SWT.SEPARATOR);
-						}
+						
 						{
 							exitMenuItem = new MenuItem(fileMenu, SWT.CASCADE);
-							exitMenuItem.setText("E&xit");
+							exitMenuItem.setText("&Exit");
 							exitMenuItem
 									.addSelectionListener(new SelectionAdapter() {
 										public void widgetSelected(
@@ -294,8 +247,7 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 						{
 							conSapMenuItem = new MenuItem(sapMenu, SWT.PUSH);
 							conSapMenuItem.setText("&Connect");
-							conSapMenuItem.setImage(SWTResourceManager
-									.getImage("images/new.gif"));
+						
 							conSapMenuItem
 									.addSelectionListener(new SelectionAdapter() {
 										public void widgetSelected(
@@ -312,8 +264,8 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 						{
 							querySapMenuItem = new MenuItem(sapMenu, SWT.PUSH);
 							querySapMenuItem.setText("&Query");
-							querySapMenuItem.setImage(SWTResourceManager
-									.getImage("images/new.gif"));
+//							querySapMenuItem.setEnabled(false);
+							
 							querySapMenuItem
 									.addSelectionListener(new SelectionAdapter() {
 										public void widgetSelected(
@@ -329,8 +281,8 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 						{
 							evalSapMenuItem = new MenuItem(sapMenu, SWT.PUSH);
 							evalSapMenuItem.setText("&Evaluate");
-							evalSapMenuItem.setImage(SWTResourceManager
-									.getImage("images/new.gif"));
+							evalSapMenuItem.setEnabled(false);
+							
 							evalSapMenuItem
 									.addSelectionListener(new SelectionAdapter() {
 										public void widgetSelected(
@@ -345,41 +297,7 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 					}
 					
 				}
-				{
-					helpMenuItem = new MenuItem(menu1, SWT.CASCADE);
-					helpMenuItem.setText("&Help");
-					{
-						helpMenu = new Menu(helpMenuItem);
-						{
-							aboutMenuItem = new MenuItem(helpMenu, SWT.CASCADE);
-							aboutMenuItem.setText("&About");
-							aboutMenuItem
-									.addSelectionListener(new SelectionAdapter() {
-										public void widgetSelected(
-												SelectionEvent evt) {
-											
-											// About
-											aboutMenuItemWidgetSelected(evt);
-										}
-									});
-						}
-						{
-							manMenuItem = new MenuItem(helpMenu, SWT.CASCADE);
-							manMenuItem.setText("&Manual");
-							manMenuItem
-									.addSelectionListener(new SelectionAdapter() {
-										public void widgetSelected(
-												SelectionEvent evt) {
-											
-											// TODO:
-											//showManual(evt);
-											
-										}
-									});
-						}
-						helpMenuItem.setMenu(helpMenu);
-					}
-				}
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -434,20 +352,14 @@ public class MainWindow extends org.eclipse.swt.widgets.Composite {
 		FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
 		String filename = dialog.open();
 		if (filename != null) {
+			
+//			fillTable(this.sales_orders);
 			getShell().setText(filename);
 		}
 	}
 
 	private void openToolItemWidgetSelected(SelectionEvent evt) {
 		openFileMenuItemWidgetSelected(evt);
-	}
-
-	private void aboutMenuItemWidgetSelected(SelectionEvent evt) {
-		MessageBox message = new MessageBox(getShell(), SWT.OK
-				| SWT.ICON_INFORMATION);
-		message.setText("About CSAVA ");
-		message.setMessage("Wellcome to \n\nCSAVA v1.0");
-		message.open();
 	}
 
 	private void shellWidgetDisposed(DisposeEvent evt) {
