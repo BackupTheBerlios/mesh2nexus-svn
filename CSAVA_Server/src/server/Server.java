@@ -10,7 +10,6 @@ import java.util.Properties;
 
 import server.SAPConnector;
 
-import com.sap.mw.jco.JCO;
 
 
 /**
@@ -27,7 +26,7 @@ public class Server {
 	/**
 	 * Startet den Server
 	 */
-	public static void Start(){
+	public static void main(String args[]){
 		
 		
 		System.out.println("> Server Start...");
