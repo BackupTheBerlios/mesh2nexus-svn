@@ -69,10 +69,9 @@ public class QueryWindow {
 		
 		shell.setLayout(new FillLayout(SWT.VERTICAL));
 		
-		shell.setImage(SWTResourceManager.getImage("images/16x16.png"));
+	
 		shell.setText("Query");
-		shell.setBackgroundImage(SWTResourceManager
-				.getImage("images/ToolbarBackground.gif"));
+		
 	}
 
 	private void initGUI(Shell shell) {
