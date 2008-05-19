@@ -1,24 +1,18 @@
-/**
- * 
- */
 package gui;
-
-/**
- * @author
- * 
- */
 
 import org.eclipse.swt.widgets.*;
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 
 import control.Controller;
 
-//public class ConnectWindow {
+/*
+ * Fenster für Aufbau einer Verbindung zum Server
+ */
 public class ConnectWindow {
 	
 	private Label ipLabel;
@@ -28,18 +22,19 @@ public class ConnectWindow {
 	private Button connect;	
 	private MainWindow parent;	
 	private Shell self;
-		
+	
+	/*
+	 * Konstruktor für ConnectWindow
+	 */
 	public ConnectWindow(MainWindow mainWindow) {	
 		
 		parent = mainWindow;
-		Shell shell = new Shell(parent.getShell(), SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM);	
-		// for close..
+		Shell shell = new Shell(parent.getShell(), SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM );
 		this.self = shell;
-		// 
-		initGUI(shell);
-		//
-		setPreferences(shell);
-
+		
+		// ConnectWindow Initialisierung
+		init(shell);
+		
 		shell.layout();
 		shell.open();
 		
@@ -50,69 +45,52 @@ public class ConnectWindow {
 
 	}
 
-	private void setPreferences(Shell shell) {
-
-		shell.setSize(320, 240);		
+	// Initialisiert ConnectWindow und dessen Elemente
+	private void init(Shell shell) {
 		
-        // Move the dialog to the center of the top level shell.
-        Rectangle shellBounds = parent.getBounds();
+		// Größe setzen 
+		shell.setSize(180, 170);		
+		
+        // Position von ConnectWindow an Position von MainWindow gebunden (Mitte)
+		// Ermittlung und Setzen der Position
+        Rectangle shellBounds = parent.getParent().getBounds();
         Point dialogSize = shell.getSize();
 
         shell.setLocation(
-          shellBounds.x + (shellBounds.width - dialogSize.x) / 2,
-          shellBounds.y + (shellBounds.height - dialogSize.y) / 2);
-        
-		//Rectangle mainWindowBounds = parent.getDisplay().getBounds();
-		//Rectangle mainWindowBounds = parent.getBounds();		
-		//int x = shell.getSize().x;
-		//int y = shell.getSize().y;
-		//int defaultTop = mainWindowBounds.x + (mainWindowBounds.width - x) / 2;
-		//int defaultLeft = mainWindowBounds.y + (mainWindowBounds.height - y) / 2;
-		//int defaultTop = (x - mainWindowBounds.height / 2) - (thisBounds.height / 2);
-		//int defaultLeft = (y - mainWindowBounds.width / 2) - (thisBounds.width /2);
-        //shell.setLocation(defaultLeft, defaultTop);		
-		shell.setLocation(400, 300);
-		
-		
-		FillLayout thisLayout = new FillLayout(SWT.VERTICAL);
+          shellBounds.x + (shellBounds.width / 2) - (dialogSize.x / 2),
+          shellBounds.y + (shellBounds.height / 2) - (dialogSize.y / 2));
+
+        // GridLayout setzen
+		GridLayout thisLayout = new GridLayout();
+	    thisLayout.numColumns = 1;
 		shell.setLayout(thisLayout);
+
+		shell.setText("Serververbindung");
 		
-		shell.setImage(SWTResourceManager.getImage("images/16x16.png"));
-		shell.setText("Connect to Server");
-		shell.setBackgroundImage(SWTResourceManager
-				.getImage("images/ToolbarBackground.gif"));
 
-	}
-
-	private void initGUI(Shell shell) {
-
+		// ConnectWindow-Elemente initialisieren
+		
 		ipLabel = new Label(shell, SWT.NONE);
-		ipLabel.setText("Server ip adress:");
-		// label.setLocation(90, 10);
+		ipLabel.setText("Server IP:");
+		ipLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_CENTER));
 		
 		ip = new Text(shell, SWT.BORDER);
 		ip.setText("localhost");
-		// ip.setBounds(10,10,200,20);
-		// ip.setTextLimit(30);
-		// ip.setLocation(50, 50);
-		
+		ip.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
 		portLabel = new Label(shell, SWT.NONE);
-		portLabel.setText("Server port:");
-		// label.setLocation(90, 10);
-
+		portLabel.setText("Server Port:");
+		portLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_CENTER));
+	
 		port = new Text(shell, SWT.BORDER);
 		port.setText("4711");
-		// port.setBounds(10,10,200,20);
-		// port.setTextLimit(30);
-		// port.setLocation(50, 50);
-
-		
+		port.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+	
 		connect = new Button(shell, SWT.PUSH);
-		connect.setText("Connect");
-		// connect.setLocation(100,150);
-		// connect.setSize(100,20);
-
+		connect.setText("Verbinden");
+		connect.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_CENTER));
+		
+		// Aktion beim Klicken auf connect-Button
 		connect.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
