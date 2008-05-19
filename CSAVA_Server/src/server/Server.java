@@ -1,13 +1,14 @@
-package communication;
+package server;
 
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
-import communication.SAPConnector;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
+
+import server.SAPConnector;
 
 import com.sap.mw.jco.JCO;
 
@@ -58,16 +59,16 @@ public class Server {
 			
 			try {
 				// Implementation vom ServerInterface bei der Registry anmelden
-				registry.rebind("ServerFunctions", new communication.ServerInterfaceImpl());
+				registry.rebind("ServerFunctions", new server.ServerInterfaceImpl());
 				System.out.println("> ServerFunctions bei der RMI Registry angemeldet");
 				
 			} catch (Exception e) {
 				
-				System.err.println("ServerFunctions konnten bei RMI Registry nicht angemeldet werden \n" + e);
+				System.err.println("> ServerFunctions konnten bei RMI Registry nicht angemeldet werden: \n" + e);
 			}
 				
 		} catch (Exception e) {
-			System.err.println("RMI Registry konnte nicht gestartet werden \n" + e);
+			System.err.println("> RMI Registry konnte nicht gestartet werden: \n" + e);
 		}
 		
 		// Pool anlegen

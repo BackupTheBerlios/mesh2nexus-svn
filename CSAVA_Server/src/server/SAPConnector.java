@@ -1,4 +1,4 @@
-package communication;
+package server;
 
 import com.sap.mw.jco.*;
 import java.util.Properties;
@@ -58,7 +58,7 @@ public class SAPConnector {
 	      
 	  }
 	  catch (JCO.Exception ex) {
-		  System.err.println("Fehler in 'SAPConnector.StartConnectionPool()': \n " + ex);
+		  System.err.println("> Fehler in 'SAPConnector.StartConnectionPool()': \n " + ex);
 	  }
   }
 
@@ -74,7 +74,7 @@ public class SAPConnector {
 		  
 	  }
 	  catch(Exception e){
-		  System.err.println("Es konnte keine Verbindung zu SAP aufgebaut werden \n" + e);
+		  System.err.println("> Es konnte keine Verbindung zu SAP aufgebaut werden: \n" + e);
 	  }
       
   }
@@ -139,11 +139,11 @@ public static JCO.Table getSalesOrders(
 
 		  }
 		  else {
-			  System.err.println("Funktion BAPI_SALESORDER_GETLIST wurde nicht gefunden");
+			  System.err.println("> Funktion BAPI_SALESORDER_GETLIST wurde nicht gefunden");
 		  }
 	  }
 	  catch (Exception ex) {
-		  System.err.println("Problem beim Ausführen von BAPI_SALESORDER_GETLIST \n" + ex);
+		  System.err.println("> Problem beim Ausführen von BAPI_SALESORDER_GETLIST: \n" + ex);
 	  }
     
 	  finally {

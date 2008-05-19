@@ -1,10 +1,10 @@
 package server;
 
-public class SStart {
+public class ServerStart {
 	
 	public static void main(String args[]){
 		
-		communication.Server.Start();
+		server.Server.Start();
 		
 	}
 	
