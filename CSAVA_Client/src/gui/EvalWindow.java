@@ -60,7 +60,88 @@ public class EvalWindow {
 	
 	private void init(Shell shell) {
 		
-		shell.setSize(170, 145);
+//		shell.setSize(170, 145);
+		
+		
+        
+		// GridLayout setzen
+		GridLayout thisLayout = new GridLayout();
+	    thisLayout.numColumns = 2;
+		shell.setLayout(thisLayout);
+		
+		shell.setText("Auswertung");
+		
+		// Gesamtanzahl
+		CountLabel = new Label(shell, SWT.NONE);
+		CountLabel.setText("Gesamtanzahl:");
+		CountLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		CountLabel.pack();
+		
+		int rows = Client.sales_orders.getNumRows();
+		String numRows = "" + rows;
+		Count = new Label(shell, SWT.BORDER);
+		Count.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		Count.setText(numRows);
+		Count.pack();
+		
+		
+		// Status offen	
+		CountOpenLabel = new Label(shell, SWT.NONE);
+		CountOpenLabel.setText("Status offen:");	
+		CountOpenLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		CountOpenLabel.pack();
+		
+		int open = getOpen();
+		String numOpen = "" + open;
+		CountOpen = new Label(shell, SWT.BORDER);
+		CountOpen.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		CountOpen.setText(numOpen);
+		CountOpen.pack();
+		
+		
+		// Status abgeschlossen		
+		CountClosedLabel = new Label(shell, SWT.NONE);
+		CountClosedLabel.setText("Status abgeschlossen:");
+		CountClosedLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		CountClosedLabel.pack();
+		
+		int closed = rows - open;		
+		String numClosed = "" + closed;		
+		CountClosed = new Label(shell, SWT.BORDER);
+		CountClosed.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		CountClosed.setText(numClosed);
+		CountClosed.pack();
+		
+		
+		// Verschiedene Kunden
+		CountCustLabel = new Label(shell, SWT.NONE);
+		CountCustLabel.setText("Verschiedene Kunden:");
+		CountCustLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		CountCustLabel.pack();
+		
+		
+		CountCust = new Label(shell, SWT.BORDER);
+		CountCust.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		CountCust.pack();
+		
+		
+
+		@SuppressWarnings("unused")
+		Label empty = new Label(shell, SWT.NONE);		
+		
+		eval = new Button(shell, SWT.PUSH);
+		eval.setText("Ok");
+		eval.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		eval.pack();
+		
+		eval.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent evt) {
+				close();
+			}
+		});
+		
+		
+		shell.pack();
 		
 		// Position von ConnectWindow an Position von MainWindow gebunden (Mitte)
 		// Ermittlung und Setzen der Position
@@ -70,71 +151,7 @@ public class EvalWindow {
         shell.setLocation(
           shellBounds.x + (shellBounds.width / 2) - (dialogSize.x / 2),
           shellBounds.y + (shellBounds.height / 2) - (dialogSize.y / 2));
-        
-		// GridLayout setzen
-		GridLayout thisLayout = new GridLayout();
-	    thisLayout.numColumns = 2;
-		shell.setLayout(thisLayout);
 		
-		shell.setText("Auswerten");
-		
-		// Gesamtanzahl
-		CountLabel = new Label(shell, SWT.NONE);
-		CountLabel.setText("Gesamtanzahl:");
-		CountLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
-		int rows = Client.sales_orders.getNumRows();
-		String numRows = "" + rows;
-		Count = new Label(shell, SWT.BORDER);
-		Count.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		Count.setText(numRows);		
-		
-		
-		// Status offen	
-		CountOpenLabel = new Label(shell, SWT.NONE);
-		CountOpenLabel.setText("Status offen:");	
-		CountOpenLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
-		int open = getOpen();
-		String numOpen = "" + open;
-		CountOpen = new Label(shell, SWT.BORDER);
-		CountOpen.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		CountOpen.setText(numOpen);
-		
-		
-		// Status abgeschlossen		
-		CountClosedLabel = new Label(shell, SWT.NONE);
-		CountClosedLabel.setText("Status abgeschlossen:");
-		CountClosedLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
-		int closed = rows - open;		
-		String numClosed = "" + closed;		
-		CountClosed = new Label(shell, SWT.BORDER);
-		CountClosed.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		CountClosed.setText(numClosed);
-		
-		
-		// Verschiedene Kunden
-		CountCustLabel = new Label(shell, SWT.NONE);
-		CountCustLabel.setText("Verschiedene Kunden:");
-		CountCustLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
-		CountCust = new Label(shell, SWT.BORDER);
-		CountCust.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		
-
-		@SuppressWarnings("unused")
-		Label empty = new Label(shell, SWT.NONE);		
-		
-		eval = new Button(shell, SWT.PUSH);
-		eval.setText("Ok");
-		eval.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
-		eval.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent evt) {
-				close();
-			}
-		});
 	}
 	
 	/*
