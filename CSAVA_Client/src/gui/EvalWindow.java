@@ -8,13 +8,13 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
+import client.Client;
 
 /**
  * @author 
@@ -25,8 +25,7 @@ public class EvalWindow {
 	private Label CountLabel;
 	private Label CountOpenLabel;
 	private Label CountClosedLabel;
-	private Label CountCustLabel;
-	
+	private Label CountCustLabel;	
 
 	private Label Count;
 	private Label CountOpen;
@@ -81,32 +80,35 @@ public class EvalWindow {
 		CountLabel = new Label(shell, SWT.NONE);
 		CountLabel.setText("Gesamtanzahl:");
 		CountLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
+		// Gesamtanzahl
+		String numRows = "" + Client.sales_orders.getNumRows();
 		Count = new Label(shell, SWT.BORDER);
 		Count.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-	
+		Count.setText(numRows);
+		
 		CountOpenLabel = new Label(shell, SWT.NONE);
 		CountOpenLabel.setText("Status offen:");	
 		CountOpenLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
+		// Status offen		
 		CountOpen = new Label(shell, SWT.BORDER);
 		CountOpen.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
 		CountClosedLabel = new Label(shell, SWT.NONE);
 		CountClosedLabel.setText("Status abgeschlossen:");
 		CountClosedLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
+		// Status abgeschlossen
 		CountClosed = new Label(shell, SWT.BORDER);
 		CountClosed.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
 		CountCustLabel = new Label(shell, SWT.NONE);
 		CountCustLabel.setText("Verschiedene Kunden:");
 		CountCustLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		
+		// Verschiedene Kunden
 		CountCust = new Label(shell, SWT.BORDER);
 		CountCust.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
 
+		@SuppressWarnings("unused")
 		Label empty = new Label(shell, SWT.NONE);
 		
 		
@@ -119,18 +121,10 @@ public class EvalWindow {
 				close();
 			}
 		});
-		
-		// Test Auswertung..
-//		String numColumns = Integer.toString(this.parent.sales_orders.getNumColumns());
-//		CustNumberLabel.setText("NumColumns:  " + numColumns);	
-//		String numRows = "" + this.parent.sales_orders.getNumRows();
-//		SalesOrgLabel.setText("NumRows:  " + numRows);	
 	}
 
 	protected void close() {
-
-		shell.dispose();
 		
+		shell.dispose();		
 	}
-
 }

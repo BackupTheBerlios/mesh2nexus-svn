@@ -1,7 +1,5 @@
 package gui;
 
-import java.io.*;
-import java.util.*;
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.graphics.*;
@@ -240,7 +238,9 @@ public class MainWindow {
 //		}
 	}
 
-
+	/*
+	 * 
+	 */
 	protected void setStatus(String message) {
 		txtStatus.setText(message);
 	}

@@ -8,17 +8,13 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
-import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
-
 import client.Client;
-
-import com.sap.mw.jco.JCO;
 
 
 /**
@@ -129,6 +125,7 @@ public class QueryWindow {
 		TAGroup.setText("0");	
 		TAGroup.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
+		@SuppressWarnings("unused")
 		Label empty = new Label(shell, SWT.NONE);
 		
 		query = new Button(shell, SWT.PUSH);
@@ -162,6 +159,5 @@ public class QueryWindow {
 			ErrorDialog.show(shell, "Error", message) ;			
 		}
 		shell.dispose();	
-	}		
-	
+	}			
 }

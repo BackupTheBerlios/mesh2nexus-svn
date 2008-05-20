@@ -10,7 +10,6 @@ import org.eclipse.swt.layout.GridLayout;
 
 import client.Client;
 
-
 /*
  * Fenster für Aufbau einer Verbindung zum Server
  */
@@ -23,8 +22,7 @@ public class ConnectWindow {
 	private Button connect;	
 	private MainWindow parent;	
 	private Shell shell;
-	
-	
+		
 	/*
 	 * Konstruktor für ConnectWindow
 	 */
@@ -67,8 +65,7 @@ public class ConnectWindow {
 	    thisLayout.numColumns = 2;
 		shell.setLayout(thisLayout);
 
-		shell.setText("Serververbindung");
-		
+		shell.setText("Serververbindung");		
 
 		// ConnectWindow-Elemente initialisieren		
 		ipLabel = new Label(shell, SWT.NONE);
@@ -87,6 +84,7 @@ public class ConnectWindow {
 		port.setText("4711");
 		port.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 	
+		@SuppressWarnings("unused")
 		Label empty = new Label(shell, SWT.NONE);
 
 		connect = new Button(shell, SWT.PUSH);
@@ -127,5 +125,4 @@ public class ConnectWindow {
 			ErrorDialog.show(shell, "Error", "SAP-Server ist nicht verfügbar") ;
 		}
 	}
-
 }
