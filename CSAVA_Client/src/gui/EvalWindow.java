@@ -13,6 +13,9 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TableItem;
+
+import com.sap.mw.jco.JCO;
 
 import client.Client;
 
@@ -53,9 +56,7 @@ public class EvalWindow {
 			if (!parent.shell.getDisplay().readAndDispatch())
 				parent.shell.getDisplay().sleep();
 		}
-
 	}
-
 	
 	private void init(Shell shell) {
 		
@@ -77,40 +78,53 @@ public class EvalWindow {
 		
 		shell.setText("Auswerten");
 		
+		// Gesamtanzahl
 		CountLabel = new Label(shell, SWT.NONE);
 		CountLabel.setText("Gesamtanzahl:");
 		CountLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		// Gesamtanzahl
-		String numRows = "" + Client.sales_orders.getNumRows();
+		
+		int rows = Client.sales_orders.getNumRows();
+		String numRows = "" + rows;
 		Count = new Label(shell, SWT.BORDER);
 		Count.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
-		Count.setText(numRows);
+		Count.setText(numRows);		
 		
+		
+		// Status offen	
 		CountOpenLabel = new Label(shell, SWT.NONE);
 		CountOpenLabel.setText("Status offen:");	
 		CountOpenLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		// Status offen		
+		
+		int open = getOpen();
+		String numOpen = "" + open;
 		CountOpen = new Label(shell, SWT.BORDER);
 		CountOpen.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		CountOpen.setText(numOpen);
 		
+		
+		// Status abgeschlossen		
 		CountClosedLabel = new Label(shell, SWT.NONE);
 		CountClosedLabel.setText("Status abgeschlossen:");
 		CountClosedLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		// Status abgeschlossen
+		
+		int closed = rows - open;		
+		String numClosed = "" + closed;		
 		CountClosed = new Label(shell, SWT.BORDER);
 		CountClosed.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		CountClosed.setText(numClosed);
 		
+		
+		// Verschiedene Kunden
 		CountCustLabel = new Label(shell, SWT.NONE);
 		CountCustLabel.setText("Verschiedene Kunden:");
 		CountCustLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
-		// Verschiedene Kunden
+		
 		CountCust = new Label(shell, SWT.BORDER);
 		CountCust.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 		
 
 		@SuppressWarnings("unused")
-		Label empty = new Label(shell, SWT.NONE);
-		
+		Label empty = new Label(shell, SWT.NONE);		
 		
 		eval = new Button(shell, SWT.PUSH);
 		eval.setText("Ok");
@@ -122,9 +136,35 @@ public class EvalWindow {
 			}
 		});
 	}
-
-	protected void close() {
-		
+	
+	/*
+	 * 
+	 */
+	protected int getOpen() {
+		int open = 0;
+		int i;
+		do {
+			i = 0;			
+			// Loop over all columns in the current row
+			for (JCO.FieldIterator e = Client.sales_orders.fields(); e
+					.hasMoreElements();) {
+				JCO.Field field = e.nextField();
+				
+				// Wenn in Spalte DOC_STATUS nicht erledigt
+//				if (field.getName().equals("DOC_STATUS") ){
+				if (field.getString().equals("erledigt") ){
+					open++;
+				}				
+				i++;
+			}
+		} while (Client.sales_orders.nextRow());		
+		return open;			
+	}
+	
+	/*
+	 * 
+	 */
+	protected void close() {		
 		shell.dispose();		
 	}
 }
