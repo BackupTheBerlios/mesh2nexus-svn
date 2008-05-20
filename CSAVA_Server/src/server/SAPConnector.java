@@ -127,12 +127,12 @@ public static JCO.Table getSalesOrders(
 			  }
 
 			  // Führe die entfernte Funktion aus
-			  System.out.println("> Führe BAPI_SALES_ORDER_GETLIST aus.");
+			  System.out.println("> Führe BAPI_SALES_ORDER_GETLIST aus");
 			  client.execute(function);
 
 			  // Print return message
-			  JCO.Structure ret = function.getExportParameterList().getStructure("RETURN");
-			  System.out.println("\t RETURN MESSAGE: " + ret.getString("MESSAGE"));
+//			  JCO.Structure ret = function.getExportParameterList().getStructure("RETURN");
+//			  System.out.println("\t RETURN MESSAGE: " + ret.getString("MESSAGE"));
 
 			  // Get table containing the orders
 			  result = function.getTableParameterList().getTable("SALES_ORDERS");

@@ -16,15 +16,7 @@ public class ServerInterfaceImpl extends UnicastRemoteObject implements ServerIn
 	 */
 	public ServerInterfaceImpl() throws RemoteException {
 	}
-	
-	/**
-	 * Test
-	 */
-	public String getString () throws RemoteException {
-		
-		return "OK";
-	}
-	
+
 	/**
 	 * Liefert Verkaufsbelege von SAP-Datenbank.
 	 * Funktion wird im eigenen Thread ausgeführt. Ein RMI-Aufruf erzeugt

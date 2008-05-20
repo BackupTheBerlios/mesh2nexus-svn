@@ -9,11 +9,6 @@ import com.sap.mw.jco.JCO;
  * vom Server zur Verfügung gestellt werden
  */
 public interface ServerInterface extends Remote{
-
-	/**
-	 * Test Funktion
-	 */
-	public String getString () throws RemoteException;
 	
 	/**
 	 * Liefert Verkaufsbelege von SAP-Datenbank

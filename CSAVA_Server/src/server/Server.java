@@ -1,6 +1,5 @@
 package server;
 
-
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.io.FileInputStream;
@@ -9,8 +8,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 import server.SAPConnector;
-
-
 
 /**
  * 
@@ -21,16 +18,13 @@ public class Server {
 	public static Registry registry;
 	public static Properties properties;
 	
-	
 
 	/**
 	 * Startet den Server
 	 */
-	public static void main(String args[]){
+	public static void main(String args[]){		
 		
-		
-		System.out.println("> Server Start...");
-		
+		System.out.println("> Server Start...");		
 		
 		// Properties laden
 		properties = new Properties();
@@ -48,8 +42,7 @@ public class Server {
 			System.err.println("Properties Datei nicht gefunden \n" + e);
 		} catch (IOException e1) {
 			System.err.println(e1);
-		}
-		
+		}		
 
 		try {
 			// Neue Registry am Port erstellen
@@ -75,22 +68,18 @@ public class Server {
 		
 		// Verbindung zu SAP testen
 		SAPConnector.TestConnection();
-	
-		
-		System.out.println("> Server gestartet");
-		
+			
+		System.out.println("> Server gestartet");	
 
 	}
 	
 	/**
 	 * 
-	 *
 	 */
 	private static void LoadFromProperties (){
 		
 		Port = (new Integer (properties.getProperty("Port"))).intValue();
 		SAPConnector.LoadFromProperties(properties);
 		
-	}
-	
+	}	
 }
