@@ -49,16 +49,9 @@ public class ConnectWindow {
 	private void init(Shell shell) {
 		
 		// Größe setzen 
-		shell.setSize(180, 115);		
+//		shell.setSize(180, 115);		
 		
-        // Position von ConnectWindow an Position von MainWindow gebunden (Mitte)
-		// Ermittlung und Setzen der Position
-        Rectangle shellBounds = parent.shell.getBounds();
-        Point dialogSize = shell.getSize();
-
-        shell.setLocation(
-          shellBounds.x + (shellBounds.width / 2) - (dialogSize.x / 2),
-          shellBounds.y + (shellBounds.height / 2) - (dialogSize.y / 2));
+        
 
         // GridLayout setzen
 		GridLayout thisLayout = new GridLayout();
@@ -71,25 +64,31 @@ public class ConnectWindow {
 		ipLabel = new Label(shell, SWT.NONE);
 		ipLabel.setText("Server IP:");
 		ipLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		ipLabel.pack();
 		
 		ip = new Text(shell, SWT.BORDER);
-		ip.setText("localhost");
+		ip.setText("255.255.255.255");
 		ip.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		ip.pack();
 		
 		portLabel = new Label(shell, SWT.NONE);
 		portLabel.setText("Server Port:");
 		portLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		portLabel.pack();
 	
 		port = new Text(shell, SWT.BORDER);
 		port.setText("4711");
 		port.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
+		port.pack();
 	
 		@SuppressWarnings("unused")
 		Label empty = new Label(shell, SWT.NONE);
+		empty.pack();
 
 		connect = new Button(shell, SWT.PUSH);
 		connect.setText("Verbinden");
 		connect.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
+		connect.pack();
 		
 		// Aktion beim Klicken auf connect-Button
 		connect.addSelectionListener(new SelectionAdapter() {
@@ -99,6 +98,18 @@ public class ConnectWindow {
 				ConnectToServer(evt);
 			}
 		});
+		shell.pack();
+		
+		// Position von ConnectWindow an Position von MainWindow gebunden (Mitte)
+		// Ermittlung und Setzen der Position
+        Rectangle shellBounds = parent.shell.getBounds();
+        Point dialogSize = shell.getSize();
+
+        shell.setLocation(
+          shellBounds.x + (shellBounds.width / 2) - (dialogSize.x / 2),
+          shellBounds.y + (shellBounds.height / 2) - (dialogSize.y / 2));
+        
+        ip.setText("localhost");
 
 	}
 
