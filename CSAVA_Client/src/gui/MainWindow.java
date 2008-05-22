@@ -2,15 +2,12 @@ package gui;
 
 import org.eclipse.swt.*;
 import org.eclipse.swt.events.*;
-import org.eclipse.swt.graphics.*;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
-
 import client.Client;
-
 import com.sap.mw.jco.JCO;
 
-/*
+/**
  * Hauptfenster des Programms
  */
 public class MainWindow {
@@ -19,9 +16,6 @@ public class MainWindow {
 	private MenuItem exit;
 	public MenuItem save;
 	private MenuItem open;
-
-	private Label txtStatus;
-
 	private Menu fileMenu;
 	private MenuItem fileMenuItem;
 	private MenuItem sapMenuItem;
@@ -30,14 +24,18 @@ public class MainWindow {
 	public MenuItem evalSapMenuItem;
 	public MenuItem conSapMenuItem;
 	private Table table;
-	//	
-	public Shell shell;
 
+	public Shell shell;
+	
+	/**
+	 * Konstruktor für MainWindow
+	 */
 	public MainWindow() {
 
 		Display display = Display.getDefault();
 		shell = new Shell(display);
 
+		// MainWindow Initialisierung
 		init();
 
 		shell.layout();
@@ -50,71 +48,49 @@ public class MainWindow {
 		display.dispose();
 	}
 
-	/*
-	 * 
+	/**
+	 * Initialisiert MainWindow und dessen Elemente
 	 */
 	private void init() {
 
-		shell.setText("CSAVA V1.1");
-
+		shell.setText("CSAVA  [Offline]");
 		shell.setSize(640, 480);
-		Rectangle screenBounds = shell.getDisplay().getBounds();
-		int top = (screenBounds.height - 480) / 2;
-		int left = (screenBounds.width - 640) / 2;
-		shell.setLocation(left, top);
 
+		// GridLayout setzen
 		GridLayout thisLayout = new GridLayout();
 		thisLayout.numColumns = 1;
 		shell.setLayout(thisLayout);
 
-		
 		// Tabelle
 		table = new Table(shell, SWT.BORDER | SWT.MULTI | SWT.SCROLL_LINE);
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
 		table.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		// Status
-		txtStatus = new Label(shell, SWT.BORDER);
-		txtStatus.setText("Keine Verbindung zum SAP-Server");
-		GridData txtStatusLData = new GridData();
-		txtStatusLData.horizontalAlignment = GridData.FILL;
-		txtStatusLData.grabExcessHorizontalSpace = true;
-		txtStatusLData.verticalIndent = 3;
-		txtStatus.setLayoutData(txtStatusLData);
-		
 		// Menu
 		menu = new Menu(shell, SWT.BAR);
 		shell.setMenuBar(menu);
 		fileMenuItem = new MenuItem(menu, SWT.CASCADE);
 		fileMenuItem.setText("Datei");
 		fileMenu = new Menu(fileMenuItem);
-		
+
 		open = new MenuItem(fileMenu, SWT.PUSH);
 		open.setText("Öffnen");
 		open.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
-				// FileDialog dialog = new FileDialog(getShell(), SWT.OPEN);
-				// String filename = dialog.open();
-				// if (filename != null) {
-				// try {
-				// JCO.Table sales = new JCO.Table("BAPIORDERS");
-				// sales.appendRow();
-				// sales.readXML(filename);
-				// sales.writeXML("test.xml");
-				// fillTable(sales);
-				// // (new InputStreamReader
-				// // (new FileInputStream(filename), "UTF-8"));
-				//												
-				// } catch (Exception e) {
-				// // TODO Auto-generated catch block
-				// e.printStackTrace();
-				// }
-				//												
-				// getShell().setText(filename);
-				// }
-				// openTable();
+				// Dialog zum Öffnen einer Datei
+				FileDialog dialog = new FileDialog(shell, SWT.OPEN);
+				String filename = dialog.open();
+				
+				// falls Datei nicht geöffnet werden konnte
+				if (!openTable(filename)) {
+					
+					// Fehlermeldung
+					ErrorDialog.show(shell, "Error",
+							"Datei konnte nicht geöffnet werden");
+
+				}
 			}
 		});
 
@@ -123,8 +99,18 @@ public class MainWindow {
 		save.setEnabled(false);
 		save.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
-				// TODO: SAVE
-				//saveTable();
+
+				// Dialog zum Abspeichern der Tabelle in einer Datei
+				FileDialog dialog = new FileDialog(shell, SWT.SAVE);
+				String filename = dialog.open();
+				
+				// falls Tabelle nicht gespeichert werden konnte
+				if (!saveTable(filename)) {
+					
+					// Fehlermeldung
+					ErrorDialog.show(shell, "Error",
+							"Tabelle konnte nicht gespeichert werden");
+				}
 			}
 		});
 
@@ -132,7 +118,8 @@ public class MainWindow {
 		exit.setText("Beenden");
 		exit.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
-				// TODO
+				
+				// Beenden des Programms
 				exit();
 			}
 		});
@@ -141,7 +128,7 @@ public class MainWindow {
 		sapMenuItem = new MenuItem(menu, SWT.CASCADE);
 		sapMenuItem.setText("SAP");
 		sapMenu = new Menu(sapMenuItem);
-		
+
 		// Verbinden
 		conSapMenuItem = new MenuItem(sapMenu, SWT.PUSH);
 		conSapMenuItem.setText("Verbinden");
@@ -149,8 +136,8 @@ public class MainWindow {
 		conSapMenuItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
-				// Show connect window
-				showConnectWindow(evt);
+				// zeige ConnectWindow an
+				showConnectWindow();
 			}
 		});
 
@@ -161,8 +148,8 @@ public class MainWindow {
 		querySapMenuItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
-				// Show query window
-				showQueryWindow(evt);
+				// zeige QueryWindow an
+				showQueryWindow();
 			}
 		});
 
@@ -173,104 +160,106 @@ public class MainWindow {
 		evalSapMenuItem.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
-				// Show evaluate window
-				showEvalWindow(evt);
+				// zeige EvalWindow an
+				showEvalWindow();
 			}
 		});
 		sapMenuItem.setMenu(sapMenu);
 	}
 
-	/*
-	 * 
+	/**
+	 * schließt das Hauptfenster
 	 */
-	protected void exit() {
-		shell.dispose();		
+	private void exit() {
+		shell.dispose();
 	}
 
-	/*
-	 * 
+	/**
+	 * Speichert die Tabelle in eine Datei
 	 */
-	protected void saveTable() {
+	private boolean saveTable(String path) {
 		// TODO
-		// Save
-//		Client.sales_orders.writeHTML("JCOTable.html");
-//		try {
-//			Client.sales_orders.writeXML("JCOTable.xml");
-//		} catch (IOException e1) {
-//			// TODO
-//			e1.printStackTrace();
-//		}
+		return true;
 
 	}
 
-	/*
-	 * 
+	/**
+	 * Erstellt ein neues EvalWindow mit MainWindow als parent
 	 */
-	protected void showEvalWindow(SelectionEvent evt) {
-		// TODO
+	private void showEvalWindow() {
 		new EvalWindow(this);
 	}
 
-	/*
-	 * 
+	/**
+	 * Erstellt ein neues QueryWindow mit MainWindow als parent
 	 */
-	protected void showQueryWindow(SelectionEvent evt) {
-		// TODO
+	private void showQueryWindow() {
 		new QueryWindow(this);
 	}
 
-	/*
-	 * 
+	/**
+	 * Erstellt ein neues ConnectWindow mit MainWindow als parent
 	 */
-	protected void showConnectWindow(SelectionEvent evt) {
-		// TODO
+	private void showConnectWindow() {
 		new ConnectWindow(this);
 	}
 
-
-	private void openTable() {
-//		FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-//		String filename = dialog.open();
-//		if (filename != null) {
-//
-//			// fillTable(this.sales_orders);
-//			shell.setText(filename);
-//		}
+	/**
+	 * Öffnet eine gespeicherte Tabelle
+	 */
+	private boolean openTable(String path) {
+		// TODO
+		return true;
 	}
 
-	/*
-	 * 
+	/**
+	 * Setzt Status-Meldungen in der Titel-Leiste des Hauptfensters
 	 */
 	protected void setStatus(String message) {
-		txtStatus.setText(message);
+		shell.setText("CSAVA " + "[" + message + "]");
 	}
 
-	// TODO FillTable
+	/**
+	 * Füllt die Tabelle mit Werten aus Client.sales_orders (JCO.Table)
+	 */
 	public void fillTable() {
 
 		JCO.Table sales_orders = Client.sales_orders;
 
-		// columns
-		for (JCO.FieldIterator e = sales_orders.fields(); e.hasMoreElements();) {
-			JCO.Field field = e.nextField();
-			// Create Column
-			TableColumn id = new TableColumn(table, SWT.LEFT);
-			id.setText(field.getName());
-			id.setWidth(100);
+		// Lösche Tabelle, die evtl. zuvor geladen wurde
+		if (table.getColumnCount() != 0) {
+			table.removeAll();
+		} else {
+
+			// Erstelle Spalten
+			for (JCO.FieldIterator e = sales_orders.fields(); e
+					.hasMoreElements();) {
+				JCO.Field field = e.nextField();
+				
+				TableColumn id = new TableColumn(table, SWT.LEFT);
+				id.setText(field.getName());
+				id.setWidth(100);
+			}
+
 		}
-		// rows
+		
+		// Fülle Tabelle mit Werten
 		int i;
 		do {
 
 			i = 0;
 			TableItem item1 = new TableItem(table, SWT.NONE);
-			// Loop over all columns in the current row
+			
 			for (JCO.FieldIterator e = sales_orders.fields(); e
 					.hasMoreElements();) {
+				
 				JCO.Field field = e.nextField();
 				item1.setText(i, field.getString());
 				i++;
+				
 			}
 		} while (sales_orders.nextRow());
+
 	}
+
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package gui;
 
 import org.eclipse.swt.SWT;
@@ -18,8 +15,8 @@ import client.Client;
 
 
 /**
- * @author 
- *
+ * Fenster zur Abfrage der Parameter und zum 
+ * Ausführen einer Anfrage
  */
 public class QueryWindow {
 	
@@ -28,27 +25,24 @@ public class QueryWindow {
 	private Text DocDate;
 	private Text DocDateTo;
 	private Text TAGroup;
-	
 	private Label CustNumberLabel;
 	private Label SalesOrgLabel;
 	private Label DocDateLabel;
 	private Label DocDateToLabel;
 	private Label TAGroupLabel;
-	
 	private Button query;	
 	private MainWindow parent;	
 	private Shell shell;
 	
 	/**
-	 * 
+	 * Konstruktor für QueryWindow
 	 */
 	public QueryWindow(MainWindow par) {		
 		
 		parent = par;
-		
 		shell = new Shell(parent.shell, SWT.APPLICATION_MODAL | SWT.DIALOG_TRIM);
 
-		// Initialisierung von Anfragefenster
+		// QueryWindow Initialisierung
 		init(shell);
 
 		shell.layout();
@@ -61,15 +55,11 @@ public class QueryWindow {
 
 	}	
 
-	/*
-	 * 
+	/**
+	 * Initialisiert QueryWindow und dessen Elemente
 	 */
 	private void init(Shell shell) {
 		
-//		shell.setSize(220, 185);
-		
-		
-        
 		// GridLayout setzen
 		GridLayout thisLayout = new GridLayout();
 	    thisLayout.numColumns = 2;
@@ -77,6 +67,7 @@ public class QueryWindow {
 	
 		shell.setText("Anfrage");
 		
+		// Elemente intialisieren
 		CustNumberLabel = new Label(shell, SWT.NONE);
 		CustNumberLabel.setText("Kundennummer:");	
 		CustNumberLabel.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
@@ -135,6 +126,15 @@ public class QueryWindow {
 		query.setLayoutData(new GridData(GridData.HORIZONTAL_ALIGN_END));
 		query.pack();
 		
+		 // Aktion beim Anklicken von query-Button
+		query.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent evt) {
+
+				// Führe die Anfrage aus
+				executeQuery();
+			}
+		});	
+		
 		shell.pack();
 		
 		// Position von ConnectWindow an Position von MainWindow gebunden (Mitte)
@@ -143,37 +143,55 @@ public class QueryWindow {
         Point dialogSize = shell.getSize();
 
         shell.setLocation(
-          shellBounds.x + (shellBounds.width / 2) - (dialogSize.x / 2),
-          shellBounds.y + (shellBounds.height / 2) - (dialogSize.y / 2));
-		
-		query.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent evt) {
-
-				loadTable(evt);
-			}
-		});	
-		
+        		shellBounds.x + (shellBounds.width / 2) - (dialogSize.x / 2),
+        		shellBounds.y + (shellBounds.height / 2) - (dialogSize.y / 2));
 		
 	}
 
-	protected void loadTable(SelectionEvent evt) {
+	/**
+	 * Benutzereingaben für die Anfrage werden eingelesen
+	 * und an Client.getSapTable übergeben. 
+	 */
+	private void executeQuery() {
 
-		// Get JCO.Table and redraw
+		// Führe die Anfrage aus
 		String message = Client.getSapTable(CustNumber.getText(),
 				SalesOrg.getText(),
 				DocDate.getText(),
 				DocDateTo.getText(),
 				TAGroup.getText());
+		
+		// falls die Ausführung erfolgreich war
 		if (message.equals("OK")) {
 
-			// FillTable
+			// Fülle die Tabelle mit Werten aus der Ergebnis-JCO.Table
 			parent.fillTable();
+			
+			// Ein- Ausschalten entsprechender Menueinträge
 			parent.evalSapMenuItem.setEnabled(true);
 			parent.save.setEnabled(true);
+			
+		// falls die Ausführung nicht erfolgreich war oder 
+		// die Ergebnis-Tablle leer ist
+		}else {
+			
+			// zeige einen Fehler-MessageBox mit entsprechender Meldung
+			ErrorDialog.show(shell, "Error", message) ;
+			
+			// falls verbindung zum SAP-Server unterbrochen wurde
+			if (!message.equals("Keine Ergebnisse zu dieser Anfrage")){
+				
+				// Setze status
+				parent.setStatus("Offline");
+				// Ein- Ausschalten entsprechender Menueinträge
+				parent.querySapMenuItem.setEnabled(false);
+				parent.conSapMenuItem.setEnabled(true);
+				
+			}
+			
 		}
-		else {
-			ErrorDialog.show(shell, "Error", message) ;			
-		}
+		
+		// schließe QueryWindow
 		shell.dispose();	
 	}			
 }
