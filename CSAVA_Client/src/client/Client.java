@@ -1,6 +1,3 @@
-/**
- * 
- */
 package client;
 
 import java.rmi.Naming;
@@ -9,29 +6,33 @@ import server.ServerInterface;
 import com.sap.mw.jco.JCO;
 
 /**
- * @author
- * 
+ * Klasse enthält programmstartende main-Mothode sowie
+ * Hilfsfunktionen für Kommunikation mit dem SAP-Server
  */
 public class Client {
 
-	// Public static String ServerURL;
-	public static ServerInterface server;	
-	// Public static JCO.Table
+	// ServerInterface, ermöglicht Aufrufe entfernter Funktionen
+	public static ServerInterface server;
+	
+	// Tabelle (JCO.Table), Container für Verkaufsbelege, die vom
+	// SAP-Server geholte werden
 	public static JCO.Table sales_orders;
 	
-	/*
-	 *  Start MainWindow
+	/**
+	 *  Programm-Starter, öffnet das Hauptfenster
 	 */
 	public static void main(String[] args){		
 		new gui.MainWindow();		
 	}
 	
-	/*
-	 * 
+	/**
+	 * Baut eine Verbindung zum Server auf
 	 */
 	public static boolean ConnectToServer(String ServerURL) {
 
-		// Connect to Server
+		// Prüft, ob auf dem angegebenem Rechner (ServerURL = IP:Port)
+		// RMI-Registry gestartet ist und entsprechnde Interface-Implementierung
+		// registriert ist
 		try {
 			server = (ServerInterface) Naming.lookup("rmi://" + ServerURL
 					+ "/ServerFunctions");			
@@ -44,8 +45,9 @@ public class Client {
 		}		
 	}	
 	
-	/*
-	 * 
+	/**
+	 * Sendet eine Anfrage an SAP-Server und speichert die Ergebnis-Tabelle
+	 * in sales_orders vom Datentyp JCO.Table
 	 */
 	public static String getSapTable(String CustNumber,
 			String SalesOrg,
@@ -53,29 +55,40 @@ public class Client {
 			String DocDateTo,
 			String TAGroup) {
 		
-		// JCO.Table
-		sales_orders = null;
+		JCO.Table tmpSales = null;
 		
 		try {
-			// RPC!
-			sales_orders = server.getSalesOrderList(CustNumber,
+			
+			// Aufruf entfernter Funktion
+			tmpSales = server.getSalesOrderList(CustNumber,
 					SalesOrg,
 					DocDate,
 					DocDateTo,
 					TAGroup);
 
-			if (sales_orders == null){ 
-				return "SAP-Server ist nicht mit SAP-Datenbank verbunden";
-
-			}
-			else{
+			// Aufarbeitung der Ergebnisse
+			
+			// falls Ergebnistabelle = null ist, liegt ein Problem
+			// auf dem Server vor, keine Konnektivität zur SAP-DB
+			if (tmpSales == null){ 
 				
-				if (sales_orders.getNumRows() == 0){
+				return "SAP-Server ist nicht mit SAP-Datenbank verbunden";
+			}
+			// sonst
+			else{
+				// prüfe ob die Ergebnistabelle keine Einträge enthält
+				if (tmpSales.getNumRows() == 0){
 					return "Keine Ergebnisse zu dieser Anfrage";
+				}
+				// alles in Ordnung -> speichere die Tabelle in 'sales_orders'
+				else{
+					sales_orders = tmpSales;
 				}
 				
 			}
+		// falls Verbindung zum SAP-Server nicht mehr vorhanden ist
 		} catch (RemoteException e) {
+			
 			return "SAP-Server ist nicht verfügbar";
 		}
 		
