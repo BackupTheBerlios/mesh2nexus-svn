@@ -50,7 +50,7 @@ public class SAPConnector {
 
 	      System.out.println("> JCO Connection Pool angelegt");
 	      
-	      // Neues Repository wird erstellt. Enthällt alle Definitionen
+	      // Neues Repository wird erstellt. Enthält alle Definitionen
 	      // von Funktionen und Strukturen
 	      repository = JCO.createRepository("MYRepository", PoolName);
 	      
@@ -82,7 +82,8 @@ public class SAPConnector {
   /**
    * Lädt SalesOrderList von SAP und gibt die Ergebnistabelle zurück
    */
-  @SuppressWarnings("finally")
+
+@SuppressWarnings("finally")
 public static JCO.Table getSalesOrders(
 		  	String CustNumber,
 			String SalesOrg,
@@ -130,10 +131,6 @@ public static JCO.Table getSalesOrders(
 			  System.out.println("> Führe BAPI_SALES_ORDER_GETLIST aus");
 			  client.execute(function);
 
-			  // Print return message
-//			  JCO.Structure ret = function.getExportParameterList().getStructure("RETURN");
-//			  System.out.println("\t RETURN MESSAGE: " + ret.getString("MESSAGE"));
-
 			  // Get table containing the orders
 			  result = function.getTableParameterList().getTable("SALES_ORDERS");
 
@@ -155,7 +152,7 @@ public static JCO.Table getSalesOrders(
   }
 
   /**
-   * Pool muss explizit geloescht werden
+   * Pool wird geloescht
    */
   public static void cleanUp() {
     JCO.removeClientPool(PoolName);
