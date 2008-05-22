@@ -10,7 +10,7 @@ import java.util.Properties;
 import server.SAPConnector;
 
 /**
- * 
+ * Kontrolliert den Server-Start
  */
 public class Server {
 	
@@ -74,7 +74,7 @@ public class Server {
 	}
 	
 	/**
-	 * 
+	 * Funktion zum Laden der Einstellungen 
 	 */
 	private static void LoadFromProperties (){
 		
