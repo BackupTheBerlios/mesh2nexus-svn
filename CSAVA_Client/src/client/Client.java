@@ -6,7 +6,7 @@ import server.ServerInterface;
 import com.sap.mw.jco.JCO;
 
 /**
- * Klasse enthält programmstartende main-Mothode sowie
+ * Klasse enthält programmstartende main-Methode sowie
  * Hilfsfunktionen für Kommunikation mit dem SAP-Server
  */
 public class Client {
