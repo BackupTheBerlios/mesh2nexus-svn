@@ -98,7 +98,7 @@ public class MainWindow {
 
 		export = new MenuItem(fileMenu, SWT.PUSH);
 		export.setText("HTML-Export");
-//		export.setEnabled(false);
+		export.setEnabled(false);
 		export.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
