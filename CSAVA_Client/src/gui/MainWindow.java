@@ -98,12 +98,13 @@ public class MainWindow {
 
 		export = new MenuItem(fileMenu, SWT.PUSH);
 		export.setText("HTML-Export");
-		export.setEnabled(false);
+//		export.setEnabled(false);
 		export.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
 				// Dialog zum Abspeichern der Tabelle in einer Datei
 				FileDialog dialog = new FileDialog(shell, SWT.SAVE);
+				dialog.setFilterExtensions(new String[]{"*.html"});
 				String filename = dialog.open();
 				
 				// falls Tabelle nicht gespeichert werden konnte
