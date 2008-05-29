@@ -1,6 +1,7 @@
 package gui;
 
 import org.eclipse.swt.*;
+import org.eclipse.swt.browser.Browser;
 import org.eclipse.swt.events.*;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
@@ -14,8 +15,8 @@ public class MainWindow {
 
 	private Menu menu;
 	private MenuItem exit;
-	public MenuItem save;
-	private MenuItem open;
+	public MenuItem export;
+	private MenuItem search;
 	private Menu fileMenu;
 	private MenuItem fileMenuItem;
 	private MenuItem sapMenuItem;
@@ -67,6 +68,7 @@ public class MainWindow {
 		table.setHeaderVisible(true);
 		table.setLayoutData(new GridData(GridData.FILL_BOTH));
 
+		
 		// Menu
 		menu = new Menu(shell, SWT.BAR);
 		shell.setMenuBar(menu);
@@ -74,30 +76,30 @@ public class MainWindow {
 		fileMenuItem.setText("Datei");
 		fileMenu = new Menu(fileMenuItem);
 
-		open = new MenuItem(fileMenu, SWT.PUSH);
-		open.setText("Öffnen");
-		open.addSelectionListener(new SelectionAdapter() {
-			public void widgetSelected(SelectionEvent evt) {
+//		search = new MenuItem(fileMenu, SWT.PUSH);
+//		search.setText("Suchen");
+//		search.addSelectionListener(new SelectionAdapter() {
+//			public void widgetSelected(SelectionEvent evt) {
+//
+//				// Dialog zum Öffnen einer Datei
+//				FileDialog dialog = new FileDialog(shell, SWT.OPEN);
+//				String filename = dialog.open();
+//				
+//				// falls Datei nicht geöffnet werden konnte
+//				if (!openTable(filename)) {
+//					
+//					// Fehlermeldung
+//					ErrorDialog.show(shell, "Error",
+//							"Datei konnte nicht geöffnet werden");
+//
+//				}
+//			}
+//		});
 
-				// Dialog zum Öffnen einer Datei
-				FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-				String filename = dialog.open();
-				
-				// falls Datei nicht geöffnet werden konnte
-				if (!openTable(filename)) {
-					
-					// Fehlermeldung
-					ErrorDialog.show(shell, "Error",
-							"Datei konnte nicht geöffnet werden");
-
-				}
-			}
-		});
-
-		save = new MenuItem(fileMenu, SWT.PUSH);
-		save.setText("Speichern");
-		save.setEnabled(false);
-		save.addSelectionListener(new SelectionAdapter() {
+		export = new MenuItem(fileMenu, SWT.PUSH);
+		export.setText("HTML-Export");
+		export.setEnabled(false);
+		export.addSelectionListener(new SelectionAdapter() {
 			public void widgetSelected(SelectionEvent evt) {
 
 				// Dialog zum Abspeichern der Tabelle in einer Datei
@@ -109,7 +111,7 @@ public class MainWindow {
 					
 					// Fehlermeldung
 					ErrorDialog.show(shell, "Error",
-							"Tabelle konnte nicht gespeichert werden");
+							"Tabelle konnte nicht exportiert werden");
 				}
 			}
 		});
@@ -175,11 +177,19 @@ public class MainWindow {
 	}
 
 	/**
-	 * Speichert die Tabelle in eine Datei
+	 * Speichert die Tabelle in eine HTML-Datei
 	 */
 	private boolean saveTable(String path) {
-		// TODO
-		return true;
+		
+		try{
+			Client.sales_orders.writeHTML(path);
+			return true;
+			
+		}catch(Exception e){
+			
+			return false;
+		}
+	
 
 	}
 
@@ -204,13 +214,6 @@ public class MainWindow {
 		new ConnectWindow(this);
 	}
 
-	/**
-	 * Öffnet eine gespeicherte Tabelle
-	 */
-	private boolean openTable(String path) {
-		// TODO
-		return true;
-	}
 
 	/**
 	 * Setzt Status-Meldungen in der Titel-Leiste des Hauptfensters
