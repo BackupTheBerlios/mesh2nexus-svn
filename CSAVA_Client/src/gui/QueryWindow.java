@@ -169,7 +169,7 @@ public class QueryWindow {
 			
 			// Ein- Ausschalten entsprechender Menueinträge
 			parent.evalSapMenuItem.setEnabled(true);
-			parent.save.setEnabled(true);
+			parent.export.setEnabled(true);
 			
 		// falls die Ausführung nicht erfolgreich war oder 
 		// die Ergebnis-Tablle leer ist
