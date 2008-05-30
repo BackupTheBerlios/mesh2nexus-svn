@@ -76,26 +76,6 @@ public class MainWindow {
 		fileMenuItem.setText("Datei");
 		fileMenu = new Menu(fileMenuItem);
 
-//		search = new MenuItem(fileMenu, SWT.PUSH);
-//		search.setText("Suchen");
-//		search.addSelectionListener(new SelectionAdapter() {
-//			public void widgetSelected(SelectionEvent evt) {
-//
-//				// Dialog zum Öffnen einer Datei
-//				FileDialog dialog = new FileDialog(shell, SWT.OPEN);
-//				String filename = dialog.open();
-//				
-//				// falls Datei nicht geöffnet werden konnte
-//				if (!openTable(filename)) {
-//					
-//					// Fehlermeldung
-//					ErrorDialog.show(shell, "Error",
-//							"Datei konnte nicht geöffnet werden");
-//
-//				}
-//			}
-//		});
-
 		export = new MenuItem(fileMenu, SWT.PUSH);
 		export.setText("HTML-Export");
 		export.setEnabled(false);
