@@ -15,7 +15,7 @@ public class Client {
 	public static ServerInterface server;
 	
 	// Tabelle (JCO.Table), Container für Verkaufsbelege, die vom
-	// SAP-Server geholte werden
+	// SAP-Server geholt werden
 	public static JCO.Table sales_orders;
 	
 	/**
@@ -26,9 +26,10 @@ public class Client {
 	}
 	
 	/**
-	 * Baut eine Verbindung zum Server auf
+	 * Baut eine Verbindung zum Server auf, falls die Verbindung nicht hergestellt
+	 * werden kann, wird ClientException geworfen
 	 */
-	public static boolean ConnectToServer(String ServerURL) {
+	public static void ConnectToServer(String ServerURL) throws ClientException {
 
 		// Prüft, ob auf dem angegebenem Rechner (ServerURL = IP:Port)
 		// RMI-Registry gestartet ist und entsprechnde Interface-Implementierung
@@ -37,11 +38,8 @@ public class Client {
 			server = (ServerInterface) Naming.lookup("rmi://" + ServerURL
 					+ "/ServerFunctions");			
 
-			return true;
-
 		} catch (Exception e) {
-			
-			return false;
+			throw new ClientException("SAP-Server ist nicht verfügbar");
 		}		
 	}	
 	
@@ -49,11 +47,11 @@ public class Client {
 	 * Sendet eine Anfrage an SAP-Server und speichert die Ergebnis-Tabelle
 	 * in sales_orders vom Datentyp JCO.Table
 	 */
-	public static String getSapTable(String CustNumber,
+	public static void getSapTable(String CustNumber,
 			String SalesOrg,
 			String DocDate,
 			String DocDateTo,
-			String TAGroup) {
+			String TAGroup) throws ClientException{
 		
 		JCO.Table tmpSales = null;
 		
@@ -72,13 +70,13 @@ public class Client {
 			// auf dem Server vor, keine Konnektivität zur SAP-DB
 			if (tmpSales == null){ 
 				
-				return "SAP-Server ist nicht mit SAP-Datenbank verbunden";
+				throw new ClientException("SAP-Server ist nicht mit SAP-Datenbank verbunden");
 			}
 			// sonst
 			else{
 				// prüfe ob die Ergebnistabelle keine Einträge enthält
 				if (tmpSales.getNumRows() == 0){
-					return "Keine Ergebnisse zu dieser Anfrage";
+					throw new ClientException("Keine Ergebnisse zu dieser Anfrage");
 				}
 				// alles in Ordnung -> speichere die Tabelle in 'sales_orders'
 				else{
@@ -89,9 +87,8 @@ public class Client {
 		// falls Verbindung zum SAP-Server nicht mehr vorhanden ist
 		} catch (RemoteException e) {
 			
-			return "SAP-Server ist nicht verfügbar";
+			throw new ClientException("SAP-Server ist nicht verfügbar");
 		}
 		
-		return "OK";
 	}
 }
