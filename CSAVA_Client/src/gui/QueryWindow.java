@@ -12,6 +12,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import client.Client;
+import client.ClientException;
 
 
 /**
@@ -154,44 +155,49 @@ public class QueryWindow {
 	 */
 	private void executeQuery() {
 
-		// Führe die Anfrage aus
-		String message = Client.getSapTable(CustNumber.getText(),
-				SalesOrg.getText(),
-				DocDate.getText(),
-				DocDateTo.getText(),
-				TAGroup.getText());
-		
-		// falls die Ausführung erfolgreich war
-		if (message.equals("OK")) {
-
+		try{
+			// Führe die Anfrage aus
+			Client.getSapTable(CustNumber.getText(),
+					SalesOrg.getText(),
+					DocDate.getText(),
+					DocDateTo.getText(),
+					TAGroup.getText());
+			
+			// falls die Ausführung erfolgreich war, d.h. an der Stelle keine
+			// Exception geworfen wurde
+			
 			// Fülle die Tabelle mit Werten aus der Ergebnis-JCO.Table
 			parent.fillTable();
-			
+				
 			// Ein- Ausschalten entsprechender Menueinträge
 			parent.evalSapMenuItem.setEnabled(true);
+			parent.evaluateButton.setEnabled(true);
+			parent.resetButton.setEnabled(true);
 			parent.export.setEnabled(true);
 			
+			
 		// falls die Ausführung nicht erfolgreich war oder 
-		// die Ergebnis-Tablle leer ist
-		}else {
+		// die Ergebnis-Tablle leer ist	
+		}catch(ClientException e){
 			
 			// zeige einen Fehler-MessageBox mit entsprechender Meldung
-			ErrorDialog.show(shell, "Error", message) ;
+			ErrorDialog.show(shell, "Error", e.getMessage()) ;
 			
 			// falls verbindung zum SAP-Server unterbrochen wurde
-			if (!message.equals("Keine Ergebnisse zu dieser Anfrage")){
+			if (!e.getMessage().equals("Keine Ergebnisse zu dieser Anfrage")){
 				
 				// Setze status
 				parent.setStatus("Offline");
 				// Ein- Ausschalten entsprechender Menueinträge
 				parent.querySapMenuItem.setEnabled(false);
 				parent.conSapMenuItem.setEnabled(true);
-				
 			}
-			
 		}
 		
-		// schließe QueryWindow
-		shell.dispose();	
+		finally{
+			
+			// schließe QueryWindow
+			shell.dispose();
+		}
 	}			
 }
