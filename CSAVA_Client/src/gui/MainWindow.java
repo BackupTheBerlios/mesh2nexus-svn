@@ -6,6 +6,8 @@ import org.eclipse.swt.events.*;
 import org.eclipse.swt.layout.*;
 import org.eclipse.swt.widgets.*;
 import client.Client;
+import client.ClientException;
+
 import com.sap.mw.jco.JCO;
 
 /**
@@ -25,6 +27,8 @@ public class MainWindow {
 	public MenuItem evalSapMenuItem;
 	public MenuItem conSapMenuItem;
 	private Table table;
+	public Button evaluateButton;
+	public Button resetButton;
 
 	public Shell shell;
 	
@@ -59,14 +63,50 @@ public class MainWindow {
 
 		// GridLayout setzen
 		GridLayout thisLayout = new GridLayout();
-		thisLayout.numColumns = 1;
+		thisLayout.numColumns = 2;
 		shell.setLayout(thisLayout);
 
 		// Tabelle
 		table = new Table(shell, SWT.BORDER | SWT.MULTI | SWT.SCROLL_LINE);
 		table.setLinesVisible(true);
 		table.setHeaderVisible(true);
-		table.setLayoutData(new GridData(GridData.FILL_BOTH));
+		GridData gD = new GridData(GridData.FILL_BOTH);
+		gD.horizontalSpan = 2;
+		table.setLayoutData(gD);
+		
+		// Auswertungsbutton
+		evaluateButton = new Button(shell, SWT.PUSH);
+		evaluateButton.setText("Auswerten");
+		evaluateButton.setEnabled(false);
+		
+		evaluateButton.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent evt) {
+
+				// zeige EvalWindow an
+				showEvalWindow();
+			}
+		});
+		
+		
+		// Button löscht Inhalte der Tabelle
+		resetButton = new Button(shell, SWT.PUSH);
+		resetButton.setText("Zurücksetzen");
+		resetButton.setEnabled(false);
+		
+		resetButton.addSelectionListener(new SelectionAdapter() {
+			public void widgetSelected(SelectionEvent evt) {
+
+				// lösche Inhalt der Tabelle
+				table.removeAll();
+				
+				// deaktiviert ensprechende Menueinträge/Buttons
+				evaluateButton.setEnabled(false);
+				resetButton.setEnabled(false);
+				export.setEnabled(false);
+				evalSapMenuItem.setEnabled(false);
+				
+			}
+		});
 
 		
 		// Menu
@@ -87,13 +127,17 @@ public class MainWindow {
 				dialog.setFilterExtensions(new String[]{"*.html"});
 				String filename = dialog.open();
 				
+				try{
+					// versuche Tabelle zu speichern
+					saveTable(filename);
+					
 				// falls Tabelle nicht gespeichert werden konnte
-				if (!saveTable(filename)) {
+				}catch(ClientException e){
 					
 					// Fehlermeldung
-					ErrorDialog.show(shell, "Error",
-							"Tabelle konnte nicht exportiert werden");
+					ErrorDialog.show(shell, "Error",e.getMessage());
 				}
+				
 			}
 		});
 
@@ -158,17 +202,16 @@ public class MainWindow {
 	}
 
 	/**
-	 * Speichert die Tabelle in eine HTML-Datei
+	 * Speichert die Tabelle in eine HTML-Datei, falls die Tabelle nicht
+	 * exportiert werden konnten, wird ClientException geworfen
 	 */
-	private boolean saveTable(String path) {
+	private void saveTable(String path) throws ClientException {
 		
 		try{
 			Client.sales_orders.writeHTML(path);
-			return true;
-			
+
 		}catch(Exception e){
-			
-			return false;
+			throw new ClientException("Tabelle konnte nicht exportiert werden");
 		}
 	
 
