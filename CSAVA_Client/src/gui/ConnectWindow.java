@@ -8,6 +8,7 @@ import org.eclipse.swt.graphics.Rectangle;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import client.Client;
+import client.ClientException;
 
 /**
  * Fenster zur Aufbau einer Verbindung zum Server
@@ -118,12 +119,13 @@ public class ConnectWindow {
 		// Benutzereingaben auslesen
 		String data = ip.getText() + ":" + port.getText();
 		
-		// versuche eine Verbindung zum Server herzustellen
-		boolean connected = Client.ConnectToServer(data);
-
-		// falls verbunden
-		if (connected) {
 		
+		try{
+			// versuche eine Verbindung zum Server herzustellen
+			Client.ConnectToServer(data);
+
+			// falls keine ClientException geworfen wurde
+
 			// Setze Status
 			parent.setStatus("Verbunden mit SAP-Server");
 			
@@ -134,11 +136,15 @@ public class ConnectWindow {
 			// schließe ConnectWindow
 			shell.dispose();
 		
-		// falls keine Verbindung hergestellt wurde
-		} else {
-			
-			// zeige einen Fehler-MessageBox mit entsprechender Meldung
-			ErrorDialog.show(shell, "Error", "SAP-Server ist nicht verfügbar") ;
 		}
+		// falls keine Verbindung hergestellt wurde
+		catch (ClientException e){
+			
+			//zeige einen Fehler-MessageBox mit entsprechender Meldung
+			ErrorDialog.show(shell, "Error", e.getMessage()) ;
+		}
+			
+		
+		
 	}
 }
